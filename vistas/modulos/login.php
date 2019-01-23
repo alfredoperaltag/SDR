@@ -1,3 +1,4 @@
+
 <div class="login-area login-bg">
         <div class="container">
             <div class="login-box ptb--100">
@@ -13,7 +14,7 @@
                             <i class="fa fa-user fa-2x"></i>
                         </div>
                         <div class="form-gp">
-                            <label for="pass">ContraseĂ±a</label>
+                            <label for="pass">Contraseña</label>
                             <input type="password" id="pass" name="password">
                             <i class="fa fa-lock fa-2x"></i>
                         </div>
