@@ -39,7 +39,7 @@ CUERPO DOCUMENTO
         include "modulos/cabecera.php";
         if (isset($_GET["ruta"])) {
             
-            if ($_GET["ruta"] == "inicio" ||
+            if ($_GET["ruta"] == "Inicio" ||
             $_GET["ruta"] == "Usuarios" ||
             $_GET["ruta"] == "CerrarSesion") {
 
