@@ -29,22 +29,21 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- preloader area start -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="loader"></div>
-    </div>
+    </div> -->
     <!-- preloader area end -->
     <!-- main wrapper start -->
-    <div class="horizontal-main-wrapper">
+    <!-- <div class="horizontal-main-wrapper"> -->
         <!-- main header area start -->
-        <div class="mainheader-area">
+        <!-- <div class="mainheader-area">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
                             <a href="index.html"><img src="vistas/assets/images/icon/logo2.png" alt="logo"></a>
                         </div>
-                    </div>
-                    <!-- profile info & task notification -->
+                    </div>                
                     <div class="col-md-9 clearfix text-right">
                         <div class="d-md-inline-block d-block mr-md-4">
                             <ul class="notification-area">
@@ -206,10 +205,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- main header area end -->
         <!-- header area start -->
-        <div class="header-area header-bottom">
+        <!-- <div class="header-area header-bottom">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-9  d-none d-lg-block">
@@ -301,8 +300,7 @@
                                 </ul>
                             </nav>
                         </div>
-                    </div>
-                    <!-- nav and search button -->
+                    </div>                    
                     <div class="col-lg-3 clearfix">
                         <div class="search-box">
                             <form action="#">
@@ -310,20 +308,18 @@
                                 <i class="ti-search"></i>
                             </form>
                         </div>
-                    </div>
-                    <!-- mobile_menu -->
+                    </div>                    
                     <div class="col-12 d-block d-lg-none">
                         <div id="mobile_menu"></div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- header area end -->
         <!-- page title area end -->
-        <div class="main-content-inner">
+        <!-- <div class="main-content-inner">
             <div class="container">
-                <div class="row">
-                    <!-- seo fact area start -->
+                <div class="row">                
                     <div class="col-lg-8">
                         <div class="row">
                             <div class="col-md-6 mt-5 mb-3">
@@ -369,9 +365,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- seo fact area end -->
-                    <!-- Social Campain area start -->
+                    </div>                    
                     <div class="col-lg-4 mt-5">
                         <div class="card">
                             <div class="card-body pb-0">
@@ -379,9 +373,7 @@
                                 <div id="socialads" style="height: 245px;"></div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Social Campain area end -->
-                    <!-- Statistics area start -->
+                    </div>                    
                     <div class="col-lg-8 mt-5">
                         <div class="card">
                             <div class="card-body">
@@ -389,9 +381,7 @@
                                 <div id="user-statistics"></div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Statistics area end -->
-                    <!-- Advertising area start -->
+                    </div>                    
                     <div class="col-lg-4 mt-5">
                         <div class="card">
                             <div class="card-body">
@@ -399,9 +389,7 @@
                                 <canvas id="seolinechart8" height="233"></canvas>
                             </div>
                         </div>
-                    </div>
-                    <!-- Advertising area end -->
-                    <!-- sales area start -->
+                    </div>                  
                     <div class="col-xl-8 col-lg-8 mt-5">
                         <div class="card">
                             <div class="card-body">
@@ -409,9 +397,7 @@
                                 <div id="salesanalytic"></div>
                             </div>
                         </div>
-                    </div>
-                    <!-- sales area end -->
-                    <!-- timeline area start -->
+                    </div>                    
                     <div class="col-xl-4 col-lg-4 mt-5">
                         <div class="card">
                             <div class="card-body">
@@ -473,9 +459,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- timeline area end -->
-                    <!-- map area start -->
+                    </div>                    
                     <div class="col-lg-5 mt-5">
                         <div class="card">
                             <div class="card-body">
@@ -483,9 +467,7 @@
                                 <div id="seomap"></div>
                             </div>
                         </div>
-                    </div>
-                    <!-- map area end -->
-                    <!-- testimonial area start -->
+                    </div>                    
                     <div class="col-lg-7 mt-5">
                         <div class="card">
                             <div class="card-body bg1">
@@ -524,18 +506,17 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- testimonial area end -->
+                    </div>                    
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- main content area end -->
         <!-- footer area start-->
-        <footer>
+        <!-- <footer>
             <div class="footer-area">
                 <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
             </div>
-        </footer>
+        </footer> -->
         <!-- footer area end-->
     </div>
     <!-- main wrapper start -->
@@ -717,6 +698,11 @@
         </div>
     </div>
     <!-- offset area end -->
+
+<?php
+include "modulos/cabezote.php";
+?>
+
     <!-- jquery latest version -->
     <script src="vistas/assets/js/vendor/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->
