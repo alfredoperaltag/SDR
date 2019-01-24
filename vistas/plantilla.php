@@ -16,8 +16,11 @@ session_start();
     <link rel="stylesheet" href="vistas/assets/css/metisMenu.css">
     <link rel="stylesheet" href="vistas/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="vistas/assets/css/slicknav.min.css">
-    <!-- amchart css -->
-    <!-- <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" /> -->
+    <!-- Start datatable css -->
+    <link rel="stylesheet" type="text/css" href="vistas/assets/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="vistas/assets/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="vistas/assets/css/responsive.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="vistas/assets/css/jquery.dataTables.css">
     <!-- others css -->
     <link rel="stylesheet" href="vistas/assets/css/typography.css">
     <link rel="stylesheet" href="vistas/assets/css/default-css.css">
@@ -95,27 +98,13 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     <script src="vistas/assets/js/jquery.slimscroll.min.js"></script>
     <script src="vistas/assets/js/jquery.slicknav.min.js"></script>
 
-    <!-- start chart js -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script> -->
-    <!-- start highcharts js -->
-    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script> -->
-    <!-- start amcharts -->
-    <!-- <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script> -->
-    <!-- all line chart activation -->
-    <script src="vistas/assets/js/line-chart.js"></script>
-    <!-- all pie chart -->
-    <script src="vistas/assets/js/pie-chart.js"></script>
-    <!-- all bar chart -->
-    <script src="vistas/assets/js/bar-chart.js"></script>
-    <!-- all map chart -->
-    <script src="vistas/assets/js/maps.js"></script>
+    <!-- Start datatable js -->
+    <script src="vistas/assets/js/jquery.dataTables.js"></script>
+    <script src="vistas/assets/js/jquery.dataTables.min.js"></script>
+    <script src="vistas/assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vistas/assets/js/dataTables.responsive.min.js"></script>
+    <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>
+    
     <!-- others plugins -->
     <script src="vistas/assets/js/plugins.js"></script>
     <script src="vistas/assets/js/scripts.js"></script>
