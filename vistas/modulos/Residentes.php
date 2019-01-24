@@ -30,6 +30,7 @@
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-primary"><i class="fa fa-info"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -44,6 +45,7 @@
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-primary"><i class="fa fa-info"></i></button>
                                 </div>
                             </td>
                         </tr>
