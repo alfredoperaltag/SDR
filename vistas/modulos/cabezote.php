@@ -44,15 +44,6 @@
                         </nav>
                     </div>
                 </div>
-                <!-- nav and search button -->
-                <div class="col-lg-3 clearfix">
-                    <div class="search-box">
-                        <form action="#">
-                            <input type="text" name="search" placeholder="Buscar..." required>
-                            <i class="ti-search"></i>
-                        </form>
-                    </div>
-                </div>
                 <!-- mobile_menu -->
                 <div class="col-12 d-block d-lg-none">
                     <div id="mobile_menu"></div>
