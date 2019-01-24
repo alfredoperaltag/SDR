@@ -3,7 +3,7 @@
         <div class="error-content">
             <h2>INICIO</h2>
             <p>Aqui va el contenido shido .</p>
-            <a href="Inicio">Regresar al inicio</a>
+            <a href="CerrarSesion">Cerrar Sesion</a>
         </div>
     </div>
 </div>

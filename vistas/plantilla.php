@@ -17,7 +17,7 @@ session_start();
     <link rel="stylesheet" href="vistas/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="vistas/assets/css/slicknav.min.css">
     <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" /> -->
     <!-- others css -->
     <link rel="stylesheet" href="vistas/assets/css/typography.css">
     <link rel="stylesheet" href="vistas/assets/css/default-css.css">
@@ -39,22 +39,45 @@ CUERPO DOCUMENTO
         
         echo '<div class="horizontal-main-wrapper">';
         
-        include "modulos/cabezote.php";
-        if (isset($_GET["ruta"])) {
-            
+        if(isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador"){
+            include "modulos/cabezote.php";
+        }else{
+            include "modulos/cabezoteUser.php";
+        }
+
+        echo $_SESSION['perfil'];
+        if (isset($_GET["ruta"]) && $_SESSION['perfil'] == "Administrador") {
+            echo "Entro #1";
             if ($_GET["ruta"] == "Inicio" ||
             $_GET["ruta"] == "Usuarios" ||
             $_GET["ruta"] == "Residentes" ||
             $_GET["ruta"] == "CerrarSesion") {
 
                 include "modulos/" . $_GET["ruta"] . ".php";
+
         } else {
             include "modulos/404.php";
         }
+        
+
+    } 
+    if (isset($_GET["ruta"]) && $_SESSION['perfil'] != "Administrador") {
+            echo "Entro #2";
+        if ($_GET["ruta"] == "Inicio" ||
+        $_GET["ruta"] == "Residentes" ||
+        $_GET["ruta"] == "CerrarSesion") {
+
+            include "modulos/" . $_GET["ruta"] . ".php";
 
     } else {
-        include "modulos/Inicio.php";
+        include "modulos/404.php";
     }
+    
+
+} 
+if (!isset($_GET["ruta"])){
+    include "modulos/Inicio.php";
+}
 
     include "modulos/footer.php";
     
@@ -78,18 +101,18 @@ CUERPO DOCUMENTO
     <script src="vistas/assets/js/jquery.slicknav.min.js"></script>
 
     <!-- start chart js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script> -->
     <!-- start highcharts js -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script> -->
     <!-- start amcharts -->
-    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <!-- <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
     <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script> -->
     <!-- all line chart activation -->
     <script src="vistas/assets/js/line-chart.js"></script>
     <!-- all pie chart -->
