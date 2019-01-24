@@ -32,62 +32,57 @@ CUERPO DOCUMENTO
 ======================================-->
 
 <body class="body-bg">
- 
-  
-<?php
-    if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
-        
-        echo '<div class="horizontal-main-wrapper">';
-        
-        if(isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador"){
-            include "modulos/cabezote.php";
-        }else{
-            include "modulos/cabezoteUser.php";
-        }
 
-        echo $_SESSION['perfil'];
-        if (isset($_GET["ruta"]) && $_SESSION['perfil'] == "Administrador") {
-            echo "Entro #1";
-            if ($_GET["ruta"] == "Inicio" ||
+
+<?php
+if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
+
+    echo '<div class="horizontal-main-wrapper">';
+
+    if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+        include "modulos/cabezote.php";
+    } else {
+        include "modulos/cabezoteUser.php";
+    }
+
+    if (isset($_GET["ruta"]) && $_SESSION['perfil'] == "Administrador") {
+        if ($_GET["ruta"] == "Inicio" ||
             $_GET["ruta"] == "Usuarios" ||
             $_GET["ruta"] == "Residentes" ||
             $_GET["ruta"] == "CerrarSesion") {
 
-                include "modulos/" . $_GET["ruta"] . ".php";
+            include "modulos/" . $_GET["ruta"] . ".php";
 
         } else {
             include "modulos/404.php";
         }
-        
 
-    } 
+    }
     if (isset($_GET["ruta"]) && $_SESSION['perfil'] != "Administrador") {
-            echo "Entro #2";
         if ($_GET["ruta"] == "Inicio" ||
-        $_GET["ruta"] == "Residentes" ||
-        $_GET["ruta"] == "CerrarSesion") {
+            $_GET["ruta"] == "Residentes" ||
+            $_GET["ruta"] == "CerrarSesion") {
 
             include "modulos/" . $_GET["ruta"] . ".php";
 
-    } else {
-        include "modulos/404.php";
-    }
-    
+        } else {
+            include "modulos/404.php";
+        }
 
-} 
-if (!isset($_GET["ruta"])){
-    include "modulos/Inicio.php";
-}
+    }
+    if (!isset($_GET["ruta"])) {
+        include "modulos/Inicio.php";
+    }
 
     include "modulos/footer.php";
-    
+
     echo '</div>';
 
-    }else{
-        include "modulos/login.php";
-    }
+} else {
+    include "modulos/login.php";
+}
 
-    ?>
+?>
 
 
     <!-- jquery latest version -->
