@@ -108,6 +108,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     <!-- others plugins -->
     <script src="vistas/assets/js/plugins.js"></script>
     <script src="vistas/assets/js/scripts.js"></script>
+    <script src="vistas/assets/js/table.js"></script>
 </body>
 
 </html>
