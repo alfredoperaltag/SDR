@@ -13,7 +13,7 @@
                 <div class="login-form-body">
                     <div class="form-gp">
                         <label for="user">Usuario</label>
-                        <input type="text" id="user" name="username">
+                        <input type="text" id="user" name="username" autocomplete="off">
                         <i class="fa fa-user fa-2x"></i>
                     </div>
                     <div class="form-gp">
