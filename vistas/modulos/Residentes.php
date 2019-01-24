@@ -1,6 +1,6 @@
 <div class="col-12 mt-5">
     <div class="card">
-        <h2 class="ml-4">Usuarios</h2>
+        <h2 class="ml-4">Residentes</h2>
         <div class="card-body">
             <!-- <h1 class="header-title">Usuarios</h1> -->
             <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#modalAgregarUsuario">Agregar Usuario</button>
@@ -22,30 +22,28 @@
                         <tr>
                             <td>1</td>
                             <td>Yonathan Román Salgado</td>
-                            <td>admin</td>
-                            <td><img src="images/author/avatar.png" class="img-thumbnail" width="40px"></td>
-                            <td>Administrador</td>
-                            <td><button class="btn btn-success btn-xs">Activado</button></td>
-                            <td>2017-12-11 12:05:32</td>
+                            <td>15670051</td>
+                            <td>Ingenieria en Sistemas Computacionales</td>
+                            <td>M</td>
+                            <td>7331089089</td>
+                            <td>Sistema de Residencias</td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>Pablo Escobar</td>
-                            <td>admin</td>
-                            <td><img src="images/author/avatar.png" class="img-thumbnail" width="40px"></td>
-                            <td>Administrador</td>
-                            <td><button class="btn btn-success btn-xs">Activado</button></td>
-                            <td>2017-12-11 12:05:32</td>
+                            <td>2</td>
+                            <td>Alfredo Peralta Garcia</td>
+                            <td>15670123</td>
+                            <td>Ingenieria en Sistemas Computacionales</td>
+                            <td>M</td>
+                            <td>7331234578</td>
+                            <td>Sistema de Residencias</td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                                 </div>
                             </td>
                         </tr>

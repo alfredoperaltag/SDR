@@ -2,8 +2,8 @@
     <div class="container">
         <div class="error-content">
             <h2>404</h2>
-            <p>Ooops! Something went wrong .</p>
-            <a href="index.html">Back to Dashboard</a>
+            <p>Ooops! Algo salio mal.</p>
+            <a href="Inicio">Regresar al inicio</a>
         </div>
     </div>
 </div>
