@@ -17,8 +17,8 @@
                     </div> -->
                     <div class="clearfix d-md-inline-block d-block">
                         <div class="user-profile m-0">
-                            <img class="avatar user-thumb" src="images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['usuario']; ?> <i class="fa fa-angle-down"></i></h4>
+                            <img class="avatar user-thumb" src="vistas/assets/images/author/avatar.png" alt="avatar">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['nombre']; ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Opciones</a>
                                 <a class="dropdown-item" href="CerrarSesion">Cerrar Sesion</a>
@@ -39,18 +39,13 @@
                         <nav>
                             <ul id="nav_menu">
                                 <li>
-                                    <!-- <a href="javascript:void(0)"><i class="fa fa-home"></i><span>Inicio</span></a> -->
-                                    <a href="inicio"><i class="fa fa-home fa-2x" style="color: #845ef7;"></i><span><strong>Inicio</strong></span></a>
+                                    <a href="Inicio"><i class="fa fa-home fa-2x" style="color: #845ef7;"></i><span><strong>Inicio</strong></span></a>
                                 </li>
                                 <li>
-                                    <!-- <a href="javascript:void(0)"><i class="fa fa-home"></i><span>Inicio</span></a> -->
                                     <a href="Usuarios"><i class="fa fa-user fa-2x" style="color: #845ef7;"></i><span><strong>Usuarios</strong></span></a>
-                                    <!-- <ul class="submenu">
-                                        <li><a href="Alta-Usuario">Alta de usuario</a></li>
-                                        <li><a href="Baja-Usuario">Baja de usuario</a></li>
-                                        <li><a href="Consulta-Usuario">Consulta de usuario</a></li>
-                                        <li><a href="Borrar-Usuario">Borrar usuario</a></li>
-                                    </ul> -->
+                                </li>
+                                <li>
+                                    <a href="Residentes"><i class="fa fa-users fa-2x" style="color: #845ef7;"></i><span><strong>Residentes</strong></span></a>
                                 </li>
                             </ul>
                         </nav>

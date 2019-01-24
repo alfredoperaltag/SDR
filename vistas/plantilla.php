@@ -1,5 +1,8 @@
+<?php
+session_start();
+?>
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -32,15 +35,16 @@ CUERPO DOCUMENTO
  
   
 <?php
-    if (isset($_SESSION['inicioSecion']) && $_SESSION['inicioSecion'] == "ok") {
+    if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         
         echo '<div class="horizontal-main-wrapper">';
         
-        include "modulos/cabecera.php";
+        include "modulos/cabezote.php";
         if (isset($_GET["ruta"])) {
             
             if ($_GET["ruta"] == "Inicio" ||
             $_GET["ruta"] == "Usuarios" ||
+            $_GET["ruta"] == "Residentes" ||
             $_GET["ruta"] == "CerrarSesion") {
 
                 include "modulos/" . $_GET["ruta"] . ".php";
@@ -49,10 +53,10 @@ CUERPO DOCUMENTO
         }
 
     } else {
-        include "modulos/inicio.php";
+        include "modulos/Inicio.php";
     }
 
-    include "modulos/pie.php";
+    include "modulos/footer.php";
     
     echo '</div>';
 
