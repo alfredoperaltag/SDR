@@ -62,7 +62,7 @@ MODAL AGREGAR USUARIO
 ======================================-->
 
 <div class="modal fade" id="modalAgregarUsuario">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <!--=====================================
               CABEZA DEL MODAL
@@ -78,46 +78,58 @@ MODAL AGREGAR USUARIO
               ======================================-->
                 <div class="modal-body">
                     <div class="box-body">
+
+                        <div class="form-row align-items-center">
+                            <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
+                            <div class="col-sm-6 my-1">
+                                <label for="example-text-input" class="col-form-label">No. Control</label>
+                                <input class="form-control" type="text" name="nuevoNombre" placeholder="Numero de control"
+                                    required>
+                            </div>
+                            <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
+                            <div class="col-sm-6 my-1">
+                                <label class="col-form-label">Carrera</label>
+                                <select class="custom-select" required>
+                                    <option value="">Selecionar carrera</option>
+                                    <option value="ISC">Ingenieria en Sistemas Computacionales</option>
+                                    <option value="II">Ingenieria Informatica</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
                             <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo"
                                 required>
                         </div>
-                        <!-- ENTRADA PARA EL USUARIO -->
+                        <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Usuario</label>
-                            <input class="form-control" type="text" name="nuevoUsuario" placeholder="Ingresar usuario"
+                            <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
+                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Ingresar apellido paterno completo"
                                 required>
                         </div>
-                        <!-- ENTRADA PARA LA CONTRASEÑA -->
+                        <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="form-group">
-                            <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar contraseña"
+                            <label for="example-text-input" class="col-form-label">Apellido Materno</label>
+                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Ingresar apellido materno completo"
                                 required>
                         </div>
-                        <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
+
+                        <!-- ENTRADA PARA SELECCIONAR SU SEXO -->
                         <div class="form-group">
-                            <label class="col-form-label">Perfil</label>
-                            <select class="custom-select">
-                                <option value="">Selecionar perfil</option>
-                                <option value="Administrador">Administrador</option>
-                                <option value="Especial">Especial</option>
-                                <option value="Vendedor">Vendedor</option>
+                            <label class="col-form-label">Sexo</label>
+                            <select class="custom-select" required>
+                                <option value="">Selecionar sexo</option>
+                                <option value="F">Femenino</option>
+                                <option value="M">Masculino</option>
                             </select>
                         </div>
-                        <!-- ENTRADA PARA SUBIR FOTO -->
+                        <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="form-group">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
-                                    </div>
-                                </div>
-                                <p class="help-block">Peso máximo de la foto 2MB</p>
-                                <img src="images/author/avatar.png" class="img-thumbnail previsualizar" width="100px">
-                            </div>
+                            <label for="example-text-input" class="col-form-label">Telefono</label>
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar telefono"
+                                required>
                         </div>
                     </div>
                     <!--=====================================
