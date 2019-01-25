@@ -83,8 +83,8 @@ class ControladorUsuarios{
 				   $datos = array("nombre" => $_POST["nuevoNombre"],
 								  "usuario" => $_POST["nuevoUsuario"],
 								  "password" => $_POST["nuevoPassword"],
-								  "perfil" => $_POST["nuevoPerfil"]/* ,
-								  "estado" => "1" */);
+								  "perfil" => $_POST["nuevoPerfil"]								  
+								);
 
 					$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
 					if ($respuesta == "ok") {

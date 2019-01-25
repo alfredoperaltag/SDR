@@ -103,7 +103,7 @@ MODAL AGREGAR USUARIO
                                 <option value="Administrador">Administrador</option>
                                 <option value="Usuario">Usuario</option>                                
                             </select>
-                        </div>
+                        </div>                        
                         <!-- ENTRADA PARA SUBIR FOTO -->
                         <!-- <div class="form-group">
                             <div class="form-group">
