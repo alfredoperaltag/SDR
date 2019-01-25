@@ -79,7 +79,7 @@ class ControladorUsuarios{
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
-				   $tabla = "usuarios";
+				   /* $tabla = "usuarios";
 				   $datos = array("nombre" => $_POST["nuevoNombre"],
 								  "usuario" => $_POST["nuevoUsuario"],
 								  "password" => $_POST["nuevoPassword"],
@@ -87,9 +87,8 @@ class ControladorUsuarios{
 								);
 
 					$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-					if ($respuesta == "ok") {
-						echo '<script>alert ("registrado correctamente"); </script>';
-						/* echo '<script>
+					if ($respuesta == "ok") {					
+						echo '<script>
 				   swal({
 					   type: "success",
 					   title; "¡El usuario ha sido guardado correctamente!",
@@ -101,23 +100,22 @@ class ControladorUsuarios{
 						   window.location = "usuarios";
 					   }
 					   });
-				 </script>'; */
-					}
-			   }else {			
-				echo '<script>alert ("ERROR CARACTERES"); </script>';	   
-				   /* echo '<script>
+				 </script>';
+					} */
+			   }else {						 
+				   echo '<script>
 				   swal({
 					   type: "error",
-					   title; "!El usuario no puede estar vacio o llevar caracteres especiales",
+					   title: "!El usuario no puede estar vacio o llevar caracteres especiales",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
 					   closeOnConfirm: false
-				   }).then((result))=>{
+				   }).then((result)=>{
 					   if(result.value){
 						   window.location = "usuarios";
 					   }
 					   });
-				 </script>'; */
+				 </script>';
 			   }
 		}
 	}
