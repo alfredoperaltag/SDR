@@ -22,7 +22,7 @@
                             <td>1</td>
                             <td>Yonathan Román Salgado</td>
                             <td>admin</td>
-                            <td><img src="images/author/avatar.png" class="img-thumbnail" width="40px"></td>
+                            <td><img src="vistas/assets/images/author/avatar.png" class="img-thumbnail" width="40px"></td>
                             <td>Administrador</td>
                             <td><button class="btn btn-success btn-xs">Activado</button></td>
                             
@@ -37,7 +37,7 @@
                             <td>1</td>
                             <td>Pablo Escobar</td>
                             <td>admin</td>
-                            <td><img src="images/author/avatar.png" class="img-thumbnail" width="40px"></td>
+                            <td><img src="vistas/assets/images/author/avatar.png" class="img-thumbnail" width="40px"></td>
                             <td>Administrador</td>
                             <td><button class="btn btn-success btn-xs">Activado</button></td>
                             <!-- <td>2017-12-11 12:05:32</td> -->
@@ -98,7 +98,7 @@ MODAL AGREGAR USUARIO
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                         <div class="form-group">
                             <label class="col-form-label">Perfil</label>
-                            <select class="custom-select">
+                            <select class="custom-select" name="nuevoPerfil">
                                 <option value="">Selecionar perfil</option>
                                 <option value="Administrador">Administrador</option>
                                 <option value="Usuario">Usuario</option>                                
@@ -125,6 +125,10 @@ MODAL AGREGAR USUARIO
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                         <button type="submit" class="btn btn-primary">Guardar usuario</button>
                     </div>
+                    <?php
+                    $crearUsuario = new ControladorUsuarios();
+                    $crearUsuario -> ctrCrearUsuario();
+                    ?>
                 </div>
             </form>
         </div>

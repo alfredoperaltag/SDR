@@ -69,4 +69,56 @@ class ControladorUsuarios{
 
 	}
 
+
+/*=============================================
+	REGISTRO DE USUARIO
+	=============================================*/
+
+	static public function ctrCrearUsuario(){
+		if (isset($_POST["nuevoUsuario"])) {
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
+			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
+			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
+				   $tabla = "usuarios";
+				   $datos = array("nombre" => $_POST["nuevoNombre"],
+								  "usuario" => $_POST["nuevoUsuario"],
+								  "password" => $_POST["nuevoPassword"],
+								  "perfil" => $_POST["nuevoPerfil"]/* ,
+								  "estado" => "1" */);
+
+					$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+					if ($respuesta == "ok") {
+						echo '<script>alert ("registrado correctamente"); </script>';
+						/* echo '<script>
+				   swal({
+					   type: "success",
+					   title; "¡El usuario ha sido guardado correctamente!",
+					   showConfirmButton: true,
+					   confirmButtonText: "Cerrar",
+					   closeOnConfirm: false
+				   }).then((result))=>{
+					   if(result.value){
+						   window.location = "usuarios";
+					   }
+					   });
+				 </script>'; */
+					}
+			   }else {			
+				echo '<script>alert ("ERROR CARACTERES"); </script>';	   
+				   /* echo '<script>
+				   swal({
+					   type: "error",
+					   title; "!El usuario no puede estar vacio o llevar caracteres especiales",
+					   showConfirmButton: true,
+					   confirmButtonText: "Cerrar",
+					   closeOnConfirm: false
+				   }).then((result))=>{
+					   if(result.value){
+						   window.location = "usuarios";
+					   }
+					   });
+				 </script>'; */
+			   }
+		}
+	}
 }
