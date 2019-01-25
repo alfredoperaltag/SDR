@@ -97,27 +97,29 @@ MODAL AGREGAR USUARIO
                             </div>
                         </div>
 
+                        <div class="form-row align-items-center">
                         <!-- ENTRADA PARA EL NOMBRE -->
-                        <div class="form-group">
+                        <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
                             <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo"
                                 required>
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
-                        <div class="form-group">
+                        <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
                             <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Ingresar apellido paterno completo"
                                 required>
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
-                        <div class="form-group">
+                        <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
                             <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Ingresar apellido materno completo"
                                 required>
                         </div>
-
+                    </div>
+                    <div class="form-row align-items-center">
                         <!-- ENTRADA PARA SELECCIONAR SU SEXO -->
-                        <div class="form-group">
+                        <div class="col-sm-6 my-1">
                             <label class="col-form-label">Sexo</label>
                             <select class="custom-select" required>
                                 <option value="">Selecionar sexo</option>
@@ -126,12 +128,13 @@ MODAL AGREGAR USUARIO
                             </select>
                         </div>
                         <!-- ENTRADA PARA EL TELEFONO -->
-                        <div class="form-group">
+                        <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
                             <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar telefono"
                                 required>
                         </div>
                     </div>
+                </div>
                     <!--=====================================
               PIE DEL MODAL
               ======================================-->

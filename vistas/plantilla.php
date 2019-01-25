@@ -105,6 +105,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     <script src="vistas/assets/js/dataTables.responsive.min.js"></script>
     <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>
     
+    <!-- sweetalert2 -->
+    <script src="vistas/assets/js/sweetalert2.all.min.js"></script>
+
     <!-- others plugins -->
     <script src="vistas/assets/js/plugins.js"></script>
     <script src="vistas/assets/js/scripts.js"></script>
