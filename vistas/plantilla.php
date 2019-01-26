@@ -28,6 +28,8 @@ session_start();
     <link rel="stylesheet" href="vistas/assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="vistas/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- sweetalert2 -->
+    <script src="vistas/assets/js/sweetalert2.all.min.js"></script>
 </head>
 
 <!--=====================================
@@ -103,10 +105,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     <script src="vistas/assets/js/jquery.dataTables.min.js"></script>
     <script src="vistas/assets/js/dataTables.bootstrap4.min.js"></script>
     <script src="vistas/assets/js/dataTables.responsive.min.js"></script>
-    <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>
-    
-    <!-- sweetalert2 -->
-    <script src="vistas/assets/js/sweetalert2.all.min.js"></script>
+    <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>        
 
     <!-- others plugins -->
     <script src="vistas/assets/js/plugins.js"></script>

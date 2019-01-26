@@ -91,32 +91,33 @@ class ControladorUsuarios{
 						echo '<script>
 				   swal({
 					   type: "success",
-					   title; "¡El usuario ha sido guardado correctamente!",
+					   title: "¡El usuario ha sido guardado correctamente!",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
 					   closeOnConfirm: false
 				   }).then((result))=>{
 					   if(result.value){
-						   window.location = "usuarios";
+						   window.location = "Usuarios";
 					   }
 					   });
 				 </script>';
 					} */
 			   }else {						 
 				   echo '<script>
-				   swal({
-					   type: "error",
-					   title: "!El usuario no puede estar vacio o llevar caracteres especiales",
+				   Swal.fire({
+						type: "error",
+					   title: "!El usuario no puede estar vacio o llevar caracteres especiales",					   
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
-					   closeOnConfirm: false
+					   closeOnConfirm: false,					   
 				   }).then((result)=>{
 					   if(result.value){
-						   window.location = "usuarios";
+						   window.location = "Usuarios";
 					   }
 					   });
-				 </script>';
+				 </script>';					   				 
 			   }
 		}
 	}
+
 }
