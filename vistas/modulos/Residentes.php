@@ -21,23 +21,11 @@
                     </thead>
                     <tbody>
 
-                    <?php for ($i = 0; $i < 250; $i++): ?>
-                        <tr>
-                            <td><?php echo $i; ?></td>
-                            <td>Yonathan Román Salgado</td>
-                            <td>15670001</td>
-                            <td>Ingenieria en Sistemas Computacionales</td>
-                            <td>M</td>
-                            <td>7331089089</td>
-                            <td>Sistema de Residencias</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-primary"><i class="fa fa-info"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php endfor;?>
+                    <?php
+                    $VerResidentes = new ControladorResidentes();
+                    $VerResidentes->ctrMostrarResidentes();
+                    ?>
+
                     </tbody>
                 </table>
             </div>
@@ -175,8 +163,8 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                                 <select class="custom-select" name="nuevoAsesorInt" required>
                                     <option value="">Selecionar Asesor</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -188,8 +176,8 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                                 <select class="custom-select" name="nuevoRevisor1" required>
                                     <option value="">Selecionar revisor</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -199,8 +187,8 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                                 <select class="custom-select" name="nuevoRevisor2" required>
                                     <option value="">Selecionar revisor</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -212,8 +200,8 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                                 <select class="custom-select" name="nuevoSuplente" required>
                                     <option value="">Selecionar suplente</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -356,8 +344,8 @@ TESIS PROFESIONAL
                                 <select class="custom-select" name="nuevoAsesorInt" required>
                                     <option value="">Selecionar Asesor</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -367,8 +355,8 @@ TESIS PROFESIONAL
                                 <select class="custom-select" name="nuevoRevisor1" required>
                                     <option value="">Selecionar revisor</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -380,8 +368,8 @@ TESIS PROFESIONAL
                                 <select class="custom-select" name="nuevoRevisor1" required>
                                     <option value="">Selecionar revisor</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -391,8 +379,8 @@ TESIS PROFESIONAL
                                 <select class="custom-select" name="nuevoRevisor2" required>
                                     <option value="">Selecionar revisor</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -404,8 +392,8 @@ TESIS PROFESIONAL
                                 <select class="custom-select" name="nuevoSuplente" required>
                                     <option value="">Selecionar suplente</option>
                                     <?php
-                                    $crearUsuario = new ControladorResidentes();
-                                    $crearUsuario->ctrMostrarTodosLosDocesentes();
+                                    $verDocente = new ControladorResidentes();
+                                    $verDocente->ctrMostrarTodosLosDocesentes();
                                     ?>
                                 </select>
                             </div>
@@ -424,14 +412,3 @@ TESIS PROFESIONAL
         </div>
     </div>
 </div>
-
-<?php 
-            if(isset($_POST["nuevoNoControl"])){    
-                echo 'No. Control: '.$_POST["nuevoNoControl"].'<br>';
-                echo 'Carrera: '.$_POST["nuevoCarrera"].'<br>';
-                echo 'Periodo: '.$_POST["nuevoPeriodo"].'<br>';
-                echo 'Año: '.$_POST["nuevoPeriodoAnio"].'<br>';
-                echo 'Nombre: '.$_POST["nuevoNombre"].'<br>';
-                // echo $_POST["nuevoNoControl"].'<br>';
-            }
-            ?>

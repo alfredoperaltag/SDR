@@ -3,6 +3,7 @@
 require_once "conexion.php";
 
 class ModeloResidentes{
+	
     /*=============================================
 	MOSTRAR ASESORES/REVISORES/SUPLENTES
 	=============================================*/
