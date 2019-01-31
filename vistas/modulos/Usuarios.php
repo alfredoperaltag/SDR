@@ -7,8 +7,7 @@
             <div class="data-tables datatable-primary">
                 <table class="text-center tablaES">
                     <thead class="text-capitalize">
-                        <tr>
-                            <th>#</th>
+                        <tr>                            
                             <th>Nombre</th>
                             <th>Nombre de Usuario</th>
                             <th>Contraseña</th>
@@ -18,37 +17,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Yonathan Román Salgado</td>
-                            <td>admin</td>
-                            <td><img src="vistas/assets/images/author/avatar.png" class="img-thumbnail" width="40px"></td>
-                            <td>Administrador</td>
-                            <td><button class="btn btn-success btn-xs">Activado</button></td>
-                            
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Pablo Escobar</td>
-                            <td>admin</td>
-                            <td><img src="vistas/assets/images/author/avatar.png" class="img-thumbnail" width="40px"></td>
-                            <td>Administrador</td>
-                            <td><button class="btn btn-success btn-xs">Activado</button></td>
-                            <!-- <td>2017-12-11 12:05:32</td> -->
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <?php
+                    $item = null;
+                    $valor = null;
+                    $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+                    foreach ($usuarios as $key => $value) {
+                        echo '<tr>                        
+                        <td>'.$value["nombre"].'</td>
+                        <td>'.$value["usuario"].'</td>
+                        <td><button class="btn btn-warning" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button></td>
+                        <td>'.$value["perfil"].'</td>
+                        <td><button class="btn btn-success btn-xs">Activado</button></td>
+                        
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                            </div>
+                        </td>
+                    </tr>';
+                    }
+                    ?>
+                    </tbody>                                        
                 </table>
             </div>
         </div>
