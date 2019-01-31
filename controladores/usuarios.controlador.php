@@ -78,11 +78,12 @@ class ControladorUsuarios{
 		if (isset($_POST["nuevoUsuario"])) {
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
+			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){				
 				   $tabla = "usuarios";
+				   $encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 				   $datos = array("nombre" => $_POST["nuevoNombre"],
 								  "usuario" => $_POST["nuevoUsuario"],
-								  "password" => $_POST["nuevoPassword"],
+								  "password" => $encriptar,
 								  "perfil" => $_POST["nuevoPerfil"]								  
 								);
 
