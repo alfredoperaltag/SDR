@@ -70,19 +70,19 @@ MODAL AGREGAR USUARIO
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="agregarNombre" placeholder="Ingresar nombre completo"
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo"
                                 required>
                         </div>
                         <!-- ENTRADA PARA EL USUARIO -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Usuario</label>
-                            <input class="form-control" type="text" name="agregarUsuario" placeholder="Ingresar usuario"
+                            <input class="form-control" type="text" name="nuevoUsuario" placeholder="Ingresar usuario"
                                 required>
                         </div>
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="agregarPassword" placeholder="Ingresar nueva contraseña"
+                            <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar nueva contraseña"
                                 required>
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
@@ -161,7 +161,7 @@ MODAL EDITAR USUARIO
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="editarPassword" placeholder=""
+                            <input type="password" class="form-control" name="editarPassword" placeholder="Escriba la nueva contraseña"
                                 required>
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
