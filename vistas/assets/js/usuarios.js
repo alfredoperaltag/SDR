@@ -3,8 +3,8 @@ EDITAR USUARIO
 ======================================-->*/
 
 $(".btnEditarUsuario").click(function(){
-    var idUsuario = $(this).attr("idusuario");
-    console.log("idUsuario", idUsuario);
+    var idUsuario = $(this).attr("idUsuario");
+    /* console.log("idUsuario", idUsuario); */
     var datos = new FormData();
     datos.append("idUsuario", idUsuario);
     $.ajax({
@@ -16,7 +16,10 @@ $(".btnEditarUsuario").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            console.log("respuesta", respuesta);
+            /* console.log("respuesta", respuesta); */
+            $("#editarNombre").val(respuesta["nombre"]);
+            $("#editarUsuario").val(respuesta["usuario"]);           
+            $("#editarPerfil").val(respuesta["perfil"]);
         }
     });
 })

@@ -70,25 +70,25 @@ MODAL AGREGAR USUARIO
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="editarNombre" placeholder="Ingresar nombre completo"
+                            <input class="form-control" type="text" name="agregarNombre" placeholder="Ingresar nombre completo"
                                 required>
                         </div>
                         <!-- ENTRADA PARA EL USUARIO -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Usuario</label>
-                            <input class="form-control" type="text" name="editarUsuario" placeholder="Ingresar usuario"
+                            <input class="form-control" type="text" name="agregarUsuario" placeholder="Ingresar usuario"
                                 required>
                         </div>
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="editarPassword" placeholder="Ingresar nueva contraseña"
+                            <input type="password" class="form-control" name="agregarPassword" placeholder="Ingresar nueva contraseña"
                                 required>
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                         <div class="form-group">
                             <label class="col-form-label">Perfil</label>
-                            <select class="custom-select" name="editarPerfil">
+                            <select class="custom-select" name="nuevoPerfil">
                                 <option value="">Seleccionar Perfil</option>
                                 <option value="Administrador">Administrador</option>
                                 <option value="Usuario">Usuario</option>                                
@@ -149,26 +149,26 @@ MODAL EDITAR USUARIO
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="editarNombre" value="Ingresar nombre completo"
+                            <input class="form-control" type="text" id="editarNombre" name="editarNombre" value=""
                                 required>
                         </div>
                         <!-- ENTRADA PARA EL USUARIO -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Usuario</label>
-                            <input class="form-control" type="text" name="editarUsuario" value="Ingresar usuario"
+                            <input class="form-control" type="text" id="editarUsuario" name="editarUsuario" value=""
                                 required>
                         </div>
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="editarPassword" placeholder="Ingresar contraseña"
+                            <input type="password" class="form-control" name="editarPassword" placeholder=""
                                 required>
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                         <div class="form-group">
                             <label class="col-form-label">Perfil</label>
-                            <select class="custom-select" name="editarPerfil">
-                                <option value="" id="editarPerfil"></option>
+                            <select class="custom-select" id="editarPerfil" name="editarPerfil">
+                                <option value="">Seleccionar Perfil</option>
                                 <option value="Administrador">Administrador</option>
                                 <option value="Usuario">Usuario</option>                                
                             </select>
@@ -194,10 +194,10 @@ MODAL EDITAR USUARIO
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                         <button type="submit" class="btn btn-primary">modificar usuario</button>
                     </div>
-                    <?php
+                    <!-- 
                     $crearUsuario = new ControladorUsuarios();
                     $crearUsuario -> ctrCrearUsuario();
-                    ?>
+                     -->
                 </div>
             </form>
         </div>
