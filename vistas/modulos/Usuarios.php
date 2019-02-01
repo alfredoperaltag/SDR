@@ -31,7 +31,7 @@
                         
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
                                 <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                             </div>
                         </td>
@@ -70,26 +70,26 @@ MODAL AGREGAR USUARIO
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo"
+                            <input class="form-control" type="text" name="editarNombre" placeholder="Ingresar nombre completo"
                                 required>
                         </div>
                         <!-- ENTRADA PARA EL USUARIO -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Usuario</label>
-                            <input class="form-control" type="text" name="nuevoUsuario" placeholder="Ingresar usuario"
+                            <input class="form-control" type="text" name="editarUsuario" placeholder="Ingresar usuario"
                                 required>
                         </div>
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar contraseña"
+                            <input type="password" class="form-control" name="editarPassword" placeholder="Ingresar nueva contraseña"
                                 required>
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                         <div class="form-group">
                             <label class="col-form-label">Perfil</label>
-                            <select class="custom-select" name="nuevoPerfil">
-                                <option value="">Selecionar perfil</option>
+                            <select class="custom-select" name="editarPerfil">
+                                <option value="">Seleccionar Perfil</option>
                                 <option value="Administrador">Administrador</option>
                                 <option value="Usuario">Usuario</option>                                
                             </select>
@@ -114,6 +114,85 @@ MODAL AGREGAR USUARIO
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                         <button type="submit" class="btn btn-primary">Guardar usuario</button>
+                    </div>
+                    <?php
+                    $crearUsuario = new ControladorUsuarios();
+                    $crearUsuario -> ctrCrearUsuario();
+                    ?>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--=====================================
+MODAL EDITAR USUARIO
+======================================-->
+
+<div class="modal fade" id="modalEditarUsuario">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!--=====================================
+              CABEZA DEL MODAL
+              ======================================-->
+            <div class="modal-header">
+                <h5 class="modal-title">Editar usuario</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form role="form" method="post" enctype="multipart/form-data">
+
+                <!--=====================================
+              CUERPO DEL MODAL
+              ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <!-- ENTRADA PARA EL NOMBRE -->
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Nombre</label>
+                            <input class="form-control" type="text" name="editarNombre" value="Ingresar nombre completo"
+                                required>
+                        </div>
+                        <!-- ENTRADA PARA EL USUARIO -->
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Usuario</label>
+                            <input class="form-control" type="text" name="editarUsuario" value="Ingresar usuario"
+                                required>
+                        </div>
+                        <!-- ENTRADA PARA LA CONTRASEÑA -->
+                        <div class="form-group">
+                            <label class="">Contraseña</label>
+                            <input type="password" class="form-control" name="editarPassword" placeholder="Ingresar contraseña"
+                                required>
+                        </div>
+                        <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
+                        <div class="form-group">
+                            <label class="col-form-label">Perfil</label>
+                            <select class="custom-select" name="editarPerfil">
+                                <option value="" id="editarPerfil"></option>
+                                <option value="Administrador">Administrador</option>
+                                <option value="Usuario">Usuario</option>                                
+                            </select>
+                        </div>                        
+                        <!-- ENTRADA PARA SUBIR FOTO -->
+                        <!-- <div class="form-group">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
+                                    </div>
+                                </div>
+                                <p class="help-block">Peso máximo de la foto 2MB</p>
+                                <img src="images/author/avatar.png" class="img-thumbnail previsualizar" width="100px">
+                            </div>
+                        </div> -->
+                    </div>
+                    <!--=====================================
+                    PIE DEL MODAL
+                    ======================================-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                        <button type="submit" class="btn btn-primary">modificar usuario</button>
                     </div>
                     <?php
                     $crearUsuario = new ControladorUsuarios();
