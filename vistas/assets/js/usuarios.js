@@ -1,3 +1,13 @@
+function infoPassword() {
+    Swal.fire({
+        type: "info",
+       title: "!Puede editar la contraseña desde el boton editar!",					   
+       showConfirmButton: true,
+       confirmButtonText: "Cerrar",
+       closeOnConfirm: false					   
+   });
+}
+
 /*<!--=====================================
 EDITAR USUARIO
 ======================================-->*/

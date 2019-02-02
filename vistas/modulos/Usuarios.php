@@ -24,8 +24,8 @@
                     foreach ($usuarios as $key => $value) {
                         echo '<tr>                        
                         <td>'.$value["nombre"].'</td>
-                        <td>'.$value["usuario"].'</td>
-                        <td><button class="btn btn-warning" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button></td>
+                        <td>'.$value["usuario"].'</td>                        
+                        <td><button class="btn btn-primary" onClick="infoPassword();"><i class="fa fa-info"></i></button></td>
                         <td>'.$value["perfil"].'</td>
                         <td><button class="btn btn-success btn-xs">Activado</button></td>
                         
@@ -44,7 +44,6 @@
         </div>
     </div>
 </div>
-
 
 <!--=====================================
 MODAL AGREGAR USUARIO
