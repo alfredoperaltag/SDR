@@ -161,8 +161,8 @@ MODAL EDITAR USUARIO
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="editarPassword" placeholder="Escriba la nueva contraseña"
-                                required>
+                            <input type="password" class="form-control" name="editarPassword" placeholder="Escriba la nueva contraseña">
+                                <input type="hidden" id="passwordActual" name="passwordActual">
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                         <div class="form-group">
@@ -194,10 +194,10 @@ MODAL EDITAR USUARIO
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                         <button type="submit" class="btn btn-primary">modificar usuario</button>
                     </div>
-                    <!-- 
-                    $crearUsuario = new ControladorUsuarios();
-                    $crearUsuario -> ctrCrearUsuario();
-                     -->
+                    <?php
+                    $editarUsuario = new ControladorUsuarios();
+                    $editarUsuario -> ctrEditarUsuario();
+                    ?>
                 </div>
             </form>
         </div>

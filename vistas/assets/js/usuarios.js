@@ -20,6 +20,7 @@ $(".btnEditarUsuario").click(function(){
             $("#editarNombre").val(respuesta["nombre"]);
             $("#editarUsuario").val(respuesta["usuario"]);           
             $("#editarPerfil").val(respuesta["perfil"]);
+            $("#passwordActual").val(respuesta["password"]);
         }
     });
 })
