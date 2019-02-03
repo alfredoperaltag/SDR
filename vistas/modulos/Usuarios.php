@@ -23,15 +23,18 @@
                     $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
                     foreach ($usuarios as $key => $value) {
                         echo '<tr>                        
-                        <td>'.$value["nombre"].'</td>
-                        <td>'.$value["usuario"].'</td>                        
+                        <td>' . $value["nombre"] . '</td>
+                        <td>' . $value["usuario"] . '</td>                        
                         <td><button class="btn btn-primary" onClick="infoPassword();"><i class="fa fa-info"></i></button></td>
-                        <td>'.$value["perfil"].'</td>
-                        <td><button class="btn btn-success btn-xs">Activado</button></td>
-                        
-                        <td>
+                        <td>' . $value["perfil"] . '</td>';
+                        if ($value["estado"] != 0) {
+                            echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
+                        } else {
+                            echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="1">Desactivado</button></td>';
+                        }
+                        echo '<td>
                             <div class="btn-group">
-                                <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
                                 <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                             </div>
                         </td>
@@ -116,7 +119,7 @@ MODAL AGREGAR USUARIO
                     </div>
                     <?php
                     $crearUsuario = new ControladorUsuarios();
-                    $crearUsuario -> ctrCrearUsuario();
+                    $crearUsuario->ctrCrearUsuario();
                     ?>
                 </div>
             </form>
@@ -195,7 +198,7 @@ MODAL EDITAR USUARIO
                     </div>
                     <?php
                     $editarUsuario = new ControladorUsuarios();
-                    $editarUsuario -> ctrEditarUsuario();
+                    $editarUsuario->ctrEditarUsuario();
                     ?>
                 </div>
             </form>
