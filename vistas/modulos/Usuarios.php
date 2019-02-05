@@ -9,8 +9,7 @@
                     <thead class="text-capitalize">
                         <tr>                            
                             <th>Nombre</th>
-                            <th>Nombre de Usuario</th>
-                            <th>Contraseña</th>
+                            <th>Nombre de Usuario</th>                            
                             <th>Perfil</th>
                             <th>Estado</th>
                             <th>Acciones</th>                              
@@ -25,7 +24,7 @@
                         echo '<tr>                        
                         <td>' . $value["nombre"] . '</td>
                         <td>' . $value["usuario"] . '</td>                        
-                        <td><button class="btn btn-primary" onClick="infoPassword();"><i class="fa fa-info"></i></button></td>
+                        
                         <td>' . $value["perfil"] . '</td>';
                         if ($value["estado"] != 0) {
                             echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
@@ -41,6 +40,10 @@
                     </tr>';
                     }
                     ?>
+                    <!-- 
+                        <th>Contraseña</th>
+                        <td><div class="alert alert-info" role="alert"><strong>¡Puede modificar la contraseña desde el boton editar!</strong></div></td> 
+                    -->
                     </tbody>                                        
                 </table>
             </div>
@@ -85,6 +88,11 @@ MODAL AGREGAR USUARIO
                         <div class="form-group">
                             <label class="">Contraseña</label>
                             <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar nueva contraseña"
+                                required>
+                        </div><!-- ENTRADA PARA CONFIRMAR CONTRASEÑA -->
+                        <div class="form-group">
+                            <label class="">Confirmar La Contraseña</label>
+                            <input type="password" class="form-control" name="confirmarPassword" placeholder="Confirme La contraseña"
                                 required>
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->

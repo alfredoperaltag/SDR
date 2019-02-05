@@ -1,12 +1,17 @@
-function infoPassword() {
-    Swal.fire({
+/* function infoPassword() {
+    /* Swal.fire({
         type: "info",
         title: "!Puede editar la contraseña desde el boton editar!",
         showConfirmButton: true,
         confirmButtonText: "Cerrar",
         closeOnConfirm: false
-    });
-}
+    }); 
+
+var capa = document.getElementById("capa");
+capa.innerHTML = "Contenido para la capa";
+
+
+}*/
 
 /*<!--=====================================
 EDITAR USUARIO

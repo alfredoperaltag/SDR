@@ -81,18 +81,34 @@ class ControladorUsuarios
 			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
 				preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
 				preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])) {
-				$tabla = "usuarios";
-				$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-				$datos = array(
-					"nombre" => $_POST["nuevoNombre"],
-					"usuario" => $_POST["nuevoUsuario"],
-					"password" => $encriptar,
-					"perfil" => $_POST["nuevoPerfil"]
-				);
 
-				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-				if ($respuesta == "ok") {
+				if ($_POST["nuevoPassword"] != $_POST["confirmarPassword"]) {
 					echo '<script>
+				   Swal.fire({
+						type: "error",
+					   title: "!La contraseña NO Coincide!",					   
+					   showConfirmButton: true,
+					   confirmButtonText: "Cerrar",
+					   closeOnConfirm: false					   
+				   }).then((result)=>{
+					   if(result.value){
+						   window.location = "Usuarios";
+					   }
+					   });
+				 </script>';
+				} else {
+					$tabla = "usuarios";
+					$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+					$datos = array(
+						"nombre" => $_POST["nuevoNombre"],
+						"usuario" => $_POST["nuevoUsuario"],
+						"password" => $encriptar,
+						"perfil" => $_POST["nuevoPerfil"]
+					);
+
+					$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+					if ($respuesta == "ok") {
+						echo '<script>
 				   Swal.fire({
 						type: "success",
 					   title: "!Registrado Correctamente",					   
@@ -105,6 +121,7 @@ class ControladorUsuarios
 					   }
 					   });
 				 </script>';
+					}
 				}
 			} else {
 				echo '<script>
