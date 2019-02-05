@@ -174,6 +174,11 @@ MODAL EDITAR USUARIO
                             <input type="password" class="form-control" name="editarPassword" placeholder="Escriba la nueva contraseña">
                                 <input type="hidden" id="passwordActual" name="passwordActual">
                         </div>
+                        </div><!-- ENTRADA PARA CONFIRMAR CONTRASEÑA -->
+                        <div class="form-group">
+                            <label class="">Confirmar La Contraseña</label>
+                            <input type="password" class="form-control" name="confirmarPassword" placeholder="Confirme La contraseña">
+                        </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                         <div class="form-group">
                             <label class="col-form-label">Perfil</label>

@@ -158,8 +158,22 @@ class ControladorUsuarios
 			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
 				preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarUsuario"])) {
 				$tabla = "usuarios";
-				if ($_POST["editarPassword"] != "") {
-					if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])) {
+				if ($_POST["editarPassword"] != "" || $_POST["confirmarPassword"] != "") {
+					if ($_POST["editarPassword"] != $_POST["confirmarPassword"]) {
+						echo '<script>
+				   Swal.fire({
+						type: "error",
+					   title: "!La contraseña NO Coincide!",					   
+					   showConfirmButton: true,
+					   confirmButtonText: "Cerrar",
+					   closeOnConfirm: false					   
+				   }).then((result)=>{
+					   if(result.value){
+						   window.location = "Usuarios";
+					   }
+					   });
+				 </script>';
+					} else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])) {
 						$encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 					} else {
 						echo '<script>
