@@ -94,7 +94,25 @@ $("#nuevoUsuario").change(function () {
                 $("#nuevoUsuario").parent().after('<div class="alert alert-warning">Este usuario ya existe</div>');
                 $("#nuevoUsuario").val("");
             }
-
         }
     })
 })
+/*<!--=====================================
+ELIMINAR USUARIO
+======================================-->*/
+$(".btnEliminarUsuario").click(function () {
+    Swal.fire({
+        title: '¿Esta seguro de eliminarlo?',
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: "#d33",
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: '¡Eliminar!'
+    })
+})
+/* .then((result)=>{
+        if (result.value) {
+            window.location 
+        }
+    }) */
