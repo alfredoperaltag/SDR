@@ -81,7 +81,7 @@ MODAL AGREGAR USUARIO
                         <!-- ENTRADA PARA EL USUARIO -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Usuario</label>
-                            <input class="form-control" type="text" name="nuevoUsuario" placeholder="Ingresar usuario"
+                            <input class="form-control" type="text" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingresar usuario"
                                 required>
                         </div>
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
