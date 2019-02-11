@@ -18,6 +18,7 @@
                             <th>Sexo</th>
                             <th>Telefono</th>
                             <th>Proyecto</th>
+                            <th>Tipo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -63,8 +64,8 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control"
-                                    required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControl"
+                                    placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -144,14 +145,14 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
+                                placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -218,9 +219,16 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                     <button type="submit" class="btn btn-primary">Guardar residente</button>
                 </div>
-        </div>
-        </form>
 
+                <?php
+
+                $RegistrarResidente = new ControladorResidentes();
+                $RegistrarResidente -> 
+
+                ?>
+
+            </form>
+        </div>
     </div>
 </div>
 </div>
@@ -252,8 +260,8 @@ TESIS PROFESIONAL
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control"
-                                    required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControl"
+                                    placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -333,14 +341,14 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
+                                placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -446,8 +454,8 @@ EDITAR RESIDENTE
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control"
-                                    required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControl"
+                                    placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -527,14 +535,14 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
+                                placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -606,9 +614,11 @@ EDITAR RESIDENTE
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                     <button type="submit" class="btn btn-primary">Guardar residente</button>
                 </div>
-        </div>
-        </form>
 
+
+
+            </form>
+        </div>
     </div>
 </div>
 </div>
@@ -647,8 +657,10 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
-                <button type="button" class="btn btn-success btn-lg btn-block">Dictamen de anteproyecto de Residencias Profecionales</button>
-                <button type="button" class="btn btn-success btn-lg btn-block">Liberacion de Residencias Profecionales</button>
+                <button type="button" class="btn btn-success btn-lg btn-block">Dictamen de anteproyecto de Residencias
+                    Profecionales</button>
+                <button type="button" class="btn btn-success btn-lg btn-block">Liberacion de Residencias
+                    Profecionales</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Asignacion de jurado</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Comision a ###</button>
             </div>
