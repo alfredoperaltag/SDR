@@ -218,3 +218,7 @@ MODAL EDITAR USUARIO
         </div>
     </div>
 </div>
+<?php
+$borrarUsuario = new ControladorUsuarios();
+$borrarUsuario->ctrBorrarUsuario();
+?>
