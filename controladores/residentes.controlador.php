@@ -33,9 +33,6 @@ class ControladorResidentes
         $respuesta = ModeloResidentes::MdlMostrarResidentesEnTabla($tabla, $item, $valor);
 
         foreach ($respuesta as $key => $value) {
-            // echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
-            // <td>'.$value["nombre"].' '.$value["apellidoP"].' '.$value["apellidoM"].'</td>
-
                        echo ' <tr>
                             <td>'.$value["id"].'</td>
                             <td>'.$value["nombre"].'</td>
@@ -44,9 +41,10 @@ class ControladorResidentes
                             <td>'.$value["sexo"].'</td>
                             <td>'.$value["telefono"].'</td>
                             <td>'.$value["nombreProyecto"].'</td>
+                            <td>'.$value["tipo"].'</td>
                             <td>
                                 <div class="btn-group">
-                                    <button class="btn btn-warning" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-warning"  idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
                                     <button class="btn btn-success" data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
                                 </div>
@@ -54,6 +52,16 @@ class ControladorResidentes
                         </tr>';
         }
 
+    }
+
+
+
+    /*=============================================
+    REGISTRAR RESIDENTES
+    =============================================*/
+
+    public static function ctrRegistrarResidentes(){
+        
     }
 
 
