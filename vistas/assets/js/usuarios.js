@@ -101,6 +101,7 @@ $("#nuevoUsuario").change(function () {
 ELIMINAR USUARIO
 ======================================-->*/
 $(".btnEliminarUsuario").click(function () {
+    var idUsuario = $(this).attr("idUsuario");
     Swal.fire({
         title: '¿Esta seguro de eliminarlo?',
         type: "warning",
@@ -109,10 +110,9 @@ $(".btnEliminarUsuario").click(function () {
         cancelButtonColor: "#d33",
         cancelButtonText: 'Cancelar',
         confirmButtonText: '¡Eliminar!'
+    }).then((result) => {
+        if (result.value) {
+            window.location = "index.php?ruta=Usuarios&idUsuario=" + idUsuario;
+        }
     })
 })
-/* .then((result)=>{
-        if (result.value) {
-            window.location 
-        }
-    }) */

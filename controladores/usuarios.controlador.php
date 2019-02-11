@@ -152,7 +152,7 @@ class ControladorUsuarios
 	/*=============================================
 	EDITAR USUARIO
 	=============================================*/
-	public function ctrEditarUsuario()
+	static public function ctrEditarUsuario()
 	{
 		if (isset($_POST["editarUsuario"])) {
 			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
@@ -230,6 +230,34 @@ class ControladorUsuarios
 					});
 			  </script>';
 			}
+		}
+	}
+	/*=============================================
+	BORRAR USUARIO
+	=============================================*/
+	static public function ctrBorrarUsuario()
+	{
+		if (isset($_GET["idUsuario"])) {
+			$tabla = "usuarios";
+			$datos = $_GET["idUsuario"];
+
+			$respuesta = ModeloUsuarios::MdlBorrarUsuario($tabla, $datos);
+			if ($respuesta == "ok") {
+				echo '<script>
+			   Swal.fire({
+					type: "success",
+				   title: "!Eliminado Correctamente",					   
+				   showConfirmButton: true,
+				   confirmButtonText: "Cerrar",
+				   closeOnConfirm: false					   
+			   }).then((result)=>{
+				   if(result.value){
+					   window.location = "Usuarios";
+				   }
+				   });
+			 </script>';
+			}
+
 		}
 	}
 }
