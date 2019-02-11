@@ -223,7 +223,7 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                 <?php
 
                 $RegistrarResidente = new ControladorResidentes();
-                $RegistrarResidente -> 
+                $RegistrarResidente -> ctrRegistrarResidentes();
 
                 ?>
 

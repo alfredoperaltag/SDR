@@ -48,4 +48,8 @@ class ModeloResidentes{
 		$stmt = null;
 	}
 
+	
+
+
+
 }
