@@ -63,7 +63,8 @@ class ControladorResidentes
     public static function ctrRegistrarResidentes(){
         if(isset($_POST["nuevoUsuario"])){
 
-            $tabla = "usuarios";
+            $tabla1 = "proyecto";
+            $tabla2 = "residentes";
 				$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 				$datosResidente = array("noControl" => $_POST["nuevoNoControl"],
 					           "carrera" => $_POST["nuevoCarrera"],
@@ -84,7 +85,7 @@ class ControladorResidentes
 					           "revisor2" => $_POST["nuevoRevisor2"],
 					           "revisor3" => $_POST["nuevoSuplente"]);
 
-                $respuesta = ModeloResidentes::mdlIngresarUsuario($tabla, $datos);
+                $respuesta = ModeloResidentes::mdlRegistroResidenteProyecto($tabla, $datos);
                 
 
 				if($respuesta == "ok"){
