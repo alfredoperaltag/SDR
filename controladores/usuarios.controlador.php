@@ -3,261 +3,257 @@
 class ControladorUsuarios
 {
 
-	/*=============================================
-	INGRESO DE USUARIO
-	=============================================*/
-	static public function ctrIngresoUsuario()
-	{
+    /*=============================================
+    INGRESO DE USUARIO
+    =============================================*/
+    public static function ctrIngresoUsuario()
+    {
 
+        if (isset($_POST["username"])) {
 
+            if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["username"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])) {
 
-		if (isset($_POST["username"])) {
+                $encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                $tabla = "usuarios";
+                $item = "usuario";
+                $valor = $_POST["username"];
 
-			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["username"]) &&
-				preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])) {
+                $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
 
-				$encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-				$tabla = "usuarios";
-				$item = "usuario";
-				$valor = $_POST["username"];
+                if ($respuesta["usuario"] == $_POST["username"] && $respuesta["password"] == $encriptar) {
 
-				$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
+                    if ($respuesta["estado"] == 1) {
 
-				if ($respuesta["usuario"] == $_POST["username"] && $respuesta["password"] == $encriptar) {
+                        $_SESSION["iniciarSesion"] = "ok";
+                        $_SESSION["id"] = $respuesta["id"];
+                        $_SESSION["nombre"] = $respuesta["nombre"];
+                        $_SESSION["usuario"] = $respuesta["usuario"];
+                        $_SESSION["perfil"] = $respuesta["perfil"];
+                        $_SESSION["estado"] = $respuesta["estado"];
 
-					if ($respuesta["estado"] == 1) {
-
-						$_SESSION["iniciarSesion"] = "ok";
-						$_SESSION["id"] = $respuesta["id"];
-						$_SESSION["nombre"] = $respuesta["nombre"];
-						$_SESSION["usuario"] = $respuesta["usuario"];
-						$_SESSION["perfil"] = $respuesta["perfil"];
-						$_SESSION["estado"] = $respuesta["estado"];
-
-						echo '<script>
+                        echo '<script>
 
 								window.location = "Inicio";
 
 							</script>';
 
-					} else {
+                    } else {
 
-						// echo '¡Usuario no activado!';
-						echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        // echo '¡Usuario no activado!';
+                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 						<strong>¡Usuario no activado!</strong>
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span class="fa fa-times"></span>
 						</button>
 					</div>';
-					}
+                    }
 
-				} else {
+                } else {
 
-					// echo '¡Usuario o contraseña incorrecta!';
-					echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    // echo '¡Usuario o contraseña incorrecta!';
+                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 					<strong>¡Usuario o contraseña incorrecta!</strong>
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span class="fa fa-times"></span>
 					</button>
 				</div>';
 
+                }
 
-				}
+            }
 
-			}
+        }
 
-		}
-
-	}
-
+    }
 
 /*=============================================
-	REGISTRO DE USUARIO
-	=============================================*/
+REGISTRO DE USUARIO
+=============================================*/
 
-	static public function ctrCrearUsuario()
-	{
-		if (isset($_POST["nuevoUsuario"])) {
-			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-				preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
-				preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])) {
+    public static function ctrCrearUsuario()
+    {
+        if (isset($_POST["nuevoUsuario"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])) {
 
-				if ($_POST["nuevoPassword"] != $_POST["confirmarPassword"]) {
-					echo '<script>
+                if ($_POST["nuevoPassword"] != $_POST["confirmarPassword"]) {
+                    echo '<script>
 				   Swal.fire({
 						type: "error",
-					   title: "!La contraseña NO Coincide!",					   
+					   title: "!La contraseña NO Coincide!",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
-					   closeOnConfirm: false					   
+					   closeOnConfirm: false
 				   }).then((result)=>{
 					   if(result.value){
 						   window.location = "Usuarios";
 					   }
 					   });
 				 </script>';
-				} else {
-					$tabla = "usuarios";
-					$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-					$datos = array(
-						"nombre" => $_POST["nuevoNombre"],
-						"usuario" => $_POST["nuevoUsuario"],
-						"password" => $encriptar,
-						"perfil" => $_POST["nuevoPerfil"]
-					);
+                } else {
+                    $tabla = "usuarios";
+                    $encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                    $datos = array(
+                        "nombre" => $_POST["nuevoNombre"],
+                        "usuario" => $_POST["nuevoUsuario"],
+                        "password" => $encriptar,
+                        "perfil" => $_POST["nuevoPerfil"],
+                    );
 
-					$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-					if ($respuesta == "ok") {
-						echo '<script>
+                    $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+                    if ($respuesta == "ok") {
+                        echo '<script>
 				   Swal.fire({
 						type: "success",
-					   title: "!Registrado Correctamente",					   
+					   title: "!Registrado Correctamente",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
-					   closeOnConfirm: false					   
+					   closeOnConfirm: false
 				   }).then((result)=>{
 					   if(result.value){
 						   window.location = "Usuarios";
 					   }
 					   });
 				 </script>';
-					}
-				}
-			} else {
-				echo '<script>
+                    }
+                }
+            } else {
+                echo '<script>
 				   Swal.fire({
 						type: "error",
-					   title: "!El usuario no puede estar vacio o llevar caracteres especiales",					   
+					   title: "!El usuario no puede estar vacio o llevar caracteres especiales",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
-					   closeOnConfirm: false					   
+					   closeOnConfirm: false
 				   }).then((result)=>{
 					   if(result.value){
 						   window.location = "Usuarios";
 					   }
 					   });
 				 </script>';
-			}
-		}
-	}
-	/*=============================================
-	MOSTRAR USUARIO
-	=============================================*/
-	static public function ctrMostrarUsuarios($item, $valor)
-	{
-		$tabla = "usuarios";
-		$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
-		return $respuesta;
-	}
-	/*=============================================
-	EDITAR USUARIO
-	=============================================*/
-	static public function ctrEditarUsuario()
-	{
-		if (isset($_POST["editarUsuario"])) {
-			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
-				preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarUsuario"])) {
-				$tabla = "usuarios";
-				if ($_POST["editarPassword"] != "" || $_POST["confirmarPassword"] != "") {
-					if ($_POST["editarPassword"] != $_POST["confirmarPassword"]) {
-						echo '<script>
+            }
+        }
+    }
+    /*=============================================
+    MOSTRAR USUARIO
+    =============================================*/
+    public static function ctrMostrarUsuarios($item, $valor)
+    {
+        $tabla = "usuarios";
+        $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
+        return $respuesta;
+    }
+    /*=============================================
+    EDITAR USUARIO
+    =============================================*/
+    public static function ctrEditarUsuario()
+    {
+        if (isset($_POST["editarUsuario"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarUsuario"])) {
+                $tabla = "usuarios";
+                if ($_POST["editarPassword"] != "" || $_POST["confirmarPassword"] != "") {
+                    if ($_POST["editarPassword"] != $_POST["confirmarPassword"]) {
+                        echo '<script>
 				   Swal.fire({
 						type: "error",
-					   title: "!La contraseña NO Coincide!",					   
+					   title: "!La contraseña NO Coincide!",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
-					   closeOnConfirm: false					   
+					   closeOnConfirm: false
 				   }).then((result)=>{
 					   if(result.value){
 						   window.location = "Usuarios";
 					   }
 					   });
 				 </script>';
-					} else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])) {
-						$encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-					} else {
-						echo '<script>
+                    } else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])) {
+                        $encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                    } else {
+                        echo '<script>
 				   Swal.fire({
 						type: "error",
-					   title: "!La contraseña no puede estar vacio o llevar caracteres especiales",					   
+					   title: "!La contraseña no puede estar vacio o llevar caracteres especiales",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
-					   closeOnConfirm: false					   
+					   closeOnConfirm: false
 				   }).then((result)=>{
 					   if(result.value){
 						   window.location = "Usuarios";
 					   }
 					   });
 				 </script>';
-					}
-				} else {
-					$encriptar = $_POST["passwordActual"];
-				}
-				$datos = array(
-					"nombre" => $_POST["editarNombre"],
-					"usuario" => $_POST["editarUsuario"],
-					"password" => $encriptar,
-					"perfil" => $_POST["editarPerfil"]
-				);
-				$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
-				if ($respuesta == "ok") {
-					echo '<script>
+                    }
+                } else {
+                    $encriptar = $_POST["passwordActual"];
+                }
+                $datos = array(
+                    "nombre" => $_POST["editarNombre"],
+                    "usuario" => $_POST["editarUsuario"],
+                    "password" => $encriptar,
+                    "perfil" => $_POST["editarPerfil"],
+                );
+                $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
+                if ($respuesta == "ok") {
+                    echo '<script>
 			   Swal.fire({
 					type: "success",
-				   title: "!Modificado Correctamente",					   
+				   title: "!Modificado Correctamente",
 				   showConfirmButton: true,
 				   confirmButtonText: "Cerrar",
-				   closeOnConfirm: false					   
-			   }).then((result)=>{
+				   closeOnConfirm: false
+			   		}).then((result)=>{
 				   if(result.value){
 					   window.location = "Usuarios";
 				   }
 				   });
 			 </script>';
-				}
-			} else {
-				echo '<script>
+                }
+            } else {
+                echo '<script>
 				Swal.fire({
 					 type: "error",
-					title: "!El usuario no puede estar vacio o llevar caracteres especiales",					   
+					title: "!El usuario no puede estar vacio o llevar caracteres especiales",
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar",
-					closeOnConfirm: false					   
+					closeOnConfirm: false
 				}).then((result)=>{
 					if(result.value){
 						window.location = "Usuarios";
 					}
 					});
 			  </script>';
-			}
-		}
-	}
-	/*=============================================
-	BORRAR USUARIO
-	=============================================*/
-	static public function ctrBorrarUsuario()
-	{
-		if (isset($_GET["idUsuario"])) {
-			$tabla = "usuarios";
-			$datos = $_GET["idUsuario"];
+            }
+        }
+    }
+    /*=============================================
+    BORRAR USUARIO
+    =============================================*/
+    public static function ctrBorrarUsuario()
+    {
+        if (isset($_GET["idUsuario"])) {
+            $tabla = "usuarios";
+            $datos = $_GET["idUsuario"];
 
-			$respuesta = ModeloUsuarios::MdlBorrarUsuario($tabla, $datos);
-			if ($respuesta == "ok") {
-				echo '<script>
+            $respuesta = ModeloUsuarios::MdlBorrarUsuario($tabla, $datos);
+            if ($respuesta == "ok") {
+                echo '<script>
 			   Swal.fire({
 					type: "success",
-				   title: "!Eliminado Correctamente",					   
+				   title: "!Eliminado Correctamente",
 				   showConfirmButton: true,
 				   confirmButtonText: "Cerrar",
-				   closeOnConfirm: false					   
+				   closeOnConfirm: false
 			   }).then((result)=>{
 				   if(result.value){
 					   window.location = "Usuarios";
 				   }
 				   });
 			 </script>';
-			}
+            }
 
-		}
-	}
+        }
+    }
 }

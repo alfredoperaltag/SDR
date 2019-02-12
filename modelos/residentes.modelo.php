@@ -54,19 +54,24 @@ class ModeloResidentes{
 
 	static public function mdlRegistroResidenteProyecto($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, usuario, password, perfil, foto) VALUES (:nombre, :usuario, :password, :perfil, :foto)");
-
-		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
-		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
-		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
-		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProyecto, nombreEmpresa, asesorExt, asesorInt, revisor1, revisor2, suplente, revisor3) 
+														VALUES (:nombreProyecto, :nombreEmpresa, :asesorExt, :asesorInt, :revisor1, :revisor2, :suplente, :revisor3)");
+		//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		$stmt->bindParam(":nombreProyecto", $datos["nombreProyecto"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombreEmpresa", $datos["nombreEmpresa"], PDO::PARAM_STR);
+		$stmt->bindParam(":asesorExt", $datos["asesorExt"], PDO::PARAM_STR);
+		$stmt->bindParam(":asesorInt", $datos["asesorInt"], PDO::PARAM_INT);
+		$stmt->bindParam(":revisor1", $datos["revisor1"], PDO::PARAM_INT);
+		$stmt->bindParam(":revisor2", $datos["revisor2"], PDO::PARAM_INT);
+		$stmt->bindParam(":suplente", $datos["suplente"], PDO::PARAM_INT);
+		$stmt->bindParam(":revisor3", $datos["revisor3"], PDO::PARAM_INT);
 
 		if($stmt->execute()){
 			return "ok";	
 		}else{
 			return "error";
 		}
+
 		$stmt->close();
 		$stmt = null;
 
