@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
 
-                        <?php
+                    <?php
                     $VerResidentes = new ControladorResidentes();
                     $VerResidentes->ctrMostrarResidentes();
                     ?>
@@ -72,8 +72,8 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="nuevoCarrera" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="ISC">Ingenieria en Sistemas Computacionales</option>
-                                    <option value="II">Ingenieria Informatica</option>
+                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas Computacionales</option>
+                                    <option value="Ingenieria Informatica">Ingenieria Informatica</option>
                                 </select>
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->

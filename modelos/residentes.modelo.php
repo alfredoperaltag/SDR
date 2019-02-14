@@ -77,6 +77,47 @@ class ModeloResidentes{
 
 	}
 
+	/*=============================================
+	REVISA PROYECTO
+	=============================================*/
+
+	static public function mdlRevisarPro($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("SELECT id FROM $tabla WHERE nombreProyecto = :id ");
+		$stmt->execute(['id' => $datos["nombreProyecto"]]); 
+		return $stmt->fetch();
+	}
+
+
+
+	static public function mdlRegistroResidenteDatos($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(noControl, nombre, apellidoP, apellidoM, carrera, periodo, anio, sexo, telefono, tipo_registro, proyecto_id) 
+														VALUES (:noControl, :nombre, :apellidoP, :apellidoM, :carrera, :periodo, :anio, :sexo, :telefono, :tipo_registro, :proyecto_id)");
+		//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		$stmt->bindParam(":noControl", $datos["noControl"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":apellidoP", $datos["apellidoP"], PDO::PARAM_STR);
+		$stmt->bindParam(":apellidoM", $datos["apellidoM"], PDO::PARAM_STR);
+		$stmt->bindParam(":carrera", $datos["carrera"], PDO::PARAM_STR);
+		$stmt->bindParam(":periodo", $datos["periodo"], PDO::PARAM_STR);
+		$stmt->bindParam(":anio", $datos["anio"], PDO::PARAM_STR);
+		$stmt->bindParam(":sexo", $datos["sexo"], PDO::PARAM_STR);
+		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+		$stmt->bindParam(":tipo_registro", $datos["tipo_registro"], PDO::PARAM_INT);
+		$stmt->bindParam(":proyecto_id", $datos["proyecto_id"], PDO::PARAM_INT);
+		
+		if($stmt->execute()){
+			return "ok";	
+		}else{
+			return "error";
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
 
 
 }

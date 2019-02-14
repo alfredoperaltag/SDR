@@ -67,17 +67,7 @@ class ControladorResidentes
             $tabla2 = "residentes";
             $tipo = 1;
 				//$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-				// $datosResidente = array("noControl" => $_POST["nuevoNoControl"],
-				// 	           "carrera" => $_POST["nuevoCarrera"],
-				// 	           "periodo" => $_POST["nuevoPeriodo"],
-				// 	           "anio" => $_POST["nuevoPeriodoAnio"],
-				// 	           "nombre" => $_POST["nuevoNombre"],
-				// 	           "apellidoP" => $_POST["nuevoApellidoP"],
-				// 	           "apellidoM" => $_POST["nuevoApellidoM"],
-				// 	           "sexo" => $_POST["nuevoSexo"],
-				// 	           "telefono" => $_POST["nuevoTelefono"],
-				// 	           "telefono" => $_POST["nuevoTelefono"],
-                //                "tipo_registro" => $variableIdProyecto);
+				
                                
                                $na = null;
                 $datosProyecto = array("nombreProyecto" => $_POST["nuevoNombreProyecto"],
@@ -90,8 +80,26 @@ class ControladorResidentes
 					           "suplente" => $_POST["nuevoSuplente"]);
 
                 $respuestaProyecto = ModeloResidentes::mdlRegistroResidenteProyecto($tabla1, $datosProyecto);
+
                
 				if($respuestaProyecto == "ok"){
+
+                    $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+
+                    $datosResidente = array("noControl" => $_POST["nuevoNoControl"],
+					           "carrera" => $_POST["nuevoCarrera"],
+					           "periodo" => $_POST["nuevoPeriodo"],
+					           "anio" => $_POST["nuevoPeriodoAnio"],
+					           "nombre" => $_POST["nuevoNombre"],
+					           "apellidoP" => $_POST["nuevoApellidoP"],
+					           "apellidoM" => $_POST["nuevoApellidoM"],
+					           "sexo" => $_POST["nuevoSexo"],
+					           "telefono" => $_POST["nuevoTelefono"],
+                               "tipo_registro" => $tipo,
+                                "proyecto_id" => $revisarProyecto["id"]);
+
+                    $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
+                    if($resResidente == "ok"){
 					echo '<script>
 				Swal.fire({
 					 type: "success",
@@ -103,12 +111,27 @@ class ControladorResidentes
 						window.location = "Residentes";
 					}
 					});
-			  </script>';
+              </script>';
+                }else{
+                    echo '<script>
+                    Swal.fire({
+                         type: "success",
+                        title: "!No se pudo registrar¡",					   
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"				   
+                    }).then((result)=>{
+                        if(result.value){
+                            window.location = "Residentes";
+                        }
+                        });
+                  </script>';
+                }
 				}else{
                     echo '<script>
 				Swal.fire({
 					 type: "error",
-					title: "!No se pudo registrar¡",					   
+                    title: "!No se pudo registrar¡",
+                    text: "Revisa los datos del Proyecto.",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
