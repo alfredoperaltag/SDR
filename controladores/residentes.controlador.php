@@ -54,6 +54,23 @@ class ControladorResidentes
 
     }
 
+    /*=============================================
+    MOSTRAR TODOS LOS RESIDENTES
+    =============================================*/
+    public static function ctrMostrarInfoResidentes()
+    {
+        $tabla = "residentes";
+        $item = null;
+        $valor = null;
+
+        $respuesta = ModeloResidentes::MdlMostrarInfoResidentes($tabla, $item, $valor);
+
+        foreach ($respuesta as $key => $value) {
+                       echo ' <h4>'.$value["nombre"].'</h4><br>';
+        }
+
+    }
+
 
 
     /*=============================================
