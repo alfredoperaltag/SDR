@@ -17,7 +17,7 @@ capa.innerHTML = "Contenido para la capa";
 EDITAR USUARIO
 ======================================-->*/
 
-$(".btnEditarUsuario").click(function () {
+$(document).on("click", ".btnEditarUsuario", function () {
     var idUsuario = $(this).attr("idUsuario");
     /* console.log("idUsuario", idUsuario); */
     var datos = new FormData();
@@ -42,7 +42,7 @@ $(".btnEditarUsuario").click(function () {
 /*<!--=====================================
 ACTIVAR USUARIO
 ======================================-->*/
-$(".btnActivar").click(function () {
+$(document).on("click", ".btnActivar", function () {
     var idUsuario = $(this).attr("idUsuario");
     var estadoUsuario = $(this).attr("estadoUsuario");
 
@@ -58,7 +58,19 @@ $(".btnActivar").click(function () {
         contentType: false,
         processData: false,
         success: function (respuesta) {
-
+            if (window.matchMedia("(max-width:767px)").matches) {
+                Swal.fire({
+                    type: "success",
+                    title: "!Modificado Correctamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                }).then((result) => {
+                    if (result.value) {
+                        window.location = "Usuarios";
+                    }
+                });
+            }
         }
     })
     if (estadoUsuario == 0) {
@@ -100,7 +112,7 @@ $("#nuevoUsuario").change(function () {
 /*<!--=====================================
 ELIMINAR USUARIO
 ======================================-->*/
-$(".btnEliminarUsuario").click(function () {
+$(document).on("click", ".btnEliminarUsuario", function () {
     var idUsuario = $(this).attr("idUsuario");
     Swal.fire({
         title: '¿Esta seguro de eliminarlo?',
