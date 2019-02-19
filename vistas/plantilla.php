@@ -54,6 +54,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         if ($_GET["ruta"] == "Inicio" ||
             $_GET["ruta"] == "Usuarios" ||
             $_GET["ruta"] == "Residentes" ||
+            $_GET["ruta"] == "Docentes" ||
             $_GET["ruta"] == "CerrarSesion") {
 
             include "modulos/" . $_GET["ruta"] . ".php";
