@@ -4,7 +4,7 @@ class ControladorDocentes
     public static function ctrCrearDocente()
     {
         if (isset($_POST["nuevoNombre"])) {
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["nuevoNombre"])) {
                 $tabla = "asesor";
                 $datos = array(
                     "nombre" => $_POST["nuevoNombre"]
@@ -42,6 +42,15 @@ class ControladorDocentes
 				 </script>';
             }
         }
+    }
+    /*=============================================
+    MOSTRAR DOCENTE
+    =============================================*/
+    public static function ctrMostrarDocentes($item, $valor)
+    {
+        $tabla = "asesor";
+        $respuesta = ModeloDocentes::MdlMostrarDocentes($tabla, $item, $valor);
+        return $respuesta;
     }
 }
 ?>
