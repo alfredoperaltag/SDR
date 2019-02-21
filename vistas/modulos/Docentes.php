@@ -13,27 +13,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <?php
-                            $item = null;
-                            $valor = null;
-                            $docentes = ControladorDocentes::ctrMostrarDocentes($item, $valor);
-                            foreach ($docentes as $key => $value) {
-                                echo '<tr>
-                                <td>' . $value["nombre"] . '</td>';
-                                if ($value["estado"] != 0) {
-                                    echo '<td><button class="btn btn-success btn-xs btnActivar" idDocente="' . $value["id"] . '" estadoDocente="0">Activado</button></td>';
-                                } else {
-                                    echo '<td><button class="btn btn-danger btn-xs btnActivar" idDocente="' . $value["id"] . '" estadoDocente="1">Desactivado</button></td>';
-                                }
-                                echo '<td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-warning btnEditarDocente" idDocente="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btnEliminarDocente" idDocente="' . $value["id"] . '"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>';
+                        <?php
+                        $item = null;
+                        $valor = null;
+                        $docentes = ControladorDocentes::ctrMostrarDocentes($item, $valor);
+                        foreach ($docentes as $key => $value) {
+                            echo '<tr>
+                            <td>' . $value["nombre"] . '</td>';
+                            if ($value["estado"] != 0) {
+                                echo '<td><button class="btn btn-success btn-xs btnActivar" idDocente="' . $value["id"] . '" estadoDocente="0">Activado</button></td>';
+                            } else {
+                                echo '<td><button class="btn btn-danger btn-xs btnActivar" idDocente="' . $value["id"] . '" estadoDocente="1">Desactivado</button></td>';
                             }
-                            ?>
+                            echo '<td>
+                                <div class="btn-group">
+                                    <button class="btn btn-warning btnEditarDocente" idDocente="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-danger btnEliminarDocente" idDocente="' . $value["id"] . '"><i class="fa fa-times"></i></button>
+                                </div>
+                            </td>
+                        </tr>';
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
