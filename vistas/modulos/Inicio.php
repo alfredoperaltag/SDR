@@ -7,6 +7,7 @@
             <div class="col-6">
                 <img src="http://lorempixel.com/640/480/nature/" alt="Imagen Random">
             </div>
+            <h2>puto el que lo lea</h2>
         </div>
     </div>
 <!-- </div> -->
