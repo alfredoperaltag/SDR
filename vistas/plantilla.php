@@ -109,6 +109,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>        
 
     <!-- others plugins -->
+    <script src="vistas/assets/js/residentes.js"></script>
     <script src="vistas/assets/js/usuarios.js"></script>
     <script src="vistas/assets/js/plugins.js"></script>
     <script src="vistas/assets/js/scripts.js"></script>

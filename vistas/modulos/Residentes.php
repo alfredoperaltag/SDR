@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
 
-                    <?php
+                        <?php
                     $VerResidentes = new ControladorResidentes();
                     $VerResidentes->ctrMostrarResidentes();
                     ?>
@@ -72,7 +72,8 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="nuevoCarrera" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas Computacionales</option>
+                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas
+                                        Computacionales</option>
                                     <option value="Ingenieria Informatica">Ingenieria Informatica</option>
                                 </select>
                             </div>
@@ -635,13 +636,27 @@ INFORMACION RESIDENTE
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
-            <?php
-                    $VerResidentes = new ControladorResidentes();
-                    $VerResidentes->ctrMostrarInfoResidentes();
-                    ?>
-                    </div>
+                    <!-- <div class="form-row align-items-center"> -->
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="InfoNombre" name="InfoNombre" value=""></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                  </ul>
+                  <!-- </div> -->
+            </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -661,10 +676,12 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
             <div class="modal-body">
                 <button type="button" class="btn btn-success btn-lg btn-block">Dictamen de anteproyecto de Residencias
                     Profecionales</button>
+                    <button type="button" class="btn btn-success btn-lg btn-block">Asignación de asesor</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Liberacion de Residencias
                     Profecionales</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Asignacion de jurado</button>
-                <button type="button" class="btn btn-success btn-lg btn-block">Comision a ###</button>
+                <button type="button" class="btn btn-success btn-lg btn-block">Comision para titulación</button>
+                <button type="button" class="btn btn-success btn-lg btn-block">Ofició de asignacion de sinodales</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
