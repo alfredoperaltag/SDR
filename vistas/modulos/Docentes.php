@@ -82,3 +82,12 @@ MODAL AGREGAR DOCENTE
         </div>
     </div>
 </div>
+<!--=====================================
+MODAL EDITAR DOCENTE
+======================================-->
+<div class="modal fade" id="modalEditarUsuario">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+</div>
+</div>
+</div>
