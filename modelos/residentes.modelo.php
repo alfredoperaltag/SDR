@@ -121,7 +121,7 @@ class ModeloResidentes
         $stmt->execute(['id' => $datos["nombreProyecto"]]);
         return $stmt->fetch();
     }
-
+	//no me da error
     static public function mdlRegistroResidenteDatos($tabla, $datos)
     {
 
