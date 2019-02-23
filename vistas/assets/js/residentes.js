@@ -18,7 +18,7 @@ $(document).on("click", ".btnInfoResidente", function () {
         success: function (respuesta) {
             console.log("respuesta", respuesta);
             $("#InfoNombre").val(respuesta["nombre"]);
-            $("#InfoCarrera").append(respuesta["carrera"]);
+            $("#InfoCarrera").val(respuesta["carrera"]);
         }
     });
 })
