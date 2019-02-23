@@ -57,32 +57,33 @@ class ControladorResidentes
     /*=============================================
     MOSTRAR INFO DEL RESIDENTE
     =============================================*/
-    public static function ctrMostrarInfoResidentes()
+    public static function ctrMostrarInfoResidentes($valor)
     {
         $tabla = "residentes";
         $item = null;
 
-            $valor = $_POST["idResidente"];
+            // $valor = $_POST["idResidente"];
         $res3 = ModeloResidentes::MdlMostrarInfoResidentes($tabla, $item, $valor);
 
-        foreach ($res3 as $key => $value) {
-        echo '<h6>'.$value["nombre"].'<h6><br>';
-        echo '<h6>'.$value["carrera"].'<h6><br>';
-        echo '<h6>'.$value["periodo"].'<h6><br>';
-        echo '<h6>'.$value["sexo"].'<h6><br>';
-        echo '<h6>'.$value["telefono"].'<h6><br>';
-        echo '<h6>'.$value["tipo_registro"].'<h6><br>';
-        echo '<hr>';
-        echo '<h6>'.$value["nombreProyecto"].'<h6><br>';
-        echo '<h6>'.$value["nombreEmpresa"].'<h6><br>';
-        echo '<h6>'.$value["asesorExt"].'<h6><br>';
-        echo '<h6>'.$value["asesorInt"].'<h6><br>';
-        echo '<h6>'.$value["revisor1"].'<h6><br>';
-        echo '<h6>'.$value["revisor2"].'<h6><br>';
-        echo '<h6>'.$value["revisor3"].'<h6><br>';
-        echo '<h6>'.$value["suplente"].'<h6><br>';
-    }
-        // return $res3;
+    //     foreach ($res3 as $key => $value) {
+    //     echo '<h6>'.$value["nombre"].'<h6><br>';
+    //     echo '<h6>'.$value["carrera"].'<h6><br>';
+    //     echo '<h6>'.$value["periodo"].'<h6><br>';
+    //     echo '<h6>'.$value["sexo"].'<h6><br>';
+    //     echo '<h6>'.$value["telefono"].'<h6><br>';
+    //     echo '<h6>'.$value["tipo_registro"].'<h6><br>';
+    //     echo '<hr>';
+    //     echo '<h6>'.$value["nombreProyecto"].'<h6><br>';
+    //     echo '<h6>'.$value["nombreEmpresa"].'<h6><br>';
+    //     echo '<h6>'.$value["asesorExt"].'<h6><br>';
+    //     echo '<h6>'.$value["asesorInt"].'<h6><br>';
+    //     echo '<h6>'.$value["revisor1"].'<h6><br>';
+    //     echo '<h6>'.$value["revisor2"].'<h6><br>';
+    //     echo '<h6>'.$value["revisor3"].'<h6><br>';
+    //     echo '<h6>'.$value["suplente"].'<h6><br>';
+    // }
+        return $res3;
+        // echo json_encode($res3);
     }
 
 

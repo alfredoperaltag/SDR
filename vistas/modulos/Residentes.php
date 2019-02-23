@@ -638,7 +638,12 @@ INFORMACION RESIDENTE
             <div class="modal-body">
                     <!-- <div class="form-row align-items-center"> -->
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" id="InfoNombre" name="InfoNombre" value=""></li>
+                    <li class="" id="InfoNombre" name="InfoNombre" value="">A_ </li>
+                    <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Nombre</label>
+                            <input class="form-control" type="text" id="InfoNombre" value=""
+                                required>
+                        </div>
                     <li class="list-group-item"></li>
                     <li class="list-group-item"></li>
                     <li class="list-group-item"></li>

@@ -20,8 +20,8 @@ class AjaxResidentes{
     INFO RESIDENTE
     ======================================-->*/
     if (isset($_POST["idResidente"])) {
-        $editar = new AjaxResidentes();
-        $editar->idResidente = $_POST["idResidente"];
-        $_SERVER["infoResidenteSelect"] = $_POST["idResidente"];
-        $editar->ajaxInfoResidente();
+        $info = new AjaxResidentes();
+        $info->idResidente = $_POST["idResidente"];
+        // $_SERVER["infoResidenteSelect"] = $_POST["idResidente"];
+        $info->ajaxInfoResidente();
     }
