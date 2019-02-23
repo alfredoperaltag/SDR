@@ -16,9 +16,9 @@ $(document).on("click", ".btnInfoResidente", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            console.log("respuesta", respuesta);
+            console.log("respuesta::", respuesta);
             $("#InfoNombre").val(respuesta["nombre"]);
             $("#InfoCarrera").val(respuesta["carrera"]);
         }
     });
-})
+});
