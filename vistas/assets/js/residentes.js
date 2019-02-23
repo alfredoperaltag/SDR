@@ -3,10 +3,10 @@ INFORMACION RESIDENTE
 ======================================-->*/
 
 $(document).on("click", ".btnInfoResidente", function () {
-    var idInfo = $(this).attr("idResidente");
-      console.log("idResidente =", idInfo);
+    var idResidente = $(this).attr("idResidente");
+    /* console.log("idResidente =", idResidente); */
     var datos = new FormData();
-    datos.append("idResidente", idInfo);
+    datos.append("idResidente", idResidente);
     $.ajax({
         url: "ajax/residentes.ajax.php",
         method: "POST",
@@ -18,6 +18,7 @@ $(document).on("click", ".btnInfoResidente", function () {
         success: function (respuesta) {
             console.log("respuesta", respuesta);
             $("#InfoNombre").val(respuesta["nombre"]);
+            $("#InfoCarrera").append(respuesta["carrera"]);
         }
     });
 })

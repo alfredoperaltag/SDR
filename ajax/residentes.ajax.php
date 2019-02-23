@@ -1,8 +1,9 @@
 <?php
 require_once "../controladores/residentes.controlador.php";
 require_once "../modelos/residentes.modelo.php";
-class AjaxResidentes{
-    
+class AjaxResidentes
+{
+
     /*<!--=====================================
     INFO RESIDENTE
     ======================================-->*/
@@ -11,17 +12,16 @@ class AjaxResidentes{
     {
         $item = "id";
         $valor = $this->idResidente;
-        $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($valor);
+        $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
         echo json_encode($respuesta);
     }
-
 }
-    /*<!--=====================================
+/*<!--=====================================
     INFO RESIDENTE
     ======================================-->*/
-    if (isset($_POST["idResidente"])) {
-        $editar = new AjaxResidentes();
-        $editar->idResidente = $_POST["idResidente"];
-        $_SERVER["infoResidenteSelect"] = $_POST["idResidente"];
-        $editar->ajaxInfoResidente();
-    }
+if (isset($_POST["idResidente"])) {
+    $editar = new AjaxResidentes();
+    $editar->idResidente = $_POST["idResidente"];
+    /* $_SERVER["infoResidenteSelect"] = $_POST["idResidente"]; */
+    $editar->ajaxInfoResidente();
+}
