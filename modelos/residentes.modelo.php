@@ -122,14 +122,6 @@ class ModeloResidentes
         return $stmt->fetch();
     }
 
-    public static function mdlRevisarPro($tabla, $datos)
-    {
-
-        $stmt = Conexion::conectar()->prepare("SELECT id FROM $tabla WHERE nombreProyecto = :id ");
-        $stmt->execute(['id' => $datos["nombreProyecto"]]);
-        return $stmt->fetch();
-    }
-
     static public function mdlRegistroResidenteDatos($tabla, $datos)
     {
 
