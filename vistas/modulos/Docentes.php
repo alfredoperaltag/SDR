@@ -27,7 +27,7 @@
                             }
                             echo '<td>
                                 <div class="btn-group">
-                                    <button class="btn btn-warning btnEditarDocente" idDocente="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-warning btnEditarDocente" idDocente="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocente"><i class="fa fa-pencil"></i></button>
                                     <button class="btn btn-danger btnEliminarDocente" idDocente="' . $value["id"] . '"><i class="fa fa-times"></i></button>
                                 </div>
                             </td>
@@ -62,8 +62,7 @@ MODAL AGREGAR DOCENTE
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo"
-                                required>
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo" required>
                         </div>
                     </div>
                     <!--=====================================
@@ -78,16 +77,42 @@ MODAL AGREGAR DOCENTE
                     $crearDocente->ctrCrearDocente();
                     ?>
                 </div>
-            </form>                
+            </form>
         </div>
     </div>
 </div>
 <!--=====================================
 MODAL EDITAR DOCENTE
 ======================================-->
-<div class="modal fade" id="modalEditarUsuario">
-<div class="modal-dialog modal-dialog-centered" role="document">
-<div class="modal-content">
-</div>
-</div>
-</div>
+<div class="modal fade" id="modalEditarDocente">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!--=====================================
+            CABEZA DEL MODAL
+            ======================================-->
+            <div class="modal-header">
+                <h5 class="modal-tittle">Editar docente</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form role="form" method="post" enctype="multipart/form-data">
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <!-- ENTRADA PARA EL NOMBRE -->
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Nombre</label>
+                            <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                        <button type="submit" class="btn btn-primary">modificar docente</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

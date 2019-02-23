@@ -25,9 +25,9 @@
                     <tbody>
 
                         <?php
-                    $VerResidentes = new ControladorResidentes();
-                    $VerResidentes->ctrMostrarResidentes();
-                    ?>
+                        $VerResidentes = new ControladorResidentes();
+                        $VerResidentes->ctrMostrarResidentes();
+                        ?>
 
                     </tbody>
                 </table>
@@ -64,8 +64,7 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl"
-                                    placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -90,14 +89,15 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                             <div class="col-sm-2 my-1">
                                 <label class="col-form-label">Año</label>
                                 <?php
-                                    $cont = date('Y');
-                                    ?>
+                                $cont = date('Y');
+                                ?>
                                 <select class="custom-select" name="nuevoPeriodoAnio" required>
-                                    <?php while ($cont >= 2018) {?>
+                                    <?php while ($cont >= 2018) { ?>
                                     <option name="anio" value="<?php echo ($cont); ?>">
                                         <?php echo ($cont); ?>
                                     </option>
-                                    <?php $cont = ($cont - 1);}?>
+                                    <?php $cont = ($cont - 1);
+                                } ?>
                                 </select>
                             </div>
                         </div>
@@ -107,20 +107,17 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required
-                                autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -136,8 +133,7 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono"
-                                autocomplete="off">
+                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono" autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -146,22 +142,19 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
-                                placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Asesor Externo</label>
-                            <input class="form-control" type="text" name="nuevoAsesorExt" placeholder="Asesor Externo"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoAsesorExt" placeholder="Asesor Externo" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
@@ -169,9 +162,9 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                             <select class="custom-select" name="nuevoAsesorInt" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -182,9 +175,9 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                             <select class="custom-select" name="nuevoRevisor1" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                         <!-- ENTRADA PARA REVISOR #2 -->
@@ -193,9 +186,9 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                             <select class="custom-select" name="nuevoRevisor2" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -206,9 +199,9 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                             <select class="custom-select" name="nuevoSuplente" required>
                                 <option value="">Selecionar suplente</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -224,7 +217,7 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                 <?php
 
                 $RegistrarResidente = new ControladorResidentes();
-                $RegistrarResidente -> ctrRegistrarResidentes();
+                $RegistrarResidente->ctrRegistrarResidentes();
 
                 ?>
 
@@ -261,8 +254,7 @@ TESIS PROFESIONAL
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl"
-                                    placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -286,14 +278,15 @@ TESIS PROFESIONAL
                             <div class="col-sm-2 my-1">
                                 <label class="col-form-label">Año</label>
                                 <?php
-                                    $cont = date('Y');
-                                    ?>
+                                $cont = date('Y');
+                                ?>
                                 <select class="custom-select" name="nuevoPeriodoAnio" required>
-                                    <?php while ($cont >= 2018) {?>
+                                    <?php while ($cont >= 2018) { ?>
                                     <option name="anio" value="<?php echo ($cont); ?>">
                                         <?php echo ($cont); ?>
                                     </option>
-                                    <?php $cont = ($cont - 1);}?>
+                                    <?php $cont = ($cont - 1);
+                                } ?>
                                 </select>
                             </div>
                         </div>
@@ -303,20 +296,17 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required
-                                autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -332,8 +322,7 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono"
-                                autocomplete="off">
+                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono" autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -342,14 +331,12 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
-                                placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -359,9 +346,9 @@ TESIS PROFESIONAL
                             <select class="custom-select" name="nuevoAsesorInt" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                         <!-- ENTRADA PARA REVISOR #1 -->
@@ -370,9 +357,9 @@ TESIS PROFESIONAL
                             <select class="custom-select" name="nuevoRevisor1" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -383,9 +370,9 @@ TESIS PROFESIONAL
                             <select class="custom-select" name="nuevoRevisor1" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                         <!-- ENTRADA PARA REVISOR #2 -->
@@ -394,9 +381,9 @@ TESIS PROFESIONAL
                             <select class="custom-select" name="nuevoRevisor2" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -407,9 +394,9 @@ TESIS PROFESIONAL
                             <select class="custom-select" name="nuevoSuplente" required>
                                 <option value="">Selecionar suplente</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -455,8 +442,7 @@ EDITAR RESIDENTE
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl"
-                                    placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -480,14 +466,15 @@ EDITAR RESIDENTE
                             <div class="col-sm-2 my-1">
                                 <label class="col-form-label">Año</label>
                                 <?php
-                                    $cont = date('Y');
-                                    ?>
+                                $cont = date('Y');
+                                ?>
                                 <select class="custom-select" name="nuevoPeriodoAnio" required>
-                                    <?php while ($cont >= 2018) {?>
+                                    <?php while ($cont >= 2018) { ?>
                                     <option name="anio" value="<?php echo ($cont); ?>">
                                         <?php echo ($cont); ?>
                                     </option>
-                                    <?php $cont = ($cont - 1);}?>
+                                    <?php $cont = ($cont - 1);
+                                } ?>
                                 </select>
                             </div>
                         </div>
@@ -497,20 +484,17 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required
-                                autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -526,8 +510,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono"
-                                autocomplete="off">
+                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono" autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -536,14 +519,12 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
-                                placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -553,9 +534,9 @@ EDITAR RESIDENTE
                             <select class="custom-select" name="nuevoAsesorInt" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                         <!-- ENTRADA PARA REVISOR #1 -->
@@ -564,9 +545,9 @@ EDITAR RESIDENTE
                             <select class="custom-select" name="nuevoRevisor1" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -577,9 +558,9 @@ EDITAR RESIDENTE
                             <select class="custom-select" name="nuevoRevisor1" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                         <!-- ENTRADA PARA REVISOR #2 -->
@@ -588,9 +569,9 @@ EDITAR RESIDENTE
                             <select class="custom-select" name="nuevoRevisor2" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -601,9 +582,9 @@ EDITAR RESIDENTE
                             <select class="custom-select" name="nuevoSuplente" required>
                                 <option value="">Selecionar suplente</option>
                                 <?php
-                                    $verDocente = new ControladorResidentes();
-                                    $verDocente->ctrMostrarTodosLosDocesentes();
-                                    ?>
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -636,14 +617,12 @@ INFORMACION RESIDENTE
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
-                    <!-- <div class="form-row align-items-center"> -->
+                <!-- <div class="form-row align-items-center"> -->
                 <ul class="list-group list-group-flush">
-                    <li class="" id="InfoNombre" name="InfoNombre" value="">A_ </li>
-                    <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" id="InfoNombre" value=""
-                                required>
-                        </div>
+                    <input class="form-control" type="text" id="InfoNombre" name="InfoNombre" value="">
+                    <li class="list-group-item" id="InfoCarrera" name="InfoCarrera" value=""></li>
+                    <!-- <input class="list-group-item" type="text" id="InfoNombre" name="InfoNombre" value=""> -->
+                    <!-- <p class="list-group-item" type="text" id="InfoNombre" name="InfoNombre" value=""></p> -->
                     <li class="list-group-item"></li>
                     <li class="list-group-item"></li>
                     <li class="list-group-item"></li>
@@ -657,8 +636,8 @@ INFORMACION RESIDENTE
                     <li class="list-group-item"></li>
                     <li class="list-group-item"></li>
                     <li class="list-group-item"></li>
-                  </ul>
-                  <!-- </div> -->
+                </ul>
+                <!-- </div> -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -681,7 +660,7 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
             <div class="modal-body">
                 <button type="button" class="btn btn-success btn-lg btn-block">Dictamen de anteproyecto de Residencias
                     Profecionales</button>
-                    <button type="button" class="btn btn-success btn-lg btn-block">Asignación de asesor</button>
+                <button type="button" class="btn btn-success btn-lg btn-block">Asignación de asesor</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Liberacion de Residencias
                     Profecionales</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Asignacion de jurado</button>
@@ -693,4 +672,4 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
             </div>
         </div>
     </div>
-</div>
+</div> 

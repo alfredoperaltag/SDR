@@ -6,10 +6,10 @@ class ModeloResidentes
 {
 
     /*=============================================
-    MOSTRAR ASESORES/REVISORES/SUPLENTES
-    =============================================*/
+	MOSTRAR ASESORES/REVISORES/SUPLENTES
+	=============================================*/
 
-    public static function MdlMostrarDocentes($tabla, $item, $valor)
+    static public function MdlMostrarDocentes($tabla, $item, $valor)
     {
 
         if ($item != null) {
@@ -26,11 +26,12 @@ class ModeloResidentes
         $stmt = null;
     }
 
-    /*=============================================
-    MOSTRAR RESIDENTES EN TABLA PRINCIPAL
-    =============================================*/
 
-    public static function MdlMostrarResidentesEnTabla($tabla, $item, $valor)
+    /*=============================================
+	MOSTRAR RESIDENTES EN TABLA PRINCIPAL
+	=============================================*/
+
+    static public function MdlMostrarResidentesEnTabla($tabla, $item, $valor)
     {
 
         if ($item != null) {
@@ -50,43 +51,44 @@ class ModeloResidentes
         $stmt = null;
     }
 
-    /*=============================================
-    MOSTRAR INFORMACION DE RESIDENTES
-    =============================================*/
 
-    public static function MdlMostrarInfoResidentes($tabla, $item, $valor)
+    /*=============================================
+	MOSTRAR INFORMACION DE RESIDENTES
+	=============================================*/
+
+    static public function MdlMostrarInfoResidentes($tabla, $item, $valor)
     {
 
-        $stmt = Conexion::conectar()->prepare("SELECT CONCAT(residentes.nombre, ' ', residentes.apellidoP, ' ',residentes.apellidoM) AS 'nombre',
-			residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero/Junio', 'Agosto/Diciembre'), ' ',
-			residentes.anio) AS 'periodo',  IF(residentes.sexo = 'F', 'Femenino', 'Masculino') AS 'sexo',
-			residentes.telefono,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional')
-			AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, proyecto.asesorExt, asesorIntA.nombre
-			AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', revisorC.nombre AS 'revisor3', suplenteA.nombre AS 'suplente' FROM " . $tabla . "
-			inner join proyecto on residentes.proyecto_id = proyecto.id
-			inner JOIN asesor AS asesorIntA ON proyecto.asesorInt = asesorIntA.id
-			inner join asesor AS revisorA ON proyecto.revisor1 = revisorA.id
-			inner join asesor AS revisorB ON proyecto.revisor2 = revisorB.id
-			inner join asesor AS revisorC ON proyecto.revisor3 = revisorC.id
-			inner join asesor AS suplenteA ON proyecto.suplente = suplenteA.id
+        $stmt = Conexion::conectar()->prepare("SELECT CONCAT(residentes.nombre, ' ', residentes.apellidoP, ' ',residentes.apellidoM) AS 'nombre', 
+			residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero/Junio', 'Agosto/Diciembre'), ' ', 
+			residentes.anio) AS 'periodo',  IF(residentes.sexo = 'F', 'Femenino', 'Masculino') AS 'sexo', 
+			residentes.telefono,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional') 
+			AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, proyecto.asesorExt, asesorIntA.nombre 
+			AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', revisorC.nombre AS 'revisor3', suplenteA.nombre AS 'suplente' FROM " . $tabla . " 
+			inner join proyecto on residentes.proyecto_id = proyecto.id  
+			inner JOIN asesor AS asesorIntA ON proyecto.asesorInt = asesorIntA.id 
+			inner join asesor AS revisorA ON proyecto.revisor1 = revisorA.id 
+			inner join asesor AS revisorB ON proyecto.revisor2 = revisorB.id 
+			inner join asesor AS revisorC ON proyecto.revisor3 = revisorC.id 
+			inner join asesor AS suplenteA ON proyecto.suplente = suplenteA.id 
 			WHERE residentes.id = :id");
 
         $stmt->bindParam(":id", $valor, PDO::PARAM_INT);
         $stmt->execute();
-        // return $stmt->fetchAll();
         return $stmt->fetch();
+        /* return $stmt -> fetchAll(); */
         $stmt->close();
         $stmt = null;
     }
 
     /*=============================================
-    REGISTRO DE RESIDENTE
-    =============================================*/
+	REGISTRO DE RESIDENTE
+	=============================================*/
 
-    public static function mdlRegistroResidenteProyecto($tabla, $datos)
+    static public function mdlRegistroResidenteProyecto($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProyecto, nombreEmpresa, asesorExt, asesorInt, revisor1, revisor2, suplente, revisor3)
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProyecto, nombreEmpresa, asesorExt, asesorInt, revisor1, revisor2, suplente, revisor3) 
 														VALUES (:nombreProyecto, :nombreEmpresa, :asesorExt, :asesorInt, :revisor1, :revisor2, :suplente, :revisor3)");
         //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         $stmt->bindParam(":nombreProyecto", $datos["nombreProyecto"], PDO::PARAM_STR);
@@ -106,12 +108,19 @@ class ModeloResidentes
 
         $stmt->close();
         $stmt = null;
-
     }
 
     /*=============================================
-    REVISA PROYECTO
-    =============================================*/
+	REVISA PROYECTO
+	=============================================*/
+
+    static public function mdlRevisarPro($tabla, $datos)
+    {
+
+        $stmt = Conexion::conectar()->prepare("SELECT id FROM $tabla WHERE nombreProyecto = :id ");
+        $stmt->execute(['id' => $datos["nombreProyecto"]]);
+        return $stmt->fetch();
+    }
 
     public static function mdlRevisarPro($tabla, $datos)
     {
@@ -121,10 +130,10 @@ class ModeloResidentes
         return $stmt->fetch();
     }
 
-    public static function mdlRegistroResidenteDatos($tabla, $datos)
+    static public function mdlRegistroResidenteDatos($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(noControl, nombre, apellidoP, apellidoM, carrera, periodo, anio, sexo, telefono, tipo_registro, proyecto_id)
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(noControl, nombre, apellidoP, apellidoM, carrera, periodo, anio, sexo, telefono, tipo_registro, proyecto_id) 
 														VALUES (:noControl, :nombre, :apellidoP, :apellidoM, :carrera, :periodo, :anio, :sexo, :telefono, :tipo_registro, :proyecto_id)");
         //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         $stmt->bindParam(":noControl", $datos["noControl"], PDO::PARAM_STR);
@@ -147,7 +156,6 @@ class ModeloResidentes
 
         $stmt->close();
         $stmt = null;
-
     }
-
 }
+
