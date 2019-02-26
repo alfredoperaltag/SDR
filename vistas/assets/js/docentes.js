@@ -1,5 +1,6 @@
 $(document).on("click", ".btnEditarDocente", function () {
     var idDocente = $(this).attr("idDocente");
+    console.log("idUsuario", idUsuario);
     var datos = new FormData();
     datos.append("idDocente", idDocente);
     $.ajax({
