@@ -39,56 +39,55 @@ CUERPO DOCUMENTO
 <body class="body-bg">
 
 
-<?php
-if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
+    <?php
+    if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
-    echo '<div class="horizontal-main-wrapper">';
+        echo '<div class="horizontal-main-wrapper">';
 
-    if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
-        include "modulos/cabezote.php";
+        if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+            include "modulos/cabezote.php";
+        } else {
+            include "modulos/cabezoteUser.php";
+        }
+
+        if (isset($_GET["ruta"]) && $_SESSION['perfil'] == "Administrador") {
+            if (
+                $_GET["ruta"] == "Inicio" ||
+                $_GET["ruta"] == "Usuarios" ||
+                $_GET["ruta"] == "Residentes" ||
+                $_GET["ruta"] == "Docentes" ||
+                $_GET["ruta"] == "CerrarSesion"
+            ) {
+
+                include "modulos/" . $_GET["ruta"] . ".php";
+            } else {
+                include "modulos/404.php";
+            }
+        }
+        if (isset($_GET["ruta"]) && $_SESSION['perfil'] != "Administrador") {
+            if (
+                $_GET["ruta"] == "Inicio" ||
+                $_GET["ruta"] == "Residentes" ||
+                $_GET["ruta"] == "CerrarSesion"
+            ) {
+
+                include "modulos/" . $_GET["ruta"] . ".php";
+            } else {
+                include "modulos/404.php";
+            }
+        }
+        if (!isset($_GET["ruta"])) {
+            include "modulos/Inicio.php";
+        }
+
+        include "modulos/footer.php";
+
+        echo '</div>';
     } else {
-        include "modulos/cabezoteUser.php";
+        include "modulos/login.php";
     }
 
-    if (isset($_GET["ruta"]) && $_SESSION['perfil'] == "Administrador") {
-        if ($_GET["ruta"] == "Inicio" ||
-            $_GET["ruta"] == "Usuarios" ||
-            $_GET["ruta"] == "Residentes" ||
-            $_GET["ruta"] == "Docentes" ||
-            $_GET["ruta"] == "CerrarSesion") {
-
-            include "modulos/" . $_GET["ruta"] . ".php";
-
-        } else {
-            include "modulos/404.php";
-        }
-
-    }
-    if (isset($_GET["ruta"]) && $_SESSION['perfil'] != "Administrador") {
-        if ($_GET["ruta"] == "Inicio" ||
-            $_GET["ruta"] == "Residentes" ||
-            $_GET["ruta"] == "CerrarSesion") {
-
-            include "modulos/" . $_GET["ruta"] . ".php";
-
-        } else {
-            include "modulos/404.php";
-        }
-
-    }
-    if (!isset($_GET["ruta"])) {
-        include "modulos/Inicio.php";
-    }
-
-    include "modulos/footer.php";
-
-    echo '</div>';
-
-} else {
-    include "modulos/login.php";
-}
-
-?>
+    ?>
 
 
     <!-- jquery latest version -->
@@ -106,9 +105,10 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     <script src="vistas/assets/js/jquery.dataTables.min.js"></script>
     <script src="vistas/assets/js/dataTables.bootstrap4.min.js"></script>
     <script src="vistas/assets/js/dataTables.responsive.min.js"></script>
-    <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>        
+    <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>
 
     <!-- others plugins -->
+    <script src="vistas/assets/js/docentes.js"></script>
     <script src="vistas/assets/js/residentes.js"></script>
     <script src="vistas/assets/js/usuarios.js"></script>
     <script src="vistas/assets/js/plugins.js"></script>
@@ -116,4 +116,4 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     <script src="vistas/assets/js/table.js"></script>
 </body>
 
-</html>
+</html> 
