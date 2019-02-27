@@ -110,10 +110,10 @@ MODAL EDITAR DOCENTE
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                         <button type="submit" class="btn btn-primary">modificar docente</button>
                     </div>
-                    <!-- <?php
-                            $editarDocente = new ControladorDocentes();
-                            $editarDocente->ctrEditarDocente();
-                            ?> -->
+                    <?php
+                    $editarDocente = new ControladorDocentes();
+                    $editarDocente->ctrEditarDocente();
+                    ?>
                 </div>
             </form>
         </div>
