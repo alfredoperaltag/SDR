@@ -617,26 +617,79 @@ INFORMACION RESIDENTE
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
-                <!-- <div class="form-row align-items-center"> -->
-                <ul class="list-group list-group-flush">
-                    <input class="list-group-item" type="text" id="InfoNombre" name="InfoNombre" value="" readonly>
-                    <input class="list-group-item" type="text" id="InfoCarrera" name="InfoCarrera" value="" readonly>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                </ul>
-                <!-- </div> -->
+                <div class="form-row align-items-center">
+                    <div class="col-sm-2 my-1">
+                        <label for="example-text-input" class="col-form-label">No. Control</label>
+                        <input class="form-control" type="text" id="InfoControl" readonly>
+                    </div>
+                    <div class="col-sm-5 my-1">
+                        <label for="example-text-input" class="col-form-label">Nombre</label>
+                        <input class="form-control" type="text" id="InfoNombre" readonly>
+                    </div>
+                    <div class="col-sm-5 my-1">
+                        <label for="example-text-input" class="col-form-label">Carrera</label>
+                        <input class="form-control" type="text" id="InfoCarrera" readonly>
+                    </div>
+                </div>
+                <div class="form-row align-items-center">
+                <div class="col-sm-3 my-1">
+                    <label for="example-text-input" class="col-form-label">Periodo</label>
+                    <input class="form-control" type="text" id="InfoPeriodo" readonly>
+                </div>
+                <div class="col-sm-2 my-1">
+                    <label for="example-text-input" class="col-form-label">Sexo</label>
+                    <input class="form-control" type="text" id="InfoSexo" readonly>
+                </div>
+                <div class="col-sm-3 my-1">
+                    <label for="example-text-input" class="col-form-label">Telefono</label>
+                    <input class="form-control" type="text" id="InfoTelefono" readonly>
+                </div>
+                <div class="col-sm-4 my-1">
+                    <label for="example-text-input" class="col-form-label">Tipo de registro</label>
+                    <input class="form-control" type="text" id="InfoTipo" readonly>
+                </div>
             </div>
+            <div class="form-row align-items-center">
+                <div class="col-sm-6 my-1">
+                    <label for="example-text-input" class="col-form-label">Nombre del proyecto</label>
+                    <input class="form-control" type="text" id="InfoProyecto" readonly>
+                </div>
+                <div class="col-sm-6 my-1">
+                    <label for="example-text-input" class="col-form-label">Empresa</label>
+                    <input class="form-control" type="text" id="InfoEmpresa" readonly>
+                </div>
+            </div>
+            <div class="form-row align-items-center">
+                <div class="col-sm-6 my-1">
+                    <label for="example-text-input" class="col-form-label">Asesor Externo</label>
+                    <input class="form-control" type="text" id="InfoAsesorExt" readonly>
+                </div>
+                <div class="col-sm-6 my-1">
+                    <label for="example-text-input" class="col-form-label">Asesor Interno</label>
+                    <input class="form-control" type="text" id="InfoAsesorInt" readonly>
+                </div>
+            </div>
+            <div class="form-row align-items-center">
+                <div class="col-sm-6 my-1">
+                    <label for="example-text-input" class="col-form-label">Revisor #1</label>
+                    <input class="form-control" type="text" id="InfoRevisor1" readonly>
+                </div>
+                <div class="col-sm-6 my-1">
+                    <label for="example-text-input" class="col-form-label">Revisor #2</label>
+                    <input class="form-control" type="text" id="InfoRevisor2" readonly>
+                </div>
+            </div>
+            <div class="form-row align-items-center">
+                <div class="col-sm-6 my-1">
+                    <label for="example-text-input" class="col-form-label">Revisor #3</label>
+                    <input class="form-control" type="text" id="InfoRevisor3" readonly>
+                </div>
+                <div class="col-sm-6 my-1">
+                    <label for="example-text-input" class="col-form-label">Suplente</label>
+                    <input class="form-control" type="text" id="InfoSuplente" readonly>
+                </div>
+            </div>
+            </div><!--  Fin row -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
