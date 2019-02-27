@@ -59,24 +59,26 @@ class ModeloResidentes
     static public function MdlMostrarInfoResidentes($tabla, $item, $valor)
     {
 
-        $stmt = Conexion::conectar()->prepare("SELECT CONCAT(residentes.nombre, ' ', residentes.apellidoP, ' ',residentes.apellidoM) AS 'nombre', 
-			residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero/Junio', 'Agosto/Diciembre'), ' ', 
-			residentes.anio) AS 'periodo',  IF(residentes.sexo = 'F', 'Femenino', 'Masculino') AS 'sexo', 
-			residentes.telefono,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional') 
-			AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, proyecto.asesorExt, asesorIntA.nombre 
-			AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', revisorC.nombre AS 'revisor3', suplenteA.nombre AS 'suplente' FROM " . $tabla . " 
-			inner join proyecto on residentes.proyecto_id = proyecto.id  
-			inner JOIN asesor AS asesorIntA ON proyecto.asesorInt = asesorIntA.id 
-			inner join asesor AS revisorA ON proyecto.revisor1 = revisorA.id 
-			inner join asesor AS revisorB ON proyecto.revisor2 = revisorB.id 
-			inner join asesor AS revisorC ON proyecto.revisor3 = revisorC.id 
-			inner join asesor AS suplenteA ON proyecto.suplente = suplenteA.id 
-			WHERE residentes.id = :id");
+        $stmt = Conexion::conectar()->prepare("SELECT residentes.noControl, concat(residentes.nombre, ' ', residentes.apellidoP, ' ',residentes.apellidoM) AS 'nombre', 
+        residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero/Junio', 'Agosto/Diciembre'), ' ', 
+        residentes.anio) AS 'periodo',  IF(residentes.sexo = 'F', 'Femenino', 'Masculino') AS 'sexo', 
+        residentes.telefono,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional') 
+        AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, 
+        IF(residentes.tipo_registro = '2', '---', proyecto.asesorExt) AS 'asesorExt', asesorIntA.nombre 
+        AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', 
+        IF(residentes.tipo_registro = '1','---',revisorC.nombre) AS 'revisor3', suplenteA.nombre AS 'suplente' FROM ".$tabla." 
+        inner join proyecto on residentes.proyecto_id = proyecto.id  
+        inner JOIN asesor AS asesorIntA ON proyecto.asesorInt = asesorIntA.id 
+        inner join asesor AS revisorA ON proyecto.revisor1 = revisorA.id 
+        inner join asesor AS revisorB ON proyecto.revisor2 = revisorB.id 
+        inner join asesor AS revisorC ON proyecto.revisor3 = revisorC.id 
+        inner join asesor AS suplenteA ON proyecto.suplente = suplenteA.id 
+        WHERE residentes.id = :id");
 
         $stmt->bindParam(":id", $valor, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch();
-        /* return $stmt -> fetchAll(); */
+        // return $stmt -> fetchAll();
         $stmt->close();
         $stmt = null;
     }
