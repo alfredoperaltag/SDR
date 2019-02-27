@@ -62,6 +62,7 @@ class ControladorDocentes
                 if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["editarNombre"])) {
                     $tabla = "asesor";
                     $datos = array(
+                        /* "id" => $_POST["editarid"] */
                         "nombre" => $_POST["editarNombre"]
                     );
                     $respuesta = modeloDocentes::mdlEditarDocente($tabla, $datos);

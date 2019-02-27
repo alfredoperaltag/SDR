@@ -39,5 +39,21 @@ class ModeloDocentes
         $stmt->close();
         $stmt = null;
     }
+    /*=============================================
+	EDITAR DOCENTES
+    =============================================*/
+    static public function mdlEditarDocente($tabla, $datos){
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre WHERE id = :id");
+        $stmt->bindParam(":id", $datos["id"], PDO::PARAM_STR);
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt->close();
+        $stmt = null;
+    }
+    
 }
-?>
+ 
