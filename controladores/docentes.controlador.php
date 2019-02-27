@@ -58,13 +58,13 @@ class ControladorDocentes
     public static function ctrEditarDocente()
     {
         {
-            if (isset($_POST["nuevoNombre"])) {
-                if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["nuevoNombre"])) {
+            if (isset($_POST["editarNombre"])) {
+                if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["editarNombre"])) {
                     $tabla = "asesor";
                     $datos = array(
-                        "nombre" => $_POST["nuevoNombre"]
+                        "nombre" => $_POST["editarNombre"]
                     );
-                    $respuesta = modeloDocentes::mdlIngresarDocente($tabla, $datos);
+                    $respuesta = modeloDocentes::mdlEditarDocente($tabla, $datos);
                     echo $respuesta;
                     if ($respuesta == "ok") {
                         echo '<script>
