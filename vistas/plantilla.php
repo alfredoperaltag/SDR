@@ -1,5 +1,7 @@
 <?php
 session_start();
+//$ruta = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME']));
+$ruta = "http://localhost/sdr/";
 ?>
 <!doctype html>
 <html class="no-js" lang="es">
@@ -10,12 +12,12 @@ session_start();
     <title>SISTEMA DE RESIDENCIAS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="shortcut icon" type="image/png" href="vistas/assets/images/icon/favicon.ico"> -->
-    <link rel="stylesheet" href="vistas/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="vistas/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="vistas/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="vistas/assets/css/metisMenu.css">
-    <link rel="stylesheet" href="vistas/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="vistas/assets/css/slicknav.min.css">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/bootstrap.min.css";?>">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/font-awesome.min.css";?>">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/themify-icons.css";?>">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/metisMenu.css";?>">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/owl.carousel.min.css";?>">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/slicknav.min.css";?>">
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="vistas/assets/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="vistas/assets/css/responsive.bootstrap.min.css">
