@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-md-3">
                     <div class="logo">
-                        <a href="inicio"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
+                        <a href="Inicio"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-md-9 clearfix text-right">
