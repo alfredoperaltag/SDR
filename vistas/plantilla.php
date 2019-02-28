@@ -1,6 +1,6 @@
 <?php
 session_start();
-//$ruta = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME']));
+// $rutaM = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME']))."/vistas/";
 $ruta = "http://localhost/sdr/";
 ?>
 <!doctype html>
@@ -19,19 +19,19 @@ $ruta = "http://localhost/sdr/";
     <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/owl.carousel.min.css";?>">
     <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/slicknav.min.css";?>">
     <!-- Start datatable css -->
-    <link rel="stylesheet" type="text/css" href="vistas/assets/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="vistas/assets/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="vistas/assets/css/responsive.jqueryui.min.css">
-    <link rel="stylesheet" type="text/css" href="vistas/assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $ruta."vistas/assets/css/dataTables.bootstrap4.min.css";?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $ruta."vistas/assets/css/responsive.bootstrap.min.css";?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $ruta."vistas/assets/css/responsive.jqueryui.min.css";?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $ruta."vistas/assets/css/jquery.dataTables.css";?>">
     <!-- others css -->
-    <link rel="stylesheet" href="vistas/assets/css/typography.css">
-    <link rel="stylesheet" href="vistas/assets/css/default-css.css">
-    <link rel="stylesheet" href="vistas/assets/css/styles.css">
-    <link rel="stylesheet" href="vistas/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/typography.css";?>">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/default-css.css";?>">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/styles.css";?>">
+    <link rel="stylesheet" href="<?php echo $ruta."vistas/assets/css/responsive.css";?>">
     <!-- modernizr css -->
-    <script src="vistas/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?php echo $ruta."vistas/assets/js/vendor/modernizr-2.8.3.min.js";?>"></script>
     <!-- sweetalert2 -->
-    <script src="vistas/assets/js/sweetalert2.all.min.js"></script>
+    <script src="<?php echo $ruta."vistas/assets/js/sweetalert2.all.min.js";?>""></script>
 </head>
 
 <!--=====================================
@@ -48,6 +48,7 @@ CUERPO DOCUMENTO
 
         if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
             include "modulos/cabezote.php";
+            // echo $rutaM."modulos/cabezote.php";
         } else {
             include "modulos/cabezoteUser.php";
         }
@@ -93,29 +94,29 @@ CUERPO DOCUMENTO
 
 
     <!-- jquery latest version -->
-    <script src="vistas/assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="<?php echo $ruta."vistas/assets/js/vendor/jquery-2.2.4.min.js";?>""></script>
     <!-- bootstrap 4 js -->
-    <script src="vistas/assets/js/popper.min.js"></script>
-    <script src="vistas/assets/js/bootstrap.min.js"></script>
-    <script src="vistas/assets/js/owl.carousel.min.js"></script>
-    <script src="vistas/assets/js/metisMenu.min.js"></script>
-    <script src="vistas/assets/js/jquery.slimscroll.min.js"></script>
-    <script src="vistas/assets/js/jquery.slicknav.min.js"></script>
+    <script src="<?php echo $ruta."vistas/assets/js/popper.min.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/bootstrap.min.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/owl.carousel.min.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/metisMenu.min.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/jquery.slimscroll.min.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/jquery.slicknav.min.js";?>""></script>
 
     <!-- Start datatable js -->
-    <script src="vistas/assets/js/jquery.dataTables.js"></script>
-    <script src="vistas/assets/js/jquery.dataTables.min.js"></script>
-    <script src="vistas/assets/js/dataTables.bootstrap4.min.js"></script>
-    <script src="vistas/assets/js/dataTables.responsive.min.js"></script>
-    <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>
+    <script src="<?php echo $ruta."vistas/assets/js/jquery.dataTables.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/jquery.dataTables.min.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/dataTables.bootstrap4.min.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/dataTables.responsive.min.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/responsive.bootstrap.min.js";?>""></script>
 
     <!-- others plugins -->
-    <script src="vistas/assets/js/docentes.js"></script>
-    <script src="vistas/assets/js/residentes.js"></script>
-    <script src="vistas/assets/js/usuarios.js"></script>
-    <script src="vistas/assets/js/plugins.js"></script>
-    <script src="vistas/assets/js/scripts.js"></script>
-    <script src="vistas/assets/js/table.js"></script>
+    <script src="<?php echo $ruta."vistas/assets/js/docentes.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/residentes.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/usuarios.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/plugins.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/scripts.js";?>""></script>
+    <script src="<?php echo $ruta."vistas/assets/js/table.js";?>""></script>
 </body>
 
 </html> 
