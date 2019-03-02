@@ -11,8 +11,10 @@ class ControladorUsuarios
 
         if (isset($_POST["username"])) {
 
-            if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["username"]) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])) {
+            if (
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["username"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])
+            ) {
 
                 $encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
                 $tabla = "usuarios";
@@ -37,7 +39,6 @@ class ControladorUsuarios
 								window.location = "Inicio";
 
 							</script>';
-
                     } else {
 
                         // echo '¡Usuario no activado!';
@@ -48,7 +49,6 @@ class ControladorUsuarios
 						</button>
 					</div>';
                     }
-
                 } else {
 
                     // echo '¡Usuario o contraseña incorrecta!';
@@ -58,25 +58,23 @@ class ControladorUsuarios
 						<span class="fa fa-times"></span>
 					</button>
 				</div>';
-
                 }
-
             }
-
         }
-
     }
 
-/*=============================================
-REGISTRO DE USUARIO
-=============================================*/
+    /*=============================================
+    REGISTRO DE USUARIO
+    =============================================*/
 
     public static function ctrCrearUsuario()
     {
         if (isset($_POST["nuevoUsuario"])) {
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
+            if (
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])) {
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])
+            ) {
 
                 if ($_POST["nuevoPassword"] != $_POST["confirmarPassword"]) {
                     echo '<script>
@@ -151,8 +149,10 @@ REGISTRO DE USUARIO
     public static function ctrEditarUsuario()
     {
         if (isset($_POST["editarUsuario"])) {
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarUsuario"])) {
+            if (
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarUsuario"])
+            ) {
                 $tabla = "usuarios";
                 if ($_POST["editarPassword"] != "" || $_POST["confirmarPassword"] != "") {
                     if ($_POST["editarPassword"] != $_POST["confirmarPassword"]) {
@@ -253,7 +253,6 @@ REGISTRO DE USUARIO
 				   });
 			 </script>';
             }
-
         }
     }
 }

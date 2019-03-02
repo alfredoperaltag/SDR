@@ -104,6 +104,7 @@ MODAL EDITAR DOCENTE
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
                             <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" required>
+                            <input type="hidden" id="idDocente" name="idDocente">
                         </div>
                     </div>
                     <div class="modal-footer">

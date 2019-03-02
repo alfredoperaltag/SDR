@@ -1,3 +1,6 @@
+/*<!--=====================================
+EDITAR DOCENTE
+======================================-->*/
 $(document).on("click", ".btnEditarDocente", function () {
     var idDocente = $(this).attr("idDocente");
     console.log("idDocente", idDocente);
@@ -14,6 +17,7 @@ $(document).on("click", ".btnEditarDocente", function () {
         success: function (respuesta) {
             console.log("respuesta", respuesta);
             $("#editarNombre").val(respuesta["nombre"]);
+            $("#idDocente").val(respuesta["id"]);
         }
     });
 })
