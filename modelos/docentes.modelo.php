@@ -6,7 +6,6 @@ class ModeloDocentes
     /*=============================================
 	MOSTRAR DOCENTES
 	=============================================*/
-
     static public function MdlMostrarDocentes($tabla, $item, $valor)
     {
 

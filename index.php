@@ -1,10 +1,8 @@
 <?php
-//Diferntes formas de retornar la direccion del servidor
-$ruta = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME'])) . "/";
-// $ruta = "http://localhost/sdr/";
-//$ruta = "sdriti.000webhostapp.com/";
-// $ruta = "C:laragon/www/SDR/";
-//$ruta = "";
+ //Diferntes formas de retornar la direccion del servidor
+//$ruta = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname($_SERVER['SCRIPT_FILENAME'])) . "/";
+//$ruta = "http://localhost/sdr/";
+$ruta = "C:laragon/www/SDR/";
 require_once $ruta . "controladores/plantilla.controlador.php";
 require_once $ruta . "controladores/usuarios.controlador.php";
 require_once $ruta . "controladores/residentes.controlador.php";
