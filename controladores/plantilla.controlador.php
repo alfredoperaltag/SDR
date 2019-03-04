@@ -3,6 +3,6 @@
 class ControladorPlantilla{
 
 	public function ctrPlantilla(){
-		include "vistas/Plantilla.php";
+		include "vistas/plantilla.php";
 	}
 }
