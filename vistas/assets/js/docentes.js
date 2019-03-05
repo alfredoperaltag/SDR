@@ -71,5 +71,18 @@ $(document).on("click", ".btnActivarDocente", function () {
 ELIMINAR DOCENTE
 ======================================-->*/
 $(document).on("click", ".btnEliminarDocente", function () {
-
+    var idDocente = $(this).attr("idDocente");
+    Swal.fire({
+        title: '¿Esta seguro de eliminarlo?',
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: "#d33",
+        cancelButtonText: 'Cancelar',
+        confirmButtontext: '¡Eliminar!'
+    }).then((result) => {
+        if (result.value) {
+            window.location = "index.php?ruta=Docentes&idDocente=" + idDocente;
+        }
+    })
 })

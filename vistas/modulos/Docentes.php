@@ -105,7 +105,7 @@ MODAL EDITAR DOCENTE
                             <label for="example-text-input" class="col-form-label">Nombre</label>
                             <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" required>
                             <!-- <input type="hidden" id="idDocente" name="idDocente"> -->
-                            <input type="hidden" id="idDocente" name="idDocente" value=<?php echo $value["id"] ?> >
+                            <input type="hidden" id="idDocente" name="idDocente" value=<?php echo $value["id"] ?>>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -120,4 +120,8 @@ MODAL EDITAR DOCENTE
             </form>
         </div>
     </div>
-</div> 
+</div>
+<?php
+$borrarDocente = new ControladorDocentes();
+$borrarDocente->ctrborrarDocente();
+?> 
