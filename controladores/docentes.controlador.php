@@ -101,5 +101,31 @@ class ControladorDocentes
             }
         }
     }
+    /*=============================================
+    BORRAR DOCENTE
+    =============================================*/
+    public static function ctrBorrarDocente(){
+        if (isset($_GET["idDocente"])) {
+            $tabla = "asesor";
+            $datos = $_GET["idDocente"];
+
+            $respuesta = ModeloDocentes::MdlBorrarDocente($tabla, $datos);
+            if ($respuesta == "ok") {
+                echo '<script>
+			   Swal.fire({
+					type: "success",
+				   title: "!Eliminado Correctamente",
+				   showConfirmButton: true,
+				   confirmButtonText: "Cerrar",
+				   closeOnConfirm: false
+			   }).then((result)=>{
+				   if(result.value){
+					   window.location = "Docentes";
+				   }
+				   });
+			 </script>';
+            }
+        }
+    }
 }
  
