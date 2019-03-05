@@ -120,8 +120,4 @@ MODAL EDITAR DOCENTE
             </form>
         </div>
     </div>
-</div>
-<?php
-$borrarDocente = new ControladorDocentes();
-$borrarDocente->ctrborrarDocente();
-?> 
+</div> 
