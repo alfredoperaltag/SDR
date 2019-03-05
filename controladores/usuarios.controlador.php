@@ -105,7 +105,7 @@ class ControladorUsuarios
                         echo '<script>
 				   Swal.fire({
 						type: "success",
-					   title: "!Registrado Correctamente",
+					   title: "¡Registrado Correctamente!",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
 					   closeOnConfirm: false
@@ -121,7 +121,7 @@ class ControladorUsuarios
                 echo '<script>
 				   Swal.fire({
 						type: "error",
-					   title: "!El usuario no puede estar vacio o llevar caracteres especiales",
+					   title: "¡El usuario no puede estar vacio o llevar caracteres especiales!",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
 					   closeOnConfirm: false
@@ -159,7 +159,7 @@ class ControladorUsuarios
                         echo '<script>
 				   Swal.fire({
 						type: "error",
-					   title: "!La contraseña NO Coincide!",
+					   title: "¡La contraseña NO Coincide!",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
 					   closeOnConfirm: false
@@ -175,7 +175,7 @@ class ControladorUsuarios
                         echo '<script>
 				   Swal.fire({
 						type: "error",
-					   title: "!La contraseña no puede estar vacio o llevar caracteres especiales",
+					   title: "¡La contraseña no puede estar vacio o llevar caracteres especiales!",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
 					   closeOnConfirm: false
@@ -200,7 +200,7 @@ class ControladorUsuarios
                     echo '<script>
 			   Swal.fire({
 					type: "success",
-				   title: "!Modificado Correctamente",
+				   title: "¡Modificado Correctamente!",
 				   showConfirmButton: true,
 				   confirmButtonText: "Cerrar",
 				   closeOnConfirm: false
@@ -215,7 +215,7 @@ class ControladorUsuarios
                 echo '<script>
 				Swal.fire({
 					 type: "error",
-					title: "!El usuario no puede estar vacio o llevar caracteres especiales",
+					title: "¡El usuario no puede estar vacio o llevar caracteres especiales!",
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar",
 					closeOnConfirm: false
@@ -242,7 +242,7 @@ class ControladorUsuarios
                 echo '<script>
 			   Swal.fire({
 					type: "success",
-				   title: "!Eliminado Correctamente",
+				   title: "¡Eliminado Correctamente!",
 				   showConfirmButton: true,
 				   confirmButtonText: "Cerrar",
 				   closeOnConfirm: false

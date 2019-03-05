@@ -15,7 +15,7 @@ class ControladorDocentes
                     echo '<script>
                     Swal.fire({
                     type: "success",
-                    title: "!Registrado Correctamente",
+                    title: "¡Registrado Correctamente!",
                     showConfirmButton: true,
                     confirmButtonText: "Cerrar",
                     closeOnConfirm: false
@@ -30,7 +30,7 @@ class ControladorDocentes
                 echo '<script>
 				   Swal.fire({
 						type: "error",
-					   title: "!El campo nombre no puede estar vacio o llevar caracteres especiales",
+					   title: "¡El campo nombre no puede estar vacio o llevar caracteres especiales!",
 					   showConfirmButton: true,
 					   confirmButtonText: "Cerrar",
 					   closeOnConfirm: false
@@ -72,7 +72,7 @@ class ControladorDocentes
                         echo '<script>
                         Swal.fire({
                         type: "success",
-                        title: "!Registrado Correctamente",
+                        title: "¡Actualizado Correctamente!",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar",
                         closeOnConfirm: false
@@ -87,7 +87,7 @@ class ControladorDocentes
                     echo '<script>
                        Swal.fire({
                             type: "error",
-                           title: "!El campo nombre no puede estar vacio o llevar caracteres especiales",
+                           title: "¡El campo nombre no puede estar vacio o llevar caracteres especiales!",
                            showConfirmButton: true,
                            confirmButtonText: "Cerrar",
                            closeOnConfirm: false
@@ -114,7 +114,7 @@ class ControladorDocentes
                 echo '<script>
 			   Swal.fire({
 					type: "success",
-				   title: "!Eliminado Correctamente",
+				   title: "¡Eliminado Correctamente!",
 				   showConfirmButton: true,
 				   confirmButtonText: "Cerrar",
 				   closeOnConfirm: false
