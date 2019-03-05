@@ -64,7 +64,7 @@ MODAL AGREGAR DOCENTE
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo" required>
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo" autocomplete="off" required>
                         </div>
                     </div>
                     <!--=====================================
@@ -105,7 +105,7 @@ MODAL EDITAR DOCENTE
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" required>
+                            <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" autocomplete="off" required>
                             <!-- <input type="hidden" id="idDocente" name="idDocente"> -->
                             <input type="hidden" id="idDocente" name="idDocente" value=<?php echo $value["id"] ?>>
                         </div>
