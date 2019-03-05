@@ -64,7 +64,7 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControlRP" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -217,7 +217,7 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
                 <?php
 
                 $RegistrarResidente = new ControladorResidentes();
-                $RegistrarResidente->ctrRegistrarResidentes();
+                $RegistrarResidente->ctrRegistrarResidentesRP();
 
                 ?>
 
@@ -238,7 +238,7 @@ TESIS PROFESIONAL
               CABEZA DEL MODAL
               ======================================-->
             <div class="modal-header" style="background:#DC3545; color:white">
-                <h5 class="modal-title">Alta Residente - Informe Tecnico de Residencias Profecionales</h5>
+                <h5 class="modal-title">Alta Residente - Tesis Profesional</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form role="form" method="post" enctype="multipart/form-data">
@@ -254,15 +254,15 @@ TESIS PROFESIONAL
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControlT" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="nuevoCarrera" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="ISC">Ingenieria en Sistemas Computacionales</option>
-                                    <option value="II">Ingenieria Informatica</option>
+                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas Computacionales</option>
+                                    <option value="Ingenieria Informatica">Ingenieria Informatica</option>
                                 </select>
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->
@@ -367,7 +367,7 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA REVISOR #1 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #2</label>
-                            <select class="custom-select" name="nuevoRevisor1" required>
+                            <select class="custom-select" name="nuevoRevisor2" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -378,7 +378,7 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA REVISOR #2 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #3</label>
-                            <select class="custom-select" name="nuevoRevisor2" required>
+                            <select class="custom-select" name="nuevoRevisor3" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -408,6 +408,14 @@ TESIS PROFESIONAL
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                     <button type="submit" class="btn btn-primary">Guardar residente</button>
                 </div>
+
+                <?php
+
+                $RegistrarResidente = new ControladorResidentes();
+                $RegistrarResidente->ctrRegistrarResidentesT();
+
+                ?>
+
         </div>
         </form>
 

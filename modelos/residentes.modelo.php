@@ -105,6 +105,7 @@ class ModeloResidentes
         if ($stmt->execute()) {
             return "ok";
         } else {
+            print_r($stmt->errorInfo());
             return "error";
         }
 
@@ -151,5 +152,18 @@ class ModeloResidentes
         $stmt->close();
         $stmt = null;
     }
+
+
+    /*=============================================
+	ELIMINAR PROYECTO SI SALE MAL EL REGISTRO
+	=============================================*/
+
+    static public function mdlEliminarPro($tabla, $dato)
+    {
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE = :id");
+        $stmt->execute(['id' => $dato]);
+        return $stmt->fetch();
+    }
+
 }
 
