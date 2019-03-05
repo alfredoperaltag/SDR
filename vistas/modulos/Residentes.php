@@ -4,7 +4,7 @@
         <div class="card-body">
             <!-- <h1 class="header-title">Usuarios</h1> -->
             <button class="btn btn-success btn-xs mb-3" data-toggle="modal" data-target="#modalITDRP">Informe Tecnico
-                de<br> Residencias Profecionales</button>
+                de<br> Residencias Profesionales</button>
             <button class="btn btn-danger btn-xs mb-3" data-toggle="modal" data-target="#modalTP">Tesis <br>
                 Profesional</button>
             <div class="data-tables datatable-primary">
@@ -38,7 +38,7 @@
 
 
 <!--=====================================
-INFORME TECNICO DE RESIDENCIAS PROFECIONALES
+INFORME TECNICO DE RESIDENCIAS Profesionales
 ======================================-->
 
 <div class="modal fade" id="modalITDRP">
@@ -48,7 +48,7 @@ INFORME TECNICO DE RESIDENCIAS PROFECIONALES
               CABEZA DEL MODAL
               ======================================-->
             <div class="modal-header" style="background:#28A745; color:white">
-                <h5 class="modal-title">Alta Residente - Informe Tecnico de Residencias Profecionales</h5>
+                <h5 class="modal-title">Alta Residente - Informe Tecnico de Residencias Profesionales</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form role="form" method="post" enctype="multipart/form-data">
@@ -450,12 +450,12 @@ EDITAR RESIDENTE
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControl" placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="editNoControlEdit" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
                                 <label class="col-form-label">Carrera</label>
-                                <select class="custom-select" name="nuevoCarrera" required>
+                                <select class="custom-select" name="editCarrera" required>
                                     <option value="">Selecionar carrera</option>
                                     <option value="ISC">Ingenieria en Sistemas Computacionales</option>
                                     <option value="II">Ingenieria Informatica</option>
@@ -464,7 +464,7 @@ EDITAR RESIDENTE
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->
                             <div class="col-sm-3 my-1">
                                 <label class="col-form-label">Periodo</label>
-                                <select class="custom-select" name="nuevoPeriodo" required>
+                                <select class="custom-select" name="editPeriodo" required>
                                     <option value="">Selecionar periodo</option>
                                     <option value="EJ">Enero/Junio</option>
                                     <option value="AD">Agosto/Diciembre</option>
@@ -476,7 +476,7 @@ EDITAR RESIDENTE
                                 <?php
                                 $cont = date('Y');
                                 ?>
-                                <select class="custom-select" name="nuevoPeriodoAnio" required>
+                                <select class="custom-select" name="editPeriodoAnio" required>
                                     <?php while ($cont >= 2018) { ?>
                                     <option name="anio" value="<?php echo ($cont); ?>">
                                         <?php echo ($cont); ?>
@@ -492,24 +492,24 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required autocomplete="off">
+                            <input class="form-control" type="text" name="editNombre" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
+                            <input class="form-control" type="text" name="editApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno" required autocomplete="off">
+                            <input class="form-control" type="text" name="editApellidoM" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA SELECCIONAR SU SEXO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Sexo</label>
-                            <select class="custom-select" name="nuevoSexo" required>
+                            <select class="custom-select" name="editSexo" required>
                                 <option value="">Selecionar sexo</option>
                                 <option value="F">Femenino</option>
                                 <option value="M">Masculino</option>
@@ -518,7 +518,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono" autocomplete="off">
+                            <input class="form-control" type="tel" name="editTelefono" placeholder="Telefono" autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -527,19 +527,19 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <input class="form-control" type="text" name="editNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <input class="form-control" type="text" name="editNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
-                            <select class="custom-select" name="nuevoAsesorInt" required>
+                            <select class="custom-select" name="editAsesorInt" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -550,7 +550,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA REVISOR #1 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #1</label>
-                            <select class="custom-select" name="nuevoRevisor1" required>
+                            <select class="custom-select" name="editRevisor1" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -563,7 +563,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA REVISOR #1 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #2</label>
-                            <select class="custom-select" name="nuevoRevisor1" required>
+                            <select class="custom-select" name="editRevisor1" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -574,7 +574,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA REVISOR #2 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #3</label>
-                            <select class="custom-select" name="nuevoRevisor2" required>
+                            <select class="custom-select" name="editRevisor2" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -587,7 +587,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA SUPLENTE -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Suplente</label>
-                            <select class="custom-select" name="nuevoSuplente" required>
+                            <select class="custom-select" name="editSuplente" required>
                                 <option value="">Selecionar suplente</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -650,7 +650,7 @@ INFORMACION RESIDENTE
                 </div>
                 <div class="col-sm-3 my-1">
                     <label for="example-text-input" class="col-form-label">Telefono</label>
-                    <input class="form-control" type="text" id="InfoTelefono" readonly>
+                    <input class="form-control" type="tel" id="InfoTelefono" readonly>
                 </div>
                 <div class="col-sm-4 my-1">
                     <label for="example-text-input" class="col-form-label">Tipo de registro</label>
@@ -718,10 +718,10 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
             </div>
             <div class="modal-body">
                 <button type="button" class="btn btn-success btn-lg btn-block">Dictamen de anteproyecto de Residencias
-                    Profecionales</button>
+                    Profesionales</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Asignación de asesor</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Liberacion de Residencias
-                    Profecionales</button>
+                    Profesionales</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Asignacion de jurado</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Comision para titulación</button>
                 <button type="button" class="btn btn-success btn-lg btn-block">Ofició de asignacion de sinodales</button>

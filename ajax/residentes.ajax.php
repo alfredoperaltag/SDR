@@ -15,13 +15,29 @@ class AjaxResidentes
         $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
         echo json_encode($respuesta);
     }
+    //Editar residente
+    public function ajaxEditResidente()
+    {
+        $item = "id";
+        $valor = $this->idResidente;
+        $respuesta = ControladorResidentes::ctrMostrarEditarResidentes($item, $valor);
+        echo json_encode($respuesta);
+    }
 }
 /*<!--=====================================
-    INFO RESIDENTE
-    ======================================-->*/
+INFO RESIDENTE
+======================================-->*/
+if (isset($_POST["idResidente"])) {
+    $ver = new AjaxResidentes();
+    $ver->idResidente = $_POST["idResidente"];
+    $ver->ajaxInfoResidente();
+}
+
+/*<!--=====================================
+EDITAR RESIDENTE
+======================================-->*/
 if (isset($_POST["idResidente"])) {
     $editar = new AjaxResidentes();
     $editar->idResidente = $_POST["idResidente"];
-    /* $_SERVER["infoResidenteSelect"] = $_POST["idResidente"]; */
-    $editar->ajaxInfoResidente();
+    $editar->ajaxEditResidente();
 }
