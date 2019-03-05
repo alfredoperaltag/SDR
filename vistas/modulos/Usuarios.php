@@ -76,12 +76,12 @@ MODAL AGREGAR USUARIO
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo" required>
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo" autocomplete="off" required>
                         </div>
                         <!-- ENTRADA PARA EL USUARIO -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Usuario</label>
-                            <input class="form-control" type="text" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingresar usuario" required>
+                            <input class="form-control" type="text" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingresar usuario" autocomplete="off" required>
                         </div>
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
@@ -156,7 +156,7 @@ MODAL EDITAR USUARIO
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" required>
+                            <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" autocomplete="off" required>
                         </div>
                         <!-- ENTRADA PARA EL USUARIO -->
                         <div class="form-group">
