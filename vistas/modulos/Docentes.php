@@ -21,9 +21,9 @@
                             echo '<tr>
                             <td>' . $value["nombre"] . '</td>';
                             if ($value["estado"] != 0) {
-                                echo '<td><button class="btn btn-success btn-xs btnActivar" idDocente="' . $value["id"] . '" estadoDocente="0">Activado</button></td>';
+                                echo '<td><button class="btn btn-success btn-xs btnActivarDocente" idDocente="' . $value["id"] . '" estadoDocente="0">Activado</button></td>';
                             } else {
-                                echo '<td><button class="btn btn-danger btn-xs btnActivar" idDocente="' . $value["id"] . '" estadoDocente="1">Desactivado</button></td>';
+                                echo '<td><button class="btn btn-danger btn-xs btnActivarDocente" idDocente="' . $value["id"] . '" estadoDocente="1">Desactivado</button></td>';
                             }
                             echo '<td>
                                 <div class="btn-group">
@@ -120,4 +120,8 @@ MODAL EDITAR DOCENTE
             </form>
         </div>
     </div>
-</div> 
+</div>
+<?php
+$borrarDocente = new ControladorDocentes();
+$borrarDocente->ctrborrarDocente();
+?> 

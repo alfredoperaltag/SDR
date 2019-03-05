@@ -21,3 +21,19 @@ $(document).on("click", ".btnEditarDocente", function () {
         }
     });
 })
+/*<!--=====================================
+ACTIVAR DOCENTE
+======================================-->*/
+$(document).on("click", ".btnActivarDocente", function () {
+    var idDocente = $(this).attr("idDocente");
+    var estadoDocente = $(this).attr("estadoDocente");
+
+    var datos = new FormData();
+    datos.append("activarId", idDocente);
+})
+/*<!--=====================================
+ELIMINAR DOCENTE
+======================================-->*/
+$(document).on("click", ".btnEliminarDocente", function () {
+
+})
