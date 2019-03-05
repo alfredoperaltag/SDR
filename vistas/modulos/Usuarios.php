@@ -21,23 +21,24 @@
                         $valor = null;
                         $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
                         foreach ($usuarios as $key => $value) {
-                            echo '<tr>                        
-                        <td>' . $value["nombre"] . '</td>
-                        <td>' . $value["usuario"] . '</td>                        
-                        
-                        <td>' . $value["perfil"] . '</td>';
-                            if ($value["estado"] != 0) {
-                                echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
-                            } else {
-                                echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="1">Desactivado</button></td>';
+                            if ($_SESSION['usuario'] != $value["usuario"]) {
+                                echo '<tr>
+                                        <td>' . $value["nombre"] . '</td>
+                                        <td>' . $value["usuario"] . '</td>
+                                        <td>' . $value["perfil"] . '</td>';
+                                if ($value["estado"] != 0) {
+                                    echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0">Activado</button></td>';
+                                } else {
+                                    echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="1">Desactivado</button></td>';
+                                }
+                                echo '<td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-danger btnEliminarUsuario" idUsuario="' . $value["id"] . '"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>';
                             }
-                            echo '<td>
-                            <div class="btn-group">
-                                <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger btnEliminarUsuario" idUsuario="' . $value["id"] . '"><i class="fa fa-times"></i></button>
-                            </div>
-                        </td>
-                    </tr>';
                         }
                         ?>
                         <!-- 
