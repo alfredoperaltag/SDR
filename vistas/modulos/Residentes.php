@@ -452,6 +452,7 @@ EDITAR RESIDENTE
                     <div class="box-body">
                         <h6>Datos de Alumnos</h6>
                         <div class="form-row align-items-center">
+                        <input type="hidden" id="idResidenteEdit" name="idResidenteEdit"> 
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
@@ -534,6 +535,7 @@ EDITAR RESIDENTE
                     <hr>
                     <h6>Datos de Proyecto</h6>
                     <div class="form-row align-items-center">
+                    <input type="hidden" id="idProyectoEdit" name="idProyectoEdit"> 
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>

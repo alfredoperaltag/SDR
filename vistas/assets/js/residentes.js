@@ -81,6 +81,7 @@ $(document).on("click", ".btnEditResidente", function () {
 
             if (respuesta["asesorExt"] == 0) {
                 // console.log("respuesta::", respuesta);
+                $("#idResidenteEdit").val(respuesta["idR"]);
                 $("#editNoControlEdit").val(respuesta["noControl"]);
                 $("#editCarrera").val(respuesta["carrera"]);
                 $("#editPeriodo").val(respuesta["periodo"]);
@@ -91,6 +92,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
                 $("#editTipo").val(respuesta["tipo"]);
+                $("#idProyectoEdit").val(respuesta["idP"]);
                 $("#editNombreProyecto").val(respuesta["nombreProyecto"]);
                 $("#editNombreEmpresa").val(respuesta["nombreEmpresa"]);
                 $("#editAsesorInt").val(respuesta["asesorInt"]);
@@ -103,6 +105,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editSuplente").val(respuesta["suplente"]);
             } else {
                 // console.log("respuesta::", respuesta);
+                $("#idResidenteEdit").val(respuesta["idR"]);
                 $("#editNoControlEdit").val(respuesta["noControl"]);
                 $("#editCarrera").val(respuesta["carrera"]);
                 $("#editPeriodo").val(respuesta["periodo"]);
@@ -113,6 +116,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
                 $("#editTipo").val(respuesta["tipo"]);
+                $("#idProyectoEdit").val(respuesta["idP"]);
                 $("#editNombreProyecto").val(respuesta["nombreProyecto"]);
                 $("#editNombreEmpresa").val(respuesta["nombreEmpresa"]);
                 $("#editAsesorInt").val(respuesta["asesorInt"]);
