@@ -3,10 +3,15 @@
         <h2 class="ml-4">Residentes</h2>
         <div class="card-body">
             <!-- <h1 class="header-title">Usuarios</h1> -->
-            <button class="btn btn-success btn-xs mb-3" data-toggle="modal" data-target="#modalITDRP">Informe Tecnico
+            <?php 
+            if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+                echo '<button class="btn btn-success btn-xs mb-3" data-toggle="modal" data-target="#modalITDRP">Informe Tecnico
                 de<br> Residencias Profesionales</button>
             <button class="btn btn-danger btn-xs mb-3" data-toggle="modal" data-target="#modalTP">Tesis <br>
-                Profesional</button>
+                Profesional</button>';
+             }
+             ?>
+            
             <div class="data-tables datatable-primary">
                 <table class="text-center tablaES">
                     <thead class="text-capitalize">
@@ -555,7 +560,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Asesor Externo</label>
-                            <input class="form-control" type="text" name="editAsesorExt" id="editAsesorExt" placeholder="Nombre del asesor" required autocomplete="off">
+                            <input class="form-control" type="text" name="editAsesorExt" id="editAsesorExt" placeholder="No llena asesor externo" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">

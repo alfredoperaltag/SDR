@@ -47,8 +47,12 @@ class ControladorResidentes
                             <td>' . $value["nombreProyecto"] . '</td>
                             <td>' . $value["tipo"] . '</td>
                             <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>
+                                <div class="btn-group">';
+
+                                if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+                                   echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>';
+                                }
+                                    echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
                                     <button class="btn btn-success" data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
                                 </div>
