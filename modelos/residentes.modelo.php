@@ -91,20 +91,13 @@ class ModeloResidentes
     static public function MdlMostrarEditResidentes($tabla, $item, $valor)
     {
 
-        $stmt = Conexion::conectar()->prepare("SELECT residentes.noControl, concat(residentes.nombre, ' ', residentes.apellidoP, ' ',residentes.apellidoM) AS 'nombre', 
-        residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero/Junio', 'Agosto/Diciembre'), ' ', 
-        residentes.anio) AS 'periodo',  IF(residentes.sexo = 'F', 'Femenino', 'Masculino') AS 'sexo', 
-        residentes.telefono,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional') 
-        AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, 
-        IF(residentes.tipo_registro = '2', '---', proyecto.asesorExt) AS 'asesorExt', asesorIntA.nombre 
-        AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', 
-        IF(residentes.tipo_registro = '1','---',revisorC.nombre) AS 'revisor3', suplenteA.nombre AS 'suplente' FROM ".$tabla." 
-        inner join proyecto on residentes.proyecto_id = proyecto.id  
-        inner JOIN asesor AS asesorIntA ON proyecto.asesorInt = asesorIntA.id 
-        inner join asesor AS revisorA ON proyecto.revisor1 = revisorA.id 
-        inner join asesor AS revisorB ON proyecto.revisor2 = revisorB.id 
-        inner join asesor AS revisorC ON proyecto.revisor3 = revisorC.id 
-        inner join asesor AS suplenteA ON proyecto.suplente = suplenteA.id 
+        $stmt = Conexion::conectar()->prepare("SELECT residentes.id AS 'idR', residentes.noControl, IF(residentes.carrera = 'Ingenieria en Sistemas Computacionales', 'ISC', 'II') AS 'carrera', residentes.periodo, residentes.anio,
+        residentes.nombre, residentes.apellidoP, residentes.apellidoM, 
+        residentes.sexo, residentes.telefono, residentes.tipo_registro, proyecto.id AS 'idP', proyecto.nombreProyecto, 
+        proyecto.nombreEmpresa, proyecto.asesorInt, proyecto.asesorExt, proyecto.revisor1, proyecto.revisor2, 
+        proyecto.revisor3, proyecto.suplente
+        FROM residentes 
+        INNER JOIN proyecto ON residentes.proyecto_id = proyecto.id
         WHERE residentes.id = :id");
 
         $stmt->bindParam(":id", $valor, PDO::PARAM_INT);

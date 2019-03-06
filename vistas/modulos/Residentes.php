@@ -450,12 +450,12 @@ EDITAR RESIDENTE
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="editNoControlEdit" placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" id="editNoControlEdit" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
                                 <label class="col-form-label">Carrera</label>
-                                <select class="custom-select" name="editCarrera" required>
+                                <select class="custom-select" id="editCarrera" required>
                                     <option value="">Selecionar carrera</option>
                                     <option value="ISC">Ingenieria en Sistemas Computacionales</option>
                                     <option value="II">Ingenieria Informatica</option>
@@ -464,7 +464,7 @@ EDITAR RESIDENTE
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->
                             <div class="col-sm-3 my-1">
                                 <label class="col-form-label">Periodo</label>
-                                <select class="custom-select" name="editPeriodo" required>
+                                <select class="custom-select" id="editPeriodo" required>
                                     <option value="">Selecionar periodo</option>
                                     <option value="EJ">Enero/Junio</option>
                                     <option value="AD">Agosto/Diciembre</option>
@@ -476,7 +476,7 @@ EDITAR RESIDENTE
                                 <?php
                                 $cont = date('Y');
                                 ?>
-                                <select class="custom-select" name="editPeriodoAnio" required>
+                                <select class="custom-select" id="editPeriodoAnio" required>
                                     <?php while ($cont >= 2018) { ?>
                                     <option name="anio" value="<?php echo ($cont); ?>">
                                         <?php echo ($cont); ?>
@@ -492,24 +492,24 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="editNombre" placeholder="Nombre" required autocomplete="off">
+                            <input class="form-control" type="text" id="editNombre" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="editApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
+                            <input class="form-control" type="text" id="editApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="editApellidoM" placeholder="Apellido Materno" required autocomplete="off">
+                            <input class="form-control" type="text" id="editApellidoM" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA SELECCIONAR SU SEXO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Sexo</label>
-                            <select class="custom-select" name="editSexo" required>
+                            <select class="custom-select" id="editSexo" required>
                                 <option value="">Selecionar sexo</option>
                                 <option value="F">Femenino</option>
                                 <option value="M">Masculino</option>
@@ -518,7 +518,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="editTelefono" placeholder="Telefono" autocomplete="off">
+                            <input class="form-control" type="tel" id="editTelefono" placeholder="Telefono" autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -527,19 +527,19 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="editNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <input class="form-control" type="text" id="editNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="editNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <input class="form-control" type="text" id="editNombreEmpresa" placeholder="Nombre del asesor" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
-                            <select class="custom-select" name="editAsesorInt" required>
+                            <select class="custom-select" id="editAsesorInt" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -547,23 +547,17 @@ EDITAR RESIDENTE
                                 ?>
                             </select>
                         </div>
-                        <!-- ENTRADA PARA REVISOR #1 -->
+                        <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
-                            <label class="col-form-label">Revisor #1</label>
-                            <select class="custom-select" name="editRevisor1" required>
-                                <option value="">Selecionar revisor</option>
-                                <?php
-                                $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
-                                ?>
-                            </select>
+                            <label for="example-text-input" class="col-form-label">Asesor Externo</label>
+                            <input class="form-control" type="text" id="editAsesorExt" placeholder="Nombre del asesor" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
-                        <!-- ENTRADA PARA REVISOR #1 -->
-                        <div class="col-sm-6 my-1">
-                            <label class="col-form-label">Revisor #2</label>
-                            <select class="custom-select" name="editRevisor1" required>
+                    <!-- ENTRADA PARA REVISOR #1 -->
+                    <div class="col-sm-6 my-1">
+                            <label class="col-form-label">Revisor #1</label>
+                            <select class="custom-select" id="editRevisor1" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -573,8 +567,8 @@ EDITAR RESIDENTE
                         </div>
                         <!-- ENTRADA PARA REVISOR #2 -->
                         <div class="col-sm-6 my-1">
-                            <label class="col-form-label">Revisor #3</label>
-                            <select class="custom-select" name="editRevisor2" required>
+                            <label class="col-form-label">Revisor #2</label>
+                            <select class="custom-select" id="editRevisor2" required>
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -582,12 +576,24 @@ EDITAR RESIDENTE
                                 ?>
                             </select>
                         </div>
+                        
                     </div>
                     <div class="form-row align-items-center">
+                    <!-- ENTRADA PARA REVISOR #3 -->
+                    <div class="col-sm-6 my-1">
+                            <label class="col-form-label">Revisor #3</label>
+                            <select class="custom-select" id="editRevisor3" required>
+                                <option value="">Selecionar revisor</option>
+                                <?php
+                                $verDocente = new ControladorResidentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                ?>
+                            </select>
+                        </div>
                         <!-- ENTRADA PARA SUPLENTE -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Suplente</label>
-                            <select class="custom-select" name="editSuplente" required>
+                            <select class="custom-select" id="editSuplente" required>
                                 <option value="">Selecionar suplente</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -605,7 +611,10 @@ EDITAR RESIDENTE
                     <button type="submit" class="btn btn-primary">Guardar residente</button>
                 </div>
 
-
+                <?php
+                $editarResidente = new ControladorResidentes();
+                $editarResidente->ctrEditarResidente();
+                ?>
 
             </form>
         </div>

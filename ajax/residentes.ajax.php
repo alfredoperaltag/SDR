@@ -36,8 +36,8 @@ if (isset($_POST["idResidente"])) {
 /*<!--=====================================
 EDITAR RESIDENTE
 ======================================-->*/
-if (isset($_POST["idResidente"])) {
+if (isset($_POST["idResidenteEdit"])) {
     $editar = new AjaxResidentes();
-    $editar->idResidente = $_POST["idResidente"];
+    $editar->idResidente = $_POST["idResidenteEdit"];
     $editar->ajaxEditResidente();
 }
