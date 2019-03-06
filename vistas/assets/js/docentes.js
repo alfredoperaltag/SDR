@@ -17,7 +17,7 @@ $(document).on("click", ".btnEditarDocente", function () {
         success: function (respuesta) {
             console.log("respuesta", respuesta);
             $("#editarNombre").val(respuesta["nombre"]);
-            /* $("#idDocente").val(respuesta["id"]); */
+            $("#idDocente").val(respuesta["id"]);
         }
     });
 })
