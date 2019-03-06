@@ -16,7 +16,7 @@ $(document).on("click", ".btnInfoResidente", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            console.log("respuesta::", respuesta);
+            // console.log("respuesta::", respuesta);
             $("#InfoControl").val(respuesta["noControl"]);
             $("#InfoNombre").val(respuesta["nombre"]);
             $("#InfoCarrera").val(respuesta["carrera"]);
@@ -44,7 +44,7 @@ $(document).on("click", ".btnInfoResidente", function () {
 
 $(document).on("click", ".btnEditResidente", function () {
     var idResidente = $(this).attr("idResidenteEdit");
-    console.log("idResidenteEdit Edit =", idResidente);
+    // console.log("idResidenteEdit Edit =", idResidente);
     var datos = new FormData();
     datos.append("idResidenteEdit", idResidente);
     $.ajax({
@@ -66,6 +66,8 @@ $(document).on("click", ".btnEditResidente", function () {
             $("#editApellidoM").val(null);
             $("#editSexo").val(null);
             $("#editTelefono").val(null);
+            $("#editTipo").val(null);
+            $("#editTipo").attr("readonly", "readonly");
             $("#editNombreProyecto").val(null);
             $("#editNombreEmpresa").val(null);
             $("#editAsesorInt").val(null);
@@ -78,7 +80,7 @@ $(document).on("click", ".btnEditResidente", function () {
             $("#editSuplente").val(null);
 
             if (respuesta["asesorExt"] == 0) {
-                console.log("respuesta::", respuesta);
+                // console.log("respuesta::", respuesta);
                 $("#editNoControlEdit").val(respuesta["noControl"]);
                 $("#editCarrera").val(respuesta["carrera"]);
                 $("#editPeriodo").val(respuesta["periodo"]);
@@ -88,6 +90,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editApellidoM").val(respuesta["apellidoM"]);
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
+                $("#editTipo").val(respuesta["tipo"]);
                 $("#editNombreProyecto").val(respuesta["nombreProyecto"]);
                 $("#editNombreEmpresa").val(respuesta["nombreEmpresa"]);
                 $("#editAsesorInt").val(respuesta["asesorInt"]);
@@ -99,7 +102,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editRevisor3").val(respuesta["revisor3"]);
                 $("#editSuplente").val(respuesta["suplente"]);
             } else {
-                console.log("respuesta::", respuesta);
+                // console.log("respuesta::", respuesta);
                 $("#editNoControlEdit").val(respuesta["noControl"]);
                 $("#editCarrera").val(respuesta["carrera"]);
                 $("#editPeriodo").val(respuesta["periodo"]);
@@ -109,6 +112,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editApellidoM").val(respuesta["apellidoM"]);
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
+                $("#editTipo").val(respuesta["tipo"]);
                 $("#editNombreProyecto").val(respuesta["nombreProyecto"]);
                 $("#editNombreEmpresa").val(respuesta["nombreEmpresa"]);
                 $("#editAsesorInt").val(respuesta["asesorInt"]);

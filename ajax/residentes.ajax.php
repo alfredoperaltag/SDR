@@ -8,6 +8,7 @@ class AjaxResidentes
     INFO RESIDENTE
     ======================================-->*/
     public $idResidente;
+    public $idResidenteEdit;
     public function ajaxInfoResidente()
     {
         $item = "id";
@@ -19,7 +20,7 @@ class AjaxResidentes
     public function ajaxEditResidente()
     {
         $item = "id";
-        $valor = $this->idResidente;
+        $valor = $this->idResidenteEdit;
         $respuesta = ControladorResidentes::ctrMostrarEditarResidentes($item, $valor);
         echo json_encode($respuesta);
     }
@@ -38,6 +39,6 @@ EDITAR RESIDENTE
 ======================================-->*/
 if (isset($_POST["idResidenteEdit"])) {
     $editar = new AjaxResidentes();
-    $editar->idResidente = $_POST["idResidenteEdit"];
+    $editar->idResidenteEdit = $_POST["idResidenteEdit"];
     $editar->ajaxEditResidente();
 }

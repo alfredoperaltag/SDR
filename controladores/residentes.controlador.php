@@ -69,7 +69,7 @@ class ControladorResidentes
 
 
     /*=============================================
-    EDITAR DEL RESIDENTE
+    EDITAR DEL RESIDENTE PARA MOSTRAR INFO EN MODAL
     =============================================*/
     public static function ctrMostrarEditarResidentes($item, $valor)
     {
@@ -77,7 +77,6 @@ class ControladorResidentes
         $respuesta = ModeloResidentes::MdlMostrarEditResidentes($tabla, $item, $valor);
         return $respuesta;
     }
-
 
 
     /*=============================================
@@ -91,8 +90,6 @@ class ControladorResidentes
             $tabla1 = "proyecto";
             $tabla2 = "residentes";
             $tipo = 1;
-            //$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
 
             $na = 0;
             $datosProyecto = array(
@@ -157,6 +154,11 @@ class ControladorResidentes
                   </script>';
                 }
             } else {
+                //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                $tablaE = "proyecto";
+                $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
+                //TERMINA
                 echo '<script>
 				Swal.fire({
 					 type: "error",
@@ -251,12 +253,10 @@ class ControladorResidentes
                 }
             } else {
                 //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
-
                 $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
                 $tablaE = "proyecto";
                 $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
-                
-                //jeje
+                //TERMINA
                 echo '<script>
 				Swal.fire({
 					 type: "error",
@@ -276,5 +276,102 @@ class ControladorResidentes
 
 
 
+    /*===================================================================
+    EDITAR RESIDENTES INFORME TECNICO && RESIDENCIAS PROFESIONALES
+    ===================================================================*/
 
+    public static function ctrEditarResidente()
+    {
+        // if (isset($_POST["editTipo"]) && $_POST["editTipo"]=="Residencias Profecionales") {
+
+        //     $tabla1 = "proyecto";
+        //     $tabla2 = "residentes";
+        //     $tipo = 1;
+
+        //     $na = 0;
+        //     $datosProyecto = array(
+        //         "nombreProyecto" => $_POST["editNombreProyecto"],
+        //         "nombreEmpresa" => $_POST["editNombreEmpresa"],
+        //         "asesorExt" => $_POST["editAsesorExt"],
+        //         "asesorInt" => $_POST["editAsesorInt"],
+        //         "revisor1" => $_POST["editRevisor1"],
+        //         "revisor2" => $_POST["editRevisor2"],
+        //         "revisor3" => $na,
+        //         "suplente" => $_POST["editSuplente"]
+        //     );
+
+        //     $respuestaProyecto = ModeloResidentes::mdlRegistroResidenteProyecto($tabla1, $datosProyecto);
+
+
+        //     if ($respuestaProyecto == "ok") {
+
+        //         $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+
+        //         $datosResidente = array(
+        //             "noControl" => $_POST["editNoControlRP"],
+        //             "carrera" => $_POST["editCarrera"],
+        //             "periodo" => $_POST["editPeriodo"],
+        //             "anio" => $_POST["editPeriodoAnio"],
+        //             "nombre" => $_POST["editNombre"],
+        //             "apellidoP" => $_POST["editApellidoP"],
+        //             "apellidoM" => $_POST["editApellidoM"],
+        //             "sexo" => $_POST["editSexo"],
+        //             "telefono" => $_POST["editTelefono"],
+        //             "tipo_registro" => $tipo,
+        //             "proyecto_id" => $revisarProyecto["id"]
+        //         );
+
+        //         $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
+
+        //         if ($resResidente == "ok") {
+        //             echo '<script>
+		// 		Swal.fire({
+		// 			 type: "success",
+		// 			title: "!Se registro correctamente¡",					   
+		// 			showConfirmButton: true,
+		// 			confirmButtonText: "Cerrar"				   
+		// 		}).then((result)=>{
+		// 			if(result.value){
+		// 				window.location = "Residentes";
+		// 			}
+		// 			});
+        //       </script>';
+        //         } else {
+        //             echo '<script>
+        //             Swal.fire({
+        //                  type: "error",
+        //                 title: "!No se pudo registrar¡",					   
+        //                 showConfirmButton: true,
+        //                 confirmButtonText: "Cerrar"				   
+        //             }).then((result)=>{
+        //                 if(result.value){
+        //                     window.location = "Residentes";
+        //                 }
+        //                 });
+        //           </script>';
+        //         }
+        //     } else {
+        //         //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
+        //         $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+        //         $tablaE = "proyecto";
+        //         $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
+        //         //TERMINA
+        //         echo '<script>
+		// 		Swal.fire({
+		// 			 type: "error",
+        //             title: "!No se pudo registrar¡",
+        //             text: "Revisa los datos del Proyecto.",					   
+		// 			showConfirmButton: true,
+		// 			confirmButtonText: "Cerrar"				   
+		// 		}).then((result)=>{
+		// 			if(result.value){
+		// 				window.location = "Residentes";
+		// 			}
+		// 			});
+		// 	  </script>';
+        //     }
+        // }else{
+        //     echo "tesis";
+        // }
+    }
 }
