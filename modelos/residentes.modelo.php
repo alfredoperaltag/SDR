@@ -93,7 +93,7 @@ class ModeloResidentes
 
         $stmt = Conexion::conectar()->prepare("SELECT residentes.id AS 'idR', residentes.noControl, IF(residentes.carrera = 'Ingenieria en Sistemas Computacionales', 'ISC', 'II') AS 'carrera', residentes.periodo, residentes.anio,
         residentes.nombre, residentes.apellidoP, residentes.apellidoM, 
-        residentes.sexo, residentes.telefono, IF(residentes.tipo_registro = 1, 'Residencias Profecionales','Tesis Profecional') AS 'tipo', proyecto.id AS 'idP', proyecto.nombreProyecto, 
+        residentes.sexo, residentes.telefono, IF(residentes.tipo_registro = 1, 'Residencias Profesionales','Tesis Profesional') AS 'tipo', proyecto.id AS 'idP', proyecto.nombreProyecto, 
         proyecto.nombreEmpresa, proyecto.asesorInt, proyecto.asesorExt, proyecto.revisor1, proyecto.revisor2, 
         proyecto.revisor3, proyecto.suplente
         FROM residentes 
@@ -188,6 +188,36 @@ class ModeloResidentes
         $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE = :id");
         $stmt->execute(['id' => $dato]);
         return $stmt->fetch();
+    }
+
+
+    /*=============================================
+	EDITAR PROYECTO DE RESIDENTE
+	=============================================*/
+
+    static public function mdlEditResidenteProyecto($tabla, $datos)
+    {
+
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProyecto, nombreEmpresa, asesorExt, asesorInt, revisor1, revisor2, suplente, revisor3) 
+														VALUES (:editProyecto, :editEmpresa, :asesorExt, :asesorInt, :revisor1, :revisor2, :suplente, :revisor3)");
+        $stmt->bindParam(":nombreProyecto", $datos["editProyecto"], PDO::PARAM_STR);
+        $stmt->bindParam(":nombreEmpresa", $datos["editEmpresa"], PDO::PARAM_STR);
+        $stmt->bindParam(":asesorExt", $datos["asesorExt"], PDO::PARAM_STR);
+        $stmt->bindParam(":asesorInt", $datos["asesorInt"], PDO::PARAM_INT);
+        $stmt->bindParam(":revisor1", $datos["revisor1"], PDO::PARAM_INT);
+        $stmt->bindParam(":revisor2", $datos["revisor2"], PDO::PARAM_INT);
+        $stmt->bindParam(":suplente", $datos["suplente"], PDO::PARAM_INT);
+        $stmt->bindParam(":revisor3", $datos["revisor3"], PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            print_r($stmt->errorInfo());
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt = null;
     }
 
 }

@@ -37,7 +37,8 @@ class ControladorResidentes
         $respuesta = ModeloResidentes::MdlMostrarResidentesEnTabla($tabla, $item, $valor);
 
         foreach ($respuesta as $key => $value) {
-            echo ' <tr>
+            if ($value["tipo"] == "Residencias") {
+            echo ' <tr class="table-success">
                             <td>' . $value["id"] . '</td>
                             <td>' . $value["nombre"] . '</td>
                             <td>' . $value["noControl"] . '</td>
@@ -58,7 +59,31 @@ class ControladorResidentes
                                 </div>
                             </td>
                         </tr>';
-        }
+        }elseif($value["tipo"] == "Tesis"){
+            echo ' <tr class="table-danger">
+                            <td>' . $value["id"] . '</td>
+                            <td>' . $value["nombre"] . '</td>
+                            <td>' . $value["noControl"] . '</td>
+                            <td>' . $value["carrera"] . '</td>
+                            <td>' . $value["sexo"] . '</td>
+                            <td>' . $value["telefono"] . '</td>
+                            <td>' . $value["nombreProyecto"] . '</td>
+                            <td>' . $value["tipo"] . '</td>
+                            <td>
+                                <div class="btn-group">';
+
+                                if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+                                   echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>';
+                                }
+                                    echo '
+                                    <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
+                                    <button class="btn btn-success" data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
+                                </div>
+                            </td>
+                        </tr>';
+    }
+
+    }
     }
 
     /*=============================================
@@ -286,96 +311,99 @@ class ControladorResidentes
 
     public static function ctrEditarResidente()
     {
-        // if (isset($_POST["editTipo"]) && $_POST["editTipo"]=="Residencias Profecionales") {
+        if (isset($_POST["editTipo"]) && $_POST["editTipo"]=="Residencias Profesionales") {
 
-        //     $tabla1 = "proyecto";
-        //     $tabla2 = "residentes";
-        //     $tipo = 1;
+            $tabla1 = "proyecto";
+            $tabla2 = "residentes";
+            $tipo = 1;
 
-        //     $na = 0;
-        //     $datosProyecto = array(
-        //         "nombreProyecto" => $_POST["editNombreProyecto"],
-        //         "nombreEmpresa" => $_POST["editNombreEmpresa"],
-        //         "asesorExt" => $_POST["editAsesorExt"],
-        //         "asesorInt" => $_POST["editAsesorInt"],
-        //         "revisor1" => $_POST["editRevisor1"],
-        //         "revisor2" => $_POST["editRevisor2"],
-        //         "revisor3" => $na,
-        //         "suplente" => $_POST["editSuplente"]
-        //     );
+            $na = 0;
+            $datosProyecto = array(
+                "nombreProyecto" => $_POST["editNombreProyecto"],
+                "nombreEmpresa" => $_POST["editNombreEmpresa"],
+                "asesorExt" => $_POST["editAsesorExt"],
+                "asesorInt" => $_POST["editAsesorInt"],
+                "revisor1" => $_POST["editRevisor1"],
+                "revisor2" => $_POST["editRevisor2"],
+                "revisor3" => $na,
+                "suplente" => $_POST["editSuplente"]
+            );
 
-        //     $respuestaProyecto = ModeloResidentes::mdlRegistroResidenteProyecto($tabla1, $datosProyecto);
+            $respuestaProyecto = ModeloResidentes::mdlEditResidenteProyecto($tabla1, $datosProyecto);
 
 
-        //     if ($respuestaProyecto == "ok") {
+            if ($respuestaProyecto == "ok") {
 
-        //         $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
 
-        //         $datosResidente = array(
-        //             "noControl" => $_POST["editNoControlRP"],
-        //             "carrera" => $_POST["editCarrera"],
-        //             "periodo" => $_POST["editPeriodo"],
-        //             "anio" => $_POST["editPeriodoAnio"],
-        //             "nombre" => $_POST["editNombre"],
-        //             "apellidoP" => $_POST["editApellidoP"],
-        //             "apellidoM" => $_POST["editApellidoM"],
-        //             "sexo" => $_POST["editSexo"],
-        //             "telefono" => $_POST["editTelefono"],
-        //             "tipo_registro" => $tipo,
-        //             "proyecto_id" => $revisarProyecto["id"]
-        //         );
+                $datosResidente = array(
+                    "noControl" => $_POST["editNoControlRP"],
+                    "carrera" => $_POST["editCarrera"],
+                    "periodo" => $_POST["editPeriodo"],
+                    "anio" => $_POST["editPeriodoAnio"],
+                    "nombre" => $_POST["editNombre"],
+                    "apellidoP" => $_POST["editApellidoP"],
+                    "apellidoM" => $_POST["editApellidoM"],
+                    "sexo" => $_POST["editSexo"],
+                    "telefono" => $_POST["editTelefono"],
+                    "tipo_registro" => $tipo,
+                    "proyecto_id" => $revisarProyecto["id"]
+                );
 
-        //         $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
+                $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
 
-        //         if ($resResidente == "ok") {
-        //             echo '<script>
-		// 		Swal.fire({
-		// 			 type: "success",
-		// 			title: "!Se registro correctamente¡",					   
-		// 			showConfirmButton: true,
-		// 			confirmButtonText: "Cerrar"				   
-		// 		}).then((result)=>{
-		// 			if(result.value){
-		// 				window.location = "Residentes";
-		// 			}
-		// 			});
-        //       </script>';
-        //         } else {
-        //             echo '<script>
-        //             Swal.fire({
-        //                  type: "error",
-        //                 title: "!No se pudo registrar¡",					   
-        //                 showConfirmButton: true,
-        //                 confirmButtonText: "Cerrar"				   
-        //             }).then((result)=>{
-        //                 if(result.value){
-        //                     window.location = "Residentes";
-        //                 }
-        //                 });
-        //           </script>';
-        //         }
-        //     } else {
-        //         //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
-        //         $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
-        //         $tablaE = "proyecto";
-        //         $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
-        //         //TERMINA
-        //         echo '<script>
-		// 		Swal.fire({
-		// 			 type: "error",
-        //             title: "!No se pudo registrar¡",
-        //             text: "Revisa los datos del Proyecto.",					   
-		// 			showConfirmButton: true,
-		// 			confirmButtonText: "Cerrar"				   
-		// 		}).then((result)=>{
-		// 			if(result.value){
-		// 				window.location = "Residentes";
-		// 			}
-		// 			});
-		// 	  </script>';
-        //     }
-        // }else{
-        //     echo "tesis";
-        // }
+                if ($resResidente == "ok") {
+                    echo '<script>
+				Swal.fire({
+					 type: "success",
+					title: "!Se registro correctamente¡",					   
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar"				   
+				}).then((result)=>{
+					if(result.value){
+						window.location = "Residentes";
+					}
+					});
+              </script>';
+                } else {
+                    echo '<script>
+                    Swal.fire({
+                         type: "error",
+                        title: "!No se pudo registrar¡",					   
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"				   
+                    }).then((result)=>{
+                        if(result.value){
+                            window.location = "Residentes";
+                        }
+                        });
+                  </script>';
+                }
+            } else {
+                //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                $tablaE = "proyecto";
+                $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
+                //TERMINA
+                echo '<script>
+				Swal.fire({
+					 type: "error",
+                    title: "!No se pudo registrar¡",
+                    text: "Revisa los datos del Proyecto.",					   
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar"				   
+				}).then((result)=>{
+					if(result.value){
+						window.location = "Residentes";
+					}
+					});
+			  </script>';
+            }
+        }else{
+            if (isset($_POST["editTipo"]) && $_POST["editTipo"]=="Tesis Profesional") {
+                echo "tesis";
+            }
+            
+        }
     }
 }
