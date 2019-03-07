@@ -37,6 +37,9 @@
                                 <li>
                                     <a href="Residentes"><i class="fa fa-users fa-2x" style="color: #845ef7;"></i><span><strong>Residentes</strong></span></a>
                                 </li>
+                                <li>
+                                    <a href="Directorio"><i class="fa fa-phone fa-2x" style="color: #845ef7;"></i><span><strong> Directorio</strong></span></a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
