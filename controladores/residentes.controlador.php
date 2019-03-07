@@ -319,6 +319,7 @@ class ControladorResidentes
 
             $na = 0;
             $datosProyecto = array(
+                "idP" => $_POST["idProyectoEdit"],
                 "nombreProyecto" => $_POST["editNombreProyecto"],
                 "nombreEmpresa" => $_POST["editNombreEmpresa"],
                 "asesorExt" => $_POST["editAsesorExt"],
@@ -336,9 +337,16 @@ class ControladorResidentes
 
                 $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
 
+                if ($_POST["editCarrera"] == "ISC") {
+                    $var1 = "Ingenieria en Sistemas Computacionales";
+                }elseif($_POST["editCarrera"] == "II"){
+                    $var1 = "Ingenieria Informatica";
+                }
+
                 $datosResidente = array(
-                    "noControl" => $_POST["editNoControlRP"],
-                    "carrera" => $_POST["editCarrera"],
+                    "idRe" => $_POST["idResidenteEdit"],
+                    "noControl" => $_POST["editNoControlEdit"],
+                    "carrera" => $var1,
                     "periodo" => $_POST["editPeriodo"],
                     "anio" => $_POST["editPeriodoAnio"],
                     "nombre" => $_POST["editNombre"],
@@ -350,13 +358,13 @@ class ControladorResidentes
                     "proyecto_id" => $revisarProyecto["id"]
                 );
 
-                $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
+                $resResidente = ModeloResidentes::mdlEditResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
                     echo '<script>
 				Swal.fire({
 					 type: "success",
-					title: "!Se registro correctamente¡",					   
+					title: "!Se actualizo correctamente¡",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
@@ -369,7 +377,7 @@ class ControladorResidentes
                     echo '<script>
                     Swal.fire({
                          type: "error",
-                        title: "!No se pudo registrar¡",					   
+                        title: "!No se pudo actualizar",					   
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"				   
                     }).then((result)=>{
@@ -385,16 +393,17 @@ class ControladorResidentes
                 $tablaE = "proyecto";
                 $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
                 //TERMINA
+                var_dump($respuestaProyecto);
                 echo '<script>
 				Swal.fire({
 					 type: "error",
-                    title: "!No se pudo registrar¡",
+                    title: "!No se pudo actualizar",
                     text: "Revisa los datos del Proyecto.",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
 					if(result.value){
-						window.location = "Residentes";
+						//window.location = "Residentes";
 					}
 					});
 			  </script>';
