@@ -57,6 +57,7 @@ CUERPO DOCUMENTO
                 $_GET["ruta"] == "Usuarios" ||
                 $_GET["ruta"] == "Residentes" ||
                 $_GET["ruta"] == "Docentes" ||
+                $_GET["ruta"] == "Directorio"||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
@@ -69,6 +70,7 @@ CUERPO DOCUMENTO
             if (
                 $_GET["ruta"] == "Inicio" ||
                 $_GET["ruta"] == "Residentes" ||
+                $_GET["ruta"] == "Directorio"||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
