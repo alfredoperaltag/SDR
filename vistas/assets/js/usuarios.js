@@ -110,6 +110,26 @@ $("#nuevoUsuario").change(function () {
     })
 })
 /*<!--=====================================
+REVISAR SI LA CONTRASEÑA COINCIDE
+======================================-->*/
+$("#nuevoPassword").click(function () {
+    if (nuevoPassword == confirmarPassword) {
+        $(".alert").remove();
+    }
+})
+$("#confirmarPassword").keyup(function () {
+    /* $(".alert").remove(); */
+    var nuevoPassword = $("#nuevoPassword").val();
+    var confirmarPassword = $("#confirmarPassword").val();
+    console.log("primer ps" + nuevoPassword);
+    console.log("segundo ps" + confirmarPassword);
+    if (nuevoPassword === confirmarPassword) {
+        $("#confirmarPassword").parent().after('<div class="alert alert-success">¡Si coinciden!</div>');
+    } else {
+        $("#confirmarPassword").parent().after('<div class="alert alert-warning">¡No coinciden!</div>');
+    }
+})
+/*<!--=====================================
 ELIMINAR USUARIO
 ======================================-->*/
 $(document).on("click", ".btnEliminarUsuario", function () {
