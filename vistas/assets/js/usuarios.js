@@ -112,16 +112,22 @@ $("#nuevoUsuario").change(function () {
 /*<!--=====================================
 REVISAR SI LA CONTRASEÑA COINCIDE
 ======================================-->*/
+var nuevoPassword = $("#nuevoPassword").val();
+var confirmarPassword = $("#confirmarPassword").val();
+
 $("#nuevoPassword").click(function () {
-    if (nuevoPassword == confirmarPassword) {
+    $(".alert").remove();
+})
+$("#nuevoPassword").change(function () {
+    var nuevoPassword = $("#nuevoPassword").val();
+    console.log("primer ps" + nuevoPassword);
+    /* if (nuevoPassword == confirmarPassword) {
         $(".alert").remove();
-    }
+    } */
 })
 $("#confirmarPassword").keyup(function () {
-    /* $(".alert").remove(); */
-    var nuevoPassword = $("#nuevoPassword").val();
+    $(".alert").remove();
     var confirmarPassword = $("#confirmarPassword").val();
-    console.log("primer ps" + nuevoPassword);
     console.log("segundo ps" + confirmarPassword);
     if (nuevoPassword === confirmarPassword) {
         $("#confirmarPassword").parent().after('<div class="alert alert-success">¡Si coinciden!</div>');
