@@ -57,6 +57,7 @@ $(document).on("click", ".btnEditResidente", function () {
         dataType: "json",
         success: function (respuesta) {
 
+            $("#idResidenteEdit").val(null);
             $("#editNoControlEdit").val(null);
             $("#editCarrera").val(null);
             $("#editPeriodo").val(null);
@@ -68,6 +69,7 @@ $(document).on("click", ".btnEditResidente", function () {
             $("#editTelefono").val(null);
             $("#editTipo").val(null);
             $("#editTipo").attr("readonly", "readonly");
+            $("#idProyectoEdit").val(null);
             $("#editNombreProyecto").val(null);
             $("#editNombreEmpresa").val(null);
             $("#editAsesorInt").val(null);
