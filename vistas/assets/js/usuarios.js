@@ -112,22 +112,15 @@ $("#nuevoUsuario").change(function () {
 /*<!--=====================================
 REVISAR SI LA CONTRASEÑA COINCIDE
 ======================================-->*/
-var nuevoPassword /*  = $("#nuevoPassword").val() */ ;
-var confirmarPassword /*  = $("#confirmarPassword").val() */ ;
+/* var nuevoPassword;
+var confirmarPassword; */
 
-/* $("#nuevoPassword").click(function () {
+function comprobarPassword(nuevoPassword, confirmarPassword) {
     $(".alert").remove();
-}) */
-/* $("#nuevoPassword").change(function () {
-    var nuevoPassword = $("#nuevoPassword").val();
+    /* var nuevoPassword = $("#nuevoPassword").val(); 
     console.log("primer ps" + nuevoPassword);
-}) */
-$("#nuevoPassword").keyup(function () {
-    $(".alert").remove();
-    nuevoPassword = $("#nuevoPassword").val();
-    console.log("primer ps" + nuevoPassword);
-    confirmarPassword = $("#confirmarPassword").val();
-    console.log("segundo ps" + confirmarPassword);
+     var confirmarPassword = $("#confirmarPassword").val();
+    console.log("segundo ps" + confirmarPassword); */
     if (nuevoPassword !== "" || confirmarPassword !== "") {
         if (nuevoPassword === confirmarPassword) {
             $("#confirmarPassword").parent().after('<div class="alert alert-success">¡Si coinciden!</div>');
@@ -135,20 +128,13 @@ $("#nuevoPassword").keyup(function () {
             $("#confirmarPassword").parent().after('<div class="alert alert-warning">¡No coinciden!</div>');
         }
     }
+};
+
+$("#nuevoPassword").keyup(function () {
+    comprobarPassword($("#nuevoPassword").val(), $("#confirmarPassword").val());
 })
 $("#confirmarPassword").keyup(function () {
-    $(".alert").remove();
-    nuevoPassword = $("#nuevoPassword").val();
-    console.log("primer ps" + nuevoPassword);
-    confirmarPassword = $("#confirmarPassword").val();
-    console.log("segundo ps" + confirmarPassword);
-    if (nuevoPassword !== "" || confirmarPassword !== "") {
-        if (nuevoPassword === confirmarPassword) {
-            $("#confirmarPassword").parent().after('<div class="alert alert-success">¡Si coinciden!</div>');
-        } else {
-            $("#confirmarPassword").parent().after('<div class="alert alert-warning">¡No coinciden!</div>');
-        }
-    }
+    comprobarPassword($("#nuevoPassword").val(), $("#confirmarPassword").val());
 })
 
 /*<!--=====================================
