@@ -38,7 +38,9 @@ CUERPO DOCUMENTO
 
 <body class="body-bg">
 
-
+<div id="preloader">
+    <div class="loader"></div>
+</div>
     <?php
     if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 

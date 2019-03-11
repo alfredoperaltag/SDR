@@ -1,3 +1,6 @@
+
+
+
 <div class="col-12 mt-3">
     <div class="card">
         <h2 class="ml-4">Residentes</h2>
