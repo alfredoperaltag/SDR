@@ -114,7 +114,9 @@ REVISAR SI LA CONTRASEÑA COINCIDE
 ======================================-->*/
 function comprobarPassword(nuevoPassword, confirmarPassword) {
     $(".alert").remove();
-    if ($(nuevoPassword).val() !== "" || $(confirmarPassword).val() !== "") {
+    console.log("NP: " + $(nuevoPassword).val());
+    console.log("CP: " + $(confirmarPassword).val());
+    if (($(nuevoPassword).val() !== "" || $(confirmarPassword).val() !== "")) {
         if ($(nuevoPassword).val() === $(confirmarPassword).val()) {
             $(confirmarPassword).parent().after('<div class="alert alert-success">¡Si coinciden!</div>');
         } else {
@@ -123,10 +125,10 @@ function comprobarPassword(nuevoPassword, confirmarPassword) {
     }
 };
 
-$("#nuevoPassword").keyup(function () {
+$(".comprobarPassword").keyup(function () {
     comprobarPassword("#nuevoPassword", "#confirmarPassword");
 });
-$("#confirmarPassword").keyup(function () {
+$(".comprobarPassword").keyup(function () {
     comprobarPassword("#nuevoPassword", "#confirmarPassword");
 });
 $("#editarPassword").keyup(function () {
