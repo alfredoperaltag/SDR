@@ -112,30 +112,29 @@ $("#nuevoUsuario").change(function () {
 /*<!--=====================================
 REVISAR SI LA CONTRASEÑA COINCIDE
 ======================================-->*/
-/* var nuevoPassword;
-var confirmarPassword; */
-
 function comprobarPassword(nuevoPassword, confirmarPassword) {
     $(".alert").remove();
-    /* var nuevoPassword = $("#nuevoPassword").val(); 
-    console.log("primer ps" + nuevoPassword);
-     var confirmarPassword = $("#confirmarPassword").val();
-    console.log("segundo ps" + confirmarPassword); */
-    if (nuevoPassword !== "" || confirmarPassword !== "") {
-        if (nuevoPassword === confirmarPassword) {
-            $("#confirmarPassword").parent().after('<div class="alert alert-success">¡Si coinciden!</div>');
+    if ($(nuevoPassword).val() !== "" || $(confirmarPassword).val() !== "") {
+        if ($(nuevoPassword).val() === $(confirmarPassword).val()) {
+            $(confirmarPassword).parent().after('<div class="alert alert-success">¡Si coinciden!</div>');
         } else {
-            $("#confirmarPassword").parent().after('<div class="alert alert-warning">¡No coinciden!</div>');
+            $(confirmarPassword).parent().after('<div class="alert alert-warning">¡No coinciden!</div>');
         }
     }
 };
 
 $("#nuevoPassword").keyup(function () {
-    comprobarPassword($("#nuevoPassword").val(), $("#confirmarPassword").val());
-})
+    comprobarPassword("#nuevoPassword", "#confirmarPassword");
+});
 $("#confirmarPassword").keyup(function () {
-    comprobarPassword($("#nuevoPassword").val(), $("#confirmarPassword").val());
-})
+    comprobarPassword("#nuevoPassword", "#confirmarPassword");
+});
+$("#editarPassword").keyup(function () {
+    comprobarPassword("#editarPassword", "#confirmarPassword2");
+});
+$("#confirmarPassword2").keyup(function () {
+    comprobarPassword("#editarPassword", "#confirmarPassword2");
+});
 
 /*<!--=====================================
 ELIMINAR USUARIO
