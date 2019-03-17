@@ -41,6 +41,14 @@ CUERPO DOCUMENTO
 <div id="preloader">
     <div class="loader"></div>
 </div>
+
+<!-- <script type="text/javascript">
+        var d = new Date();
+        alert ("Pague cocho joto");
+        window.location = "Inicio";
+        </script> -->
+        
+
     <?php
     if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 

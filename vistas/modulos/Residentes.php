@@ -14,7 +14,6 @@
                 Profesional</button>';
              }
              ?>
-            
             <div class="data-tables datatable-primary">
                 <table class="text-center tablaES">
                     <thead class="text-capitalize">
