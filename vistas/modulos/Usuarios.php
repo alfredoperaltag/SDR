@@ -206,7 +206,7 @@ MODAL EDITAR USUARIO
                 </div>
                 <?php
                 $editarUsuario = new ControladorUsuarios();
-                $editarUsuario->ctrEditarUsuario();
+                $editarUsuario->ctrEditarUsuario("editarUsuario", "editarNombre", "editarPassword", "confirmarPassword", "passwordActual", "editarPerfil");
                 ?>
         </div>
         </form>
