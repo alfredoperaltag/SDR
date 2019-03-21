@@ -1,68 +1,34 @@
-/* function infoPassword() {
-    /* Swal.fire({
-        type: "info",
-        title: "!Puede editar la contraseña desde el boton editar!",
-        showConfirmButton: true,
-        confirmButtonText: "Cerrar",
-        closeOnConfirm: false
-    }); 
-
-var capa = document.getElementById("capa");
-capa.innerHTML = "Contenido para la capa";
-
-
-}*/
-
 /*<!--=====================================
 EDITAR USUARIO
 ======================================-->*/
-
+function btnEditarUsuario(idUsuario, nombre, usuario, perfil, password) {
+    /* console.log("idUsuario", idUsuario); */
+    var datos = new FormData();
+    datos.append("idUsuario", idUsuario);
+    $.ajax({
+        url: "ajax/usuarios.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+            console.log("respuesta", respuesta);
+            $(nombre).val(respuesta["nombre"]);
+            $(usuario).val(respuesta["usuario"]);
+            $(perfil).val(respuesta["perfil"]);
+            $(password).val(respuesta["password"]);
+        }
+    });
+}
 $(document).on("click", ".btnEditarUsuario", function () {
     var idUsuario = $(this).attr("idUsuario");
-    /* console.log("idUsuario", idUsuario); */
-    var datos = new FormData();
-    datos.append("idUsuario", idUsuario);
-    $.ajax({
-        url: "ajax/usuarios.ajax.php",
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (respuesta) {
-            console.log("respuesta", respuesta);
-            $("#editarNombre").val(respuesta["nombre"]);
-            $("#editarUsuario").val(respuesta["usuario"]);
-            $("#editarPerfil").val(respuesta["perfil"]);
-            $("#passwordActual").val(respuesta["password"]);
-        }
-    });
+    btnEditarUsuario(idUsuario, "#editarNombre", "#editarUsuario", "#editarPerfil", "#passwordActual");
 })
-/*<!--=====================================
-EDITAR MI USUARIO
-======================================-->*/
 $(document).on("click", ".btnEditarMiUsuario", function () {
     var idUsuario = $(this).attr("idUsuario");
-    /* console.log("idUsuario", idUsuario); */
-    var datos = new FormData();
-    datos.append("idUsuario", idUsuario);
-    $.ajax({
-        url: "ajax/usuarios.ajax.php",
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (respuesta) {
-            console.log("respuesta", respuesta);
-            $("#editarMiNombre").val(respuesta["nombre"]);
-            $("#editarMiUsuario").val(respuesta["usuario"]);
-            $("#editarMiPerfil").val(respuesta["perfil"]);
-            $("#miPasswordActual").val(respuesta["password"]);
-        }
-    });
+    btnEditarUsuario(idUsuario, "#editarMiNombre", "#editarMiUsuario", "#editarMiPerfil", "#miPasswordActual");
 })
 /*<!--=====================================
 ACTIVAR USUARIO
