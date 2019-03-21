@@ -1,3 +1,6 @@
+
+
+
 <div class="col-12 mt-3">
     <div class="card">
         <h2 class="ml-4">Residentes</h2>
@@ -11,7 +14,6 @@
                 Profesional</button>';
              }
              ?>
-            
             <div class="data-tables datatable-primary">
                 <table class="text-center tablaES">
                     <thead class="text-capitalize">

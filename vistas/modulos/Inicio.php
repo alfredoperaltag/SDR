@@ -1,5 +1,5 @@
 <!-- <div class="error-area ptb--100 text-center"> -->
-    <!-- <div class="container">
+<!-- <div class="container">
         <div class="row">
             <div class="col-6">
                 <img src="http://lorempixel.com/640/480/abstract/" alt="Imagen Random">
@@ -14,8 +14,8 @@
     <div class="container">
         <div class="error-content">
             <h2>INICIO</h2>
-            <p>Ooops! Algo salio mal.</p>
+            <p>PROXIMAMENTE.</p>
             <a href="Inicio">Regresar al inicio</a>
         </div>
     </div>
-</div>
+</div> 

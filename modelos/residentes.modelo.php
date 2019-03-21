@@ -149,7 +149,11 @@ class ModeloResidentes
         $stmt->execute(['id' => $datos["nombreProyecto"]]);
         return $stmt->fetch();
     }
-	//no me da error
+    
+    
+    /*=============================================
+	REGISTRAR DATOS DEL RESIDENTE
+	=============================================*/
     static public function mdlRegistroResidenteDatos($tabla, $datos)
     {
 
@@ -198,10 +202,15 @@ class ModeloResidentes
     static public function mdlEditResidenteProyecto($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProyecto, nombreEmpresa, asesorExt, asesorInt, revisor1, revisor2, suplente, revisor3) 
-														VALUES (:editProyecto, :editEmpresa, :asesorExt, :asesorInt, :revisor1, :revisor2, :suplente, :revisor3)");
-        $stmt->bindParam(":nombreProyecto", $datos["editProyecto"], PDO::PARAM_STR);
-        $stmt->bindParam(":nombreEmpresa", $datos["editEmpresa"], PDO::PARAM_STR);
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla
+        SET nombreProyecto = :editNameProyecto, nombreEmpresa = :editEmpresa, asesorExt = :asesorExt, 
+        asesorInt = :asesorInt, revisor1 = :revisor1, revisor2 = :revisor2, suplente = :suplente, 
+        revisor3 = :revisor3
+        WHERE id = :idP");
+
+        $stmt->bindParam(":idP", $datos["idP"], PDO::PARAM_INT);
+        $stmt->bindParam(":editNameProyecto", $datos["nombreProyecto"], PDO::PARAM_STR);
+        $stmt->bindParam(":editEmpresa", $datos["nombreEmpresa"], PDO::PARAM_STR);
         $stmt->bindParam(":asesorExt", $datos["asesorExt"], PDO::PARAM_STR);
         $stmt->bindParam(":asesorInt", $datos["asesorInt"], PDO::PARAM_INT);
         $stmt->bindParam(":revisor1", $datos["revisor1"], PDO::PARAM_INT);
@@ -213,6 +222,44 @@ class ModeloResidentes
             return "ok";
         } else {
             print_r($stmt->errorInfo());
+            // return "error";
+            return "ERROR: ".$stmt->errorInfo();
+        }
+
+        $stmt->close();
+        $stmt = null;
+    }
+
+
+
+    /*=============================================
+	REGISTRAR DATOS DEL RESIDENTE
+	=============================================*/
+    static public function mdlEditResidenteDatos($tabla, $datos)
+    {
+
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla
+        SET noControl = :noControl, nombre = :nombre, apellidoP = :apellidoP, apellidoM = :apellidoM, 
+        carrera = :carrera, periodo = :periodo, anio = :anio, sexo = :sexo,  telefono = :telefono, 
+        tipo_registro = :tipo, proyecto_id = :proyecto_id
+        WHERE id = :id;");
+        //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        $stmt->bindParam(":id", $datos["idRe"], PDO::PARAM_INT);
+        $stmt->bindParam(":noControl", $datos["noControl"], PDO::PARAM_STR);
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":apellidoP", $datos["apellidoP"], PDO::PARAM_STR);
+        $stmt->bindParam(":apellidoM", $datos["apellidoM"], PDO::PARAM_STR);
+        $stmt->bindParam(":carrera", $datos["carrera"], PDO::PARAM_STR);
+        $stmt->bindParam(":periodo", $datos["periodo"], PDO::PARAM_STR);
+        $stmt->bindParam(":anio", $datos["anio"], PDO::PARAM_STR);
+        $stmt->bindParam(":sexo", $datos["sexo"], PDO::PARAM_STR);
+        $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+        $stmt->bindParam(":tipo", $datos["tipo_registro"], PDO::PARAM_INT);
+        $stmt->bindParam(":proyecto_id", $datos["proyecto_id"], PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
             return "error";
         }
 

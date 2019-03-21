@@ -86,11 +86,11 @@ MODAL AGREGAR USUARIO
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="nuevoPassword" placeholder="Ingresar nueva contraseña" required>
+                            <input type="password" class="form-control comprobarPassword" name="nuevoPassword" id="nuevoPassword" placeholder="Ingresar nueva contraseña" required>
                         </div><!-- ENTRADA PARA CONFIRMAR CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Confirmar La Contraseña</label>
-                            <input type="password" class="form-control" name="confirmarPassword" placeholder="Confirme La contraseña" required>
+                            <input type="password" class="form-control comprobarPassword" name="confirmarPassword" id="confirmarPassword" placeholder="Confirme La contraseña" required>
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                         <div class="form-group">
@@ -166,13 +166,13 @@ MODAL EDITAR USUARIO
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control" name="editarPassword" placeholder="Escriba la nueva contraseña">
+                            <input type="password" class="form-control editarComprobarPassword" name="editarPassword" id="editarPassword" placeholder="Escriba la nueva contraseña">
                             <input type="hidden" id="passwordActual" name="passwordActual">
                         </div>
                     </div><!-- ENTRADA PARA CONFIRMAR CONTRASEÑA -->
                     <div class="form-group">
                         <label class="">Confirmar La Contraseña</label>
-                        <input type="password" class="form-control" name="confirmarPassword" placeholder="Confirme La contraseña">
+                        <input type="password" class="form-control editarComprobarPassword" name="confirmarPassword" id="editarConfirmarPassword" placeholder="Confirme La contraseña">
                     </div>
                     <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                     <div class="form-group">

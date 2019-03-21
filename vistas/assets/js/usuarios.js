@@ -1,24 +1,7 @@
-/* function infoPassword() {
-    /* Swal.fire({
-        type: "info",
-        title: "!Puede editar la contraseña desde el boton editar!",
-        showConfirmButton: true,
-        confirmButtonText: "Cerrar",
-        closeOnConfirm: false
-    }); 
-
-var capa = document.getElementById("capa");
-capa.innerHTML = "Contenido para la capa";
-
-
-}*/
-
 /*<!--=====================================
 EDITAR USUARIO
 ======================================-->*/
-
-$(document).on("click", ".btnEditarUsuario", function () {
-    var idUsuario = $(this).attr("idUsuario");
+function btnEditarUsuario(idUsuario, nombre, usuario, perfil, password) {
     /* console.log("idUsuario", idUsuario); */
     var datos = new FormData();
     datos.append("idUsuario", idUsuario);
@@ -32,12 +15,20 @@ $(document).on("click", ".btnEditarUsuario", function () {
         dataType: "json",
         success: function (respuesta) {
             console.log("respuesta", respuesta);
-            $("#editarNombre").val(respuesta["nombre"]);
-            $("#editarUsuario").val(respuesta["usuario"]);
-            $("#editarPerfil").val(respuesta["perfil"]);
-            $("#passwordActual").val(respuesta["password"]);
+            $(nombre).val(respuesta["nombre"]);
+            $(usuario).val(respuesta["usuario"]);
+            $(perfil).val(respuesta["perfil"]);
+            $(password).val(respuesta["password"]);
         }
     });
+}
+$(document).on("click", ".btnEditarUsuario", function () {
+    var idUsuario = $(this).attr("idUsuario");
+    btnEditarUsuario(idUsuario, "#editarNombre", "#editarUsuario", "#editarPerfil", "#passwordActual");
+})
+$(document).on("click", ".btnEditarMiUsuario", function () {
+    var idUsuario = $(this).attr("idUsuario");
+    btnEditarUsuario(idUsuario, "#editarMiNombre", "#editarMiUsuario", "#editarMiPerfil", "#miPasswordActual");
 })
 /*<!--=====================================
 ACTIVAR USUARIO
@@ -109,6 +100,30 @@ $("#nuevoUsuario").change(function () {
         }
     })
 })
+/*<!--=====================================
+REVISAR SI LA CONTRASEÑA COINCIDE
+======================================-->*/
+function comprobarPassword(nuevoPassword, confirmarPassword) {
+    $(".alert2").remove();
+    if (($(nuevoPassword).val() !== "" || $(confirmarPassword).val() !== "")) {
+        if ($(nuevoPassword).val() === $(confirmarPassword).val()) {
+            $(confirmarPassword).parent().after('<div class="alert alert2 alert-success">¡Si coinciden!</div>');
+        } else {
+            $(confirmarPassword).parent().after('<div class="alert alert2 alert-warning">¡No coinciden!</div>');
+        }
+    }
+};
+
+$(".comprobarPassword").keyup(function () {
+    comprobarPassword("#nuevoPassword", "#confirmarPassword");
+});
+$(".editarComprobarPassword").keyup(function () {
+    comprobarPassword("#editarPassword", "#editarConfirmarPassword");
+});
+$(".editarComprobarMiPassword").keyup(function () {
+    comprobarPassword("#editarMiPassword", "#editarConfirmarMiPassword");
+});
+
 /*<!--=====================================
 ELIMINAR USUARIO
 ======================================-->*/

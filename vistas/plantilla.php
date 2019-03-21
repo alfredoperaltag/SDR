@@ -9,7 +9,7 @@ session_start();
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>SISTEMA DE RESIDENCIAS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="shortcut icon" type="image/png" href="vistas/assets/images/icon/favicon.ico"> -->
+    <link rel="shortcut icon" type="image/png" href="vistas/assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="vistas/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="vistas/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="vistas/assets/css/themify-icons.css">
@@ -38,6 +38,16 @@ CUERPO DOCUMENTO
 
 <body class="body-bg">
 
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+<!-- <script type="text/javascript">
+        var d = new Date();
+        alert ("Pague cocho joto");
+        window.location = "Inicio";
+        </script> -->
+        
 
     <?php
     if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
@@ -57,6 +67,7 @@ CUERPO DOCUMENTO
                 $_GET["ruta"] == "Usuarios" ||
                 $_GET["ruta"] == "Residentes" ||
                 $_GET["ruta"] == "Docentes" ||
+                $_GET["ruta"] == "Directorio"||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
@@ -69,6 +80,7 @@ CUERPO DOCUMENTO
             if (
                 $_GET["ruta"] == "Inicio" ||
                 $_GET["ruta"] == "Residentes" ||
+                $_GET["ruta"] == "Directorio"||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
