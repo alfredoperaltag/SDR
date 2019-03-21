@@ -2,9 +2,18 @@
 <div class="mainheader-area">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-3">
+                <div class="col-md-3 d-none d-md-block">
                     <div class="logo">
                         <a href="Inicio"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-8 d-block d-md-none pt-2 pb-2">
+                    <div class="row justify-content-xs-center">
+                      <div class="col">
+                        <div class="logo">
+                            <a href="Inicio"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
+                        </div>
+                      </div>
                     </div>
                 </div>
                 <div class="col-md-9 clearfix text-right">

@@ -2,7 +2,11 @@
 <div class="mainheader-area">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-3">
+                <div class="col-md-3 d-none d-md-block">
+                    <div class="logo">
+                        <a href="Inicio"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
+                    </div>
+                <div class="col d-block d-md-none">
                     <div class="logo">
                         <a href="Inicio"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
                     </div>
