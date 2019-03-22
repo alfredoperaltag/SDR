@@ -91,13 +91,13 @@ MODAL EDITAR USUARIO
                         <!-- ENTRADA PARA LA CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Contraseña</label>
-                            <input type="password" class="form-control editarComprobarPassword" name="editarMiPassword" id="editarMiPassword" placeholder="Escriba la nueva contraseña">
+                            <input type="password" class="form-control editarComprobarMiPassword" name="editarMiPassword" id="editarMiPassword" placeholder="Escriba la nueva contraseña">
                             <input type="hidden" id="miPasswordActual" name="miPasswordActual">
                         </div>
                         <!-- ENTRADA PARA CONFIRMAR CONTRASEÑA -->
                         <div class="form-group">
                             <label class="">Confirmar La Contraseña</label>
-                            <input type="password" class="form-control editarComprobarPassword" name="confirmarMiPassword" id="editarConfirmarMiPassword" placeholder="Confirme La contraseña">
+                            <input type="password" class="form-control editarComprobarMiPassword" name="confirmarMiPassword" id="editarConfirmarMiPassword" placeholder="Confirme La contraseña">
                         </div>
                         <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
                         <div class="form-group">

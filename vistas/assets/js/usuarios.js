@@ -141,9 +141,9 @@ function comprobarPassword(nuevoPassword, confirmarPassword) {
     $(".alert2").remove();
     if (($(nuevoPassword).val() !== "" || $(confirmarPassword).val() !== "")) {
         if ($(nuevoPassword).val() === $(confirmarPassword).val()) {
-            $(confirmarPassword).parent().after('<div class="alert2 alert-success">¡Si coinciden!</div>');
+            $(confirmarPassword).parent().after('<div class="alert alert2 alert-success">¡Si coinciden!</div>');
         } else {
-            $(confirmarPassword).parent().after('<div class="alert2 alert-warning">¡No coinciden!</div>');
+            $(confirmarPassword).parent().after('<div class="alert alert2 alert-warning">¡No coinciden!</div>');
         }
     }
 };
@@ -153,6 +153,9 @@ $(".comprobarPassword").keyup(function () {
 });
 $(".editarComprobarPassword").keyup(function () {
     comprobarPassword("#editarPassword", "#editarConfirmarPassword");
+});
+$(".editarComprobarMiPassword").keyup(function () {
+    comprobarPassword("#editarMiPassword", "#editarConfirmarMiPassword");
 });
 
 /*<!--=====================================
