@@ -40,6 +40,31 @@ $(document).on("click", ".btnEditarUsuario", function () {
     });
 })
 /*<!--=====================================
+EDITAR MI USUARIO
+======================================-->*/
+$(document).on("click", ".btnEditarMiUsuario", function () {
+    var idUsuario = $(this).attr("idUsuario");
+    /* console.log("idUsuario", idUsuario); */
+    var datos = new FormData();
+    datos.append("idUsuario", idUsuario);
+    $.ajax({
+        url: "ajax/usuarios.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+            console.log("respuesta", respuesta);
+            $("#editarMiNombre").val(respuesta["nombre"]);
+            $("#editarMiUsuario").val(respuesta["usuario"]);
+            $("#editarMiPerfil").val(respuesta["perfil"]);
+            $("#miPasswordActual").val(respuesta["password"]);
+        }
+    });
+})
+/*<!--=====================================
 ACTIVAR USUARIO
 ======================================-->*/
 $(document).on("click", ".btnActivar", function () {

@@ -1,6 +1,4 @@
 <?php
-
-/* prueba */
 class ControladorUsuarios
 {
 
@@ -151,17 +149,17 @@ class ControladorUsuarios
     public static function ctrEditarUsuario()
     {
         if (isset($_POST["editarUsuario"])) {
-                if (
-                    preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
-                    preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarUsuario"])
-                ) {
-                        $tabla = "usuarios";
-                        if ($_POST["editarPassword"] != "" || $_POST["confirmarPassword"] != "") {
-                                if ($_POST["editarPassword"] == $_POST["confirmarPassword"]) {
-                                        if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])) {
-                                                $encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-                                            } else {
-                                                echo '<script>
+            if (
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarUsuario"])
+            ) {
+                $tabla = "usuarios";
+                if ($_POST["editarPassword"] != "" || $_POST["confirmarPassword"] != "") {
+                    if ($_POST["editarPassword"] == $_POST["confirmarPassword"]) {
+                        if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])) {
+                            $encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                        } else {
+                            echo '<script>
                             Swal.fire({
                                     type: "error",
                                 title: "¡La contraseña no puede estar vacio o llevar caracteres especiales!",
@@ -174,9 +172,9 @@ class ControladorUsuarios
                                 }
                                 });
                             </script>';
-                                            }
-                                    } else {
-                                    echo '<script>
+                        }
+                    } else {
+                        echo '<script>
                         Swal.fire({
                                 type: "error",
                             title: "¡La contraseña NO Coincide!",
@@ -189,23 +187,23 @@ class ControladorUsuarios
                             }
                             });
                         </script>';
-                                }
-                            } else {
-                                $encriptar = $_POST["passwordActual"];
-                            }
+                    }
+                } else {
+                    $encriptar = $_POST["passwordActual"];
+                }
 
 
-                        $datos = array(
-                            "nombre" => $_POST["editarNombre"],
-                            "usuario" => $_POST["editarUsuario"],
-                            "password" => $encriptar,
-                            "perfil" => $_POST["editarPerfil"],
-                        );
+                $datos = array(
+                    "nombre" => $_POST["editarNombre"],
+                    "usuario" => $_POST["editarUsuario"],
+                    "password" => $encriptar,
+                    "perfil" => $_POST["editarPerfil"],
+                );
 
 
-                        $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
-                        if ($respuesta == "ok") {
-                                echo '<script>
+                $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
+                if ($respuesta == "ok") {
+                    echo '<script>
                     Swal.fire({
                             type: "success",
                         title: "¡Modificado Correctamente!",
@@ -218,9 +216,9 @@ class ControladorUsuarios
                         }
                         });
                     </script>';
-                            }
-                    } else {
-                        echo '<script>
+                }
+            } else {
+                echo '<script>
 				Swal.fire({
 					 type: "error",
 					title: "¡El usuario no puede estar vacio o llevar caracteres especiales!",
@@ -233,8 +231,100 @@ class ControladorUsuarios
 					}
 					});
 			  </script>';
-                    }
             }
+        }
+    }
+    /*=============================================
+    EDITAR USUARIO
+    =============================================*/
+    public static function ctrEditarMiUsuario()
+    {
+        if (isset($_POST["editarMiUsuario"])) {
+            if (
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarMiNombre"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarMiUsuario"])
+            ) {
+                $tabla = "usuarios";
+                if ($_POST["editarMiPassword"] != "" || $_POST["confirmarMiPassword"] != "") {
+                    if ($_POST["editarMiPassword"] == $_POST["confirmarMiPassword"]) {
+                        if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarMiPassword"])) {
+                            $encriptar = crypt($_POST["editarMiPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                        } else {
+                            echo '<script>
+                            Swal.fire({
+                                    type: "error",
+                                title: "¡La contraseña no puede estar vacio o llevar caracteres especiales!",
+                                showConfirmButton: true,
+                                confirmButtonText: "Cerrar",
+                                closeOnConfirm: false
+                            }).then((result)=>{
+                                if(result.value){
+                                    window.location = "' . $_GET["ruta"] . '";
+                                }
+                                });
+                            </script>';
+                        }
+                    } else {
+                        echo '<script>
+                        Swal.fire({
+                                type: "error",
+                            title: "¡La contraseña NO Coincide!",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        }).then((result)=>{
+                            if(result.value){
+                                window.location = "' . $_GET["ruta"] . '";
+                            }
+                            });
+                        </script>';
+                    }
+                } else {
+                    $encriptar = $_POST["miPasswordActual"];
+                }
+
+
+                $datos = array(
+                    "nombre" => $_POST["editarMiNombre"],
+                    "usuario" => $_POST["editarMiUsuario"],
+                    "password" => $encriptar,
+                    "perfil" => $_POST["editarMiPerfil"],
+                );
+
+
+                $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
+                if ($respuesta == "ok") {
+                    $_SESSION['nombre'] = $datos['nombre'];
+                    echo '<script>
+                    Swal.fire({
+                            type: "success",
+                        title: "¡Modificado Correctamente!",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                            }).then((result)=>{
+                        if(result.value){
+                            window.location = "' . $_GET["ruta"] . '";
+                        }
+                        });
+                    </script>';
+                }
+            } else {
+                echo '<script>
+				Swal.fire({
+					 type: "error",
+					title: "¡El usuario no puede estar vacio o llevar caracteres especiales!",
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar",
+					closeOnConfirm: false
+				}).then((result)=>{
+					if(result.value){
+						window.location = "' . $_GET["ruta"] . '";
+					}
+					});
+			  </script>';
+            }
+        }
     }
 
     /*=============================================
