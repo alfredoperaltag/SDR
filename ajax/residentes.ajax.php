@@ -24,6 +24,14 @@ class AjaxResidentes
         $respuesta = ControladorResidentes::ctrMostrarEditarResidentes($item, $valor);
         echo json_encode($respuesta);
     }
+    //Imorimir documentos residente
+    public function ajaxImprimirResidente()
+    {
+        $item = "id";
+        $valor = $this->idResidenteImp;
+        $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+        echo json_encode($respuesta);
+    }
 }
 /*<!--=====================================
 INFO RESIDENTE
@@ -41,4 +49,13 @@ if (isset($_POST["idResidenteEdit"])) {
     $editar = new AjaxResidentes();
     $editar->idResidenteEdit = $_POST["idResidenteEdit"];
     $editar->ajaxEditResidente();
+}
+
+/*<!--=====================================
+EDITAR RESIDENTE
+======================================-->*/
+if (isset($_POST["idResidenteImp"])) {
+    $editar = new AjaxResidentes();
+    $editar->idResidenteImp = $_POST["idResidenteImp"];
+    $editar->ajaxImprimirResidente();
 }

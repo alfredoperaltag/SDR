@@ -55,7 +55,7 @@ class ControladorResidentes
                                 }
                                     echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
-                                    <button class="btn btn-success" data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
+                                    <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . ' "data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
                                 </div>
                             </td>
                         </tr>';
@@ -77,7 +77,7 @@ class ControladorResidentes
                                 }
                                     echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
-                                    <button class="btn btn-success" data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
+                                    <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . ' "data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
                                 </div>
                             </td>
                         </tr>';

@@ -93,7 +93,7 @@ class ModeloResidentes
 
         $stmt = Conexion::conectar()->prepare("SELECT residentes.id AS 'idR', residentes.noControl, IF(residentes.carrera = 'Ingenieria en Sistemas Computacionales', 'ISC', 'II') AS 'carrera', residentes.periodo, residentes.anio,
         residentes.nombre, residentes.apellidoP, residentes.apellidoM, 
-        residentes.sexo, residentes.telefono, IF(residentes.tipo_registro = 1, 'Residencias Profesionales','Tesis Profesional') AS 'tipo', proyecto.id AS 'idP', proyecto.nombreProyecto, 
+        residentes.sexo, residentes.telefono, residentes.revisionOk AS 'revision', IF(residentes.tipo_registro = 1, 'Residencias Profesionales','Tesis Profesional') AS 'tipo', proyecto.id AS 'idP', proyecto.nombreProyecto, 
         proyecto.nombreEmpresa, proyecto.asesorInt, proyecto.asesorExt, proyecto.revisor1, proyecto.revisor2, 
         proyecto.revisor3, proyecto.suplente
         FROM residentes 

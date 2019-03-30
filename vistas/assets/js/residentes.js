@@ -67,6 +67,10 @@ $(document).on("click", ".btnEditResidente", function () {
             $("#editApellidoM").val(null);
             $("#editSexo").val(null);
             $("#editTelefono").val(null);
+            document.getElementById("customCheck1").checked = false;
+            document.getElementById("customCheck2").checked = false;
+            document.getElementById("customCheck3").checked = false;
+
             $("#editTipo").val(null);
             $("#editTipo").attr("readonly", "readonly");
             $("#idProyectoEdit").val(null);
@@ -93,6 +97,16 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editApellidoM").val(respuesta["apellidoM"]);
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
+                if (respuesta["revision"] == 1) {
+                    document.getElementById("customCheck1").checked = true;
+                }else if(respuesta["revision"] == 2){
+                    document.getElementById("customCheck1").checked = true;
+                    document.getElementById("customCheck2").checked = true;
+                }else if(respuesta["revision"] == 3){
+                    document.getElementById("customCheck1").checked = true;
+                    document.getElementById("customCheck2").checked = true;
+                    document.getElementById("customCheck3").checked = true;
+                }
                 $("#editTipo").val(respuesta["tipo"]);
                 $("#idProyectoEdit").val(respuesta["idP"]);
                 $("#editNombreProyecto").val(respuesta["nombreProyecto"]);
@@ -117,6 +131,16 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editApellidoM").val(respuesta["apellidoM"]);
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
+                if (respuesta["revision"] == 1) {
+                    document.getElementById("customCheck1").checked = true;
+                }else if(respuesta["revision"] == 2){
+                    document.getElementById("customCheck1").checked = true;
+                    document.getElementById("customCheck2").checked = true;
+                }else if(respuesta["revision"] == 3){
+                    document.getElementById("customCheck1").checked = true;
+                    document.getElementById("customCheck2").checked = true;
+                    document.getElementById("customCheck3").checked = true;
+                }
                 $("#editTipo").val(respuesta["tipo"]);
                 $("#idProyectoEdit").val(respuesta["idP"]);
                 $("#editNombreProyecto").val(respuesta["nombreProyecto"]);
@@ -132,6 +156,31 @@ $(document).on("click", ".btnEditResidente", function () {
             }
 
             // $("#"+id).attr("readonly","readonly");
+        }
+    });
+});
+
+/*<!--=====================================
+IMPRIMIR INFORMACION RESIDENTE
+======================================-->*/
+
+$(document).on("click", ".btnImprimirDoc", function () {
+    var idResidente = $(this).attr("idResidenteImp");
+    // console.log("idResidenteImp =", idResidente);
+    var datos = new FormData();
+    datos.append("idResidenteImp", idResidente);
+    $.ajax({
+        url: "ajax/residentes.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+            // console.log("respuesta::", respuesta);
+            $("#impNoControl").val(respuesta["noControl"]);
+            $("#impNombre").val(respuesta["nombre"]);
         }
     });
 });
