@@ -82,7 +82,7 @@ $(document).on("click", ".btnEditResidente", function () {
             $("#editRevisor1").val(null);
             $("#editRevisor2").val(null);
             $("#editRevisor3").val(null);
-            $("#editRevisor3").attr("disabled", false); 
+            $("#editRevisor3").attr("disabled", false);
             $("#editSuplente").val(null);
 
             if (respuesta["asesorExt"] == 0) {
@@ -99,10 +99,10 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editTelefono").val(respuesta["telefono"]);
                 if (respuesta["revision"] == 1) {
                     document.getElementById("customCheck1").checked = true;
-                }else if(respuesta["revision"] == 2){
+                } else if (respuesta["revision"] == 2) {
                     document.getElementById("customCheck1").checked = true;
                     document.getElementById("customCheck2").checked = true;
-                }else if(respuesta["revision"] == 3){
+                } else if (respuesta["revision"] == 3) {
                     document.getElementById("customCheck1").checked = true;
                     document.getElementById("customCheck2").checked = true;
                     document.getElementById("customCheck3").checked = true;
@@ -116,7 +116,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editAsesorExt").attr("readonly", "readonly");
                 $("#editRevisor1").val(respuesta["revisor1"]);
                 $("#editRevisor2").val(respuesta["revisor2"]);
-                $("#editRevisor3").attr("disabled", false); 
+                $("#editRevisor3").attr("disabled", false);
                 $("#editRevisor3").val(respuesta["revisor3"]);
                 $("#editSuplente").val(respuesta["suplente"]);
             } else {
@@ -133,10 +133,10 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editTelefono").val(respuesta["telefono"]);
                 if (respuesta["revision"] == 1) {
                     document.getElementById("customCheck1").checked = true;
-                }else if(respuesta["revision"] == 2){
+                } else if (respuesta["revision"] == 2) {
                     document.getElementById("customCheck1").checked = true;
                     document.getElementById("customCheck2").checked = true;
-                }else if(respuesta["revision"] == 3){
+                } else if (respuesta["revision"] == 3) {
                     document.getElementById("customCheck1").checked = true;
                     document.getElementById("customCheck2").checked = true;
                     document.getElementById("customCheck3").checked = true;
@@ -150,7 +150,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editAsesorExt").val(respuesta["asesorExt"]);
                 $("#editRevisor1").val(respuesta["revisor1"]);
                 $("#editRevisor2").val(respuesta["revisor2"]);
-                $("#editRevisor3").attr("disabled", true); 
+                $("#editRevisor3").attr("disabled", true);
                 $("#editRevisor3").val(respuesta["revisor3"]);
                 $("#editSuplente").val(respuesta["suplente"]);
             }
@@ -163,10 +163,9 @@ $(document).on("click", ".btnEditResidente", function () {
 /*<!--=====================================
 IMPRIMIR INFORMACION RESIDENTE
 ======================================-->*/
-
 $(document).on("click", ".btnImprimirDoc", function () {
-    var idResidente = $(this).attr("idResidenteImp");
-    // console.log("idResidenteImp =", idResidente);
+    idResidente = $(this).attr("idResidenteImp");
+    console.log("idResidenteImp =", idResidente);
     var datos = new FormData();
     datos.append("idResidenteImp", idResidente);
     $.ajax({
@@ -179,8 +178,18 @@ $(document).on("click", ".btnImprimirDoc", function () {
         dataType: "json",
         success: function (respuesta) {
             // console.log("respuesta::", respuesta);
+            $("#impId").val(idResidente);
+            $("idprueba").val(idResidente);
             $("#impNoControl").val(respuesta["noControl"]);
             $("#impNombre").val(respuesta["nombre"]);
+            /*<!--=====================================
+            IMPRIMIR DICTAMEN
+            ======================================-->*/
+            $(document).on("click", "#btnImprimirDictamen", function () {
+                /* var idResidente = $(.val).attr("impId"); */
+                console.log("idResidenteDic: " + idResidente);
+
+            });
         }
     });
 });

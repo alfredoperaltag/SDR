@@ -19,7 +19,6 @@ class ControladorResidentes
                 if ($value["estado"] != 0) {
                     echo '<option value="' . $value["id"] . '">' . $value["nombre"] . '</option>';
                 }
-                
             }
         }
     }
@@ -38,7 +37,7 @@ class ControladorResidentes
 
         foreach ($respuesta as $key => $value) {
             if ($value["tipo"] == "Residencias") {
-            echo ' <tr class="table-success">
+                echo ' <tr class="table-success">
                             <td>' . $value["id"] . '</td>
                             <td>' . $value["nombre"] . '</td>
                             <td>' . $value["noControl"] . '</td>
@@ -50,17 +49,17 @@ class ControladorResidentes
                             <td>
                                 <div class="btn-group">';
 
-                                if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
-                                   echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>';
-                                }
-                                    echo '
+                if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+                    echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>';
+                }
+                echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
-                                    <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . ' "data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
+                                    <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . '"data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
                                 </div>
                             </td>
                         </tr>';
-        }elseif($value["tipo"] == "Tesis"){
-            echo ' <tr class="table-danger">
+            } elseif ($value["tipo"] == "Tesis") {
+                echo ' <tr class="table-danger">
                             <td>' . $value["id"] . '</td>
                             <td>' . $value["nombre"] . '</td>
                             <td>' . $value["noControl"] . '</td>
@@ -72,18 +71,17 @@ class ControladorResidentes
                             <td>
                                 <div class="btn-group">';
 
-                                if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
-                                   echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>';
-                                }
-                                    echo '
+                if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+                    echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>';
+                }
+                echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
                                     <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . ' "data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
                                 </div>
                             </td>
                         </tr>';
-    }
-
-    }
+            }
+        }
     }
 
     /*=============================================
@@ -311,7 +309,7 @@ class ControladorResidentes
 
     public static function ctrEditarResidente()
     {
-        if (isset($_POST["editTipo"]) && $_POST["editTipo"]=="Residencias Profesionales") {
+        if (isset($_POST["editTipo"]) && $_POST["editTipo"] == "Residencias Profesionales") {
 
             $tabla1 = "proyecto";
             $tabla2 = "residentes";
@@ -339,7 +337,7 @@ class ControladorResidentes
 
                 if ($_POST["editCarrera"] == "ISC") {
                     $var1 = "Ingenieria en Sistemas Computacionales";
-                }elseif($_POST["editCarrera"] == "II"){
+                } elseif ($_POST["editCarrera"] == "II") {
                     $var1 = "Ingenieria Informatica";
                 }
 
@@ -408,11 +406,10 @@ class ControladorResidentes
 					});
 			  </script>';
             }
-        }else{
-            if (isset($_POST["editTipo"]) && $_POST["editTipo"]=="Tesis Profesional") {
+        } else {
+            if (isset($_POST["editTipo"]) && $_POST["editTipo"] == "Tesis Profesional") {
                 echo "tesis";
             }
-            
         }
     }
 }
