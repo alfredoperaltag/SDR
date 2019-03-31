@@ -188,7 +188,7 @@ $(document).on("click", ".btnImprimirDoc", function () {
             $(document).on("click", "#btnImprimirDictamen", function () {
                 /* var idResidente = $(.val).attr("impId"); */
                 console.log("idResidenteDic: " + idResidente);
-
+                window.open("dictamen.php", "_blank");
             });
         }
     });
