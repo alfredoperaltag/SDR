@@ -37,7 +37,6 @@ $(document).on("click", ".btnInfoResidente", function () {
 });
 
 
-
 /*<!--=====================================
     EDITAR RESIDENTE
 ======================================-->*/
@@ -164,6 +163,7 @@ $(document).on("click", ".btnEditResidente", function () {
 IMPRIMIR INFORMACION RESIDENTE
 ======================================-->*/
 $(document).on("click", ".btnImprimirDoc", function () {
+    idResidente = "";
     idResidente = $(this).attr("idResidenteImp");
     console.log("idResidenteImp =", idResidente);
     var datos = new FormData();
@@ -182,14 +182,13 @@ $(document).on("click", ".btnImprimirDoc", function () {
             $("idprueba").val(idResidente);
             $("#impNoControl").val(respuesta["noControl"]);
             $("#impNombre").val(respuesta["nombre"]);
-            /*<!--=====================================
-            IMPRIMIR DICTAMEN
-            ======================================-->*/
-            $(document).on("click", "#btnImprimirDictamen", function () {
-                /* var idResidente = $(.val).attr("impId"); */
-                console.log("idResidenteDic: " + idResidente);
-                window.open("pdf/dictamen.php", "_blank");
-            });
         }
     });
+});
+/*<!--=====================================
+IMPRIMIR DICTAMEN
+======================================-->*/
+$(document).on("click", "#btnImprimirDictamen", function () {
+    console.log("idResidenteDic: " + idResidente);
+    window.open("pdf/dictamen/index.php?id=" + idResidente, "_blank");
 });

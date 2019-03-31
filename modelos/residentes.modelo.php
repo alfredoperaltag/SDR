@@ -66,7 +66,7 @@ class ModeloResidentes
         AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, 
         IF(residentes.tipo_registro = '2', '---', proyecto.asesorExt) AS 'asesorExt', asesorIntA.nombre 
         AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', 
-        IF(residentes.tipo_registro = '1','---',revisorC.nombre) AS 'revisor3', suplenteA.nombre AS 'suplente' FROM ".$tabla." 
+        IF(residentes.tipo_registro = '1','---',revisorC.nombre) AS 'revisor3', suplenteA.nombre AS 'suplente' FROM " . $tabla . " 
         inner join proyecto on residentes.proyecto_id = proyecto.id  
         inner JOIN asesor AS asesorIntA ON proyecto.asesorInt = asesorIntA.id 
         inner join asesor AS revisorA ON proyecto.revisor1 = revisorA.id 
@@ -75,10 +75,10 @@ class ModeloResidentes
         inner join asesor AS suplenteA ON proyecto.suplente = suplenteA.id 
         WHERE residentes.id = :id");
 
-        $stmt->bindParam(":id", $valor, PDO::PARAM_INT);
+        $stmt->bindParam(":$item", $valor, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch();
-        // return $stmt -> fetchAll();
+        /* return $stmt->fetchAll(); */
         $stmt->close();
         $stmt = null;
     }
@@ -149,8 +149,8 @@ class ModeloResidentes
         $stmt->execute(['id' => $datos["nombreProyecto"]]);
         return $stmt->fetch();
     }
-    
-    
+
+
     /*=============================================
 	REGISTRAR DATOS DEL RESIDENTE
 	=============================================*/
@@ -223,7 +223,7 @@ class ModeloResidentes
         } else {
             print_r($stmt->errorInfo());
             // return "error";
-            return "ERROR: ".$stmt->errorInfo();
+            return "ERROR: " . $stmt->errorInfo();
         }
 
         $stmt->close();
@@ -266,6 +266,4 @@ class ModeloResidentes
         $stmt->close();
         $stmt = null;
     }
-
 }
-
