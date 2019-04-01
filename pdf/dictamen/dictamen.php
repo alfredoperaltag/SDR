@@ -22,30 +22,58 @@
             text-align: center;
         }
 
-        .prueba {
-            text-align: right;
-            /* display: block;
-            float: right; */
-            /*  width: 200px;
-            height: 50px; */
-            /* border-color: black;
-            background: red; */
-        }
 
         table {
             border: 0.5px solid #000;
+            text-align: center;
         }
 
-        td {
+        #contenedor1 {
+            padding: 7px 0px 23px 700px;
+        }
+
+        #tabla1 td {
+            font-size: 12px;
+            height: 11px;
+            width: 82px;
+        }
+
+        #contenedor2 {
+            padding: 0px 45px;
+        }
+
+        #tabla2 td,
+        th {
+            padding: 6px;
+        }
+
+        td,
+        th {
             border: 0.5px solid #000;
         }
 
-        #sinBottomBorde {
-            border-bottom: 0.5px solid white;
+        .sinBottomBorde {
+            border-bottom: 0.0px;
         }
 
-        #sinTopBorde {
-            border-top: 0.5px solid white;
+        .sinRightBorde {
+            border-right: 0.0px;
+        }
+
+        .sinLeftBorde {
+            border-left: 0.0px;
+        }
+
+        .sinTopBorde {
+            border-top: 0.0px;
+        }
+
+        .textoFinal {
+            text-align: right;
+        }
+
+        .textoInicio {
+            text-align: left;
         }
     </style>
 </head>
@@ -56,10 +84,10 @@
         DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
         DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
     </h5>
-    <div class="prueba">
-        <Table cellspacing="0">
+    <div id="contenedor1">
+        <Table cellspacing="0" id="tabla1">
             <tr>
-                <td id="sinBottomBorde">SEMESTRE</td>
+                <td class="sinBottomBorde">SEMESTRE</td>
                 <td>ENE - JUN</td>
                 <td><?php
                     if ($semestre == 'EJ') {
@@ -68,7 +96,7 @@
                     ?></td>
             </tr>
             <tr>
-                <td id="sinTopBorde"></td>
+                <td class="sinTopBorde"></td>
                 <td>AGO - DIC</td>
                 <td><?php
                     if ($semestre == 'AD') {
@@ -79,6 +107,48 @@
         </Table>
     </div>
     <h5>ING. EN SISTEMAS COMPUTACIONALES</h5>
+    <div id="contenedor2">
+        <table cellspacing="0" id="tabla2">
+            <tr>
+                <td class="sinBottomBorde"></td>
+                <td class="sinBottomBorde"></td>
+                <td class="sinBottomBorde"></td>
+                <td class="sinBottomBorde"></td>
+                <td class="sinBottomBorde"></td>
+                <td class="sinBottomBorde"></td>
+                <th class="textoFinal sinRightBorde">ASES</th>
+                <th class="textoInicio sinLeftBorde">ORES</th>
+                <td class="sinBottomBorde"></td>
+                <td class="sinBottomBorde"></td>
+            </tr>
+            <tr>
+                <th class="sinTopBorde ">NUM. </th>
+                <th class="sinTopBorde">CONTROL</th>
+                <th class="sinTopBorde">NOMBRE DEL ESTUDIANTE</th>
+                <th class="sinTopBorde">S</th>
+                <th class="sinTopBorde">ANTEPROYECTO</th>
+                <th class="sinTopBorde">EMPRESA</th>
+                <th>INTERNO</th>
+                <th>EXTERNO</th>
+                <th class="sinTopBorde">DICTAMEN</th>
+                <th class="sinTopBorde">FECHA DE DICTAMEN</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+
+        </table>
+    </div>
+
 
 </body>
 
