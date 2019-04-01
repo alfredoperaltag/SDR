@@ -10,7 +10,7 @@ class ControladorResidentes
     {
         $tabla = "asesor";
         $item = "noResidentes";
-        $valor = "7";
+        $valor = "6";
         echo $tabla . ' ' . $item . ' ' . $valor;
         $respuesta = ModeloResidentes::MdlMostrarDocentes($tabla, $item, $valor);
 
@@ -118,6 +118,14 @@ class ControladorResidentes
             $tabla2 = "residentes";
             $tipo = 1;
 
+            // Quitarles los residentes a los docentes
+            $restarResidente1 = $_POST["nuevoAsesorInt"]; 
+            $restarResidente2 = $_POST["nuevoRevisor1"]; 
+            $restarResidente3 = $_POST["nuevoRevisor2"]; 
+            $restarResidente4 = $_POST["nuevoSuplente"]; 
+
+            echo "<script>alert('".$abc."');</script>";
+
             $na = 0;
             $datosProyecto = array(
                 "nombreProyecto" => $_POST["nuevoNombreProyecto"],
@@ -157,7 +165,8 @@ class ControladorResidentes
                     echo '<script>
 				Swal.fire({
 					 type: "success",
-					title: "!Se registro correctamente¡",					   
+                    title: "¡Exito!",
+                    text: "¡Se registro correctamente!",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
@@ -166,11 +175,18 @@ class ControladorResidentes
 					}
 					});
               </script>';
+              //TODO: restarles los residentes a los asesores
+                    $tablaDocente = "asesor";
+
+              $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tablaDocente, $restarResidente1);
+              
+              
                 } else {
                     echo '<script>
                     Swal.fire({
                          type: "error",
-                        title: "!No se pudo registrar¡",					   
+                        title: "¡Error!",
+                        text: "¡No se pudo registrar!",				   
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"				   
                     }).then((result)=>{
@@ -189,7 +205,7 @@ class ControladorResidentes
                 echo '<script>
 				Swal.fire({
 					 type: "error",
-                    title: "!No se pudo registrar¡",
+                    title: "¡Error",
                     text: "Revisa los datos del Proyecto.",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
@@ -255,7 +271,8 @@ class ControladorResidentes
                     echo '<script>
 				Swal.fire({
 					 type: "success",
-					title: "!Se registro correctamente¡",					   
+                     title: "¡Exito!",
+                     text: "¡Se registro correctamente!",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
@@ -268,7 +285,8 @@ class ControladorResidentes
                     echo '<script>
                     Swal.fire({
                          type: "error",
-                        title: "!No se pudo registrar¡",					   
+                         title: "¡Error!",
+                         text: "¡No se pudo registrar!",					   
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"				   
                     }).then((result)=>{
@@ -287,7 +305,7 @@ class ControladorResidentes
                 echo '<script>
 				Swal.fire({
 					 type: "error",
-                    title: "!No se pudo registrar¡",
+                    title: "¡Error!",
                     text: "Revisa los datos del Proyecto.",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
@@ -372,7 +390,8 @@ class ControladorResidentes
                     echo '<script>
 				Swal.fire({
 					 type: "success",
-					title: "¡Se actualizo correctamente!",					   
+                     title: "¡Exito!",
+                     text: "¡Se registro correctamente!",						   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
@@ -385,7 +404,8 @@ class ControladorResidentes
                     echo '<script>
                     Swal.fire({
                          type: "error",
-                        title: "¡No se pudo actualizar!",					   
+                        title: "Error!",
+                        text: "¡No se pudo actualizar!",						   
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"				   
                     }).then((result)=>{
@@ -405,7 +425,7 @@ class ControladorResidentes
                 echo '<script>
 				Swal.fire({
 					 type: "error",
-                    title: "¡No se pudo actualizar!",
+                    title: "¡Error!",
                     text: "Revisa los datos del Proyecto.",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
@@ -485,7 +505,8 @@ class ControladorResidentes
                     echo '<script>
 				Swal.fire({
 					 type: "success",
-					title: "!Se actualizo correctamente¡",					   
+                     title: "¡Exito!",
+                     text: "¡Se registro correctamente!",						   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
@@ -498,7 +519,8 @@ class ControladorResidentes
                     echo '<script>
                     Swal.fire({
                          type: "error",
-                        title: "¡No se pudo actualizar!",
+                         title: "Error!",
+                         text: "¡No se pudo actualizar!",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"				   
                     }).then((result)=>{
@@ -518,7 +540,7 @@ class ControladorResidentes
                 echo '<script>
 				Swal.fire({
 					 type: "error",
-                    title: "¡No se pudo actualizar!",
+                    title: "¡Error!",
                     text: "Revisa los datos del Proyecto.",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   

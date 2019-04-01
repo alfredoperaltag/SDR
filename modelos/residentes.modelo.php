@@ -182,6 +182,13 @@ class ModeloResidentes
         $stmt = null;
     }
 
+    /*=============================================
+	  RESTAR RESIDENTES A LOS ASESORES
+	=============================================*/
+    static public function mdlRestarResidente($tabla, $datos)
+    {
+        
+    }
 
     /*=============================================
 	ELIMINAR PROYECTO SI SALE MAL EL REGISTRO
