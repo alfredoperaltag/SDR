@@ -24,7 +24,7 @@ class imprimirDictamen
 
         $html2pdf = new Html2Pdf('L', 'LETTER', 'es', 'true', 'UTF-8');
         $html2pdf->writeHTML($html);
-        $html2pdf->output('dictamen.pdf');
+        $html2pdf->output('dictamen-'.$nombre.'.pdf');
     }
 }
 
