@@ -185,9 +185,11 @@ class ModeloResidentes
     /*=============================================
 	  RESTAR RESIDENTES A LOS ASESORES
 	=============================================*/
-    static public function mdlRestarResidente($tabla, $datos)
+    static public function mdlRestarResidente($tabla, $dato)
     {
-        
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET noResidentes=noResidentes+1 WHERE id = :id");
+        $stmt->execute(['id' => $dato]);
+        return $stmt->fetch();
     }
 
     /*=============================================

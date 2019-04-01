@@ -124,7 +124,7 @@ class ControladorResidentes
             $restarResidente3 = $_POST["nuevoRevisor2"]; 
             $restarResidente4 = $_POST["nuevoSuplente"]; 
 
-            echo "<script>alert('".$abc."');</script>";
+            echo "<script>alert('".$restarResidente1." - ".$restarResidente2." - ".$restarResidente3." - ".$restarResidente4."');</script>";
 
             $na = 0;
             $datosProyecto = array(
@@ -175,11 +175,14 @@ class ControladorResidentes
 					}
 					});
               </script>';
-              //TODO: restarles los residentes a los asesores
-                    $tablaDocente = "asesor";
+              // restarles los residentes a los asesores
+                $tablaDocente = "asesor";
 
-              $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tablaDocente, $restarResidente1);
-              
+              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
+              $res2 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente2);
+              $res3 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente3);
+              $res4 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente4);
+
               
                 } else {
                     echo '<script>
@@ -335,9 +338,11 @@ class ControladorResidentes
             // Revicioness
             if($_POST["customCheck1"]){
                 $NoRevicion = 1;
-            }else if ($_POST["customCheck2"]) {
+            }
+            if ($_POST["customCheck2"]) {
                 $NoRevicion = 2;
-            }else if ($_POST["customCheck3"]) {
+            }
+            if ($_POST["customCheck3"]) {
                 $NoRevicion = 3;
             }
 
@@ -438,8 +443,6 @@ class ControladorResidentes
             }
         } else {
             if (isset($_POST["editTipo"]) && $_POST["editTipo"] == "Tesis Profesional") {
-                echo "tesis";
-                //TODO: NO TERMINE
             $tabla1 = "proyecto";
             $tabla2 = "residentes";
             $tipo = 2;
