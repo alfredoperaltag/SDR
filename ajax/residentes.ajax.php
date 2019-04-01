@@ -52,7 +52,7 @@ if (isset($_POST["idResidenteEdit"])) {
 }
 
 /*<!--=====================================
-EDITAR RESIDENTE
+IMPRIMIR PDF RESIDENTE
 ======================================-->*/
 if (isset($_POST["idResidenteImp"])) {
     $editar = new AjaxResidentes();

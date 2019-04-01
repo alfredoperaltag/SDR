@@ -23,6 +23,23 @@ $(document).on("click", ".btnInfoResidente", function () {
             $("#InfoPeriodo").val(respuesta["periodo"]);
             $("#InfoSexo").val(respuesta["sexo"]);
             $("#InfoTelefono").val(respuesta["telefono"]);
+            if (respuesta["revisionOK"] == 0) {
+                document.getElementById("customCheck4").checked = false;
+                document.getElementById("customCheck5").checked = false;
+                document.getElementById("customCheck6").checked = false;
+            } else if (respuesta["revisionOK"] == 1) {
+                document.getElementById("customCheck4").checked = true;
+                document.getElementById("customCheck5").checked = false;
+                document.getElementById("customCheck6").checked = false;
+            } else if (respuesta["revisionOK"] == 2) {
+                document.getElementById("customCheck4").checked = true;
+                document.getElementById("customCheck5").checked = true;
+                document.getElementById("customCheck6").checked = false;
+            } else if (respuesta["revisionOK"] == 3) {
+                document.getElementById("customCheck4").checked = true;
+                document.getElementById("customCheck5").checked = true;
+                document.getElementById("customCheck6").checked = true;
+            }
             $("#InfoTipo").val(respuesta["tipo_registro"]);
             $("#InfoProyecto").val(respuesta["nombreProyecto"]);
             $("#InfoEmpresa").val(respuesta["nombreEmpresa"]);
@@ -165,7 +182,6 @@ IMPRIMIR INFORMACION RESIDENTE
 $(document).on("click", ".btnImprimirDoc", function () {
     idResidente = "";
     idResidente = $(this).attr("idResidenteImp");
-    console.log("idResidenteImp =", idResidente);
     var datos = new FormData();
     datos.append("idResidenteImp", idResidente);
     $.ajax({
@@ -178,10 +194,40 @@ $(document).on("click", ".btnImprimirDoc", function () {
         dataType: "json",
         success: function (respuesta) {
             // console.log("respuesta::", respuesta);
-            $("#impId").val(idResidente);
-            $("idprueba").val(idResidente);
+            // $("#impId").val(idResidente);
+            // $("idprueba").val(idResidente);
+
+            document.getElementById("btnImprimirAsesores").disabled = true;
+            document.getElementById("btnImprimirLiberacion").disabled = true;
+            document.getElementById("btnImprimirJurado").disabled = true;
+            document.getElementById("btnImprimirComisionT").disabled = true;
+            document.getElementById("btnImprimirSinodales").disabled = true;
+
             $("#impNoControl").val(respuesta["noControl"]);
             $("#impNombre").val(respuesta["nombre"]);
+            if (respuesta["revisionOK"] == 0) {
+                document.getElementById("customCheck7").checked = false;
+                document.getElementById("customCheck8").checked = false;
+                document.getElementById("customCheck9").checked = false;
+            } else if (respuesta["revisionOK"] == 1) {
+                document.getElementById("customCheck7").checked = true;
+                document.getElementById("customCheck8").checked = false;
+                document.getElementById("customCheck9").checked = false;
+            } else if (respuesta["revisionOK"] == 2) {
+                document.getElementById("customCheck7").checked = true;
+                document.getElementById("customCheck8").checked = true;
+                document.getElementById("customCheck9").checked = false;
+            } else if (respuesta["revisionOK"] == 3) {
+                document.getElementById("customCheck7").checked = true;
+                document.getElementById("customCheck8").checked = true;
+                document.getElementById("customCheck9").checked = true;
+
+                document.getElementById("btnImprimirAsesores").disabled = false;
+                document.getElementById("btnImprimirLiberacion").disabled = false;
+                document.getElementById("btnImprimirJurado").disabled = false;
+                document.getElementById("btnImprimirComisionT").disabled = false;
+                document.getElementById("btnImprimirSinodales").disabled = false;
+            }
         }
     });
 });

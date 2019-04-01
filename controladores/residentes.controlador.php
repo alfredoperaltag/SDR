@@ -301,8 +301,6 @@ class ControladorResidentes
         }
     }
 
-
-
     /*===================================================================
     EDITAR RESIDENTES INFORME TECNICO && RESIDENCIAS PROFESIONALES
     ===================================================================*/
@@ -314,6 +312,18 @@ class ControladorResidentes
             $tabla1 = "proyecto";
             $tabla2 = "residentes";
             $tipo = 1;
+
+            // Revicioness
+            if($_POST["customCheck1"]){
+                $NoRevicion = 1;
+            }
+            if ($_POST["customCheck2"]) {
+                $NoRevicion = 2;
+            }
+            if ($_POST["customCheck"]) {
+                $NoRevicion = 3;
+            }
+
 
             $na = 0;
             $datosProyecto = array(
@@ -352,6 +362,7 @@ class ControladorResidentes
                     "apellidoM" => $_POST["editApellidoM"],
                     "sexo" => $_POST["editSexo"],
                     "telefono" => $_POST["editTelefono"],
+                    "revisionOK" => $NoRevicion,
                     "tipo_registro" => $tipo,
                     "proyecto_id" => $revisarProyecto["id"]
                 );
@@ -409,6 +420,115 @@ class ControladorResidentes
         } else {
             if (isset($_POST["editTipo"]) && $_POST["editTipo"] == "Tesis Profesional") {
                 echo "tesis";
+                //TODO: NO TERMINE
+            $tabla1 = "proyecto";
+            $tabla2 = "residentes";
+            $tipo = 2;
+
+            // Revicioness
+            if($_POST["customCheck1"]){
+                $NoRevicion = 1;
+            }
+            if ($_POST["customCheck2"]) {
+                $NoRevicion = 2;
+            }
+            if ($_POST["customCheck"]) {
+                $NoRevicion = 3;
+            }
+
+
+            $na = "";
+            $datosProyecto = array(
+                "idP" => $_POST["idProyectoEdit"],
+                "nombreProyecto" => $_POST["editNombreProyecto"],
+                "nombreEmpresa" => $_POST["editNombreEmpresa"],
+                "asesorExt" => $na,
+                "asesorInt" => $_POST["editAsesorInt"],
+                "revisor1" => $_POST["editRevisor1"],
+                "revisor2" => $_POST["editRevisor2"],
+                "revisor3" => $_POST["editRevisor3"],
+                "suplente" => $_POST["editSuplente"]
+            );
+
+            $respuestaProyecto = ModeloResidentes::mdlEditResidenteProyecto($tabla1, $datosProyecto);
+
+
+            if ($respuestaProyecto == "ok") {
+
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+
+                if ($_POST["editCarrera"] == "ISC") {
+                    $var1 = "Ingenieria en Sistemas Computacionales";
+                } elseif ($_POST["editCarrera"] == "II") {
+                    $var1 = "Ingenieria Informatica";
+                }
+
+                $datosResidente = array(
+                    "idRe" => $_POST["idResidenteEdit"],
+                    "noControl" => $_POST["editNoControlEdit"],
+                    "carrera" => $var1,
+                    "periodo" => $_POST["editPeriodo"],
+                    "anio" => $_POST["editPeriodoAnio"],
+                    "nombre" => $_POST["editNombre"],
+                    "apellidoP" => $_POST["editApellidoP"],
+                    "apellidoM" => $_POST["editApellidoM"],
+                    "sexo" => $_POST["editSexo"],
+                    "telefono" => $_POST["editTelefono"],
+                    "revisionOK" => $NoRevicion,
+                    "tipo_registro" => $tipo,
+                    "proyecto_id" => $revisarProyecto["id"]
+                );
+
+                $resResidente = ModeloResidentes::mdlEditResidenteDatos($tabla2, $datosResidente);
+
+                if ($resResidente == "ok") {
+                    echo '<script>
+				Swal.fire({
+					 type: "success",
+					title: "!Se actualizo correctamente¡",					   
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar"				   
+				}).then((result)=>{
+					if(result.value){
+						window.location = "Residentes";
+					}
+					});
+              </script>';
+                } else {
+                    echo '<script>
+                    Swal.fire({
+                         type: "error",
+                        title: "!No se pudo actualizar",					   
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"				   
+                    }).then((result)=>{
+                        if(result.value){
+                            window.location = "Residentes";
+                        }
+                        });
+                  </script>';
+                }
+            } else {
+                //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                $tablaE = "proyecto";
+                $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
+                //TERMINA
+                var_dump($respuestaProyecto);
+                echo '<script>
+				Swal.fire({
+					 type: "error",
+                    title: "!No se pudo actualizar",
+                    text: "Revisa los datos del Proyecto.",					   
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar"				   
+				}).then((result)=>{
+					if(result.value){
+						//window.location = "Residentes";
+					}
+					});
+			  </script>';
+            }
             }
         }
     }

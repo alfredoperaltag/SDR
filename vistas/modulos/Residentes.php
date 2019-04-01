@@ -537,15 +537,15 @@ EDITAR RESIDENTE
                         <div class="col-sm-8">
                             <label class="col-form-label mr-4">Revisiones:</label>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <input type="checkbox" name="customCheck1" class="custom-control-input" id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">Revision #1</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                <input type="checkbox" name="customCheck2" class="custom-control-input" id="customCheck2">
                                 <label class="custom-control-label" for="customCheck2">Revision #2</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                <input type="checkbox" name="customCheck3" class="custom-control-input" id="customCheck3">
                                 <label class="custom-control-label" for="customCheck3">Revision #3</label>
                             </div>
                         </div>
@@ -810,12 +810,12 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirDictamen">Dictamen de anteproyecto de
                     Residencias
                     Profesionales</button>
-                <button type="button" class="btn btn-success btn-lg btn-block">Asignación de asesor</button>
-                <button type="button" class="btn btn-success btn-lg btn-block">Liberacion de Residencias
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesores">Asignación de asesor</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de Residencias
                     Profesionales</button>
-                <button type="button" class="btn btn-success btn-lg btn-block">Asignacion de jurado</button>
-                <button type="button" class="btn btn-success btn-lg btn-block">Comision para titulación</button>
-                <button type="button" class="btn btn-success btn-lg btn-block">Ofició de asignacion de
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJurado">Asignacion de jurado</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirComisionT">Comision para titulación</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirSinodales">Ofició de asignacion de
                     sinodales</button>
             </div>
             <div class="modal-footer">

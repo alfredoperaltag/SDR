@@ -62,7 +62,7 @@ class ModeloResidentes
         $stmt = Conexion::conectar()->prepare("SELECT residentes.noControl, concat(residentes.nombre, ' ', residentes.apellidoP, ' ',residentes.apellidoM) AS 'nombre', 
         residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero - Junio', 'Agosto - Diciembre'), ' ', 
         residentes.anio) AS 'periodo',  IF(residentes.sexo = 'F', 'Femenino', 'Masculino') AS 'sexo', 
-        residentes.telefono,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional') 
+        residentes.telefono, residentes.revisionOK,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional') 
         AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, 
         IF(residentes.tipo_registro = '2', '---', proyecto.asesorExt) AS 'asesorExt', asesorIntA.nombre 
         AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', 
@@ -241,7 +241,7 @@ class ModeloResidentes
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla
         SET noControl = :noControl, nombre = :nombre, apellidoP = :apellidoP, apellidoM = :apellidoM, 
         carrera = :carrera, periodo = :periodo, anio = :anio, sexo = :sexo,  telefono = :telefono, 
-        tipo_registro = :tipo, proyecto_id = :proyecto_id
+        revisionOK = :revision, tipo_registro = :tipo, proyecto_id = :proyecto_id
         WHERE id = :id;");
         //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         $stmt->bindParam(":id", $datos["idRe"], PDO::PARAM_INT);
@@ -254,6 +254,7 @@ class ModeloResidentes
         $stmt->bindParam(":anio", $datos["anio"], PDO::PARAM_STR);
         $stmt->bindParam(":sexo", $datos["sexo"], PDO::PARAM_STR);
         $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+        $stmt->bindParam(":revision", $datos["revisionOK"], PDO::PARAM_INT);
         $stmt->bindParam(":tipo", $datos["tipo_registro"], PDO::PARAM_INT);
         $stmt->bindParam(":proyecto_id", $datos["proyecto_id"], PDO::PARAM_INT);
 
