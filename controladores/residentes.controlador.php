@@ -312,15 +312,14 @@ class ControladorResidentes
             $tabla1 = "proyecto";
             $tabla2 = "residentes";
             $tipo = 1;
+            $NoRevicion = 0;
 
             // Revicioness
             if($_POST["customCheck1"]){
                 $NoRevicion = 1;
-            }
-            if ($_POST["customCheck2"]) {
+            }else if ($_POST["customCheck2"]) {
                 $NoRevicion = 2;
-            }
-            if ($_POST["customCheck"]) {
+            }else if ($_POST["customCheck3"]) {
                 $NoRevicion = 3;
             }
 
@@ -373,7 +372,7 @@ class ControladorResidentes
                     echo '<script>
 				Swal.fire({
 					 type: "success",
-					title: "!Se actualizo correctamente¡",					   
+					title: "¡Se actualizo correctamente!",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
@@ -386,7 +385,7 @@ class ControladorResidentes
                     echo '<script>
                     Swal.fire({
                          type: "error",
-                        title: "!No se pudo actualizar",					   
+                        title: "¡No se pudo actualizar!",					   
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"				   
                     }).then((result)=>{
@@ -406,7 +405,7 @@ class ControladorResidentes
                 echo '<script>
 				Swal.fire({
 					 type: "error",
-                    title: "!No se pudo actualizar",
+                    title: "¡No se pudo actualizar!",
                     text: "Revisa los datos del Proyecto.",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
@@ -424,6 +423,7 @@ class ControladorResidentes
             $tabla1 = "proyecto";
             $tabla2 = "residentes";
             $tipo = 2;
+            $NoRevicion = 0;
 
             // Revicioness
             if($_POST["customCheck1"]){
@@ -432,7 +432,7 @@ class ControladorResidentes
             if ($_POST["customCheck2"]) {
                 $NoRevicion = 2;
             }
-            if ($_POST["customCheck"]) {
+            if ($_POST["customCheck3"]) {
                 $NoRevicion = 3;
             }
 
@@ -498,7 +498,7 @@ class ControladorResidentes
                     echo '<script>
                     Swal.fire({
                          type: "error",
-                        title: "!No se pudo actualizar",					   
+                        title: "¡No se pudo actualizar!",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"				   
                     }).then((result)=>{
@@ -518,7 +518,7 @@ class ControladorResidentes
                 echo '<script>
 				Swal.fire({
 					 type: "error",
-                    title: "!No se pudo actualizar",
+                    title: "¡No se pudo actualizar!",
                     text: "Revisa los datos del Proyecto.",					   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   

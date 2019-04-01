@@ -359,7 +359,7 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA REVISOR #1 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #1</label>
-                            <select class="custom-select" name="nuevoRevisor1" required>
+                            <select class="custom-select" name="nuevoRevisor1">
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -372,7 +372,7 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA REVISOR #1 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #2</label>
-                            <select class="custom-select" name="nuevoRevisor2" required>
+                            <select class="custom-select" name="nuevoRevisor2">
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -383,7 +383,7 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA REVISOR #2 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #3</label>
-                            <select class="custom-select" name="nuevoRevisor3" required>
+                            <select class="custom-select" name="nuevoRevisor3">
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -396,7 +396,7 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA SUPLENTE -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Suplente</label>
-                            <select class="custom-select" name="nuevoSuplente" required>
+                            <select class="custom-select" name="nuevoSuplente">
                                 <option value="">Selecionar suplente</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
