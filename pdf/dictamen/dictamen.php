@@ -21,6 +21,32 @@
             font-family: "arial";
             text-align: center;
         }
+
+        .prueba {
+            text-align: right;
+            /* display: block;
+            float: right; */
+            /*  width: 200px;
+            height: 50px; */
+            /* border-color: black;
+            background: red; */
+        }
+
+        table {
+            border: 0.5px solid #000;
+        }
+
+        td {
+            border: 0.5px solid #000;
+        }
+
+        #sinBottomBorde {
+            border-bottom: 0.5px solid white;
+        }
+
+        #sinTopBorde {
+            border-top: 0.5px solid white;
+        }
     </style>
 </head>
 
@@ -28,8 +54,32 @@
     <img src="../imagenes/LogoCaptura.PNG">
     <h5>INSTITUTO TECNOLÓGICO DE IGUALA <br>
         DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
-        DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES</h5><br><br>
-    Nombre: <?php echo $nombre; ?>
+        DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
+    </h5>
+    <div class="prueba">
+        <Table cellspacing="0">
+            <tr>
+                <td id="sinBottomBorde">SEMESTRE</td>
+                <td>ENE - JUN</td>
+                <td><?php
+                    if ($semestre == 'EJ') {
+                        echo $anio;
+                    }
+                    ?></td>
+            </tr>
+            <tr>
+                <td id="sinTopBorde"></td>
+                <td>AGO - DIC</td>
+                <td><?php
+                    if ($semestre == 'AD') {
+                        echo $anio;
+                    }
+                    ?></td>
+            </tr>
+        </Table>
+    </div>
+    <h5>ING. EN SISTEMAS COMPUTACIONALES</h5>
+
 </body>
 
 </html> 

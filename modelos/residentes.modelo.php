@@ -60,13 +60,13 @@ class ModeloResidentes
     {
 
         $stmt = Conexion::conectar()->prepare("SELECT residentes.noControl, concat(residentes.nombre, ' ', residentes.apellidoP, ' ',residentes.apellidoM) AS 'nombre', 
-        residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero/Junio', 'Agosto/Diciembre'), ' ', 
+        residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero - Junio', 'Agosto - Diciembre'), ' ', 
         residentes.anio) AS 'periodo',  IF(residentes.sexo = 'F', 'Femenino', 'Masculino') AS 'sexo', 
         residentes.telefono,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional') 
         AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, 
         IF(residentes.tipo_registro = '2', '---', proyecto.asesorExt) AS 'asesorExt', asesorIntA.nombre 
         AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', 
-        IF(residentes.tipo_registro = '1','---',revisorC.nombre) AS 'revisor3', suplenteA.nombre AS 'suplente' FROM " . $tabla . " 
+        IF(residentes.tipo_registro = '1','---',revisorC.nombre) AS 'revisor3', suplenteA.nombre AS 'suplente', residentes.anio AS anio, residentes.periodo AS semestre FROM " . $tabla . " 
         inner join proyecto on residentes.proyecto_id = proyecto.id  
         inner JOIN asesor AS asesorIntA ON proyecto.asesorInt = asesorIntA.id 
         inner join asesor AS revisorA ON proyecto.revisor1 = revisorA.id 

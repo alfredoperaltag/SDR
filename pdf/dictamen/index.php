@@ -12,9 +12,13 @@ class imprimirDictamen
         $valor = $this->idResidente;
         $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
         $nombre = $respuesta["nombre"];
+        $periodo = $respuesta["periodo"];
+        $anio = $respuesta["anio"];
+        $semestre = $respuesta["semestre"];
 
         require '../vendor/autoload.php';
 
+        /* require_once 'dictamen.php'; */
         require_once 'dictamen.php';
         $html = ob_get_clean();
 
