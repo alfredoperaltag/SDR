@@ -60,7 +60,7 @@ CUERPO DOCUMENTO
         } else {
             include "modulos/cabezoteUser.php";
         }
-
+        // Usuario administrativo
         if (isset($_GET["ruta"]) && $_SESSION['perfil'] == "Administrador") {
             if (
                 $_GET["ruta"] == "Inicio" ||
@@ -68,6 +68,7 @@ CUERPO DOCUMENTO
                 $_GET["ruta"] == "Residentes" ||
                 $_GET["ruta"] == "Docentes" ||
                 $_GET["ruta"] == "Directorio"||
+                $_GET["ruta"] == "Jerarquia"||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
@@ -76,6 +77,7 @@ CUERPO DOCUMENTO
                 include "modulos/404.php";
             }
         }
+        // Usuario normal
         if (isset($_GET["ruta"]) && $_SESSION['perfil'] != "Administrador") {
             if (
                 $_GET["ruta"] == "Inicio" ||
