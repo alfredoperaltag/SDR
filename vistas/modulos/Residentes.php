@@ -847,7 +847,7 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
                                 <label class="custom-control-label" for="DicRechazado">Rechazado</label>
                             </div>
                     <div class="col-auto my-1">
-                        <button type="submit" class="btn btn-success" id="btnImprimirDictamen">Dictamen
+                        <button type="submit" class="btn btn-success responsive-width" id="btnImprimirDictamen">Dictamen
                             de anteproyecto de
                             Residencias
                             Profesionales</button>
