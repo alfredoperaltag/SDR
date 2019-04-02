@@ -180,7 +180,6 @@ $(document).on("click", ".btnEditResidente", function () {
 IMPRIMIR INFORMACION RESIDENTE
 ======================================-->*/
 $(document).on("click", ".btnImprimirDoc", function () {
-    idResidente = "";
     idResidente = $(this).attr("idResidenteImp");
     var datos = new FormData();
     datos.append("idResidenteImp", idResidente);

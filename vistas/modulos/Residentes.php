@@ -68,7 +68,8 @@ INFORME TECNICO DE RESIDENCIAS Profesionales
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControlRP" placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControlRP"
+                                    placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -111,17 +112,20 @@ INFORME TECNICO DE RESIDENCIAS Profesionales
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required
+                                autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno"
+                                required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno"
+                                required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -137,7 +141,8 @@ INFORME TECNICO DE RESIDENCIAS Profesionales
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono" autocomplete="off">
+                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono"
+                                autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -146,19 +151,22 @@ INFORME TECNICO DE RESIDENCIAS Profesionales
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
+                                placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Asesor Externo</label>
-                            <input class="form-control" type="text" name="nuevoAsesorExt" placeholder="Asesor Externo" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoAsesorExt" placeholder="Asesor Externo"
+                                required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
@@ -258,7 +266,8 @@ TESIS PROFESIONAL
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControlT" placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControlT"
+                                    placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -301,17 +310,20 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required
+                                autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno"
+                                required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno"
+                                required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -327,7 +339,8 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono" autocomplete="off">
+                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono"
+                                autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -336,12 +349,14 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
+                                placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -456,7 +471,8 @@ EDITAR RESIDENTE
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="editNoControlEdit" id="editNoControlEdit" placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="editNoControlEdit"
+                                    id="editNoControlEdit" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -498,17 +514,20 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="editNombre" id="editNombre" placeholder="Nombre" required autocomplete="off">
+                            <input class="form-control" type="text" name="editNombre" id="editNombre"
+                                placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="editApellidoP" id="editApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
+                            <input class="form-control" type="text" name="editApellidoP" id="editApellidoP"
+                                placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="editApellidoM" id="editApellidoM" placeholder="Apellido Materno" required autocomplete="off">
+                            <input class="form-control" type="text" name="editApellidoM" id="editApellidoM"
+                                placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -524,12 +543,14 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="editTelefono" id="editTelefono" placeholder="Telefono" autocomplete="off">
+                            <input class="form-control" type="tel" name="editTelefono" id="editTelefono"
+                                placeholder="Telefono" autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL TIPO DE REGISTRO -->
                         <div class="col-sm-5 my-1">
                             <label for="example-text-input" class="col-form-label">Tipo de registro</label>
-                            <input class="form-control" type="tel" name="editTipo" id="editTipo" placeholder="Tipo" autocomplete="off">
+                            <input class="form-control" type="tel" name="editTipo" id="editTipo" placeholder="Tipo"
+                                autocomplete="off">
                         </div>
                     </div>
 
@@ -537,15 +558,18 @@ EDITAR RESIDENTE
                         <div class="col-sm-8">
                             <label class="col-form-label mr-4">Revisiones:</label>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck1" class="custom-control-input" id="customCheck1">
+                                <input type="checkbox" name="customCheck1" class="custom-control-input"
+                                    id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">Revision #1</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck2" class="custom-control-input" id="customCheck2">
+                                <input type="checkbox" name="customCheck2" class="custom-control-input"
+                                    id="customCheck2">
                                 <label class="custom-control-label" for="customCheck2">Revision #2</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck3" class="custom-control-input" id="customCheck3">
+                                <input type="checkbox" name="customCheck3" class="custom-control-input"
+                                    id="customCheck3">
                                 <label class="custom-control-label" for="customCheck3">Revision #3</label>
                             </div>
                         </div>
@@ -557,12 +581,14 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="editNombreProyecto" id="editNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <input class="form-control" type="text" name="editNombreProyecto" id="editNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="editNombreEmpresa" id="editNombreEmpresa" placeholder="Nombre del asesor" required autocomplete="off">
+                            <input class="form-control" type="text" name="editNombreEmpresa" id="editNombreEmpresa"
+                                placeholder="Nombre del asesor" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -580,7 +606,8 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Asesor Externo</label>
-                            <input class="form-control" type="text" name="editAsesorExt" id="editAsesorExt" placeholder="No llena asesor externo" required autocomplete="off">
+                            <input class="form-control" type="text" name="editAsesorExt" id="editAsesorExt"
+                                placeholder="No llena asesor externo" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -769,7 +796,7 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
 ======================================-->
 <!-- basic modal start -->
 <div class="modal fade" id="modalFormatos">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Formatos de Impresion</h5>
@@ -778,19 +805,17 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
             <div class="modal-body">
 
                 <div class="form-row align-items-center">
-                    <div class="col-sm-3 my-1">
-                        <label for="example-text-input" class="col-form-label">No. Control</label>
+                    <div class="col-sm-2 my-1">
+                        <label for="impNoControl" class="col-form-label">No. Control</label>
                         <input class="form-control" type="text" id="impNoControl" readonly>
                     </div>
-                    <div class="col-sm-9 my-1">
-                        <label for="example-text-input" class="col-form-label">Nombre</label>
+                    <div class="col-sm-4 my-1">
+                        <label for="impNombre" class="col-form-label">Nombre</label>
                         <input class="form-control" type="text" id="impNombre" readonly>
                     </div>
-                    <div class="form-row justify-content-center">
-                        <div class="col-sm-12">
-                            <label class="col-form-label mr-4">Revisiones:</label>
-                            <!-- </div>
-                    <div class="col-sm-10  "> -->
+                    <!-- <div class="form-row justify-content-center"> -->
+                        <div class="col-sm-6 my-1">
+                            <label class="col-form-label">Revisiones</label><br>
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" disabled class="custom-control-input" id="customCheck7">
                                 <label class="custom-control-label" for="customCheck7">Revision #1</label>
@@ -804,18 +829,41 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
                                 <label class="custom-control-label" for="customCheck9">Revision #3</label>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
                 <br>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirDictamen">Dictamen de anteproyecto de
+                <!-- FORM DICTAMEN -->
+                <div class="form-row align-items-center pb-1">
+                    <div class="col-sm-3 my-1">
+                        <label for="fechaDictamen" class="sr-only">Fecha</label>
+                        <input class="form-control" type="date" id="fechaDictamen" name="fechaDictamen" required>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" checked id="DicAceptado" name="radioCheck" class="custom-control-input" required>
+                            <label class="custom-control-label" for="DicAceptado">Aceptado</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="DicRechazado" name="radioCheck" class="custom-control-input" required>
+                                <label class="custom-control-label" for="DicRechazado">Rechazado</label>
+                            </div>
+                    <div class="col-auto my-1">
+                        <button type="submit" class="btn btn-success" id="btnImprimirDictamen">Dictamen
+                            de anteproyecto de
+                            Residencias
+                            Profesionales</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesores">Asignación de
+                    asesor</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de
                     Residencias
                     Profesionales</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesores">Asignación de asesor</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de Residencias
-                    Profesionales</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJurado">Asignacion de jurado</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirComisionT">Comision para titulación</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirSinodales">Ofició de asignacion de
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJurado">Asignacion de
+                    jurado</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirComisionT">Comision para
+                    titulación</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirSinodales">Ofició de
+                    asignacion de
                     sinodales</button>
             </div>
             <div class="modal-footer">
@@ -823,4 +871,4 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
             </div>
         </div>
     </div>
-</div> 
+</div>
