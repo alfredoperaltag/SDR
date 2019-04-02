@@ -19,13 +19,13 @@
         }
 
         .sinBordeInferior {
-            border: 0.5px solid #000;
-            border-bottom: 0.0px;
+            border-bottom: 0.5px solid white;
+            /* border-bottom: 0.0px; */
         }
 
         .sinBordeSuperior {
-            border: 0.5px solid #000;
             border-top: 0.0px;
+
         }
 
         .bordeNormal {
@@ -83,21 +83,21 @@
     </div>
     <h5>ING. EN SISTEMAS COMPUTACIONALES</h5>
     <div id="contenedor2">
-        <table cellspacing="0" class="bordeNormal">
+        <table cellspacing="0" class="bordeNormal" style="text-align: center;">
             <tr>
+                <td class="sinBordeInferior"></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <th>ASES</th>
-                <th>ORES</th>
+                <th style="text-align: right">ASES</th>
+                <th style="text-align: left">ORES</th>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
-                <th>NUM.</th>
+                <th class="sinBordeSuperior">NUM.</th>
                 <th>CONTROL</th>
                 <th>NOMBRE DEL<br>ESTUDIANTE</th>
                 <th>S</th>
@@ -109,18 +109,18 @@
                 <th>FECHA DE<br>DICTAMEN</th>
             </tr>
             <tr>
-                <td style="width: 30px;"><?php echo $id; ?></td>
-                <td style="width: 85px;"><?php echo $numeroControl; ?></td>
+                <td style=" width: 29px;"><?php echo $id; ?></td>
+                <td style="width: 84px;"><?php echo $numeroControl; ?></td>
 
-                <td style="width: 144px;"><?php echo $nombre; ?></td>
-                <td style="width: 19px;"><?php if ($sexo == "Masculino") {
+                <td style="width: 143px;"><?php echo $nombre; ?></td>
+                <td style="width: 18px;"><?php if ($sexo == "Masculino") {
                                                 echo "M";
                                             } else {
                                                 echo "F";
                                             } ?></td>
-                <td style="width: 134px;"><?php echo $proyecto; ?></td>
-                <td style="width: 126px;"><?php echo $empresa; ?></td>
-                <td style="width: 86px;"><?php echo $asesorInterno; ?></td>
+                <td style="width: 133px;"><?php echo $proyecto; ?></td>
+                <td style="width: 125px;"><?php echo $empresa; ?></td>
+                <td style="width: 85px;"><?php echo $asesorInterno; ?></td>
                 <td style="width: 86px;"><?php echo $asesorExterno; ?></td>
                 <td style="width: 87px;">Aceptado</td>
                 <td style="width: 94px;">16/ENERO/19</td>
