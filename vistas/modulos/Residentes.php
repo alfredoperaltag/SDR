@@ -796,7 +796,7 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
 ======================================-->
 <!-- basic modal start -->
 <div class="modal fade" id="modalFormatos">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Formatos de Impresion</h5>
@@ -805,17 +805,17 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
             <div class="modal-body">
 
                 <div class="form-row align-items-center">
-                    <div class="col-sm-2 my-1">
+                    <div class="col-sm-4 my-1">
                         <label for="impNoControl" class="col-form-label">No. Control</label>
                         <input class="form-control" type="text" id="impNoControl" readonly>
                     </div>
-                    <div class="col-sm-4 my-1">
+                    <div class="col-sm-8 my-1">
                         <label for="impNombre" class="col-form-label">Nombre</label>
                         <input class="form-control" type="text" id="impNombre" readonly>
                     </div>
-                    <!-- <div class="form-row justify-content-center"> -->
-                        <div class="col-sm-6 my-1">
-                            <label class="col-form-label">Revisiones</label><br>
+                    <div class="form-row justify-content-center">
+                        <div class="col-sm-12 my-1">
+                            <label class="col-form-label">Revisiones:   </label>
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" disabled class="custom-control-input" id="customCheck7">
                                 <label class="custom-control-label" for="customCheck7">Revision #1</label>
@@ -829,12 +829,12 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
                                 <label class="custom-control-label" for="customCheck9">Revision #3</label>
                             </div>
                         </div>
-                    <!-- </div> -->
+                    </div>
                 </div>
                 <br>
                 <!-- FORM DICTAMEN -->
-                <div class="form-row align-items-center pb-1">
-                    <div class="col-sm-3 my-1">
+                <!-- <div class="form-row align-items-center pb-1"> -->
+                    <!-- <div class="col-sm-3 my-1">
                         <label for="fechaDictamen" class="sr-only">Fecha</label>
                         <input class="form-control" type="date" id="fechaDictamen" name="fechaDictamen" required>
                     </div>
@@ -845,14 +845,14 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
                         <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="DicRechazado" name="radioCheck" class="custom-control-input" required>
                                 <label class="custom-control-label" for="DicRechazado">Rechazado</label>
-                            </div>
-                    <div class="col-auto my-1">
-                        <button type="submit" class="btn btn-success responsive-width" id="btnImprimirDictamen">Dictamen
+                            </div> -->
+                    <!-- <div class="col-auto my-1"> -->
+                        <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImprimirDictamen">Dictamen
                             de anteproyecto de
                             Residencias
                             Profesionales</button>
-                    </div>
-                </div>
+                    <!-- </div>
+                </div> -->
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesores">Asignación de
                     asesor</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de

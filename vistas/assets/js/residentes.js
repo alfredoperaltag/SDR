@@ -230,10 +230,42 @@ $(document).on("click", ".btnImprimirDoc", function () {
         }
     });
 });
+
+//FECHA DEL SISTEMA
+var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+var f=new Date();
+var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
+
+
 /*<!--=====================================
 IMPRIMIR DICTAMEN
 ======================================-->*/
 $(document).on("click", "#btnImprimirDictamen", function () {
     console.log("idResidenteDic: " + idResidente);
-    window.open("pdf/dictamen/index.php?id=" + idResidente, "_blank");
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2']
+    }).queue([
+        {
+            input: 'text',
+            inputValue: fecha,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            title: 'Estado del dictamen',
+            text: 'Introduzca "Aceptado" ó "Rechazado"',
+            input: 'radio',
+            inputOptions: {
+                'Aceptado': 'Aceptado',
+                'Rechazado': 'Rechazado'
+            }
+        }
+    ]).then((result) => {
+        if (result.value) {
+            window.open("pdf/dictamen/index.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
+        }
+    })
 });
