@@ -30,7 +30,7 @@
     </div>
     <h5>ING. EN SISTEMAS COMPUTACIONALES</h5>
     <div>
-        <table cellspacing="0" border=0.5 style="width:100%; text-align: center;" align="center">
+        <table cellspacing="0" border=0.5 style="width:100%; text-align: center; font-size:12" align="center">
             <tr>
                 <td></td>
                 <td></td>
@@ -60,17 +60,17 @@
                 <td style="width:9.5%"><?php echo $numeroControl; ?></td>
 
                 <td style="width:15%"><?php echo $nombre; ?></td>
-                <td style="width:2%"><?php if ($sexo == "Masculino") {
+                <td style="width:2.5%"><?php if ($sexo == "Masculino") {
                                             echo "M";
                                         } else {
                                             echo "F";
                                         } ?></td>
-                <td style="width:12.5%"><?php echo $proyecto; ?></td>
-                <td style="width:12%"><?php echo $empresa; ?></td>
-                <td style="width:11%"><?php echo $asesorInterno; ?></td>
-                <td style="width:11%"><?php echo $asesorExterno; ?></td>
-                <td style="width:11%">Aceptado</td>
-                <td style="width:11%">16/ENERO/19</td>
+                <td style="width:14%"><?php echo $proyecto; ?></td>
+                <td style="width:14%"><?php echo $empresa; ?></td>
+                <td style="width:10%"><?php echo $asesorInterno; ?></td>
+                <td style="width:9%"><?php echo $asesorExterno; ?></td>
+                <td style="width:10%">Aceptado</td>
+                <td style="width:10%">16/ENERO/19</td>
             </tr>
         </table>
     </div>
