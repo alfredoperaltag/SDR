@@ -22,6 +22,8 @@ class imprimirDictamen
         $periodo = $respuesta["periodo"];
         $anio = $respuesta["anio"];
         $semestre = $respuesta["semestre"];
+        $fechaActual = $_GET['fecha'];
+        $estado = $_GET['estado'];
 
         require '../vendor/autoload.php';
 

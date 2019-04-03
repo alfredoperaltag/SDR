@@ -69,8 +69,8 @@
                 <td style="width:14%"><?php echo $empresa; ?></td>
                 <td style="width:10%"><?php echo $asesorInterno; ?></td>
                 <td style="width:9%"><?php echo $asesorExterno; ?></td>
-                <td style="width:10%">Aceptado</td>
-                <td style="width:10%">16/ENERO/19</td>
+                <td style="width:10%"><?php echo $estado; ?></td>
+                <td style="width:10%"><?php echo $fechaActual; ?></td>
             </tr>
         </table>
     </div>
