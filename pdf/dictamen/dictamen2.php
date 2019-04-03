@@ -30,30 +30,33 @@
     </div>
     <h5>ING. EN SISTEMAS COMPUTACIONALES</h5>
     <div>
+        <table border="0">
+
+        </table>
         <table cellspacing="0" border=0.5 style="width:100%; text-align: center; font-size:12" align="center">
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <th style="text-align: right">ASES</th>
-                <th style="text-align: left">ORES</th>
-                <td></td>
-                <td></td>
+                <td style="border-bottom: 0px"></td>
+                <td style="border-bottom: 0px"></td>
+                <td style="border-bottom: 0px"></td>
+                <td style="border-bottom: 0px"></td>
+                <td style="border-bottom: 0px"></td>
+                <td style="border-bottom: 0px"></td>
+                <th style="text-align: right; border-right:0px">ASES</th>
+                <th style="text-align: left; border-left:0px">ORES</th>
+                <td style="border-bottom: 0px"></td>
+                <td style="border-bottom: 0px"></td>
             </tr>
             <tr>
-                <th>NUM.</th>
-                <th>CONTROL</th>
-                <th>NOMBRE DEL<br>ESTUDIANTE</th>
-                <th>S</th>
-                <th>ANTEPROYECTO</th>
-                <th>EMPRESA</th>
+                <th style="border-top: 0px">NUM.</th>
+                <th style="border-top: 0px">CONTROL</th>
+                <th style="border-top: 0px">NOMBRE DEL<br>ESTUDIANTE</th>
+                <th style="border-top: 0px">S</th>
+                <th style="border-top: 0px">ANTEPROYECTO</th>
+                <th style="border-top: 0px">EMPRESA</th>
                 <th>INTERNO</th>
                 <th>EXTERNO</th>
-                <th>DICTAMEN</th>
-                <th>FECHA DE<br>DICTAMEN</th>
+                <th style="border-top: 0px">DICTAMEN</th>
+                <th style="border-top: 0px">FECHA DE<br>DICTAMEN</th>
             </tr>
             <tr>
                 <td style="width:6%"><?php echo $id; ?></td>
