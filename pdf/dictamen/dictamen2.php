@@ -6,25 +6,25 @@
         DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
     </h5>
     <div>
-        <Table cellspacing="0" border=0.5 style="width:100%; text-align: center;" align="right">
+        <Table cellspacing="0" border=0.5 style="width:100%; text-align: center; margin-left:-0.8%;" align="right">
             <tr>
-                <td>SEMESTRE</td>
-                <td>ENE - JUN</td>
-                <td><?php
-                    if ($semestre == 'EJ') {
-                        echo $anio;
-                    }
-                    ?></td>
+                <td style="border-bottom: 0px; font-size:12; width: 13%">SEMESTRE</td>
+                <td style="width: 8%; font-size:10">ENE - JUN</td>
+                <td style="width: 8%; font-size:12"><?php
+                                                    if ($semestre == 'EJ') {
+                                                        echo $anio;
+                                                    }
+                                                    ?></td>
             </tr>
-            
+
             <tr>
-                <td style="width: 9%"></td>
-                <td style="width: 10%">AGO - DIC</td>
-                <td style="width: 10%"><?php
-                    if ($semestre == 'AD') {
-                        echo $anio;
-                    }
-                    ?>
+                <td style="border-top: 0px;"></td>
+                <td style="font-size:10">AGO - DIC</td>
+                <td style="font-size:12"><?php
+                                            if ($semestre == 'AD') {
+                                                echo $anio;
+                                            }
+                                            ?>
                 </td>
             </tr>
         </Table>
@@ -76,8 +76,34 @@
         </table>
     </div>
     <p align="center">En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados</p>
+    <table cellspacing="0" border=0.5 style="width:100%; text-align: center; font-size:12" align="center">
+        <tr>
+            <td>
+                NOMBRE Y FIRMA DEL PRESIDENTE DE ACADEMIA
+            </td>
+            <td>
+                NOMBRE Y FIRMA DEL JEFE DEL DEPTO.
+            </td>
+            <td>
+                NOMBRE Y FIRMA DEL SUBDIRECTOR ACADÉMICO
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Propone
+            </td>
+            <td>
+                ACADÉMICO
+            </td>
+            <td>
+                Vo. Bo.
+            </td>
+        </tr>
+
+    </table>
     <h5 align="center">INSTITUTO TECNOLÓGICO DE IGUALA <br>
         DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
         DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
     </h5>
+
 </page> 
