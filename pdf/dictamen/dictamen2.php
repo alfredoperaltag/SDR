@@ -1,7 +1,7 @@
 <page backleft="12mm" backright="10mm">
 
-    <img src="../imagenes/LogoCaptura.PNG">
-    <h5>INSTITUTO TECNOLÓGICO DE IGUALA <br>
+    <img src="../imagenes/LogoCaptura.PNG" style="margin: 3.5% 14.5% -2% 11%;">
+    <h5 align="center">INSTITUTO TECNOLÓGICO DE IGUALA <br>
         DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
         DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
     </h5>
@@ -16,10 +16,11 @@
                     }
                     ?></td>
             </tr>
+            
             <tr>
-                <td></td>
-                <td>AGO - DIC</td>
-                <td><?php
+                <td style="width: 9%"></td>
+                <td style="width: 10%">AGO - DIC</td>
+                <td style="width: 10%"><?php
                     if ($semestre == 'AD') {
                         echo $anio;
                     }
@@ -28,11 +29,8 @@
             </tr>
         </Table>
     </div>
-    <h5>ING. EN SISTEMAS COMPUTACIONALES</h5>
+    <h5 align="center">ING. EN SISTEMAS COMPUTACIONALES</h5>
     <div>
-        <table border="0">
-
-        </table>
         <table cellspacing="0" border=0.5 style="width:100%; text-align: center; font-size:12" align="center">
             <tr>
                 <td style="border-bottom: 0px"></td>
@@ -77,8 +75,8 @@
             </tr>
         </table>
     </div>
-    <p>En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados</p>
-    <h5>INSTITUTO TECNOLÓGICO DE IGUALA <br>
+    <p align="center">En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados</p>
+    <h5 align="center">INSTITUTO TECNOLÓGICO DE IGUALA <br>
         DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
         DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
     </h5>
