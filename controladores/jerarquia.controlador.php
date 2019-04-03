@@ -17,9 +17,9 @@ class ControladorJerarquia
     /*=============================================
     MOSTRAR DOCENTE EN DICTAMEN
     =============================================*/
-    public static function ctrMostrarDocentesDictamen($tabla)
+    public static function ctrMostrarDocentesDictamen($tabla, $item)
     {
-        $respuesta = ModeloDocentesJerarquia::MdlMostrarDocentesDictamen($tabla);
+        $respuesta = ModeloDocentesJerarquia::MdlMostrarDocentesDictamen($tabla, $item);
         return $respuesta;
     }
 

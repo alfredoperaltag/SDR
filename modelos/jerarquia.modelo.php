@@ -27,12 +27,12 @@ class ModeloDocentesJerarquia
     /*=============================================
     MOSTRAR DOCENTES EN DICTAMEN
     =============================================*/
-    public static function MdlMostrarDocentesDictamen($tabla)
+    public static function MdlMostrarDocentesDictamen($tabla, $item)
     {
-        $tabla = "jerarquia";
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE cargo = 'PRESIDENTE DE ACADEMIA' || cargo = 'JEFE DEL DEPTO. ACADEMICO' || cargo = 'SUBDIRECTOR ACADÉMICO'");
-        $stmt->execute();
-        return $stmt->fetchAll();
+        $stmt = Conexion::conectar()->prepare("SELECT nombre FROM $tabla WHERE cargo = :item");
+        $stmt->execute(['item' => $item]);
+        return $stmt->fetch();
+
         $stmt->close();
         $stmt = null;
     }
