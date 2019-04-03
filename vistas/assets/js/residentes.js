@@ -256,12 +256,17 @@ $(document).on("click", "#btnImprimirDictamen", function () {
         },
         {
             title: 'Estado del dictamen',
-            text: 'Introduzca "Aceptado" ó "Rechazado"',
+            text: 'Seleccione "Aceptado" ó "Rechazado"',
             input: 'radio',
             inputOptions: {
                 'Aceptado': 'Aceptado',
                 'Rechazado': 'Rechazado'
-            }
+            },
+            inputValidator: function(result) {
+                if (!result) {
+                  return 'You need to select something!';
+                }
+              }
         }
     ]).then((result) => {
         if (result.value) {
