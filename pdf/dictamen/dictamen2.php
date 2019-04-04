@@ -71,7 +71,7 @@
                 <td style="width:10%"><?php echo $asesorInterno; ?></td>
                 <td style="width:9%"><?php echo $asesorExterno; ?></td>
                 <td style="width:10%"><?php echo $estado; ?></td>
-                <td style="width:10%"><?php echo $presidente; ?></td>
+                <td style="width:10%"><?php echo $fechaActual; ?></td>
             </tr>
         </table>
     </div>

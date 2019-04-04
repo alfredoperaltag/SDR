@@ -36,7 +36,7 @@ class ControladorResidentes
         $respuesta = ModeloResidentes::MdlMostrarResidentesEnTabla($tabla, $item, $valor);
 
         foreach ($respuesta as $key => $value) {
-            if ($value["tipo"] == "Residencias") {
+            if ($value["tipo"] == "Residencias") {//RESIDENCIAS
                 echo ' <tr class="table-success">
                             <td>' . $value["id"] . '</td>
                             <td>' . $value["nombre"] . '</td>
@@ -54,11 +54,11 @@ class ControladorResidentes
                 }
                 echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
-                                    <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . '"data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
+                                    <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . '"data-toggle="modal" data-target="#modalFormatosRP"><i class="fa fa-print"></i></button>
                                 </div>
                             </td>
                         </tr>';
-            } elseif ($value["tipo"] == "Tesis") {
+            } elseif ($value["tipo"] == "Tesis") {//TESIS
                 echo ' <tr class="table-danger">
                             <td>' . $value["id"] . '</td>
                             <td>' . $value["nombre"] . '</td>
@@ -76,7 +76,7 @@ class ControladorResidentes
                 }
                 echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
-                                    <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . ' "data-toggle="modal" data-target="#modalFormatos"><i class="fa fa-print"></i></button>
+                                    <button class="btn btn-success btnImprimirDoc" idResidenteImp="' . $value["id"] . ' "data-toggle="modal" data-target="#modalFormatosT"><i class="fa fa-print"></i></button>
                                 </div>
                             </td>
                         </tr>';

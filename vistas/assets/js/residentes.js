@@ -181,6 +181,7 @@ IMPRIMIR INFORMACION RESIDENTE
 ======================================-->*/
 $(document).on("click", ".btnImprimirDoc", function () {
     idResidente = $(this).attr("idResidenteImp");
+    console.log("R: ", idResidente);
     var datos = new FormData();
     datos.append("idResidenteImp", idResidente);
     $.ajax({

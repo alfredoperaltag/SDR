@@ -792,13 +792,13 @@ INFORMACION RESIDENTE
 </div>
 
 <!--=====================================
-INFORMES DE RESIDENTE PARA IMPRIMIR
+IMPRIMIR DOCUMENTOS RESIDENCIAS PROFESIONALES
 ======================================-->
 <!-- basic modal start -->
-<div class="modal fade" id="modalFormatos">
+<div class="modal fade" id="modalFormatosRP">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background:#28A745; color:white">
                 <h5 class="modal-title">Formatos de Impresion</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
@@ -832,27 +832,10 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
                     </div>
                 </div>
                 <br>
-                <!-- FORM DICTAMEN -->
-                <!-- <div class="form-row align-items-center pb-1"> -->
-                    <!-- <div class="col-sm-3 my-1">
-                        <label for="fechaDictamen" class="sr-only">Fecha</label>
-                        <input class="form-control" type="date" id="fechaDictamen" name="fechaDictamen" required>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" checked id="DicAceptado" name="radioCheck" class="custom-control-input" required>
-                            <label class="custom-control-label" for="DicAceptado">Aceptado</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="DicRechazado" name="radioCheck" class="custom-control-input" required>
-                                <label class="custom-control-label" for="DicRechazado">Rechazado</label>
-                            </div> -->
-                    <!-- <div class="col-auto my-1"> -->
                         <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImprimirDictamen">Dictamen
                             de anteproyecto de
                             Residencias
                             Profesionales</button>
-                    <!-- </div>
-                </div> -->
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesores">Asignación de
                     asesor</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de
@@ -865,6 +848,41 @@ INFORMES DE RESIDENTE PARA IMPRIMIR
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirSinodales">Ofició de
                     asignacion de
                     sinodales</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--=====================================
+IMPRIMIR DOCUMENTOS TESIS
+======================================-->
+<!-- basic modal start -->
+<div class="modal fade" id="modalFormatosT">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#DC3545; color:white">
+                <h5 class="modal-title" >Formatos de Impresion Tesis</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-row align-items-center">
+                    <div class="col-sm-4 my-1">
+                        <label for="impNoControlT" class="col-form-label">No. Control</label>
+                        <input class="form-control" type="text" id="impNoControlT" readonly>
+                    </div>
+                    <div class="col-sm-8 my-1">
+                        <label for="impNombreT" class="col-form-label">Nombre</label>
+                        <input class="form-control" type="text" id="impNombreT" readonly>
+                    </div>
+                </div>
+                <br>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImprimirDictamenT">Documento #1</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesoresT">Documento #2</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacionT">Documento #3</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
