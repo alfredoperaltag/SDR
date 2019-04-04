@@ -1,7 +1,11 @@
+//FECHA DEL SISTEMA
+var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+var f=new Date();
+var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
+
 /*<!--=====================================
 INFORMACION RESIDENTE
 ======================================-->*/
-
 $(document).on("click", ".btnInfoResidente", function () {
     var idResidente = $(this).attr("idResidente");
     /* console.log("idResidente =", idResidente); */
@@ -57,7 +61,6 @@ $(document).on("click", ".btnInfoResidente", function () {
 /*<!--=====================================
     EDITAR RESIDENTE
 ======================================-->*/
-
 $(document).on("click", ".btnEditResidente", function () {
     var idResidente = $(this).attr("idResidenteEdit");
     // console.log("idResidenteEdit Edit =", idResidente);
@@ -177,11 +180,11 @@ $(document).on("click", ".btnEditResidente", function () {
 });
 
 /*<!--=====================================
-IMPRIMIR INFORMACION RESIDENTE
+IMPRIMIR INFORMACION RESIDENTE PARA DOCUMENTOS
 ======================================-->*/
 $(document).on("click", ".btnImprimirDoc", function () {
     idResidente = $(this).attr("idResidenteImp");
-    console.log("R: ", idResidente);
+    // console.log("R: ", idResidente);
     var datos = new FormData();
     datos.append("idResidenteImp", idResidente);
     $.ajax({
@@ -193,9 +196,6 @@ $(document).on("click", ".btnImprimirDoc", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            // console.log("respuesta::", respuesta);
-            // $("#impId").val(idResidente);
-            // $("idprueba").val(idResidente);
 
             document.getElementById("btnImprimirAsesores").disabled = true;
             document.getElementById("btnImprimirLiberacion").disabled = true;
@@ -204,7 +204,9 @@ $(document).on("click", ".btnImprimirDoc", function () {
             document.getElementById("btnImprimirSinodales").disabled = true;
 
             $("#impNoControl").val(respuesta["noControl"]);
+            $("#impNoControlT").val(respuesta["noControl"]);
             $("#impNombre").val(respuesta["nombre"]);
+            $("#impNombreT").val(respuesta["nombre"]);
             if (respuesta["revisionOK"] == 0) {
                 document.getElementById("customCheck7").checked = false;
                 document.getElementById("customCheck8").checked = false;
@@ -231,12 +233,6 @@ $(document).on("click", ".btnImprimirDoc", function () {
         }
     });
 });
-
-//FECHA DEL SISTEMA
-var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-var f=new Date();
-var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
-
 
 /*<!--=====================================
 IMPRIMIR DICTAMEN

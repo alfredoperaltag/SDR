@@ -124,8 +124,6 @@ class ControladorResidentes
             $restarResidente3 = $_POST["nuevoRevisor2"]; 
             $restarResidente4 = $_POST["nuevoSuplente"]; 
 
-            echo "<script>alert('".$restarResidente1." - ".$restarResidente2." - ".$restarResidente3." - ".$restarResidente4."');</script>";
-
             $na = 0;
             $datosProyecto = array(
                 "nombreProyecto" => $_POST["nuevoNombreProyecto"],
