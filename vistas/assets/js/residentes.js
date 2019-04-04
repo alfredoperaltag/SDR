@@ -264,7 +264,7 @@ $(document).on("click", "#btnImprimirDictamen", function () {
             },
             inputValidator: function(result) {
                 if (!result) {
-                  return 'You need to select something!';
+                  return 'Necesita seleccionar una opción!';
                 }
               }
         }
