@@ -116,6 +116,22 @@
                 <td style="width: 86px; padding: class; bordeNormal"><?php echo $asesorExterno; ?></td>
                 <td style="width: 87px; padding: class; bordeNormal">Aceptado</td>
                 <td style="width: 94px; padding: class; bordeNormal">16/ENERO/19</td>
+                style="margin: 3.5% 14.5% -2% 11%;" IMAGEN
+                margin-left:-0.8%; TABLA
+                backleft="12mm" backright="10mm"
+                cellspacing="0" border=0.5 style="width:100%; text-align: center;" align="right"
+                cellspacing="0" border=0.5 style="width:100%; text-align: center; font-size:12" align="center"
+                cellspacing="0" border=0 style="width:100%; text-align: center; font-size:12" align="center"
+                6
+                9.5
+                15
+                2.5
+                14
+                14
+                10
+                9
+                10
+                10
             </tr>
         </table>
     </div> -->

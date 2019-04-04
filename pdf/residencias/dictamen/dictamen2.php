@@ -1,12 +1,15 @@
-<page backleft="12mm" backright="10mm">
-
-    <img src="../imagenes/LogoCaptura.PNG" style="margin: 3.5% 14.5% -2% 11%;">
-    <h5 align="center">INSTITUTO TECNOLÓGICO DE IGUALA <br>
-        DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
-        DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
-    </h5>
+<page align="center" style="width=100%;  height:100%">
     <div>
-        <Table cellspacing="0" border=0.5 style="width:100%; text-align: center; margin-left:-0.8%;" align="right">
+        <img src="../imagenes/LogoCaptura.PNG">
+    </div>
+    <div>
+        <h5>INSTITUTO TECNOLÓGICO DE IGUALA <br>
+            DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
+            DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
+        </h5>
+    </div>
+    <div>
+        <Table>
             <tr>
                 <td style="border-bottom: 0px; font-size:12; width: 13%">SEMESTRE</td>
                 <td style="width: 8%; font-size:10">ENE - JUN</td>
@@ -16,7 +19,6 @@
                                                     }
                                                     ?></td>
             </tr>
-
             <tr>
                 <td style="border-top: 0px;"></td>
                 <td style="font-size:10">AGO - DIC</td>
@@ -29,9 +31,11 @@
             </tr>
         </Table>
     </div>
-    <h5 align="center">ING. EN SISTEMAS COMPUTACIONALES</h5>
     <div>
-        <table cellspacing="0" border=0.5 style="width:100%; text-align: center; font-size:12" align="center">
+        <h5>ING. EN SISTEMAS COMPUTACIONALES</h5>
+    </div>
+    <div style="heigth:30%">
+        <table style="width:100%;">
             <tr>
                 <td style="border-bottom: 0px"></td>
                 <td style="border-bottom: 0px"></td>
@@ -75,35 +79,47 @@
             </tr>
         </table>
     </div>
-    <p align="center">En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados</p>
-    <table cellspacing="0" border=0.5 style="width:100%; text-align: center; font-size:12" align="center">
-        <tr>
-            <td>
-                NOMBRE Y FIRMA DEL PRESIDENTE DE ACADEMIA
-            </td>
-            <td>
-                NOMBRE Y FIRMA DEL JEFE DEL DEPTO.
-            </td>
-            <td>
-                NOMBRE Y FIRMA DEL SUBDIRECTOR ACADÉMICO
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Propone
-            </td>
-            <td>
-                ACADÉMICO
-            </td>
-            <td>
-                Vo. Bo.
-            </td>
-        </tr>
-
-    </table>
-    <h5 align="center">INSTITUTO TECNOLÓGICO DE IGUALA <br>
-        DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
-        DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
-    </h5>
-
+    <div>
+        <p align="center">En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados</p>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td><?php echo $presidente ?></td>
+                <td><?php echo $jefe ?></td>
+                <td><?php echo $subdirector ?></td>
+            </tr>
+            <tr>
+                <td>
+                    NOMBRE Y FIRMA DEL PRESIDENTE DE ACADEMIA <br> propone
+                </td>
+                <td>
+                    NOMBRE Y FIRMA DEL JEFE DEL DEPTO. <br> ACADÉMICO
+                </td>
+                <td>
+                    NOMBRE Y FIRMA DEL SUBDIRECTOR ACADÉMICO <br> Vo. Bo.
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Valida</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h5>INSTITUTO TECNOLÓGICO DE IGUALA <br>
+            DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
+            DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES
+        </h5>
+    </div>
+    <div>
+        <table style="width:100%">
+            <tr>
+                <td style="width:30%"><img src="../imagenes/logoPequeño.PNG"></td>
+                <td style="width:30%"><img src="../imagenes/noControlado.PNG"></td>
+                <td style="width:30%">Rev.1</td>
+            </tr>
+        </table>
+    </div>
 </page> 

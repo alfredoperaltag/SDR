@@ -18,7 +18,7 @@ class imprimirDictamen
         $itemPresi = "PRESIDENTE DE ACADEMIA";
         $itemJefe = "JEFE DEL DEPTO. ACADEMICO";
         $itemSub = "SUBDIRECTOR ACADÉMICO";
-        
+
         $resP = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemPresi);
         $resJe = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefe);
         $resSub = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemSub);
@@ -43,12 +43,12 @@ class imprimirDictamen
         require '../vendor/autoload.php';
 
         /* require_once 'dictamen.php'; */
-        require_once 'dictamen2.php';
+        require_once 'dictamen3.php';
         $html = ob_get_clean();
 
         $html2pdf = new Html2Pdf('L', 'LETTER', 'es', 'true', 'UTF-8');
         $html2pdf->writeHTML($html);
-        $html2pdf->output(' d ictamen - ' . $nombre . '.pdf');
+        $html2pdf->output('dictamen - ' . $nombre . '.pdf');
     }
 }
 
