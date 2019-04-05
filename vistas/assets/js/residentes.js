@@ -1,6 +1,6 @@
 //FECHA DEL SISTEMA
-var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-var f=new Date();
+var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+var f = new Date();
 var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 
 /*<!--=====================================
@@ -244,8 +244,7 @@ $(document).on("click", "#btnImprimirDictamen", function () {
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
         progressSteps: ['1', '2']
-    }).queue([
-        {
+    }).queue([{
             input: 'text',
             inputValue: fecha,
             title: 'Fecha',
@@ -259,15 +258,16 @@ $(document).on("click", "#btnImprimirDictamen", function () {
                 'Aceptado': 'Aceptado',
                 'Rechazado': 'Rechazado'
             },
-            inputValidator: function(result) {
+            inputValidator: function (result) {
                 if (!result) {
-                  return 'Necesita seleccionar una opción!';
+                    return 'Necesita seleccionar una opción!';
                 }
-              }
+            }
         }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/dictamen/index.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
+            // window.open("pdf/dictamen/index.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
+            window.open("pdf/residencias/dictamen.php");
         }
     })
 });
