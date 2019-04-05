@@ -271,3 +271,13 @@ $(document).on("click", "#btnImprimirDictamen", function () {
         }
     })
 });
+
+
+/*<!--=====================================
+IMPRIMIR JURADO SELECCIONADO
+======================================-->*/
+$(document).on("click", "#btnImpJurado", function () {
+    console.log("J=  " + idResidente);
+    // window.open("pdf/dictamen/index.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
+    window.open("pdf/tesis/jurado.php?id=" + idResidente, "_blank");
+});

@@ -880,9 +880,9 @@ IMPRIMIR DOCUMENTOS TESIS
                     </div>
                 </div>
                 <br>
-                        <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImprimirDictamenT">Jurado Seleccionado</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesoresT">Liberacion por revisores</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacionT">Liberacion</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpJurado">Jurado Seleccionado</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImpLiberacionR">Liberacion por revisores</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImpLiberacion">Liberacion</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
