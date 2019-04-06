@@ -8,7 +8,9 @@ class PDF extends FPDF
     public function Header()
     {
         $this->SetFont('Arial', 'B', '10');
-        $this->Image('../img/sep-logo.jpg', 20, 2, 67, 52, 'JPG');
+        // $this->Image('../img/sep-logo.jpg', 20, 2, 67, 52, 'JPG');
+        $this->Image('../img/sepNew_R.png', 15, 12, 67, 25, 'PNG');
+
         $this->Image('../img/TecNacMex.PNG', 137, 12, 66, 24, 'PNG');
         $this->Cell(0, 46, '', 0, 1, 'C');
         // $this->Ln(20);
@@ -42,7 +44,12 @@ class PDF extends FPDF
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
-$pdf->Image('../img/fondo1.png', '28', '99', '150', '150', 'PNG');
+// $pdf->Image('../img/fondo1.png', '28', '99', '150', '150', 'PNG');
+$h = $pdf->GetPageHeight();
+$w = $pdf->GetPageWidth();
+// $pdf->Image('../img/fondo_membrete.jpg', '0', '28', '210', '275', 'JPG');
+$pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+// $pdf->Image('../img/fondo_membrete.jpg', 0, 28, 50);
 
 $pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(107);
