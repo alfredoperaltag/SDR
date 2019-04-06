@@ -8,35 +8,29 @@ class PDF extends FPDF
     {
         // Logo
         $this->Image('../img/logoCaptura.png', 44, 12, 0);
-
-        // Arial bold 15
-        // $this->SetFont('Arial', 'B', 15);
-        // Movernos a la derecha
-        // $this->Cell(80);
-        // Título
-        // $this->Cell(30, 10, 'Title', 1, 0, 'C');
-        // Salto de línea
-        // $this->Ln(20);
+        $this->Ln(40);
     }
 
     // Pie de página
     function Footer()
     {
-        $this->SetY(-15);
-        $this->Image('../img/iti.jpg', 44, 120, 10);
-        $this->Cell(0, 10, 'Title', 0, 0, 'C');
-        // $this->Image('../img/logoPequeño.png', 44, 12, 0);
-        // Posición: a 1,5 cm del final
-
-        // Arial italic 8
-        //$this->SetFont('Arial', 'I', 8);
-        // Número de página
-        //$this->Cell(0, 10, 'Page ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
+        $this->SetY(-27);
+        $this->Image('../img/iti.jpg', 53, 183, 9);
+        $this->SetFont('Arial', 'B', 7);
+        $this->SetXY(6, -27);
+        $this->Cell(0, 0, utf8_decode('Copia en PAPEL es "Documento no controlado" a excepción del original'), 0, 0, 'C');
+        $this->SetFont('Arial', '', 9);
+        $this->SetXY(188, -24);
+        $this->Cell(0, 0, utf8_decode('Rev.1'), 0, 0, 'C');
     }
 }
 
 $pdf = new PDF('L', 'mm', 'Letter');
 $pdf->AddPage();
-$pdf->SetFont('Arial', '', 12);
-
+$pdf->SetFont('Arial', 'B', 9);
+$pdf->Cell(0, 0, utf8_decode('INSTITUTO TECNOLÓGICO DE IGUALA'), 0, 0, 'C');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES'), 0, 0, 'C');
 $pdf->Output();
