@@ -13,6 +13,31 @@ class PDF extends FPDF
         $this->Cell(0, 46, '', 0, 1, 'C');
         // $this->Ln(20);
     }
+    public function Footer()
+    {
+        $this->SetY(-15);
+        $this->SetFont('Arial', 'I', 8);
+        // $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'C');
+        // $this->Image('../img/iti.jpg', '28', '10', '3', '3', 'JPG');
+        $x = $this->GetX();
+        $y = $this->GetY();
+        $this->Image('../img/iti.jpg', 15, 253, 12);
+        $this->SetFont('Helvetica', '', '7.5');
+        $this->SetXY($x + 20, $y-12);
+        $this->Cell(20, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López Mateos Infonavit, C.P. 40030'), 0, 1, 'L');
+        $this->Cell(20);
+        $this->Cell(20, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425 Ext. 233,'), 0, 1, 'L');
+        $this->Cell(44);
+        $this->Cell(20, 4, utf8_decode('www.itiguala.edu.mx         e-mail:'), 0, 0, 'L');
+        $this->SetFont('Helvetica', 'BU', '7.5');
+        $this->Cell(20);
+        $this->Cell(65, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'L');
+        $x = $this->GetX();
+        $this->Image('../img/iso14001.jpg', $x+12, 253, 12);
+        $x = $this->GetX();
+        $this->Image('../img/iso9001.jpg', $x+31, 253, 12);
+
+    }
 }
 
 $pdf = new PDF('P', 'mm', 'Letter');
@@ -33,7 +58,7 @@ $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
 $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(50, 4, ' 2018-septiembre-28', 0, 1, 'L');
 
-$pdf->Cell(0, 15, '', 0, 1, 'C'); //CELDA DE ESPACIO
+$pdf->Ln(15); //CELDA DE ESPACIO
 $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(19);
 $pdf->Cell(80, 4, 'M.D.I.S. SILVIA VALLE BAHENA', 0, 1, 'L');
@@ -42,14 +67,14 @@ $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
 $pdf->Cell(19);
 $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
 
-$pdf->Cell(0, 7, '', 0, 1, 'C'); //CELDA DE ESPACIO
+$pdf->Ln(7); //CELDA DE ESPACIO
 $pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(31);
 $pdf->Cell(0, 4, 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para ', 0, 1, 'L');
 $pdf->Cell(18);
 $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
 
-$pdf->Cell(0, 3, '', 0, 1, 'C'); //CELDA DE ESPACIO
+$pdf->Ln(3); //CELDA DE ESPACIO
 $pdf->Cell(23);
 $pdf->Cell(28, 4, utf8_decode(' Alumno (s):'), 1, 0, 'L');
 $pdf->SetFont('Helvetica', 'B', '9');
@@ -85,12 +110,12 @@ $pdf->Cell(23);
 $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
 $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
 
-$pdf->Cell(0, 6, '', 0, 1, 'C'); //CELDA DE ESPACIO
+$pdf->Ln(6); //CELDA DE ESPACIO
 // $pdf->Cell(37);
 $pdf->SetFont('Helvetica', 'BIU', '9');
 $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
 
-$pdf->Cell(0, 8, '', 0, 1, 'C'); //CELDA DE ESPACIO
+$pdf->Ln(8); //CELDA DE ESPACIO
 $pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(31);
 $pdf->Cell(0, 4, utf8_decode('Asimismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
@@ -101,14 +126,29 @@ $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de 
 $pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
 $pdf->Cell(21);
-$pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 0, 'L');
+$pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
 
-$pdf->Cell(0, 8, '', 0, 1, 'C'); //CELDA DE ESPACIO
+$pdf->Ln(2); //CELDA DE ESPACIO
+$pdf->SetFont('Helvetica', '', '9');
+$pdf->Cell(30);
+$pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
 
+$pdf->Ln(7); //CELDA DE ESPACIO
+$pdf->SetFont('Helvetica', 'B', '9');
+$pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
+$pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
 
+$pdf->Ln(10);
+$pdf->SetFont('Helvetica', 'B', '9');
+$pdf->Cell(0, 4, utf8_decode('ING. JORGE EDUARDO ORTEGA LOPEZ'), 0, 1, 'C');
+$pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
 
+$pdf->Ln(16); //CELDA DE ESPACIO
+$pdf->SetFont('Helvetica', '', '9');
+$pdf->Cell(20);
+$pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
+$pdf->SetFont('Helvetica', '', '6');
+$pdf->Cell(20);
+$pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
 
-
-
-
-$pdf->Output();
+$pdf->Output('I','Jurado_Seleccionado.pdf');
