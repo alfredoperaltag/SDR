@@ -30,7 +30,7 @@ class PDF extends FPDF
         $this->SetXY($x + 20, $y - 12);
         $this->Cell(20, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López Mateos Infonavit, C.P. 40030'), 0, 1, 'L');
         $this->Cell(20);
-        $this->Cell(20, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425 Ext. 233,'), 0, 1, 'L');
+        $this->Cell(20, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425 Ext. 225,'), 0, 1, 'L');
         $this->Cell(44);
         $this->Cell(20, 4, utf8_decode('www.itiguala.edu.mx         e-mail:'), 0, 0, 'L');
         $this->SetFont('Helvetica', 'BU', '7.5');
@@ -96,14 +96,14 @@ $pdf->Cell(23);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
 // $pdf->Cell(28, 4, utf8_decode(' Alumno (s):'), 1, 0, 'L');
-$pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):'), 1, 'L');
-$pdf->SetFont('Helvetica', 'B', '9');
+$pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
 // AQUI VA EL NOMBRE DEL ALUMNO
 $pdf->SetXY($x + 28, $y);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
 // $pdf->Cell(70, 4, utf8_decode(strtoupper ($res['nombre'])), 1, 0, 'L');
-$pdf->MultiCell(70, 4, utf8_decode(' '.strtoupper ($res['nombre'])), 1, 'L');
+$pdf->SetFont('Helvetica', 'B', '9');
+$pdf->MultiCell(70, 4, utf8_decode(' '.strtoupper ($res['nombre']).'                                        '), 1, 'L');
 // AQUI VA LA CARRERA
 $pdf->SetFont('Helvetica', '', '9');
 // NOTE Checar espacio de carrera
