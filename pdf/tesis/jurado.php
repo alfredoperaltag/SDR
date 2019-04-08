@@ -1,6 +1,8 @@
 <?php
 
 require '../FPDF/fpdf.php';
+require '../../controladores/residentes.controlador.php';
+require '../../modelos/residentes.modelo.php';
 
 class PDF extends FPDF
 {
@@ -25,7 +27,7 @@ class PDF extends FPDF
         $y = $this->GetY();
         $this->Image('../img/iti.jpg', 15, 253, 12);
         $this->SetFont('Helvetica', '', '7.5');
-        $this->SetXY($x + 20, $y-12);
+        $this->SetXY($x + 20, $y - 12);
         $this->Cell(20, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López Mateos Infonavit, C.P. 40030'), 0, 1, 'L');
         $this->Cell(20);
         $this->Cell(20, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425 Ext. 233,'), 0, 1, 'L');
@@ -35,12 +37,20 @@ class PDF extends FPDF
         $this->Cell(20);
         $this->Cell(65, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'L');
         $x = $this->GetX();
-        $this->Image('../img/iso14001.jpg', $x+12, 253, 12);
+        $this->Image('../img/iso14001.jpg', $x + 12, 253, 12);
         $x = $this->GetX();
-        $this->Image('../img/iso9001.jpg', $x+31, 253, 12);
+        $this->Image('../img/iso9001.jpg', $x + 31, 253, 12);
 
     }
 }
+
+$tabla = "residentes";
+$item = "id";
+$valor = $_GET['id'];
+$res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+
+
+
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
@@ -83,14 +93,23 @@ $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulaci
 
 $pdf->Ln(3); //CELDA DE ESPACIO
 $pdf->Cell(23);
-$pdf->Cell(28, 4, utf8_decode(' Alumno (s):'), 1, 0, 'L');
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+// $pdf->Cell(28, 4, utf8_decode(' Alumno (s):'), 1, 0, 'L');
+$pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):'), 1, 'L');
 $pdf->SetFont('Helvetica', 'B', '9');
 // AQUI VA EL NOMBRE DEL ALUMNO
-$pdf->Cell(70, 4, utf8_decode(' MARÍA VALENTINA HERNANDEZ RAMIREZ'), 1, 0, 'L');
+$pdf->SetXY($x + 28, $y);
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+// $pdf->Cell(70, 4, utf8_decode(strtoupper ($res['nombre'])), 1, 0, 'L');
+$pdf->MultiCell(70, 4, utf8_decode(' '.strtoupper ($res['nombre'])), 1, 'L');
 // AQUI VA LA CARRERA
 $pdf->SetFont('Helvetica', '', '9');
 // NOTE Checar espacio de carrera
-$pdf->Cell(70, 4, utf8_decode(' Área: INGENIERIA INFORMATICA'), 1, 1, 'L');
+$pdf->SetXY($x + 70, $y);
+// $pdf->Cell(70, 4, utf8_decode(' Área: ' . strtoupper ($res['carrera'])), 1, 1, 'L');
+$pdf->MultiCell(70, 4, utf8_decode(' '.strtoupper ($res['carrera'])), 1, 'L');
 // $pdf->MultiCell(50, 4, utf8_decode('Área: INGENIERIA EN SISTEMAS COMPUTACIONALES'), 1, 'L');
 $pdf->Cell(23);
 $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
@@ -103,16 +122,16 @@ $y = $pdf->GetY();
 $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
 $pdf->SetXY($x + 28, $y);
 // $pdf->Cell(53);
-$pdf->MultiCell(140, 4, utf8_decode(' DETERMINACION DE LOS DISPOSITIVOS DE RED QUE PERMITAN PROPORCIONAR SERVICIO DE INTERNET EN EL INSTITUTO TECNOLOGICO DE IGUALA'), 1, 'L');
+$pdf->MultiCell(140, 4, utf8_decode(' '.strtoupper ($res['nombreProyecto'])), 1, 'L');
 $pdf->Cell(23);
 $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
-$pdf->Cell(140, 4, utf8_decode(' LIC. ENRIQUE MENA SALGADO'), 1, 1, 'L');
+$pdf->Cell(140, 4, utf8_decode(' '.strtoupper ($res['asesorInt'])), 1, 1, 'L');
 $pdf->Cell(23);
 $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
-$pdf->Cell(140, 4, utf8_decode(' M.D.I.S. SILVIA VALLE BAHENA'), 1, 1, 'L');
+$pdf->Cell(140, 4, utf8_decode(' '.strtoupper ($res['revisor1'])), 1, 1, 'L');
 $pdf->Cell(23);
 $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
-$pdf->Cell(140, 4, utf8_decode(' M.A. ANGELITA DIONICIO ABRAJAN'), 1, 1, 'L');
+$pdf->Cell(140, 4, utf8_decode(' '.strtoupper ($res['revisor2'])), 1, 1, 'L');
 $pdf->Cell(23);
 $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
 $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
@@ -158,4 +177,4 @@ $pdf->SetFont('Helvetica', '', '6');
 $pdf->Cell(20);
 $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
 
-$pdf->Output('I','Jurado_Seleccionado.pdf');
+$pdf->Output('I', 'Jurado_Seleccionado.pdf');
