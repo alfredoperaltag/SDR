@@ -266,8 +266,8 @@ $(document).on("click", "#btnImprimirDictamen", function () {
         }
     ]).then((result) => {
         if (result.value) {
-            // window.open("pdf/dictamen/index.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
-            window.open("pdf/residencias/dictamen.php");
+            window.open("pdf/residencias/dictamen.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
+            /* window.open("pdf/residencias/dictamen.php"); */
         }
     })
 });
