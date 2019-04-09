@@ -12,7 +12,8 @@ class PDF extends FPDF
         $this->Image('../img/sepNew_R.png', 15, 12, 67, 25, 'PNG');
 
         $this->Image('../img/TecNacMex.PNG', 137, 12, 66, 24, 'PNG');
-        $this->Cell(0, 46, '', 0, 1, 'C');
+        $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
+        // $this->Cell(80, 25, 'gggggggggggggggg', 1, 1, 'C');
         // $this->Ln(20);
     }
     public function Footer()
@@ -48,8 +49,12 @@ $h = $pdf->GetPageHeight();
 $w = $pdf->GetPageWidth();
 // $pdf->Image('../img/fondo_membrete.jpg', '0', '28', '210', '275', 'JPG');
 $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
-// $pdf->Image('../img/fondo_membrete.jpg', 0, 28, 50);
+// $pdf->Image('../img/aaa.jpg', '0', '38', '220', '243', 'JPG');
 
+// $pdf->Image('../img/fondo_membrete.jpg', 0, 28, 50);
+$pdf->SetFont('Helvetica', '', '7');
+$pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+$pdf->Ln(5);
 $pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(107);
 $pdf->Cell(80, 4, 'OF. No. DSC-ITI/1031/2018', 0, 1, 'L');
@@ -64,7 +69,7 @@ $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
 $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(50, 4, ' 2018-septiembre-28', 0, 1, 'L');
 
-$pdf->Ln(15); //CELDA DE ESPACIO
+$pdf->Ln(12); //CELDA DE ESPACIO
 $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(19);
 $pdf->Cell(80, 4, 'M.D.I.S. SILVIA VALLE BAHENA', 0, 1, 'L');
@@ -144,7 +149,7 @@ $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
 $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
 
-$pdf->Ln(10);
+$pdf->Ln(15);
 $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(0, 4, utf8_decode('ING. JORGE EDUARDO ORTEGA LOPEZ'), 0, 1, 'C');
 $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
