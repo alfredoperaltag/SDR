@@ -12,8 +12,7 @@ class PDF extends FPDF
         $this->Image('../img/sepNew_R.png', 15, 12, 67, 25, 'PNG');
 
         $this->Image('../img/TecNacMex.PNG', 137, 12, 66, 24, 'PNG');
-        $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
-        // $this->Cell(80, 25, 'gggggggggggggggg', 1, 1, 'C');
+        $this->Cell(0, 46, '', 0, 1, 'C');
         // $this->Ln(20);
     }
     public function Footer()
@@ -29,7 +28,7 @@ class PDF extends FPDF
         $this->SetXY($x + 20, $y - 12);
         $this->Cell(20, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López Mateos Infonavit, C.P. 40030'), 0, 1, 'L');
         $this->Cell(20);
-        $this->Cell(20, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425 Ext. 233,'), 0, 1, 'L');
+        $this->Cell(20, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425 Ext. 225,'), 0, 1, 'L');
         $this->Cell(44);
         $this->Cell(20, 4, utf8_decode('www.itiguala.edu.mx         e-mail:'), 0, 0, 'L');
         $this->SetFont('Helvetica', 'BU', '7.5');
@@ -39,8 +38,17 @@ class PDF extends FPDF
         $this->Image('../img/iso14001.jpg', $x + 12, 253, 12);
         $x = $this->GetX();
         $this->Image('../img/iso9001.jpg', $x + 31, 253, 12);
+
     }
 }
+
+$tabla = "residentes";
+$item = "id";
+$valor = $_GET['id'];
+$res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+
+
+
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
@@ -49,12 +57,7 @@ $h = $pdf->GetPageHeight();
 $w = $pdf->GetPageWidth();
 // $pdf->Image('../img/fondo_membrete.jpg', '0', '28', '210', '275', 'JPG');
 $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
-// $pdf->Image('../img/aaa.jpg', '0', '38', '220', '243', 'JPG');
-
 // $pdf->Image('../img/fondo_membrete.jpg', 0, 28, 50);
-$pdf->SetFont('Helvetica', '', '7');
-$pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-$pdf->Ln(5);
 $pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(107);
 $pdf->Cell(80, 4, 'OF. No. DSC-ITI/1031/2018', 0, 1, 'L');
@@ -69,7 +72,7 @@ $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
 $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(50, 4, ' 2018-septiembre-28', 0, 1, 'L');
 
-$pdf->Ln(12); //CELDA DE ESPACIO
+$pdf->Ln(15); //CELDA DE ESPACIO
 $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(19);
 $pdf->Cell(80, 4, 'M.D.I.S. SILVIA VALLE BAHENA', 0, 1, 'L');
@@ -149,7 +152,7 @@ $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
 $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
 
-$pdf->Ln(15);
+$pdf->Ln(10);
 $pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(0, 4, utf8_decode('ING. JORGE EDUARDO ORTEGA LOPEZ'), 0, 1, 'C');
 $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
