@@ -81,7 +81,22 @@ if ($semestre == 'EJ') {
     $pdf->Cell(18, 4.5, utf8_decode($anio), 1, 0, 'C');
 }
 $pdf->SetFont('Arial', 'B', 9);
-$pdf->SetXY(12, 80);
+$pdf->SetXY(10, 80);
 $pdf->Cell(0, 0, utf8_decode('ING. EN SISTEMAS COMPUTACIONALES'), 0, 0, 'C');
+$pdf->SetXY(17, 85);
+$pdf->Cell(15, 18, utf8_decode('NUM.'), 1, 0, 'C');
+$pdf->Cell(23, 18, utf8_decode('CONTROL'), 1, 0, 'C');
+$pdf->MultiCell(38, 9, utf8_decode('NOMBRE DEL ESTUDIANTE'), 1, 'C');
+$pdf->SetXY(93, 85);
+$pdf->Cell(6, 18, utf8_decode('S'), 1, 0, 'C');
+$pdf->Cell(36, 18, utf8_decode('ANTEPROYECTO'), 1, 0, 'C');
+$pdf->Cell(34, 18, utf8_decode('EMPRESA'), 1, 0, 'C');
+$pdf->Cell(45, 5, utf8_decode('ASESORES'), 1, 0, 'C');
+$pdf->Cell(25, 18, utf8_decode('DICTAMEN'), 1, 0, 'C');
+$pdf->MultiCell(25, 9, utf8_decode('FECHA DE DICTAMEN'), 1, 'C');
+$pdf->SetXY(169, 90);
+$pdf->Cell(23, 13, utf8_decode('INTERNO'), 1, 0, 'C');
+$pdf->Cell(22, 13, utf8_decode('EXTERNO'), 1, 0, 'C');
+
 
 $pdf->Output();
