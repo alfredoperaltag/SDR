@@ -25,7 +25,7 @@ class PDF extends FPDF
         $y = $this->GetY();
         $this->Image('../img/iti.jpg', 15, 253, 12);
         $this->SetFont('Helvetica', '', '7.5');
-        $this->SetXY($x + 20, $y - 12);
+        $this->SetXY($x + 20, $y-12);
         $this->Cell(20, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López Mateos Infonavit, C.P. 40030'), 0, 1, 'L');
         $this->Cell(20);
         $this->Cell(20, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425 Ext. 225,'), 0, 1, 'L');
@@ -35,20 +35,12 @@ class PDF extends FPDF
         $this->Cell(20);
         $this->Cell(65, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'L');
         $x = $this->GetX();
-        $this->Image('../img/iso14001.jpg', $x + 12, 253, 12);
+        $this->Image('../img/iso14001.jpg', $x+12, 253, 12);
         $x = $this->GetX();
-        $this->Image('../img/iso9001.jpg', $x + 31, 253, 12);
+        $this->Image('../img/iso9001.jpg', $x+31, 253, 12);
 
     }
 }
-
-$tabla = "residentes";
-$item = "id";
-$valor = $_GET['id'];
-$res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
-
-
-
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
@@ -165,4 +157,4 @@ $pdf->SetFont('Helvetica', '', '6');
 $pdf->Cell(20);
 $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
 
-$pdf->Output('I', 'Jurado_Seleccionado.pdf');
+$pdf->Output('I','Jurado_Seleccionado.pdf');
