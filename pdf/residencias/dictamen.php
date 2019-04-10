@@ -99,8 +99,26 @@ $pdf->Cell(23, 13, utf8_decode('INTERNO'), 1, 0, 'C');
 $pdf->Cell(22, 13, utf8_decode('EXTERNO'), 1, 0, 'C');
 
 $pdf->SetXY(17, 103);
-$pdf->Cell(15, 22, utf8_decode('1'), 1, 0, 'C');
-$pdf->Cell(23, 22, utf8_decode('15670028'), 1, 0, 'C');
-$pdf->MultiCell(38, 11, utf8_decode('Jose Alfredo Peralta Garcia'), 1, 'C');
+$pdf->SetFont('Arial', '', 9);
+$pdf->Cell(15, 8, utf8_decode($id), 1, 0, 'C');
+$pdf->Cell(23, 8, utf8_decode($numeroControl), 1, 0, 'C');
+$pdf->MultiCell(38, 4, utf8_decode($nombre), 1, 'J');
+$pdf->SetXY(93, 103);
+if ($sexo == 'Masculino') {
+    $sexo = 'M';
+} else {
+    $sexo = 'F';
+}
+$pdf->Cell(6, 8, utf8_decode($sexo), 1, 0, 'C');
+$pdf->MultiCell(36, 4, utf8_decode($proyecto), 1, 'J');
+$pdf->SetXY(135, 103);
+$pdf->MultiCell(34, 4, utf8_decode($empresa), 1, 'J');
+$pdf->SetXY(169, 103);
+$pdf->MultiCell(23, 4, utf8_decode($asesorInterno), 1, 'J');
+$pdf->SetXY(192, 103);
+$pdf->MultiCell(22, 4, utf8_decode($asesorExterno), 1, 'J');
+$pdf->SetXY(214, 103);
+$pdf->Cell(25, 8, utf8_decode($estado), 1, 0, 'C');
+$pdf->MultiCell(25, 9, utf8_decode($fechaActual), 1, 'C');
 
 $pdf->Output();
