@@ -98,5 +98,9 @@ $pdf->SetXY(169, 90);
 $pdf->Cell(23, 13, utf8_decode('INTERNO'), 1, 0, 'C');
 $pdf->Cell(22, 13, utf8_decode('EXTERNO'), 1, 0, 'C');
 
+$pdf->SetXY(17, 103);
+$pdf->Cell(15, 22, utf8_decode('1'), 1, 0, 'C');
+$pdf->Cell(23, 22, utf8_decode('15670028'), 1, 0, 'C');
+$pdf->MultiCell(38, 11, utf8_decode('Jose Alfredo Peralta Garcia'), 1, 'C');
 
 $pdf->Output();
