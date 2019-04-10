@@ -302,3 +302,32 @@ $(document).on("click", "#btnImpJurado", function () {
         }
     })
 });
+
+
+/*<!--=====================================
+IMPRIMIR LIBERACION
+======================================-->*/
+$(document).on("click", "#btnImpLiberacionR", function () {
+    // console.log("J=  " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2']
+    }).queue([{
+        input: 'text',
+        inputValue: fecha2,
+        title: 'Fecha',
+        text: 'Introduzca una fecha valida'
+    },
+    {
+        title: 'Documento',
+        text: 'Introduzca el numero de documento',
+        input: 'text'
+    }
+    ]).then((result) => {
+        if (result.value) {
+            window.open("pdf/tesis/liberacion.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+        }
+    })
+});
