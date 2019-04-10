@@ -121,4 +121,14 @@ $pdf->SetXY(214, 103);
 $pdf->Cell(25, 8, utf8_decode($estado), 1, 0, 'C');
 $pdf->MultiCell(25, 9, utf8_decode($fechaActual), 1, 'C');
 
+$pdf->SetY(136);
+$pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados'), 0, 0, 'C');
+
+$pdf->SetXY(18, 156);
+$pdf->SetFont('Arial', '', 8);
+$pdf->Cell(0, 0, utf8_decode($presidente), 0, 0, 'L');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL PRESIDENTE DE ACADEMIA'), 0, 0, 'L');
+
+
 $pdf->Output();
