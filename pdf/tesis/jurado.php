@@ -4,6 +4,8 @@ session_start();
 require '../FPDF/fpdf.php';
 require '../../controladores/residentes.controlador.php';
 require '../../modelos/residentes.modelo.php';
+require '../../controladores/jerarquia.controlador.php';
+require '../../modelos/jerarquia.modelo.php';
 class PDF extends FPDF
 {
     public $docente;
@@ -48,7 +50,12 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     
         $item = "id";
         $valor = $_GET['id'];
+        $tabla = "jerarquia";
+        $puesto = "JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN";
         $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+        $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
+
+
         $pdf = new PDF('P', 'mm', 'Letter');
         $pdf->AddPage();
         $h = $pdf->GetPageHeight();
@@ -146,7 +153,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
         $pdf->Ln(15);
         $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode('ING. JORGE EDUARDO ORTEGA LOPEZ'), 0, 1, 'C');
+        // NOTE: aqui
+        $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
         $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
         $pdf->Ln(14); //CELDA DE ESPACIO
         $pdf->SetFont('Helvetica', '', '9');
@@ -253,7 +261,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
         $pdf->Ln(15);
         $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode('ING. JORGE EDUARDO ORTEGA LOPEZ'), 0, 1, 'C');
+        $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
         $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
         $pdf->Ln(14); //CELDA DE ESPACIO
         $pdf->SetFont('Helvetica', '', '9');
@@ -360,7 +368,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
         $pdf->Ln(15);
         $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode('ING. JORGE EDUARDO ORTEGA LOPEZ'), 0, 1, 'C');
+        $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
         $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
         $pdf->Ln(14); //CELDA DE ESPACIO
         $pdf->SetFont('Helvetica', '', '9');
