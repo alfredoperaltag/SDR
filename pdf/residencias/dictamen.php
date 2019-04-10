@@ -124,11 +124,36 @@ $pdf->MultiCell(25, 9, utf8_decode($fechaActual), 1, 'C');
 $pdf->SetY(136);
 $pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados'), 0, 0, 'C');
 
-$pdf->SetXY(18, 156);
+$pdf->SetXY(44, 156);
 $pdf->SetFont('Arial', '', 8);
 $pdf->Cell(0, 0, utf8_decode($presidente), 0, 0, 'L');
+$pdf->SetX(30);
+$pdf->Cell(0, 0, utf8_decode($jefe), 0, 0, 'C');
+$pdf->SetX(198);
+$pdf->Cell(0, 0, utf8_decode($subdirector), 0, 0, 'C');
 $pdf->Ln(4);
+$pdf->SetX(36);
 $pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL PRESIDENTE DE ACADEMIA'), 0, 0, 'L');
+$pdf->SetX(30);
+$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL JEFE DEL DEPTO.'), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL SUBDIRECTOR ACADÉMICO'), 0, 0, 'R');
+$pdf->Ln(4);
+$pdf->SetX(65);
+$pdf->Cell(0, 0, utf8_decode('Propone'), 0, 0, 'L');
+$pdf->SetX(30);
+$pdf->Cell(0, 0, utf8_decode('ACADÉMICO'), 0, 0, 'C');
+$pdf->SetX(195);
+$pdf->Cell(0, 0, utf8_decode('Vo. Bo.'), 0, 0, 'C');
+$pdf->Ln(4);
+$pdf->SetX(30);
+$pdf->Cell(0, 0, utf8_decode('Valida'), 0, 0, 'C');
+$pdf->Ln(4);
+$pdf->SetFont('Arial', 'B', 9);
+$pdf->Cell(0, 0, utf8_decode('INSTITUTO TECNOLÓGICO DE IGUALA'), 0, 0, 'C');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES'), 0, 0, 'C');
 
 
 $pdf->Output();
