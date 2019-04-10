@@ -2,6 +2,8 @@
 var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 var f = new Date();
 var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
+var fecha2 = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
+var fecha2 = f.getFullYear() + "-" + meses[f.getMonth()] + "-" + f.getDate();
 
 /*<!--=====================================
 INFORMACION RESIDENTE
@@ -245,25 +247,25 @@ $(document).on("click", "#btnImprimirDictamen", function () {
         cancelButtonText: 'Cancelar',
         progressSteps: ['1', '2']
     }).queue([{
-            input: 'text',
-            inputValue: fecha,
-            title: 'Fecha',
-            text: 'Introduzca una fecha valida'
+        input: 'text',
+        inputValue: fecha,
+        title: 'Fecha',
+        text: 'Introduzca una fecha valida'
+    },
+    {
+        title: 'Estado del dictamen',
+        text: 'Seleccione "Aceptado" ó "Rechazado"',
+        input: 'radio',
+        inputOptions: {
+            'Aceptado': 'Aceptado',
+            'Rechazado': 'Rechazado'
         },
-        {
-            title: 'Estado del dictamen',
-            text: 'Seleccione "Aceptado" ó "Rechazado"',
-            input: 'radio',
-            inputOptions: {
-                'Aceptado': 'Aceptado',
-                'Rechazado': 'Rechazado'
-            },
-            inputValidator: function (result) {
-                if (!result) {
-                    return 'Necesita seleccionar una opción!';
-                }
+        inputValidator: function (result) {
+            if (!result) {
+                return 'Necesita seleccionar una opción!';
             }
         }
+    }
     ]).then((result) => {
         if (result.value) {
             window.open("pdf/residencias/dictamen.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
@@ -277,7 +279,26 @@ $(document).on("click", "#btnImprimirDictamen", function () {
 IMPRIMIR JURADO SELECCIONADO
 ======================================-->*/
 $(document).on("click", "#btnImpJurado", function () {
-    console.log("J=  " + idResidente);
-    // window.open("pdf/dictamen/index.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
-    window.open("pdf/tesis/jurado.php?id=" + idResidente, "_blank");
+    // console.log("J=  " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2']
+    }).queue([{
+        input: 'text',
+        inputValue: fecha2,
+        title: 'Fecha',
+        text: 'Introduzca una fecha valida'
+    },
+    {
+        title: 'Documento',
+        text: 'Introduzca el numero de documento',
+        input: 'text'
+    }
+    ]).then((result) => {
+        if (result.value) {
+            window.open("pdf/tesis/jurado.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+        }
+    })
 });
