@@ -47,338 +47,337 @@ class PDF extends FPDF
     }
 }
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
-    
-        $item = "id";
-        $valor = $_GET['id'];
-        $tabla = "jerarquia";
-        $puesto = "JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN";
-        $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
-        $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
+
+    $item = "id";
+    $valor = $_GET['id'];
+    $tabla = "jerarquia";
+    $puesto = "JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN";
+    $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+    $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
 
 
-        $pdf = new PDF('P', 'mm', 'Letter');
-        $pdf->AddPage();
-        $h = $pdf->GetPageHeight();
-        $w = $pdf->GetPageWidth();
-        $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
-        $pdf->SetFont('Helvetica', '', '7');
-        $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-        $pdf->Ln(5);
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(107);
-        $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
-        $pdf->Cell(107);
-        $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(20, 4, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN.'), 0, 1, 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(107);
-        $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
-// AQUI VA LA FECHA 2019-Abril-05
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
-        $pdf->Ln(12); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(19);
-        // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
-        // NOTE AQUI
-        $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
-        $pdf->Cell(19);
-        $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
-        $pdf->Cell(19);
-        $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
-        $pdf->Ln(7); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(31);
-        $pdf->Cell(0, 4, 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para ', 0, 1, 'L');
-        $pdf->Cell(18);
-        $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
-        $pdf->Ln(3); //CELDA DE ESPACIO
-        $pdf->Cell(23);
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
-        $pdf->SetXY($x + 28, $y);
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->SetXY($x + 70, $y);
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['carrera'])), 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' TRABAJO DE TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
-        $pdf->Cell(23);
-// OBTENER CORDENADAS PARA PONER UNA MULTICELL AL LADO DE UNA CELL
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
-        $pdf->SetXY($x + 28, $y);
-        $pdf->MultiCell(140, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['asesorInt'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor1'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor2'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
-        $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
-        $pdf->Ln(6); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'BIU', '9');
-        $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
-        $pdf->Ln(8); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(31);
-        $pdf->Cell(0, 4, utf8_decode('Asimismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
-        $pdf->Ln(2); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(30);
-        $pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
-        $pdf->Ln(7); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
-        $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
-        $pdf->Ln(15);
-        $pdf->SetFont('Helvetica', 'B', '9');
-        // NOTE: aqui
-        $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
-        $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
-        $pdf->Ln(14); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(20);
-        $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
-        $pdf->SetFont('Helvetica', '', '6');
-        $pdf->Cell(20);
-        $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
+    $pdf = new PDF('P', 'mm', 'Letter');
+    $pdf->AddPage();
+    $h = $pdf->GetPageHeight();
+    $w = $pdf->GetPageWidth();
+    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    $pdf->SetFont('Helvetica', '', '7');
+    $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
+    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+    $pdf->Cell(107);
+    $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(20, 4, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN.'), 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
+    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
+    // AQUI VA LA FECHA 2019-Abril-05
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
+    $pdf->Ln(12); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(19);
+    // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
+    // NOTE AQUI
+    $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
+    $pdf->Ln(7); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(31);
+    $pdf->Cell(0, 4, 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para ', 0, 1, 'L');
+    $pdf->Cell(18);
+    $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
+    $pdf->Ln(3); //CELDA DE ESPACIO
+    $pdf->Cell(23);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
+    $pdf->SetXY($x + 28, $y);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->SetXY($x + 70, $y);
+    $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['carrera'])), 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' TRABAJO DE TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
+    $pdf->Cell(23);
+    // OBTENER CORDENADAS PARA PONER UNA MULTICELL AL LADO DE UNA CELL
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
+    $pdf->SetXY($x + 28, $y);
+    $pdf->MultiCell(140, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['asesorInt'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor1'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor2'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
+    $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
+    $pdf->Ln(6); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'BIU', '9');
+    $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
+    $pdf->Ln(8); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(31);
+    $pdf->Cell(0, 4, utf8_decode('Asimismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
+    $pdf->Cell(21);
+    $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
+    $pdf->Cell(21);
+    $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
+    $pdf->Ln(2); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(30);
+    $pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
+    $pdf->Ln(7); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
+    $pdf->Ln(15);
+    $pdf->SetFont('Helvetica', 'B', '9');
+    // NOTE: aqui
+    $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
+    $pdf->Ln(14); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(20);
+    $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '6');
+    $pdf->Cell(20);
+    $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
 
-        //OTRO
-        $pdf->AddPage();
-        $h = $pdf->GetPageHeight();
-        $w = $pdf->GetPageWidth();
-        $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
-        $pdf->SetFont('Helvetica', '', '7');
-        $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-        $pdf->Ln(5);
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(107);
-        $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
-        $pdf->Cell(107);
-        $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(20, 4, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN.'), 0, 1, 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(107);
-        $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
-// AQUI VA LA FECHA 2019-Abril-05
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
-        $pdf->Ln(12); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(19);
-        // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
-        // NOTE AQUI
-        $pdf->Cell(80, 4, utf8_decode($res['revisor1'] . '.'), 0, 1, 'L');
-        $pdf->Cell(19);
-        $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
-        $pdf->Cell(19);
-        $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
-        $pdf->Ln(7); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(31);
-        $pdf->Cell(0, 4, 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para ', 0, 1, 'L');
-        $pdf->Cell(18);
-        $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
-        $pdf->Ln(3); //CELDA DE ESPACIO
-        $pdf->Cell(23);
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
-        $pdf->SetXY($x + 28, $y);
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->SetXY($x + 70, $y);
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['carrera'])), 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' TRABAJO DE TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
-        $pdf->Cell(23);
-// OBTENER CORDENADAS PARA PONER UNA MULTICELL AL LADO DE UNA CELL
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
-        $pdf->SetXY($x + 28, $y);
-        $pdf->MultiCell(140, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['asesorInt'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor1'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor2'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
-        $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
-        $pdf->Ln(6); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'BIU', '9');
-        $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
-        $pdf->Ln(8); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(31);
-        $pdf->Cell(0, 4, utf8_decode('Asimismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
-        $pdf->Ln(2); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(30);
-        $pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
-        $pdf->Ln(7); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
-        $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
-        $pdf->Ln(15);
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
-        $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
-        $pdf->Ln(14); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(20);
-        $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
-        $pdf->SetFont('Helvetica', '', '6');
-        $pdf->Cell(20);
-        $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
+    //OTRO
+    $pdf->AddPage();
+    $h = $pdf->GetPageHeight();
+    $w = $pdf->GetPageWidth();
+    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    $pdf->SetFont('Helvetica', '', '7');
+    $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
+    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+    $pdf->Cell(107);
+    $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(20, 4, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN.'), 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
+    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
+    // AQUI VA LA FECHA 2019-Abril-05
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
+    $pdf->Ln(12); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(19);
+    // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
+    // NOTE AQUI
+    $pdf->Cell(80, 4, utf8_decode($res['revisor1'] . '.'), 0, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
+    $pdf->Ln(7); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(31);
+    $pdf->Cell(0, 4, 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para ', 0, 1, 'L');
+    $pdf->Cell(18);
+    $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
+    $pdf->Ln(3); //CELDA DE ESPACIO
+    $pdf->Cell(23);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
+    $pdf->SetXY($x + 28, $y);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->SetXY($x + 70, $y);
+    $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['carrera'])), 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' TRABAJO DE TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
+    $pdf->Cell(23);
+    // OBTENER CORDENADAS PARA PONER UNA MULTICELL AL LADO DE UNA CELL
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
+    $pdf->SetXY($x + 28, $y);
+    $pdf->MultiCell(140, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['asesorInt'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor1'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor2'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
+    $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
+    $pdf->Ln(6); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'BIU', '9');
+    $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
+    $pdf->Ln(8); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(31);
+    $pdf->Cell(0, 4, utf8_decode('Asimismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
+    $pdf->Cell(21);
+    $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
+    $pdf->Cell(21);
+    $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
+    $pdf->Ln(2); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(30);
+    $pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
+    $pdf->Ln(7); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
+    $pdf->Ln(15);
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
+    $pdf->Ln(14); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(20);
+    $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '6');
+    $pdf->Cell(20);
+    $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
 
-        //OTRO
-        $pdf->AddPage();
-        $h = $pdf->GetPageHeight();
-        $w = $pdf->GetPageWidth();
-        $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
-        $pdf->SetFont('Helvetica', '', '7');
-        $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-        $pdf->Ln(5);
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(107);
-        $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
-        $pdf->Cell(107);
-        $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(20, 4, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN.'), 0, 1, 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(107);
-        $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
-// AQUI VA LA FECHA 2019-Abril-05
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
-        $pdf->Ln(12); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(19);
-        // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
-        // NOTE AQUI
-        $pdf->Cell(80, 4, utf8_decode($res['revisor2'] . '.'), 0, 1, 'L');
-        $pdf->Cell(19);
-        $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
-        $pdf->Cell(19);
-        $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
-        $pdf->Ln(7); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(31);
-        $pdf->Cell(0, 4, 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para ', 0, 1, 'L');
-        $pdf->Cell(18);
-        $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
-        $pdf->Ln(3); //CELDA DE ESPACIO
-        $pdf->Cell(23);
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
-        $pdf->SetXY($x + 28, $y);
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->SetXY($x + 70, $y);
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['carrera'])), 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' TRABAJO DE TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
-        $pdf->Cell(23);
-// OBTENER CORDENADAS PARA PONER UNA MULTICELL AL LADO DE UNA CELL
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
-        $pdf->SetXY($x + 28, $y);
-        $pdf->MultiCell(140, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['asesorInt'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor1'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor2'])), 1, 1, 'L');
-        $pdf->Cell(23);
-        $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
-        $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
-        $pdf->Ln(6); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'BIU', '9');
-        $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
-        $pdf->Ln(8); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(31);
-        $pdf->Cell(0, 4, utf8_decode('Asimismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
-        $pdf->Ln(2); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(30);
-        $pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
-        $pdf->Ln(7); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
-        $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
-        $pdf->Ln(15);
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
-        $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
-        $pdf->Ln(14); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(20);
-        $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
-        $pdf->SetFont('Helvetica', '', '6');
-        $pdf->Cell(20);
-        $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
-        $pdf->Output('I', 'Jurado_Seleccionado.pdf');
-
+    //OTRO
+    $pdf->AddPage();
+    $h = $pdf->GetPageHeight();
+    $w = $pdf->GetPageWidth();
+    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    $pdf->SetFont('Helvetica', '', '7');
+    $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
+    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+    $pdf->Cell(107);
+    $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(20, 4, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN.'), 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
+    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
+    // AQUI VA LA FECHA 2019-Abril-05
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
+    $pdf->Ln(12); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(19);
+    // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
+    // NOTE AQUI
+    $pdf->Cell(80, 4, utf8_decode($res['revisor2'] . '.'), 0, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
+    $pdf->Ln(7); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(31);
+    $pdf->Cell(0, 4, 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para ', 0, 1, 'L');
+    $pdf->Cell(18);
+    $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
+    $pdf->Ln(3); //CELDA DE ESPACIO
+    $pdf->Cell(23);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
+    $pdf->SetXY($x + 28, $y);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->SetXY($x + 70, $y);
+    $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['carrera'])), 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' TRABAJO DE TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
+    $pdf->Cell(23);
+    // OBTENER CORDENADAS PARA PONER UNA MULTICELL AL LADO DE UNA CELL
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
+    $pdf->SetXY($x + 28, $y);
+    $pdf->MultiCell(140, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['asesorInt'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor1'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
+    $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor2'])), 1, 1, 'L');
+    $pdf->Cell(23);
+    $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
+    $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
+    $pdf->Ln(6); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'BIU', '9');
+    $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
+    $pdf->Ln(8); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(31);
+    $pdf->Cell(0, 4, utf8_decode('Asimismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
+    $pdf->Cell(21);
+    $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
+    $pdf->Cell(21);
+    $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
+    $pdf->Ln(2); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(30);
+    $pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
+    $pdf->Ln(7); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
+    $pdf->Ln(15);
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
+    $pdf->Ln(14); //CELDA DE ESPACIO
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(20);
+    $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '6');
+    $pdf->Cell(20);
+    $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
+    $pdf->Output('I', 'Jurado_Seleccionado.pdf');
 } else {
     echo '<h1>Aqui no puedes hacer eso :)<h1>';
 }
