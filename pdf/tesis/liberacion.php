@@ -6,6 +6,7 @@ require '../../controladores/residentes.controlador.php';
 require '../../modelos/residentes.modelo.php';
 require '../../controladores/jerarquia.controlador.php';
 require '../../modelos/jerarquia.modelo.php';
+
 class PDF extends FPDF
 {
     // public $docente;
@@ -36,6 +37,24 @@ class PDF extends FPDF
         $this->Image('../img/norma.jpg', 155 + 31, 253, 15);
     }
 }
+
+function MultiCellRow($cells, $width, $height, $data, $pdf)
+{
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $maxheight = 0;
+    for ($i = 0; $i < $cells; $i++) {
+        $pdf->MultiCell($width, $height, $data[$i]);
+        if ($pdf->GetY() - $y > $maxheight) $maxheight = $pdf->GetY() - $y;
+        $pdf->SetXY($x + ($width * ($i + 1)), $y);
+    }
+    for ($i = 0; $i < $cells + 1; $i++) {
+        $pdf->Line($x + $width * $i, $y, $x + $width * $i, $y + $maxheight);
+    }
+    $pdf->Line($x, $y, $x + $width * $cells, $y);
+    $pdf->Line($x, $y + $maxheight, $x + $width * $cells, $y + $maxheight);
+}
+
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
     $item = "id";
@@ -95,11 +114,13 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(19);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
+    $pdf->MultiCell(40, 4, utf8_decode('d) Nombre del proyecto: '), 1, 'L');
     $pdf->SetXY($x + 40, $y);
-    $pdf->MultiCell(118, 4, utf8_decode(strtoupper('DETERMINACION DE LOS DISPOSITIVOS DE RED QUE PERMITAN PROPORCIONAR SERVICIO DE INTERNET EN EL INSTITUTO TECNOLOGICO DE IGUALA')), 1, 'L');
-    $pdf->SetXY($x + 40, $y - $pdf->GetY());
-    $y1 = $pdf->GetY() - $y;
-    $pdf->MultiCell(40, $y1, utf8_decode('d)	Nombre del proyecto:                     '), 1, 'L');
+    $pdf->MultiCell(118, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
+    $pdf->Cell(19);
+    MultiCellRow(2, 40, 4, ["d) Nombre del proyecto: ","DETERMINACION DE LOS DISPOSITIVOS DE RED QUE PERMITAN
+    PROPORCIONAR SERVICIO DE INTERNET EN EL INSTITUTO
+    TECNOLOGICO DE IGUALA"], $pdf);
 
     $pdf->Output('I', 'Jurado_Seleccionado.pdf');
 
