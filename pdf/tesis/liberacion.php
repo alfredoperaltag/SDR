@@ -39,71 +39,69 @@ class PDF extends FPDF
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
     $item = "id";
-        $valor = $_GET['id'];
-        $tabla = "jerarquia";
-        $puesto = "JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN";
-        $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
-        $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
-        $pdf = new PDF('P', 'mm', 'Letter');
-        $pdf->AddPage();
-        $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
-        $pdf->SetFont('Helvetica', '', '7');
-        $pdf->Cell(0, 5, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-        $pdf->Ln(5);
-        $pdf->SetFont('Arial', '', '9');
-        $pdf->Cell(17);
-        $pdf->Cell(0, 4, utf8_decode('DEPTO. DE SISTEMAS Y COMPUTACION'), 0, 1, 'L');
-        $pdf->Cell(17);
-        $pdf->Cell(0, 4, utf8_decode('OF. No. DSC-ITI/1236/2018'), 0, 1, 'L');
-        $pdf->Cell(17);
-        $pdf->SetFont('Arial', 'B', '9');
-        $pdf->Cell(16, 4, utf8_decode('ASUNTO:'), 0, 0, 'L');
-        $pdf->SetFont('Arial', '', '9');
-        // $pdf->Cell(16);
-        $pdf->Cell(80, 4, utf8_decode('Liberación de Proyecto para Titulación Integral.'), 0, 1, 'L');
-        $pdf->Cell(17);
-        $pdf->Cell(20, 4, utf8_decode('Iguala, Gro.,'),0, 0, 'L');
-        $pdf->SetTextColor(255,255,255);
-        $anchoTexto = $pdf->GetStringWidth('06/ABRIL/2018');
-        $pdf->Cell($anchoTexto, 4, utf8_decode('06/ABRIL/2018'), 1, 1, 'C', true);
-        $pdf->SetTextColor(0,0,0);
-        $pdf->Ln(10); //CELDA DE ESPACIO
-        
-        
-        $pdf->SetFont('Arial', 'B', '9');
-        $pdf->Cell(17);
-        $pdf->Cell(100, 4, utf8_decode('M.A. JUANA MIRNA VALLE MORALES'), 0, 1, 'L');
-        $pdf->Cell(17);
-        $pdf->Cell(100, 4, utf8_decode('JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES'), 0, 1, 'L');
-        $pdf->Cell(17);
-        $pdf->Cell(100, 4, utf8_decode('PRESENTE'), 0, 1, 'L');
-        $pdf->Ln(10); //CELDA DE ESPACIO
-        
-        
-        $pdf->SetFont('Arial', '', '9');
-        // $pdf->Cell(17);
-        $pdf->Cell(0, 5, utf8_decode('Por este medio le informo que ha sido liberado el siguiente proyecto para la Titulación integral Tesis Profesional'), 0, 1, 'C');
-        $pdf->Cell(19);
-        $pdf->Cell(40, 4, utf8_decode('a)	Nombre del Egresado:'), 1, 0, 'L');
-        $pdf->Cell(118, 4, utf8_decode('FARIT MALDONADO SEGURA'), 1, 1, 'L');
-        $pdf->Cell(19);
-        $pdf->Cell(40, 4, utf8_decode('a)	Numero de Control:'), 1, 0, 'L');
-        $pdf->Cell(118, 4, utf8_decode('11670329'), 1, 1, 'L');
-        $pdf->Cell(19);
-        $pdf->Cell(40, 4, utf8_decode('c)	Carrera:'), 1, 0, 'L');
-        $pdf->Cell(118, 4, utf8_decode('Ingenieria en Sistemas Computacionales'), 1, 1, 'L');
+    $valor = $_GET['id'];
+    $tabla = "jerarquia";
+    $puesto = "JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN";
+    $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+    $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
+    $pdf = new PDF('P', 'mm', 'Letter');
+    $pdf->AddPage();
+    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    $pdf->SetFont('Helvetica', '', '7');
+    $pdf->Cell(0, 5, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->SetFont('Arial', '', '9');
+    $pdf->Cell(17);
+    $pdf->Cell(0, 4, utf8_decode('DEPTO. DE SISTEMAS Y COMPUTACION'), 0, 1, 'L');
+    $pdf->Cell(17);
+    $pdf->Cell(0, 4, utf8_decode('OF. No. DSC-ITI/1236/2018'), 0, 1, 'L');
+    $pdf->Cell(17);
+    $pdf->SetFont('Arial', 'B', '9');
+    $pdf->Cell(16, 4, utf8_decode('ASUNTO:'), 0, 0, 'L');
+    $pdf->SetFont('Arial', '', '9');
+    // $pdf->Cell(16);
+    $pdf->Cell(80, 4, utf8_decode('Liberación de Proyecto para Titulación Integral.'), 0, 1, 'L');
+    $pdf->Cell(17);
+    $pdf->Cell(20, 4, utf8_decode('Iguala, Gro.,'), 0, 0, 'L');
+    $pdf->SetTextColor(255, 255, 255);
+    $anchoTexto = $pdf->GetStringWidth('06/ABRIL/2018');
+    $pdf->Cell($anchoTexto, 4, utf8_decode('06/ABRIL/2018'), 1, 1, 'C', true);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->Ln(10); //CELDA DE ESPACIO
 
-        // NOTE: CHECAR LAS MULTICELL
-        $pdf->Cell(19);
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->SetXY($x + 40, $y);
-        $pdf->MultiCell(118, 4, utf8_decode(strtoupper('DETERMINACION DE LOS DISPOSITIVOS DE RED QUE PERMITAN PROPORCIONAR SERVICIO DE INTERNET EN EL INSTITUTO TECNOLOGICO DE IGUALA')), 1, 'L');
-        $y1 = $pdf->GetY();
-        $pdf->MultiCell(40, $y1, utf8_decode('d)	Nombre del proyecto:                     '), 1, 'L');
-        
-        $pdf->Output('I', 'Jurado_Seleccionado.pdf');
+    $pdf->SetFont('Arial', 'B', '9');
+    $pdf->Cell(17);
+    $pdf->Cell(100, 4, utf8_decode('M.A. JUANA MIRNA VALLE MORALES'), 0, 1, 'L');
+    $pdf->Cell(17);
+    $pdf->Cell(100, 4, utf8_decode('JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES'), 0, 1, 'L');
+    $pdf->Cell(17);
+    $pdf->Cell(100, 4, utf8_decode('PRESENTE'), 0, 1, 'L');
+    $pdf->Ln(10); //CELDA DE ESPACIO
 
+    $pdf->SetFont('Arial', '', '9');
+    // $pdf->Cell(17);
+    $pdf->Cell(0, 5, utf8_decode('Por este medio le informo que ha sido liberado el siguiente proyecto para la Titulación integral Tesis Profesional'), 0, 1, 'C');
+    $pdf->Cell(19);
+    $pdf->Cell(40, 4, utf8_decode('a)	Nombre del Egresado:'), 1, 0, 'L');
+    $pdf->Cell(118, 4, utf8_decode('FARIT MALDONADO SEGURA'), 1, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(40, 4, utf8_decode('a)	Numero de Control:'), 1, 0, 'L');
+    $pdf->Cell(118, 4, utf8_decode('11670329'), 1, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(40, 4, utf8_decode('c)	Carrera:'), 1, 0, 'L');
+    $pdf->Cell(118, 4, utf8_decode('Ingenieria en Sistemas Computacionales'), 1, 1, 'L');
+
+    // NOTE: CHECAR LAS MULTICELL
+    $pdf->Cell(19);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetXY($x + 40, $y);
+    $pdf->MultiCell(118, 4, utf8_decode(strtoupper('DETERMINACION DE LOS DISPOSITIVOS DE RED QUE PERMITAN PROPORCIONAR SERVICIO DE INTERNET EN EL INSTITUTO TECNOLOGICO DE IGUALA')), 1, 'L');
+    $pdf->SetXY($x + 40, $y - $pdf->GetY());
+    $y1 = $pdf->GetY() - $y;
+    $pdf->MultiCell(40, $y1, utf8_decode('d)	Nombre del proyecto:                     '), 1, 'L');
+
+    $pdf->Output('I', 'Jurado_Seleccionado.pdf');
 
 } else {
     echo '<h1>Aqui no puedes hacer eso :)<h1>';
