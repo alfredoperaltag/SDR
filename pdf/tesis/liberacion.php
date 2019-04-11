@@ -38,21 +38,26 @@ class PDF extends FPDF
     }
 }
 
-function MultiCellRow($cells, $width, $height, $data, $pdf)
+function MultiCellRow($cells, $width, $width2, $height, $data, $pdf)
 {
     $x = $pdf->GetX();
     $y = $pdf->GetY();
     $maxheight = 0;
-    for ($i = 0; $i < $cells; $i++) {
-        $pdf->MultiCell($width, $height, $data[$i]);
+    // for ($i = 0; $i < $cells; $i++) {
+        $pdf->MultiCell($width, $height, $data[0]);
         if ($pdf->GetY() - $y > $maxheight) $maxheight = $pdf->GetY() - $y;
-        $pdf->SetXY($x + ($width * ($i + 1)), $y);
-    }
-    for ($i = 0; $i < $cells + 1; $i++) {
-        $pdf->Line($x + $width * $i, $y, $x + $width * $i, $y + $maxheight);
-    }
+        $pdf->SetXY($x + ($width * (0 + 1)), $y);
+        $pdf->MultiCell($width2, $height, $data[1]);
+        if ($pdf->GetY() - $y > $maxheight) $maxheight = $pdf->GetY() - $y;
+        $pdf->SetXY($x + ($width2 * (1 + 1)), $y);
+    // }
+    // for ($i = 0; $i < $cells + 1; $i++) {
+        $pdf->Line($x + $width * 0, $y, $x + $width * 0, $y + $maxheight);
+        $pdf->Line($x + $width * 1, $y, $x + $width * 1, $y + $maxheight);
+        $pdf->Line($x + $width2 * 1, $y, $x + $width2 * 1, $y + $maxheight);
+    // }
     $pdf->Line($x, $y, $x + $width * $cells, $y);
-    $pdf->Line($x, $y + $maxheight, $x + $width * $cells, $y + $maxheight);
+    $pdf->Line($x, $y + $maxheight, $x + $width2 * 1, $y + $maxheight); //Linea de abajo
 }
 
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
@@ -110,18 +115,20 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(40, 4, utf8_decode('c)	Carrera:'), 1, 0, 'L');
     $pdf->Cell(118, 4, utf8_decode('Ingenieria en Sistemas Computacionales'), 1, 1, 'L');
 
-    // NOTE: CHECAR LAS MULTICELL
-    $pdf->Cell(19);
+
+    // NOTE: CELDAS CON LA MISMA ALTURA
+    $pdf->Cell(59);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(40, 4, utf8_decode('d) Nombre del proyecto: '), 1, 'L');
-    $pdf->SetXY($x + 40, $y);
-    $pdf->MultiCell(118, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
+    $pdf->MultiCell(118, 4, utf8_decode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ipsum nisl, auctor egestas massa eget, ultricies iaculis nisi. Praesent accumsan pretium posuere. Praesent sem urna, convallis nec varius et, elementum at nunc. Mauris porttitor magna lor'), 1, 'L');
+    $H = $pdf->GetY();
     $pdf->Cell(19);
-    MultiCellRow(2, 40, 4, ["d) Nombre del proyecto: ","DETERMINACION DE LOS DISPOSITIVOS DE RED QUE PERMITAN
-    PROPORCIONAR SERVICIO DE INTERNET EN EL INSTITUTO
-    TECNOLOGICO DE IGUALA"], $pdf);
+    $height= $H-$y;
+    $pdf->SetXY($x -40 , $y);
+    $pdf->MultiCell(40, $height, utf8_decode('d) Nombre del proyecto: '), 1, 'L');
+    // NOTE: FIN
 
+    
     $pdf->Output('I', 'Jurado_Seleccionado.pdf');
 
 } else {
