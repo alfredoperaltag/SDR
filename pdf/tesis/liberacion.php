@@ -38,26 +38,21 @@ class PDF extends FPDF
     }
 }
 
-function MultiCellRow($cells, $width, $width2, $height, $data, $pdf)
+function MultiCellRow($cells, $width, $height, $data, $pdf)
 {
     $x = $pdf->GetX();
     $y = $pdf->GetY();
     $maxheight = 0;
-    // for ($i = 0; $i < $cells; $i++) {
-        $pdf->MultiCell($width, $height, $data[0]);
+    for ($i = 0; $i < $cells; $i++) {
+        $pdf->MultiCell($width, $height, $data[$i], 0, 'C');
         if ($pdf->GetY() - $y > $maxheight) $maxheight = $pdf->GetY() - $y;
-        $pdf->SetXY($x + ($width * (0 + 1)), $y);
-        $pdf->MultiCell($width2, $height, $data[1]);
-        if ($pdf->GetY() - $y > $maxheight) $maxheight = $pdf->GetY() - $y;
-        $pdf->SetXY($x + ($width2 * (1 + 1)), $y);
-    // }
-    // for ($i = 0; $i < $cells + 1; $i++) {
-        $pdf->Line($x + $width * 0, $y, $x + $width * 0, $y + $maxheight);
-        $pdf->Line($x + $width * 1, $y, $x + $width * 1, $y + $maxheight);
-        $pdf->Line($x + $width2 * 1, $y, $x + $width2 * 1, $y + $maxheight);
-    // }
+        $pdf->SetXY($x + ($width * ($i + 1)), $y);
+    }
+    for ($i = 0; $i < $cells + 1; $i++) {
+        $pdf->Line($x + $width * $i, $y, $x + $width * $i, $y + $maxheight);
+    }
     $pdf->Line($x, $y, $x + $width * $cells, $y);
-    $pdf->Line($x, $y + $maxheight, $x + $width2 * 1, $y + $maxheight); //Linea de abajo
+    $pdf->Line($x, $y + $maxheight, $x + $width * $cells, $y + $maxheight);
 }
 
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
@@ -114,8 +109,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(19);
     $pdf->Cell(40, 4, utf8_decode('c)	Carrera:'), 1, 0, 'L');
     $pdf->Cell(118, 4, utf8_decode('Ingenieria en Sistemas Computacionales'), 1, 1, 'L');
-
-
+    
+    
     // NOTE: CELDAS CON LA MISMA ALTURA
     $pdf->Cell(59);
     $x = $pdf->GetX();
@@ -127,7 +122,48 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->SetXY($x -40 , $y);
     $pdf->MultiCell(40, $height, utf8_decode('d) Nombre del proyecto: '), 1, 'L');
     // NOTE: FIN
-
+    $pdf->Cell(59);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(118, 4, utf8_decode('TRABAJO DE TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL"'), 1, 'L');
+    $H = $pdf->GetY();
+    $pdf->Cell(19);
+    $height= $H-$y;
+    $pdf->SetXY($x -40 , $y);
+    $pdf->MultiCell(40, $height, utf8_decode('e) Producto: '), 1, 'L');
+    
+    $pdf->Ln(5);
+    
+    $pdf->SetFont('Arial', '', '9');
+    $pdf->Cell(19);
+    $pdf->MultiCell(160, 4, utf8_decode('Agradezco de antemano su valioso apoyo en esta importante actividad para la formación profesional de nuestros egresados. '), 0, 'L');
+    // $pdf->Cell(250, 4, utf8_decode(), 1, 1, 'L');
+    
+    $pdf->Ln(10);
+    $pdf->Cell(19);
+    $pdf->SetFont('Arial', 'B', '9');
+    $pdf->Cell(158, 4, utf8_decode('ATENTAMENTE'), 0, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(158, 4, utf8_decode('"Tecnología como Sinónimo de Independencia"'), 0, 1, 'L');
+    $pdf->Ln(15);
+    $pdf->Cell(19);
+    $pdf->Cell(158, 4, utf8_decode('ING. JORGE EDUARDO ORTEGA LOPEZ'), 0, 1, 'L');
+    $pdf->Cell(19);
+    $pdf->Cell(158, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
+    
+    $pdf->Ln(10);
+    $pdf->SetFont('Arial', '', '9');
+    $pdf->Cell(19);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    MultiCellRow(3, 53, 4, ["M.C. ENRIQUE MENA SALGADO","M.D.I.S. SILVIA VALLE BAHENA", "M.A. ANGELITA DIONICIO ABRAJAN"], $pdf);
+    // $pdf->Cell(158, 4, utf8_decode(''), 0, 1, 'L');
+    // $pdf->SetY($pdf->GetY()+4);
+    $pdf->Cell(19);
+    $y2 = $pdf->GetY();
+    $pdf->SetXY($x, $y+8);
+    MultiCellRow(3, 53, 6, ["Nombre y Firma Asesor ".$y,"Nombre y Firma Asesor ".$y2, "Nombre y Firma Asesor"], $pdf);
+    
     
     $pdf->Output('I', 'Jurado_Seleccionado.pdf');
 
