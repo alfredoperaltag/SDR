@@ -153,20 +153,19 @@ $subdirector = $resSub['nombre'];
 
 $pdf = new PDF('L', 'mm', 'Letter');
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 9);
+$pdf->SetFont('Arial', 'B', 11);
 $pdf->Cell(0, 0, utf8_decode('INSTITUTO TECNOLÓGICO DE IGUALA'), 0, 0, 'C');
 $pdf->Ln(4);
 $pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
 $pdf->Ln(4);
 $pdf->Cell(0, 0, utf8_decode('DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES'), 0, 0, 'C');
 $pdf->Ln(4);
-$pdf->SetFont('Arial', '', 8);
+$pdf->SetFont('Arial', '', 9);
 $pdf->SetXY(191, 64);
 $pdf->Cell(29, 9, utf8_decode('SEMESTRE'), 1, 0, 'C');
 $pdf->Cell(22, 4.5, utf8_decode('ENE - JUN'), 1, 2, 'C');
 $pdf->Cell(22, 4.5, utf8_decode('AGO - DIC'), 1, 0, 'C');
 $pdf->SetXY(242, 64);
-$pdf->SetFont('Arial', '', 9);
 if ($semestre == 'EJ') {
     $pdf->Cell(18, 4.5, utf8_decode($anio), 1, 2, 'C');
     $pdf->Cell(18, 4.5, utf8_decode(''), 1, 0, 'C');
@@ -174,26 +173,27 @@ if ($semestre == 'EJ') {
     $pdf->Cell(18, 4.5, utf8_decode(''), 1, 2, 'C');
     $pdf->Cell(18, 4.5, utf8_decode($anio), 1, 0, 'C');
 }
-$pdf->SetFont('Arial', 'B', 9);
+$pdf->SetFont('Arial', 'B', 11);
 $pdf->SetXY(10, 80);
 $pdf->Cell(0, 0, utf8_decode('ING. EN SISTEMAS COMPUTACIONALES'), 0, 0, 'C');
 $pdf->SetXY(17, 85);
-$pdf->Cell(15, 18, utf8_decode('NUM.'), 1, 0, 'C');
-$pdf->Cell(23, 18, utf8_decode('CONTROL'), 1, 0, 'C');
-$pdf->MultiCell(38, 9, utf8_decode('NOMBRE DEL ESTUDIANTE'), 1, 'C');
+$pdf->Cell(15, 12, utf8_decode('NUM.'), 1, 0, 'C');
+$pdf->Cell(23, 12, utf8_decode('CONTROL'), 1, 0, 'C');
+$pdf->MultiCell(38, 6, utf8_decode('NOMBRE DEL ESTUDIANTE'), 1, 'C');
 $pdf->SetXY(93, 85);
-$pdf->Cell(6, 18, utf8_decode('S'), 1, 0, 'C');
-$pdf->Cell(36, 18, utf8_decode('ANTEPROYECTO'), 1, 0, 'C');
-$pdf->Cell(34, 18, utf8_decode('EMPRESA'), 1, 0, 'C');
+$pdf->Cell(6, 12, utf8_decode('S'), 1, 0, 'C');
+$pdf->Cell(36, 12, utf8_decode('ANTEPROYECTO'), 1, 0, 'C');
+$pdf->Cell(34, 12, utf8_decode('EMPRESA'), 1, 0, 'C');
 $pdf->Cell(45, 5, utf8_decode('ASESORES'), 1, 0, 'C');
-$pdf->Cell(25, 18, utf8_decode('DICTAMEN'), 1, 0, 'C');
-$pdf->MultiCell(25, 9, utf8_decode('FECHA DE DICTAMEN'), 1, 'C');
+$pdf->Cell(25, 12, utf8_decode('DICTAMEN'), 1, 0, 'C');
+$pdf->MultiCell(25, 6, utf8_decode('FECHA DE DICTAMEN'), 1, 'C');
 $pdf->SetXY(169, 90);
-$pdf->Cell(23, 13, utf8_decode('INTERNO'), 1, 0, 'C');
-$pdf->Cell(22, 13, utf8_decode('EXTERNO'), 1, 0, ' C ');
+$pdf->Cell(23, 7, utf8_decode('INTERNO'), 1, 0, 'C');
+$pdf->Cell(22, 7, utf8_decode('EXTERNO'), 1, 0, 'C');
 
-$pdf->SetXY(17, 103);
-$pdf->SetFont('Arial', '', 10);
+// $pdf->SetXY(17, 103);
+$pdf->SetXY(17, 97);
+$pdf->SetFont('Arial', '', 11);
 if ($sexo == 'Masculino') {
     $sexo = 'M';
 } else {
@@ -204,11 +204,11 @@ for ($i = 0; $i < 1; $i++)
     $pdf->Row(array($id, $numeroControl, $nombre, $sexo, $proyecto, $empresa, $asesorInterno, $asesorExterno, $estado, $fechaActual));
 
 
-$pdf->SetY(136);
+$pdf->SetY(148);
 $pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados'), 0, 0, 'C');
 
-$pdf->SetXY(44, 156);
-$pdf->SetFont('Arial', '', 8);
+$pdf->SetFont('Arial', '', 10);
+$pdf->SetXY(36, 171);
 $pdf->Cell(0, 0, utf8_decode($presidente), 0, 0, 'L');
 $pdf->SetX(30);
 $pdf->Cell(0, 0, utf8_decode($jefe), 0, 0, 'C');
@@ -216,26 +216,23 @@ $pdf->SetX(198);
 $pdf->Cell(0, 0, utf8_decode($subdirector), 0, 0, 'C');
 $pdf->Ln(4);
 $pdf->SetX(36);
-$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL PRESIDENTE DE ACADEMIA'), 0, 0, 'L');
+$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL PRESIDENTE DE'), 0, 0, 'L');
 $pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL JEFE DEL DEPTO.'), 0, 0, 'C');
-$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL SUBDIRECTOR ACADÉMICO'), 0, 0, 'R');
+$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL JEFE DEL'), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL SUBDIRECTOR'), 0, 0, 'R');
 $pdf->Ln(4);
-$pdf->SetX(65);
+$pdf->SetX(60);
+$pdf->Cell(0, 0, utf8_decode('ACADEMIA'), 0, 0, 'L');
+$pdf->SetX(30);
+$pdf->Cell(0, 0, utf8_decode('DEPTO. ACADÉMICO'), 0, 0, 'C');
+$pdf->SetX(195);
+$pdf->Cell(0, 0, utf8_decode('ACADÉMICO'), 0, 0, 'C');
+$pdf->Ln(4);
+$pdf->SetX(63);
 $pdf->Cell(0, 0, utf8_decode('Propone'), 0, 0, 'L');
 $pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode('ACADÉMICO'), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode('Valida'), 0, 0, 'C');
 $pdf->SetX(195);
 $pdf->Cell(0, 0, utf8_decode('Vo. Bo.'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode('Valida'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->SetFont('Arial', 'B', 9);
-$pdf->Cell(0, 0, utf8_decode('INSTITUTO TECNOLÓGICO DE IGUALA'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->Cell(0, 0, utf8_decode('DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES'), 0, 0, 'C');
 
 $pdf->Output();
