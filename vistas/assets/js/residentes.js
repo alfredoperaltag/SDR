@@ -247,25 +247,25 @@ $(document).on("click", "#btnImprimirDictamen", function () {
         cancelButtonText: 'Cancelar',
         progressSteps: ['1', '2']
     }).queue([{
-        input: 'text',
-        inputValue: fecha,
-        title: 'Fecha',
-        text: 'Introduzca una fecha valida'
-    },
-    {
-        title: 'Estado del dictamen',
-        text: 'Seleccione "Aceptado" ó "Rechazado"',
-        input: 'radio',
-        inputOptions: {
-            'Aceptado': 'Aceptado',
-            'Rechazado': 'Rechazado'
+            input: 'text',
+            inputValue: fecha,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
         },
-        inputValidator: function (result) {
-            if (!result) {
-                return 'Necesita seleccionar una opción!';
+        {
+            title: 'Estado del dictamen',
+            text: 'Seleccione "Aceptado" ó "Rechazado"',
+            input: 'radio',
+            inputOptions: {
+                'Aceptado': 'Aceptado',
+                'Rechazado': 'Rechazado'
+            },
+            inputValidator: function (result) {
+                if (!result) {
+                    return 'Necesita seleccionar una opción!';
+                }
             }
         }
-    }
     ]).then((result) => {
         if (result.value) {
             window.open("pdf/residencias/dictamen.php?id=" + idResidente + "&fecha=" + result.value[0] + "&estado=" + result.value[1], "_blank");
@@ -286,16 +286,16 @@ $(document).on("click", "#btnImpJurado", function () {
         cancelButtonText: 'Cancelar',
         progressSteps: ['1', '2']
     }).queue([{
-        input: 'text',
-        inputValue: fecha2,
-        title: 'Fecha',
-        text: 'Introduzca una fecha valida'
-    },
-    {
-        title: 'Documento',
-        text: 'Introduzca el numero de documento',
-        input: 'text'
-    }
+            input: 'text',
+            inputValue: fecha2,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            title: 'Documento',
+            text: 'Introduzca el numero de documento',
+            input: 'text'
+        }
     ]).then((result) => {
         if (result.value) {
             window.open("pdf/tesis/jurado.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
@@ -315,16 +315,16 @@ $(document).on("click", "#btnImpLiberacionR", function () {
         cancelButtonText: 'Cancelar',
         progressSteps: ['1', '2']
     }).queue([{
-        input: 'text',
-        inputValue: fecha2,
-        title: 'Fecha',
-        text: 'Introduzca una fecha valida'
-    },
-    {
-        title: 'Documento',
-        text: 'Introduzca el numero de documento',
-        input: 'text'
-    }
+            input: 'text',
+            inputValue: fecha2,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            title: 'Documento',
+            text: 'Introduzca el numero de documento',
+            input: 'text'
+        }
     ]).then((result) => {
         if (result.value) {
             window.open("pdf/tesis/liberacion.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
