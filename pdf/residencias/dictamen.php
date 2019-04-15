@@ -4,7 +4,7 @@ require_once "../../modelos/residentes.modelo.php";
 require_once "../../controladores/jerarquia.controlador.php";
 require_once "../../modelos/jerarquia.modelo.php";
 require('../FPDF/fpdf.php');
-require('mc_table.php');
+// require('mc_table.php');
 
 class PDF extends FPDF
 {
@@ -135,6 +135,7 @@ $resJe = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefe);
 $resSub = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemSub);
 $id = $valor;
 $numeroControl = $respuesta["noControl"];
+$carrera = $respuesta["carrera"];
 $proyecto = $respuesta["nombreProyecto"];
 $nombre = $respuesta["nombre"];
 $sexo = $respuesta["sexo"];
@@ -175,7 +176,7 @@ if ($semestre == 'EJ') {
 }
 $pdf->SetFont('Arial', 'B', 11);
 $pdf->SetXY(10, 80);
-$pdf->Cell(0, 0, utf8_decode('ING. EN SISTEMAS COMPUTACIONALES'), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode(strtoupper($carrera)), 0, 0, 'C');
 $pdf->SetXY(17, 85);
 $pdf->Cell(15, 12, utf8_decode('NUM.'), 1, 0, 'C');
 $pdf->Cell(23, 12, utf8_decode('CONTROL'), 1, 0, 'C');
@@ -201,7 +202,7 @@ if ($sexo == 'Masculino') {
 }
 $pdf->SetWidths(array(15, 23, 38, 6, 36, 34, 23, 22, 25, 25));
 for ($i = 0; $i < 1; $i++)
-    $pdf->Row(array($id, $numeroControl, $nombre, $sexo, $proyecto, $empresa, $asesorInterno, $asesorExterno, $estado, $fechaActual));
+    $pdf->Row(array($id, $numeroControl, strtoupper($nombre), $sexo, strtoupper($proyecto), strtoupper($empresa), strtoupper($asesorInterno), strtoupper($asesorExterno), strtoupper($estado), strtoupper($fechaActual)));
 
 
 $pdf->SetY(148);
