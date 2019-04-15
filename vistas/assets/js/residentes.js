@@ -1,9 +1,11 @@
 //FECHA DEL SISTEMA
 var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+var mesesNumero = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
 var f = new Date();
 var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 var fecha2 = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 var fecha2 = f.getFullYear() + "-" + meses[f.getMonth()] + "-" + f.getDate();
+var fecha3 = f.getDate() + "/" + mesesNumero[f.getMonth()] + "/" + f.getFullYear();
 
 /*<!--=====================================
 INFORMACION RESIDENTE
@@ -287,7 +289,7 @@ $(document).on("click", "#btnImprimirAsesores", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha,
+            inputValue: fecha3,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },

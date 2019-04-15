@@ -122,6 +122,8 @@ class PDF extends FPDF
 
 $item = "id";
 $valor = $_GET['id'];
+$fechaActual = $_GET['fecha'];
+$numero = $_GET['numero'];
 $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
 $tablaJ = "jerarquia";
 $itemPresi = "PRESIDENTE DE ACADEMIA";
@@ -138,7 +140,14 @@ $empresa = $respuesta["nombreEmpresa"];
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 11);
+$pdf->SetFont('Arial', '', 9);
+
+$pdf->Cell(0, 0, utf8_decode('Departamento: Sistemas y Computación'), 0, 0, 'R');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('No. de Oficio: DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'R');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('Iguala de la Independencia, Gro. ' . $fechaActual), 0, 0, 'R');
+$pdf->Ln(20);
 
 $pdf->SetWidths(array(50, 140));
 $pdf->Row(array('a) Nombre del Residente:', $nombre));
