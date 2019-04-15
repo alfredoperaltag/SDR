@@ -1,4 +1,8 @@
 <?php
+require_once "../../controladores/residentes.controlador.php";
+require_once "../../modelos/residentes.modelo.php";
+require_once "../../controladores/jerarquia.controlador.php";
+require_once "../../modelos/jerarquia.modelo.php";
 require('../FPDF/fpdf.php');
 class PDF extends FPDF
 {
@@ -48,7 +52,7 @@ class PDF extends FPDF
         //Draw the cells of the row
         for ($i = 0; $i < count($data); $i++) {
             $w = $this->widths[$i];
-            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'J';
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
             //Save the current position
             $x = $this->GetX();
             $y = $this->GetY();
@@ -116,8 +120,31 @@ class PDF extends FPDF
     }
 }
 
+$item = "id";
+$valor = $_GET['id'];
+$respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+$tablaJ = "jerarquia";
+$itemPresi = "PRESIDENTE DE ACADEMIA";
+$itemJefe = "JEFE DEL DEPTO. ACADEMICO";
+$itemSub = "SUBDIRECTOR ACADÉMICO";
+$resP = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemPresi);
+$resJe = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefe);
+$resSub = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemSub);
+$nombre = $respuesta["nombre"];
+$carrera = $respuesta["carrera"];
+$proyecto = $respuesta["nombreProyecto"];
+$periodo = $respuesta["periodo"];
+$empresa = $respuesta["nombreEmpresa"];
+
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 11);
+
+$pdf->SetWidths(array(50, 140));
+$pdf->Row(array('a) Nombre del Residente:', $nombre));
+$pdf->Row(array('b) Carrera:', $carrera));
+$pdf->Row(array('c) Nombre del Proyecto:', $proyecto));
+$pdf->Row(array('d) Periodo de Realización', $periodo));
+$pdf->Row(array('e) Empresa', $empresa));
 
 $pdf->Output();

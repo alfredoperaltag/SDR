@@ -284,17 +284,21 @@ $(document).on("click", "#btnImprimirAsesores", function () {
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
-        progressSteps: ['1']
+        progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
             inputValue: fecha,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
-
+        {
+            title: '# Oficio',
+            text: 'Introduzca el numero de Oficio',
+            input: 'text'
+        }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/residencias/asesor.php?id=" + idResidente + "&fecha=" + result.value[0], "_blank");
+            window.open("pdf/residencias/asesor.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
             /* window.open("pdf/residencias/dictamen.php"); */
         }
     })
