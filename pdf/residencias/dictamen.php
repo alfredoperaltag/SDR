@@ -12,7 +12,7 @@ class PDF extends FPDF
     function Header()
     {
         // Logo
-        $this->Image('../img/logoCaptura.png', 44, 12, 0);
+        $this->Image('../img/membreteDictamen.PNG', 44, 12, 0);
         $this->Ln(40);
     }
 

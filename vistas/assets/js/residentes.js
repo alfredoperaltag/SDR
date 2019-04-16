@@ -276,6 +276,30 @@ $(document).on("click", "#btnImprimirDictamen", function () {
 
 
 /*<!--=====================================
+IMPRIMIR ASESORES
+======================================-->*/
+$(document).on("click", "#btnImprimirAsesores", function () {
+    console.log("idResidenteDic: " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1']
+    }).queue([{
+            input: 'text',
+            inputValue: fecha,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+
+    ]).then((result) => {
+        if (result.value) {
+            window.open("pdf/residencias/asesor.php?id=" + idResidente + "&fecha=" + result.value[0], "_blank");
+            /* window.open("pdf/residencias/dictamen.php"); */
+        }
+    })
+});
+/*<!--=====================================
 IMPRIMIR JURADO SELECCIONADO
 ======================================-->*/
 $(document).on("click", "#btnImpJurado", function () {
