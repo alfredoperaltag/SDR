@@ -132,6 +132,7 @@ $itemSub = "SUBDIRECTOR ACADÉMICO";
 $resP = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemPresi);
 $resJe = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefe);
 $resSub = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemSub);
+$jefe = $resJe['nombre'];
 $asesorInterno = $respuesta["asesorInt"];
 $nombre = $respuesta["nombre"];
 $carrera = $respuesta["carrera"];
@@ -163,18 +164,40 @@ $pdf->Cell(0, 0, utf8_decode('CATEDRÁTICO DEL I.T. DE IGUALA,'), 0, 0, 'L');
 $pdf->Ln(4);
 $pdf->Cell(0, 0, utf8_decode('P R E S E N T E.'), 0, 0, 'L');
 $pdf->Ln(11);
-$pdf->SetFont('Arial', '', 11);
-$pdf->Cell(0, 0, utf8_decode('Por este conducto informo a usted que ha sido asignado para fungir como Asesor Interno del Proyecto de'), 0, 0, 'L');
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(0, 0, utf8_decode('Por este conducto informo a usted que ha sido asignado para fungir como Asesor Interno del Proyecto de'), 0, 0, 'J');
 $pdf->Ln(4);
-$pdf->Cell(0, 0, utf8_decode('Residencias Profesionales que a continuación se describe:'), 0, 0, 'L');
+$pdf->Cell(0, 0, utf8_decode('Residencias Profesionales que a continuación se describe:'), 0, 0, 'J');
 $pdf->Ln(6);
 
-$pdf->SetFont('Arial', '', 10);
-$pdf->SetWidths(array(50, 140));
-$pdf->Row(array('a) Nombre del Residente:', $nombre));
-$pdf->Row(array('b) Carrera:', $carrera));
-$pdf->Row(array('c) Nombre del Proyecto:', $proyecto));
-$pdf->Row(array(utf8_decode('d) Periodo de Realización'), $periodo));
-$pdf->Row(array('e) Empresa', $empresa));
+// $pdf->SetFont('Arial', '', 10);
+$pdf->SetWidths(array(48.5, 134));
+$pdf->Row(array('a) Nombre del Residente:', utf8_decode(strtoupper($nombre))));
+$pdf->Row(array('b) Carrera:', utf8_decode(strtoupper($carrera))));
+$pdf->Row(array('c) Nombre del Proyecto:', utf8_decode(strtoupper($proyecto))));
+$pdf->Row(array(utf8_decode('d) Periodo de Realización'), utf8_decode(strtoupper($periodo))));
+$pdf->Row(array('e) Empresa', utf8_decode(strtoupper($empresa))));
+$pdf->Ln(14);
+
+// $pdf->SetFont('Arial', '', 10);
+$pdf->Cell(0, 0, utf8_decode('Así mismo, le solicito dar el seguimiento pertinente a la realización del proyecto aplicando los lineamientos'), 0, 0, 'J');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('establecidos para ello, en el procedimiento del SGI para Residencias Profesionales.'), 0, 0, 'J');
+$pdf->Ln(6.5);
+$pdf->Cell(0, 0, utf8_decode('Agradezco de antemano su valioso apoyo en esta importante actividad para la formación profesional de nuestro'), 0, 0, 'J');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('estudiantado.'), 0, 0, 'J');
+$pdf->Ln(18.5);
+
+$pdf->Cell(0, 0, utf8_decode('A t e n t a m e n t e.'), 0, 0, 'C');
+$pdf->Ln(8);
+$pdf->Cell(0, 0, utf8_decode(strtoupper($jefe)), 0, 0, 'C');
+$pdf->Ln(4.2);
+$pdf->Cell(0, 0, utf8_decode('JEFE DEL DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
+$pdf->Ln(29);
+$pdf->Cell(0, 0, utf8_decode('c.c.p. Coordinación de Carrera'), 0, 0, 'J');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('c.c.p. Expediente'), 0, 0, 'J');
+
 
 $pdf->Output();
