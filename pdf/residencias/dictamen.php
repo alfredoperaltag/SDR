@@ -210,11 +210,11 @@ $pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazado
 
 $pdf->SetFont('Arial', '', 10);
 $pdf->SetXY(36, 171);
-$pdf->Cell(0, 0, utf8_decode($presidente), 0, 0, 'L');
+$pdf->Cell(0, 0, utf8_decode(strtoupper($presidente)), 0, 0, 'L');
 $pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode($jefe), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode(strtoupper($jefe)), 0, 0, 'C');
 $pdf->SetX(185);
-$pdf->Cell(0, 0, utf8_decode($subdirector), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode(strtoupper($subdirector)), 0, 0, 'C');
 $pdf->Ln(4);
 $pdf->SetX(36);
 $pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL PRESIDENTE DE'), 0, 0, 'L');
