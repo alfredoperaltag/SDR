@@ -10,7 +10,7 @@ class PDF extends FPDF
     public function Header()
     {
         $this->Image('../img/sepNew_R.png', 20.6, 17.5, 61.5);
-        $this->Image('../img/TecNacMex.PNG', 137, 12, 66);
+        $this->Image('../img/TecNacMex.PNG', 130, 21, 66);
         $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
     }
     public function Footer()
@@ -19,7 +19,7 @@ class PDF extends FPDF
         $this->SetFont('Arial', 'I', 8);
         $x = $this->GetX();
         $y = $this->GetY();
-        $this->Image('../img/iti.jpg', 15, 253, 12);
+        $this->Image('../img/iti.jpg', 24, 256, 14);
         $this->SetFont('Helvetica', '', '7');
         $this->SetXY($x, $y - 12);
         $this->Cell(0, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López  Mateos  Infonavit, C.P. 40030, '), 0, 1, 'C');
@@ -37,8 +37,27 @@ class PDF extends FPDF
         $this->Image('../img/norma.jpg', 155 + 31, 253, 15);
     }
 }
+$numero = $_GET['numero'];
+$fechaActual = $_GET['fecha'];
+
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
-$pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+$pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
+$pdf->SetFont('Helvetica', '', '7.3');
+$pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+$pdf->Ln(12);
+$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'R');
+$pdf->Ln(4);
+$pdf->SetFont('Helvetica', 'B', '9');
+$pdf->Cell(292, 0, utf8_decode('OF. No. DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'C');
+$pdf->Ln(4);
+$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->Cell(267, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
+$pdf->SetXY(151, 71.5);
+$pdf->Cell(37, 3, utf8_decode('JURADO SELECCIONADO.'), 'B', 0, 'C');
+$pdf->Ln(10);
+$pdf->Cell(30, 4, utf8_decode('Iguala, Guerrero, ' . $fechaActual), 0, 0, 'C', true);
+
 
 $pdf->Output('I', 'Asignación de Sinodales.pdf', 'D');
