@@ -318,7 +318,7 @@ $(document).on("click", "#btnImprimirSinodales", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha3,
+            inputValue: fecha,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },

@@ -37,6 +37,12 @@ class PDF extends FPDF
         $this->Image('../img/norma.jpg', 155 + 31, 253, 15);
     }
 }
+
+$item = "id";
+$valor = $_GET['id'];
+$respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+$nombre = $respuesta["nombre"];
+
 $numero = $_GET['numero'];
 $fechaActual = $_GET['fecha'];
 
@@ -50,14 +56,52 @@ $pdf->SetFont('Helvetica', 'B', '8');
 $pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'R');
 $pdf->Ln(4);
 $pdf->SetFont('Helvetica', 'B', '9');
-$pdf->Cell(292, 0, utf8_decode('OF. No. DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'C');
+$pdf->Cell(125.5);
+$pdf->Cell(0, 0, utf8_decode('OF. No. DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'L');
+
 $pdf->Ln(4);
 $pdf->SetFont('Helvetica', 'B', '8');
 $pdf->Cell(267, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
-$pdf->SetXY(151, 71.5);
-$pdf->Cell(37, 3, utf8_decode('JURADO SELECCIONADO.'), 'B', 0, 'C');
-$pdf->Ln(10);
-$pdf->Cell(30, 4, utf8_decode('Iguala, Guerrero, ' . $fechaActual), 0, 0, 'C', true);
+$pdf->SetXY(132, 73);
+
+$pdf->SetFont('Helvetica', 'BU', '8');
+$pdf->Cell(0, 0, utf8_decode('JURADO SELECCIONADO.'), 0, 0, 'C');
+$pdf->Ln(8);
+$pdf->SetFont('Helvetica', '', '8.5');
+$pdf->SetX(91);
+$pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
+$pdf->SetX(160);
+$pdf->SetTextColor(255, 255, 255);
+$anchoFecha = $pdf->GetStringWidth($fechaActual);
+$pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
+$pdf->Ln(8);
+$pdf->Ln(4);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('Helvetica', 'B', '8');
+// $pdf->Cell(0, 0, utf8_decode('C. ' . strtoupper($asesorInterno)), 0, 0, 'L');
+$pdf->Cell(0, 0, utf8_decode('JEFA DE LA DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('P R E S E N T E .'), 0, 0, 'L');
+$pdf->Ln(8);
+$pdf->Cell(0, 0, utf8_decode('AT´N: COORDINADORA DE TITULACIÓN.'), 0, 0, 'L');
+$pdf->Ln(12);
+$pdf->SetFont('Helvetica', '', '8');
+$pdf->Cell(0, 0, utf8_decode('Por medio del presente, me permito enviar a usted el '), 0, 1, 'L');
+$pdf->SetFont('Helvetica', 'BI', '8');
+$pdf->Cell(149, 0, utf8_decode('JURADO '), 0, 1, 'C');
+$pdf->SetFont('Helvetica', '', '8');
+$pdf->Cell(133, 0, utf8_decode('que fungirá en el Acto de Titulación, del '), 0, 0, 'R');
+$pdf->Ln(4);
+$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->Cell(0, 0, utf8_decode(utf8_decode('C. ' .  strtoupper($nombre) . ',')), 0, 1, 'L');
+$pdf->SetFont('Helvetica', '', '8');
+$pdf->Cell(149, 0, utf8_decode(' que presenta su protocolo para su '), 0, 1, 'C');
+$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->Cell(227, 0, utf8_decode('TITULACIÓN INTEGRAL,'), 0, 1, 'C');
+$pdf->SetFont('Helvetica', '', '8');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('el día'), 0, 1, 'L');
+
 
 
 $pdf->Output('I', 'Asignación de Sinodales.pdf', 'D');
