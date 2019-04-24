@@ -8,6 +8,8 @@
                     <thead class="text-capitalize">
                         <tr>
                             <th>Nombre</th>
+                            <th>Residentes<br>Maximos</th>
+                            <th>Residentes<br>Actuales</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -21,6 +23,8 @@
                             if ($value["nombre"] != "NA") {
                                 echo '<tr>
                                         <td>' . $value["nombre"] . '</td>';
+                                        echo '<td>' . $value["setResidentes"] . '</td>';
+                                        echo '<td>' . $value["noResidentes"] . '</td>';
                                 if ($value["estado"] != 0) {
                                     echo '<td><button class="btn btn-success btn-xs btnActivarDocente" idDocente="' . $value["id"] . '" estadoDocente="0">Activado</button></td>';
                                 } else {
@@ -51,7 +55,7 @@ MODAL AGREGAR DOCENTE
             <!--=====================================
               CABEZA DEL MODAL
               ======================================-->
-            <div class="modal-header">
+            <div class="modal-header  bg-primary text-white">
                 <h5 class="modal-tittle">Agregar docente</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
@@ -66,13 +70,18 @@ MODAL AGREGAR DOCENTE
                             <label for="example-text-input" class="col-form-label">Nombre</label>
                             <input class="form-control" type="text" name="nuevoNombre" placeholder="Ingresar nombre completo" autocomplete="off" required>
                         </div>
+                        <!-- ENTRADA PARA RESIDENTES -->
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Establecer numero maximo de residentes</label>
+                            <input class="form-control" type="number" name="nuevoSetResidentes" placeholder="Ingresar numero maximo de residentes" autocomplete="off" required>
+                        </div>
                     </div>
                     <!--=====================================
                     PIE DEL MODAL
                     ======================================-->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-                        <button type="submit" class="btn btn-primary">Guardar usuario</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                     <?php
                     $crearDocente = new ControladorDocentes();
@@ -92,7 +101,7 @@ MODAL EDITAR DOCENTE
             <!--=====================================
             CABEZA DEL MODAL
             ======================================-->
-            <div class="modal-header">
+            <div class="modal-header bg-warning text-white">
                 <h5 class="modal-tittle">Editar docente</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
@@ -108,11 +117,14 @@ MODAL EDITAR DOCENTE
                             <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" autocomplete="off" required>
                             <input type="hidden" id="idDocente" name="idDocente">
                             <!-- <input type="hidden" id="idDocente" name="idDocente" value=<?php echo $value["id"] ?>> -->
+                            <label for="example-text-input" class="col-form-label">Residentes Maximos</label>
+                            <input class="form-control" type="text" id="editarResidentesM" name="editarResidentesM" value="" autocomplete="off" required>
+                            <!-- <input type="hidden" id="idDocente" name="idDocente"> -->
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-                        <button type="submit" class="btn btn-primary">modificar docente</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                     <?php
                     $editarDocente = new ControladorDocentes();

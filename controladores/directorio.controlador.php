@@ -32,4 +32,75 @@ class ControladorDirectorio
             echo ' </tr>';
         }
     }
+
+    /*=============================================
+    EDITAR DIRECTORIO
+    =============================================*/
+    public static function ctrEditarDirectorio()
+    {
+        if (isset($_POST["nuevoExtension"])) {
+            $datosDirectorio = array(
+                "id" => $_POST["idDirectorioEdit"],
+                "extension" => $_POST["nuevoExtension"],
+                "departamento" => $_POST["nuevoDepartamento"],
+                "responsable" => $_POST["nuevoResponsable"]
+            );
+            
+            $respuesta = ModeloDirectorio::mdlEditDirectorio("directorio", $datosDirectorio);
+
+            if ($respuesta == "ok") {
+                echo '<script>
+            Swal.fire({
+                 type: "success",
+                 title: "¡Exito!",
+                 text: "¡Se modifico correctamente!",						   
+                showConfirmButton: true,
+                confirmButtonText: "Cerrar"				   
+            }).then((result)=>{
+                if(result.value){
+                    window.location = "Directorio";
+                }
+                });
+          </script>';
+            } else {
+                echo '<script>
+                Swal.fire({
+                     type: "error",
+                    title: "Error!",
+                    text: "¡No se pudo actualizar!",						   
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar"				   
+                }).then((result)=>{
+                    if(result.value){
+                        window.location = "Directorio";
+                    }
+                    });
+              </script>';
+            }
+        }else{
+            // echo '<script>
+            //     Swal.fire({
+            //          type: "error",
+            //         title: "Error!",
+            //         text: "¡NEL!",						   
+            //         showConfirmButton: true,
+            //         confirmButtonText: "Cerrar"				   
+            //     }).then((result)=>{
+            //         if(result.value){
+            //             window.location = "Directorio";
+            //         }
+            //         });
+            //   </script>';
+        }
+    }
+
+    /*=============================================
+    EDITAR DEL RESIDENTE PARA MOSTRAR INFO EN MODAL
+    =============================================*/
+    public static function ctrMostrarEditarDirectorio($item, $valor)
+    {
+        $tabla = "directorio";
+        $respuesta = ModeloDirectorio::MdlMostrarEditDirectorio($tabla, $item, $valor);
+        return $respuesta;
+    }
 }

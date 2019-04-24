@@ -90,12 +90,16 @@ $(document).on("click", ".btnEditResidente", function () {
             $("#editApellidoM").val(null);
             $("#editSexo").val(null);
             $("#editTelefono").val(null);
-            document.getElementById("customCheck1").checked = false;
-            document.getElementById("customCheck2").checked = false;
-            document.getElementById("customCheck3").checked = false;
-
             $("#editTipo").val(null);
             $("#editTipo").attr("readonly", "readonly");
+            // if (respuesta["asesorExt"] == 0) { //residensias
+                document.getElementById("customCheck1").checked = false;
+                document.getElementById("customCheck2").checked = false;
+                document.getElementById("customCheck3").checked = false;
+            // }else{ //Tesis
+            //     document.getElementById("customCheck3").checked = false;
+            // }
+            
             $("#idProyectoEdit").val(null);
             $("#editNombreProyecto").val(null);
             $("#editNombreEmpresa").val(null);
@@ -120,6 +124,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editApellidoM").val(respuesta["apellidoM"]);
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
+
                 if (respuesta["revision"] == 1) {
                     document.getElementById("customCheck1").checked = true;
                 } else if (respuesta["revision"] == 2) {
@@ -154,14 +159,15 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editApellidoM").val(respuesta["apellidoM"]);
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
-                if (respuesta["revision"] == 1) {
-                    document.getElementById("customCheck1").checked = true;
-                } else if (respuesta["revision"] == 2) {
-                    document.getElementById("customCheck1").checked = true;
-                    document.getElementById("customCheck2").checked = true;
-                } else if (respuesta["revision"] == 3) {
-                    document.getElementById("customCheck1").checked = true;
-                    document.getElementById("customCheck2").checked = true;
+                // if (respuesta["revision"] == 1) {
+                //     document.getElementById("customCheck1").checked = true;
+                // } else if (respuesta["revision"] == 2) {
+                //     document.getElementById("customCheck1").checked = true;
+                //     document.getElementById("customCheck2").checked = true;
+                // } else 
+                if (respuesta["revision"] == 3) {
+                    // document.getElementById("customCheck1").checked = true;
+                    // document.getElementById("customCheck2").checked = true;
                     document.getElementById("customCheck3").checked = true;
                 }
                 $("#editTipo").val(respuesta["tipo"]);

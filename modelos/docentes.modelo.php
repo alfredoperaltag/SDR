@@ -27,9 +27,10 @@ class ModeloDocentes
     =============================================*/
     static public function mdlIngresarDocente($tabla, $datos)
     {
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre) VALUES (:nombre)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, setResidentes) VALUES (:nombre, :setResidentes)");
 
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":setResidentes", $datos["setResidentes"], PDO::PARAM_INT);
         if ($stmt->execute()) {
             return "ok";
         } else {
@@ -42,9 +43,10 @@ class ModeloDocentes
 	EDITAR DOCENTES
     =============================================*/
     static public function mdlEditarDocente($tabla, $datos){
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre WHERE id = :id");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, setResidentes = :setResidentes WHERE id = :id");
         $stmt->bindParam(":id", $datos["id"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":setResidentes", $datos["setResidentes"], PDO::PARAM_INT);
         if ($stmt->execute()) {
             return "ok";
         } else {

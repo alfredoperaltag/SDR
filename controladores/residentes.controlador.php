@@ -120,9 +120,6 @@ class ControladorResidentes
 
             // Quitarles los residentes a los docentes
             $restarResidente1 = $_POST["nuevoAsesorInt"]; 
-            $restarResidente2 = $_POST["nuevoRevisor1"]; 
-            $restarResidente3 = $_POST["nuevoRevisor2"]; 
-            $restarResidente4 = $_POST["nuevoSuplente"]; 
 
             $na = 0;
             $datosProyecto = array(
@@ -173,13 +170,11 @@ class ControladorResidentes
 					}
 					});
               </script>';
+            //   TODO: RESTAR SOLO AL ASESOR
               // restarles los residentes a los asesores
                 $tablaDocente = "asesor";
 
               $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
-              $res2 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente2);
-              $res3 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente3);
-              $res4 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente4);
 
               
                 } else {
@@ -233,7 +228,7 @@ class ControladorResidentes
             $tipo = 2;
             //$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-
+            $restarResidente1 = $_POST["nuevoAsesorInt"]; 
             $na = 0;
             $datosProyecto = array(
                 "nombreProyecto" => $_POST["nuevoNombreProyecto"],
@@ -282,6 +277,8 @@ class ControladorResidentes
 					}
 					});
               </script>';
+              $tablaDocente = "asesor";
+              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
                 } else {
                     echo '<script>
                     Swal.fire({

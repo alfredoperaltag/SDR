@@ -7,7 +7,8 @@ class ControladorDocentes
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["nuevoNombre"])) {
                 $tabla = "asesor";
                 $datos = array(
-                    "nombre" => $_POST["nuevoNombre"]
+                    "nombre" => $_POST["nuevoNombre"],
+                    "setResidentes" => $_POST["nuevoSetResidentes"],
                 );
                 $respuesta = modeloDocentes::mdlIngresarDocente($tabla, $datos);
                 echo $respuesta;
@@ -63,7 +64,8 @@ class ControladorDocentes
                     $tabla = "asesor";
                     $datos = array(
                         "id" => $_POST["idDocente"],
-                        "nombre" => $_POST["editarNombre"]
+                        "nombre" => $_POST["editarNombre"],
+                        "setResidentes" => $_POST["editarResidentesM"]
                     );
                     $respuesta = modeloDocentes::mdlEditarDocente($tabla, $datos);
                     /* echo $datos["id"];

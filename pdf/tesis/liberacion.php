@@ -38,31 +38,16 @@ class PDF extends FPDF
     }
 }
 
-function MultiCellRow($cells, $width, $height, $data, $pdf)
-{
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $maxheight = 0;
-    for ($i = 0; $i < $cells; $i++) {
-        $pdf->MultiCell($width, $height, $data[$i], 0, 'C');
-        if ($pdf->GetY() - $y > $maxheight) $maxheight = $pdf->GetY() - $y;
-        $pdf->SetXY($x + ($width * ($i + 1)), $y);
-    }
-    for ($i = 0; $i < $cells + 1; $i++) {
-        $pdf->Line($x + $width * $i, $y, $x + $width * $i, $y + $maxheight);
-    }
-    $pdf->Line($x, $y, $x + $width * $cells, $y);
-    $pdf->Line($x, $y + $maxheight, $x + $width * $cells, $y + $maxheight);
-}
-
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
     $item = "id";
     $valor = $_GET['id'];
     $tabla = "jerarquia";
     $puesto = "JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN";
+    $puesto2 = "JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES PRESENTE";
     $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
     $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
+    $res3 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto2);
     $pdf = new PDF('P', 'mm', 'Letter');
     $pdf->AddPage();
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
@@ -73,7 +58,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(17);
     $pdf->Cell(0, 4, utf8_decode('DEPTO. DE SISTEMAS Y COMPUTACION'), 0, 1, 'L');
     $pdf->Cell(17);
-    $pdf->Cell(0, 4, utf8_decode('OF. No. DSC-ITI/1236/2018'), 0, 1, 'L');
+    $pdf->Cell(0, 4, utf8_decode('OF. No. DSC-ITI/'.$_GET['numero'].'/'.Date("Y")), 0, 1, 'L');
     $pdf->Cell(17);
     $pdf->SetFont('Arial', 'B', '9');
     $pdf->Cell(16, 4, utf8_decode('ASUNTO:'), 0, 0, 'L');
@@ -83,14 +68,18 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(17);
     $pdf->Cell(20, 4, utf8_decode('Iguala, Gro.,'), 0, 0, 'L');
     $pdf->SetTextColor(255, 255, 255);
-    $anchoTexto = $pdf->GetStringWidth('06/ABRIL/2018');
-    $pdf->Cell($anchoTexto, 4, utf8_decode('06/ABRIL/2018'), 1, 1, 'C', true);
+    $anchoTexto = $pdf->GetStringWidth(' '.$_GET['fecha'].' ');
+    $pdf->Cell($anchoTexto, 4, utf8_decode($_GET['fecha']), 1, 1, 'C', true);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->Ln(10); //CELDA DE ESPACIO
 
     $pdf->SetFont('Arial', 'B', '9');
     $pdf->Cell(17);
-    $pdf->Cell(100, 4, utf8_decode('M.A. JUANA MIRNA VALLE MORALES'), 0, 1, 'L');
+    if ($res3['nombre'] == null) {
+        $pdf->Cell(100, 4, utf8_decode('==== LA JERARQUIA EN LA BASE DE DATOS ESTA MAL ===='), 0, 1, 'L');
+    }else{
+        $pdf->Cell(100, 4, utf8_decode($res3['nombre']), 0, 1, 'L');
+    }
     $pdf->Cell(17);
     $pdf->Cell(100, 4, utf8_decode('JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES'), 0, 1, 'L');
     $pdf->Cell(17);
@@ -100,22 +89,29 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->SetFont('Arial', '', '9');
     // $pdf->Cell(17);
     $pdf->Cell(0, 5, utf8_decode('Por este medio le informo que ha sido liberado el siguiente proyecto para la Titulación integral Tesis Profesional'), 0, 1, 'C');
+    $pdf->Ln(2);
     $pdf->Cell(19);
     $pdf->Cell(40, 4, utf8_decode('a)	Nombre del Egresado:'), 1, 0, 'L');
-    $pdf->Cell(118, 4, utf8_decode('FARIT MALDONADO SEGURA'), 1, 1, 'L');
+    $pdf->SetFont('Arial', 'B', '9');
+    $pdf->Cell(118, 4, utf8_decode(strtoupper($res['nombre'])), 1, 1, 'L');
     $pdf->Cell(19);
+    $pdf->SetFont('Arial', '', '9');
     $pdf->Cell(40, 4, utf8_decode('a)	Numero de Control:'), 1, 0, 'L');
-    $pdf->Cell(118, 4, utf8_decode('11670329'), 1, 1, 'L');
+    $pdf->SetFont('Arial', 'B', '9');
+    $pdf->Cell(118, 4, utf8_decode($res['noControl']), 1, 1, 'L');
     $pdf->Cell(19);
+    $pdf->SetFont('Arial', '', '9');
     $pdf->Cell(40, 4, utf8_decode('c)	Carrera:'), 1, 0, 'L');
-    $pdf->Cell(118, 4, utf8_decode('Ingenieria en Sistemas Computacionales'), 1, 1, 'L');
+    $pdf->SetFont('Arial', 'B', '9');
+    $pdf->Cell(118, 4, utf8_decode(strtoupper($res['carrera'])), 1, 1, 'L');
     
     
     // NOTE: CELDAS CON LA MISMA ALTURA
     $pdf->Cell(59);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(118, 4, utf8_decode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ipsum nisl, auctor egestas massa eget, ultricies iaculis nisi. Praesent accumsan pretium posuere. Praesent sem urna, convallis nec varius et, elementum at nunc. Mauris porttitor magna lor'), 1, 'L');
+    $pdf->MultiCell(118, 4, utf8_decode(strtoupper($res['nombreProyecto'])), 1, 'L');
+    $pdf->SetFont('Arial', '', '9');
     $H = $pdf->GetY();
     $pdf->Cell(19);
     $height= $H-$y;
@@ -125,7 +121,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(59);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
+    $pdf->SetFont('Arial', 'B', '9');
     $pdf->MultiCell(118, 4, utf8_decode('TRABAJO DE TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL"'), 1, 'L');
+    $pdf->SetFont('Arial', '', '9');
     $H = $pdf->GetY();
     $pdf->Cell(19);
     $height= $H-$y;
@@ -147,7 +145,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(158, 4, utf8_decode('"Tecnología como Sinónimo de Independencia"'), 0, 1, 'L');
     $pdf->Ln(15);
     $pdf->Cell(19);
-    $pdf->Cell(158, 4, utf8_decode('ING. JORGE EDUARDO ORTEGA LOPEZ'), 0, 1, 'L');
+    $pdf->Cell(158, 4, utf8_decode($res2['nombre']), 0, 1, 'L');
     $pdf->Cell(19);
     $pdf->Cell(158, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
     
@@ -156,14 +154,50 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(19);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    MultiCellRow(3, 53, 4, ["M.C. ENRIQUE MENA SALGADO","M.D.I.S. SILVIA VALLE BAHENA", "M.A. ANGELITA DIONICIO ABRAJAN"], $pdf);
+    // MultiCellRow(3, 53, 10, ["M.C. ENRIQUE MENA SALGADO","M.D.I.S. SILVIA VALLE BAHENA", "M.A. ANGELITA  ABRAJAN"], $pdf);
     // $pdf->Cell(158, 4, utf8_decode(''), 0, 1, 'L');
     // $pdf->SetY($pdf->GetY()+4);
+
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(53, 4, utf8_decode(strtoupper($res['revisor1'])), 'LTR', 'C');
+    $pdf->SetXY($x + 53, $y);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(53, 4, utf8_decode(strtoupper($res['revisor2'])), 'LTR', 'C');
+    $pdf->SetXY($x + 53, $y);
+    $pdf->MultiCell(53, 4, utf8_decode(strtoupper($res['revisor3'])), 'LTR', 'C');
+    //ESPACIO BAA
     $pdf->Cell(19);
-    $y2 = $pdf->GetY();
-    $pdf->SetXY($x, $y+8);
-    MultiCellRow(3, 53, 6, ["Nombre y Firma Asesor ".$y,"Nombre y Firma Asesor ".$y2, "Nombre y Firma Asesor"], $pdf);
-    
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
+    $pdf->SetXY($x + 53, $y);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
+    $pdf->SetXY($x + 53, $y);
+    $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
+    // BAAA
+
+
+
+    $pdf->Cell(19);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
+    $pdf->SetXY($x + 53, $y);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
+    $pdf->SetXY($x + 53, $y);
+    $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
+
+    $pdf->Ln(8);
+    $pdf->Cell(19);
+    $pdf->SetFont('Arial', '', '8');
+    $pdf->Cell(158, 4, utf8_decode('c.c.p.- Expediente'), 0, 1, 'L');
+
     
     $pdf->Output('I', 'Jurado_Seleccionado.pdf');
 

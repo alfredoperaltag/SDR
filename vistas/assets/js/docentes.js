@@ -18,6 +18,7 @@ $(document).on("click", ".btnEditarDocente", function () {
             console.log("respuesta", respuesta);
             $("#editarNombre").val(respuesta["nombre"]);
             $("#idDocente").val(respuesta["id"]);
+            $("#editarResidentesM").val(respuesta["setResidentes"]);
         }
     });
 })

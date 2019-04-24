@@ -123,6 +123,7 @@ CUERPO DOCUMENTO
     <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>
 
     <!-- others plugins -->
+    <script src="vistas/assets/js/directorio.js"></script>
     <script src="vistas/assets/js/docentes.js"></script>
     <script src="vistas/assets/js/residentes.js"></script>
     <script src="vistas/assets/js/usuarios.js"></script>
