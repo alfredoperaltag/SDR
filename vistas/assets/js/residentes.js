@@ -6,6 +6,7 @@ var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 var fecha2 = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 var fecha2 = f.getFullYear() + "-" + meses[f.getMonth()] + "-" + f.getDate();
 var fecha3 = f.getDate() + "/" + mesesNumero[f.getMonth()] + "/" + f.getFullYear();
+var fecha4 = f.getDate() + " De " + meses[f.getMonth()];
 
 /*<!--=====================================
 INFORMACION RESIDENTE
@@ -315,7 +316,7 @@ $(document).on("click", "#btnImprimirSinodales", function () {
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
-        progressSteps: ['1', '2']
+        progressSteps: ['1', '2', '3']
     }).queue([{
             input: 'text',
             inputValue: fecha,
@@ -326,10 +327,16 @@ $(document).on("click", "#btnImprimirSinodales", function () {
             title: '# Oficio',
             text: 'Introduzca el numero de Oficio',
             input: 'text'
+        },
+        {
+            input: 'text',
+            inputValue: fecha4,
+            title: 'Fecha de la Titulación',
+            text: 'Introduzca una fecha valida'
         }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/residencias/sinodales.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+            window.open("pdf/residencias/sinodales.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaTitulacion=" + result.value[2], "_blank");
             /* window.open("pdf/residencias/dictamen.php"); */
         }
     })

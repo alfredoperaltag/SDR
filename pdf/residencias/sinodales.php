@@ -45,6 +45,7 @@ $nombre = $respuesta["nombre"];
 
 $numero = $_GET['numero'];
 $fechaActual = $_GET['fecha'];
+$fechaTitulacion = $_GET['fechaTitulacion'];
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
@@ -101,7 +102,23 @@ $pdf->Cell(227, 0, utf8_decode('TITULACIÓN INTEGRAL,'), 0, 1, 'C');
 $pdf->SetFont('Helvetica', '', '8');
 $pdf->Ln(4);
 $pdf->Cell(0, 0, utf8_decode('el día'), 0, 1, 'L');
+$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->Cell(8);
+$pdf->Cell(0, 0, utf8_decode(strtoupper($fechaTitulacion)), 0, 1, 'L');
 
 
+
+$pdf->SetFont('Helvetica', '', '8');
+// $pdf->Cell(8);
+$anchoFechaTitulacion = $pdf->GetStringWidth($fechaTitulacion);
+// $pdf->Cell($anchoFechaTitulacion);
+// $pdf->Cell(5);
+// $pdf->SetX($anchoFechaTitulacion + 20);
+// $pdf->Cell();
+$pdf->SetX(18 + $anchoFechaTitulacion + 4.5);
+$x2 = $pdf->GetX();
+$pdf->Cell(0, 0, utf8_decode('del año en curso, a las'), 0, 1, 'L');
+// $pdf->Cell(0, 0, utf8_decode($anchoFechaTitulacion), 0, 1, 'C');
+$pdf->Cell(0, 0, utf8_decode($x2), 0, 1, 'C');
 
 $pdf->Output('I', 'Asignación de Sinodales.pdf', 'D');
