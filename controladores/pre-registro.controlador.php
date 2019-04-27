@@ -38,7 +38,7 @@ class ControladorPreRegistro
                     $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $_POST["nuevoAsesorPRE"]);
                 echo "<script>
                 Swal.fire({
-                    position: 'top-end',
+                    position: 'top',
                     type: 'success',
                     title: '¡Pre-registrado Correctamente!',
                     showConfirmButton: false,
@@ -64,6 +64,21 @@ class ControladorPreRegistro
 				 </script>';
                     }
                 }else{
+                    if ($_SESSION['perfil'] == "Administrador") {
+                        echo '<script>
+				   Swal.fire({
+						type: "error",
+                       title: "¡Error!",
+                       text: "¡No puedes registrar sin asesores! Necesita editar el maximo de residentes de los docentes.",
+					   showConfirmButton: true,
+					   confirmButtonText: "Cerrar"
+				   }).then((result)=>{
+					   if(result.value){
+						   window.location = "Pre-Registro";
+					   }
+					   });
+                 </script>';
+                    }else{
                     echo '<script>
 				   Swal.fire({
 						type: "error",
@@ -76,7 +91,8 @@ class ControladorPreRegistro
 						   window.location = "Pre-Registro";
 					   }
 					   });
-				 </script>';
+                 </script>';
+                    }
                     }
             } else {
                 echo '<script>
@@ -92,6 +108,101 @@ class ControladorPreRegistro
 					   }
 					   });
 				 </script>';
+            }
+        }
+    }
+
+    /*=============================================
+    MOSTRAR INFO DE PRE-REGISTRO PARA EDITAR
+    =============================================*/
+    public static function ctrMostrarInfoPreRegistro($item, $valor)
+    {
+        $tabla = "preregistros";
+        $respuesta = ModeloPreRegistro::MdlMostrarDocentes($tabla, $item, $valor);
+        return $respuesta;
+    }
+
+
+    /*=============================================
+        EDITAR PRE-REGISTRO
+    =============================================*/
+    public static function ctrEditarPreRegistro()
+    {
+        {
+            if (isset($_POST["editarNoControlPR"])) {
+                if ($_POST["editarAsesorPRE"] != "NA" || $_POST["CheckPreRegistroEdit"] == "on") {
+                    $tabla = "preregistros";
+                    
+                    if ($_POST["CheckPreRegistroEdit"] == "on") {
+                        $aux = 1;
+                    }else{
+                        $aux = 0;
+                    }
+                    $datos = array(
+                        "id" => $_POST["idPreRegistroEdit"],
+                        "noControl" => $_POST["editarNoControlPR"],
+                        "carrera" => $_POST["editarCarreraPR"],
+                        "nombre" => $_POST["editarNombrePR"],
+                        "apellidoP" => $_POST["editarApellidoPPR"],
+                        "apellidoM" => $_POST["editarApellidoMPR"],
+                        "asesorPre" => $_POST["editarAsesorPRE"],
+                        "aux" => $aux
+                    );
+                    $respuesta = ModeloPreRegistro::mdlEditarPreRegistro($tabla, $datos);
+                    if ($respuesta == "ok") {
+                        echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Actualizado Correctamente!',
+                            showConfirmButton: false,
+                            timer: 1800
+                        }).then((result)=>{
+                                    window.location = 'Pre-Registro';
+                            });
+                        </script>";
+                    }
+                }else{
+                    echo '<script>
+				   Swal.fire({
+						type: "error",
+                       title: "¡Error!",
+                       text: "¡No puedes registrar sin asesores! Si no quieres cambiar el asesor, primero marca el check.",
+					   showConfirmButton: true,
+					   confirmButtonText: "Cerrar"
+				   }).then((result)=>{
+					   if(result.value){
+						   window.location = "Pre-Registro";
+					   }
+					   });
+				 </script>';
+                    }
+            }
+        }
+    }
+
+    /*=============================================
+    BORRAR PRE-REGISTRO
+    =============================================*/
+    public static function ctrBorrarPreRegistro(){
+        if (isset($_GET["idPreRegistro"])) {
+            $tabla = "preregistros";
+            $datos = $_GET["idPreRegistro"];
+
+            $respuesta = ModeloPreRegistro::mdlBorrarPreRegistro($tabla, $datos);
+            if ($respuesta == "ok") {
+             echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                   text: '¡Eliminado Correctamente!',
+                            showConfirmButton: false,
+                            timer: 1800
+                        }).then((result)=>{
+                                    window.location = 'Pre-Registro';
+                            });
+                        </script>";
             }
         }
     }

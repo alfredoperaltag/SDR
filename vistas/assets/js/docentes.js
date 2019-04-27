@@ -3,7 +3,7 @@ EDITAR DOCENTE
 ======================================-->*/
 $(document).on("click", ".btnEditarDocente", function () {
     var idDocente = $(this).attr("idDocente");
-    console.log("idDocente", idDocente);
+    // console.log("idDocente", idDocente);
     var datos = new FormData();
     datos.append("idDocente", idDocente);
     $.ajax({
@@ -15,7 +15,7 @@ $(document).on("click", ".btnEditarDocente", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            console.log("respuesta", respuesta);
+            // console.log("respuesta", respuesta);
             $("#editarNombre").val(respuesta["nombre"]);
             $("#idDocente").val(respuesta["id"]);
             $("#editarResidentesM").val(respuesta["setResidentes"]);
