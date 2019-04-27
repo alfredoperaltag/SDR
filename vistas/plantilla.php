@@ -11,7 +11,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="vistas/assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="vistas/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="vistas/assets/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="vistas/assets/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="vistas/assets/css/Font-Awesome.css">
     <link rel="stylesheet" href="vistas/assets/css/themify-icons.css">
     <link rel="stylesheet" href="vistas/assets/css/metisMenu.css">
     <link rel="stylesheet" href="vistas/assets/css/owl.carousel.min.css">
@@ -69,6 +70,7 @@ CUERPO DOCUMENTO
                 $_GET["ruta"] == "Docentes" ||
                 $_GET["ruta"] == "Directorio"||
                 $_GET["ruta"] == "Jerarquia"||
+                $_GET["ruta"] == "Pre-Registro"||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
@@ -83,6 +85,7 @@ CUERPO DOCUMENTO
                 $_GET["ruta"] == "Inicio" ||
                 $_GET["ruta"] == "Residentes" ||
                 $_GET["ruta"] == "Directorio"||
+                $_GET["ruta"] == "Pre-Registro"||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
@@ -106,7 +109,8 @@ CUERPO DOCUMENTO
 
 
     <!-- jquery latest version -->
-    <script src="vistas/assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- <script src="vistas/assets/js/vendor/jquery-2.2.4.min.js"></script> -->
+    <script src="vistas/assets/js/vendor/jquery-3.4.0.min.js"></script>
     <!-- bootstrap 4 js -->
     <script src="vistas/assets/js/popper.min.js"></script>
     <script src="vistas/assets/js/bootstrap.min.js"></script>

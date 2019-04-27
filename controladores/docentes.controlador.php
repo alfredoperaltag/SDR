@@ -8,7 +8,7 @@ class ControladorDocentes
                 $tabla = "asesor";
                 $datos = array(
                     "nombre" => $_POST["nuevoNombre"],
-                    "setResidentes" => $_POST["nuevoSetResidentes"],
+                    "setResidentes" => $_POST["nuevoSetResidentes"]
                 );
                 $respuesta = modeloDocentes::mdlIngresarDocente($tabla, $datos);
                 echo $respuesta;

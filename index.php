@@ -9,12 +9,14 @@ require_once "controladores/residentes.controlador.php";
 require_once "controladores/docentes.controlador.php";
 require_once "controladores/directorio.controlador.php";
 require_once "controladores/jerarquia.controlador.php";
+require_once "controladores/pre-registro.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/residentes.modelo.php";
 require_once "modelos/docentes.modelo.php";
 require_once "modelos/directorio.modelo.php";
 require_once "modelos/jerarquia.modelo.php";
+require_once "modelos/pre-registro.modelo.php";
 
 $plantilla = new ControladorPlantilla();
 $plantilla->ctrPlantilla();

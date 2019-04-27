@@ -2,7 +2,7 @@
 -- Host:                         localhost
 -- Versión del servidor:         8.0.14 - MySQL Community Server - GPL
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             10.1.0.5545
+-- HeidiSQL Versión:             10.1.0.5546
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -31,37 +31,48 @@ CREATE TABLE IF NOT EXISTS `asesor` (
 INSERT INTO `asesor` (`id`, `nombre`, `noResidentes`, `estado`, `setResidentes`) VALUES
 	(0, 'NA', 0, 0, 0),
 	(1, 'M.C. SALVADOR ARIZMENDI LEON ', 0, 1, 0),
-	(2, 'M.D.I.S. SILVIA VALLE BAHENA ', 4, 1, 0),
+	(2, 'M.D.I.S. SILVIA VALLE BAHENA ', 0, 1, 0),
 	(3, 'M.D.I.S. LYDIA CUEVAS BRACAMONTES ', 0, 1, 0),
 	(4, 'LIC. ARELI BARCENAS NAVA ', 0, 1, 0),
 	(5, 'LIC. MARTIN ORTEGA OCAMPO ', 0, 1, 0),
-	(6, 'M.C. ENRIQUE MENA SALGADO ', 4, 1, 0),
+	(6, 'M.C. ENRIQUE MENA SALGADO ', 1, 1, 1),
 	(7, 'LIC. MAURICIO FLORES SAAVEDRA ', 0, 1, 0),
 	(8, 'M.A. ANGELITA DIONICIO ABRAJAN ', 0, 1, 0),
 	(9, 'M.A. ERNESTINA ANGUIANO BELLO ', 0, 1, 0),
 	(10, 'M.C. ANASTACIO CARRILLO QUIROZ ', 0, 1, 0),
-	(11, 'M.C. TANIA SAENZ RIVERA ', 5, 1, 0),
+	(11, 'M.C. TANIA SAENZ RIVERA ', 0, 1, 0),
 	(12, 'M.C. MONICA NUÑEZ VELAZQUEZ ', 0, 1, 0),
 	(13, 'M.C. ULISES LOPEZ ESTRADA ', 0, 1, 0),
 	(14, 'M.C. VICTOR MANUEL JACOBO ADAN ', 0, 1, 0),
 	(15, 'M.C.C. ARTURO CARLOS RODRIGUEZ ROMAN ', 0, 1, 0),
-	(16, 'I.S.C. MARIA DEL CARMEN URIOSTEGUI PERALTA ', 0, 1, 0),
+	(16, 'I.S.C. MARIA DEL CARMEN URIOSTEGUI PERALTA ', 3, 1, 3),
 	(17, 'M.I.S. SINDYA YADIRA CASTILLO ORTIZ ', 0, 1, 0),
-	(18, 'I.S.C. EMILIO ROMAN CHAVEZ', 0, 1, 0),
-	(19, 'I.S.C. JAVIER TABOADA VAZQUEZ ', 0, 1, 0),
-	(20, 'I.S.C. HUGO ERASMO PERDOMO ROLDAN ', 0, 1, 0),
+	(18, 'I.S.C. EMILIO ROMAN CHAVEZ', 1, 1, 1),
+	(19, 'I.S.C. JAVIER TABOADA VAZQUEZ ', 13, 1, 44),
+	(20, 'I.S.C. HUGO ERASMO PERDOMO ROLDAN ', 2, 1, 2),
 	(21, 'I.S.C. PAULINA XITLALI REYNA CORRAIES ', 0, 1, 0),
 	(22, 'M.T.I. JOSE LUIS ZAGAL ARCE ', 0, 1, 0),
 	(23, 'LIC. JERONIMO RAMIREZ TERRONES ', 0, 1, 0),
 	(24, 'LIC. JUAN CARLOS ALEMAN FRIAS ', 0, 1, 0),
-	(25, 'ING. JORGE EDUARDO ORTEGA LOPEZ ', 0, 1, 0),
+	(25, 'ING. JORGE EDUARDO ORTEGA LOPEZ ', 2, 1, 2),
 	(26, 'ING. FRANCISCO JAVIER RAMIREZ SANDOVAL ', 0, 1, 0),
 	(27, 'M.E. SERGIO RICARDO ZAGAL BARRERA ', 0, 1, 0),
 	(28, 'M.T.I. HEIDI JIMENEZ SILVA ', 0, 1, 0),
 	(29, 'M.I.M. ORLANDO HERNANDEZ PEREZ ', 0, 1, 0),
-	(30, 'LIC. FRANCISCO HAM SALGADO ', 0, 1, 0),
-	(32, 'aaaaa', 0, 1, 14);
+	(30, 'LIC. FRANCISCO HAM SALGADO ', 0, 1, 0);
 /*!40000 ALTER TABLE `asesor` ENABLE KEYS */;
+
+-- Volcando estructura para tabla sdr.config
+CREATE TABLE IF NOT EXISTS `config` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `valor` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Volcando datos para la tabla sdr.config: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `config` DISABLE KEYS */;
+/*!40000 ALTER TABLE `config` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.directorio
 CREATE TABLE IF NOT EXISTS `directorio` (
@@ -121,39 +132,60 @@ CREATE TABLE IF NOT EXISTS `jerarquia` (
 /*!40000 ALTER TABLE `jerarquia` DISABLE KEYS */;
 INSERT INTO `jerarquia` (`id`, `nombre`, `cargo`, `estado`) VALUES
 	(0, 'NA', 'NA', 0),
-	(1, 'M.C. SALVADOR ARIZMENDI LEON ', 'Hola', 1),
-	(2, 'M.D.I.S. SILVIA VALLE BAHENA ', 'Hola', 1),
+	(1, 'M.C. SALVADOR ARIZMENDI LEON ', 'Ninguno', 1),
+	(2, 'M.D.I.S. SILVIA VALLE BAHENA ', 'Ninguno', 1),
 	(3, 'M.D.I.S. LYDIA CUEVAS BRACAMONTES ', 'PRESIDENTE DE ACADEMIA', 1),
-	(4, 'LIC. ARELI BARCENAS NAVA ', 'Hola', 1),
-	(5, 'LIC. MARTIN ORTEGA OCAMPO ', 'Hola', 1),
-	(6, 'M.C. ENRIQUE MENA SALGADO ', 'Hola', 1),
-	(7, 'LIC. MAURICIO FLORES SAAVEDRA ', 'Hola', 1),
-	(8, 'M.A. ANGELITA DIONICIO ABRAJAN ', 'Hola', 1),
-	(9, 'M.A. ERNESTINA ANGUIANO BELLO ', 'Hola', 1),
-	(10, 'M.C. ANASTACIO CARRILLO QUIROZ ', 'Hola', 1),
-	(11, 'M.C. TANIA SAENZ RIVERA ', 'Hola', 1),
-	(12, 'M.C. MONICA NUÑEZ VELAZQUEZ ', 'Hola', 1),
-	(13, 'M.C. ULISES LOPEZ ESTRADA ', 'Hola', 1),
-	(14, 'M.C. VICTOR MANUEL JACOBO ADAN ', 'Hola', 1),
-	(15, 'M.C.C. ARTURO CARLOS RODRIGUEZ ROMAN ', 'Hola', 1),
-	(16, 'I.S.C. MARIA DEL CARMEN URIOSTEGUI PERALTA ', 'Hola', 1),
-	(17, 'M.I.S. SINDYA YADIRA CASTILLO ORTIZ ', 'Hola', 1),
-	(18, 'I.S.C. EMILIO ROMAN CHAVEZ ', 'Hola', 1),
-	(19, 'I.S.C. JAVIER TABOADA VAZQUEZ ', 'Hola', 1),
-	(20, 'I.S.C. HUGO ERASMO PERDOMO ROLDAN ', 'Hola', 1),
-	(21, 'I.S.C. PAULINA XITLALI REYNA CORRAIES ', 'Hola', 1),
-	(22, 'M.T.I. JOSE LUIS ZAGAL ARCE ', 'Hola', 1),
-	(23, 'LIC. JERONIMO RAMIREZ TERRONES ', 'Hola', 1),
-	(24, 'LIC. JUAN CARLOS ALEMAN FRIAS ', 'Hola', 1),
+	(4, 'LIC. ARELI BARCENAS NAVA ', 'Ninguno', 1),
+	(5, 'LIC. MARTIN ORTEGA OCAMPO ', 'Ninguno', 1),
+	(6, 'M.C. ENRIQUE MENA SALGADO ', 'Ninguno', 1),
+	(7, 'LIC. MAURICIO FLORES SAAVEDRA ', 'Ninguno', 1),
+	(8, 'M.A. ANGELITA DIONICIO ABRAJAN ', 'Ninguno', 1),
+	(9, 'M.A. ERNESTINA ANGUIANO BELLO ', 'Ninguno', 1),
+	(10, 'M.C. ANASTACIO CARRILLO QUIROZ ', 'Ninguno', 1),
+	(11, 'M.C. TANIA SAENZ RIVERA ', 'Ninguno', 1),
+	(12, 'M.C. MONICA NUÑEZ VELAZQUEZ ', 'Ninguno', 1),
+	(13, 'M.C. ULISES LOPEZ ESTRADA ', 'Ninguno', 1),
+	(14, 'M.C. VICTOR MANUEL JACOBO ADAN ', 'Ninguno', 1),
+	(15, 'M.C.C. ARTURO CARLOS RODRIGUEZ ROMAN ', 'Ninguno', 1),
+	(16, 'I.S.C. MARIA DEL CARMEN URIOSTEGUI PERALTA ', 'Ninguno', 1),
+	(17, 'M.I.S. SINDYA YADIRA CASTILLO ORTIZ ', 'Ninguno', 1),
+	(18, 'I.S.C. EMILIO ROMAN CHAVEZ ', 'Ninguno', 1),
+	(19, 'I.S.C. JAVIER TABOADA VAZQUEZ ', 'Ninguno', 1),
+	(20, 'I.S.C. HUGO ERASMO PERDOMO ROLDAN ', 'Ninguno', 1),
+	(21, 'I.S.C. PAULINA XITLALI REYNA CORRAIES ', 'Ninguno', 1),
+	(22, 'M.T.I. JOSE LUIS ZAGAL ARCE ', 'Ninguno', 1),
+	(23, 'LIC. JERONIMO RAMIREZ TERRONES ', 'Ninguno', 1),
+	(24, 'LIC. JUAN CARLOS ALEMAN FRIAS ', 'Ninguno', 1),
 	(25, 'ING. JORGE EDUARDO ORTEGA LOPEZ ', 'JEFE DEL DEPTO. ACADEMICO', 1),
-	(26, 'ING. FRANCISCO JAVIER RAMIREZ SANDOVAL ', 'Hola', 1),
+	(26, 'ING. FRANCISCO JAVIER RAMIREZ SANDOVAL ', 'Ninguno', 1),
 	(27, 'M.E. SERGIO RICARDO ZAGAL BARRERA ', 'SUBDIRECTOR ACADÉMICO', 1),
-	(28, 'M.T.I. HEIDI JIMENEZ SILVA ', 'Hola', 1),
-	(29, 'M.I.M. ORLANDO HERNANDEZ PEREZ ', 'Hola', 1),
-	(30, 'LIC. FRANCISCO HAM SALGADO ', 'Hola', 1),
+	(28, 'M.T.I. HEIDI JIMENEZ SILVA ', 'Ninguno', 1),
+	(29, 'M.I.M. ORLANDO HERNANDEZ PEREZ ', 'Ninguno', 1),
+	(30, 'LIC. FRANCISCO HAM SALGADO ', 'Ninguno', 1),
 	(33, 'ING. JORGE EDUARDO ORTEGA LOPEZ ', 'JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN', 1),
 	(34, 'M.A. JUANA MIRNA VALLE MORALES', 'JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES PRESENTE', 1);
 /*!40000 ALTER TABLE `jerarquia` ENABLE KEYS */;
+
+-- Volcando estructura para tabla sdr.preregistros
+CREATE TABLE IF NOT EXISTS `preregistros` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `noControl` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `carrera` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `apellidoP` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `apellidoM` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `asesorPre` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `noControl` (`noControl`),
+  KEY `asesor` (`asesorPre`),
+  CONSTRAINT `FK_preregistros_asesor` FOREIGN KEY (`asesorPre`) REFERENCES `asesor` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Volcando datos para la tabla sdr.preregistros: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `preregistros` DISABLE KEYS */;
+INSERT INTO `preregistros` (`id`, `noControl`, `carrera`, `nombre`, `apellidoP`, `apellidoM`, `asesorPre`) VALUES
+	(1, '1567', 'Ingenieria en Sistemas Computacionales', 'Yonathan', 'Román', 'Salgado', 19);
+/*!40000 ALTER TABLE `preregistros` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.proyecto
 CREATE TABLE IF NOT EXISTS `proyecto` (
@@ -178,17 +210,17 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   CONSTRAINT `fk_proyecto_asesor3` FOREIGN KEY (`revisor2`) REFERENCES `asesor` (`id`),
   CONSTRAINT `fk_proyecto_asesor4` FOREIGN KEY (`suplente`) REFERENCES `asesor` (`id`),
   CONSTRAINT `fk_proyecto_asesor5` FOREIGN KEY (`revisor3`) REFERENCES `asesor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla sdr.proyecto: ~18 rows (aproximadamente)
 /*!40000 ALTER TABLE `proyecto` DISABLE KEYS */;
 INSERT INTO `proyecto` (`id`, `nombreProyecto`, `nombreEmpresa`, `asesorExt`, `asesorInt`, `revisor1`, `revisor2`, `revisor3`, `suplente`) VALUES
-	(44, 'Proyecto prueba', 'Empresa Fantasma', 'Orlando Flores Matinez', 16, 15, 24, 0, 19),
+	(44, 'Proyecto prueba', 'Empresa Fantasma', 'Orlando Flores Matinez', 16, 15, 24, 0, 18),
 	(45, 'Aplicaciones android', 'Desarrollo APKs MX', '', 22, 13, 18, 14, 4),
 	(46, 'Desarrollo web', 'Developer_xD', 'Mario Perez Sanchez', 8, 10, 11, 0, 14),
 	(47, ' DETERMINACION DE LOS DISPOSITIVOS DE RED QUE PERMITAN PROPORCIONAR SERVICIO DE INTERNET EN EL INSTITUTO TECNOLOGICO DE IGUALA', 'EmpreMX', '', 14, 7, 16, 27, 17),
 	(48, 'Prueba xd', 'Name xd', 'name apellido1 apellido2', 19, 26, 5, 0, 18),
-	(49, 'como cambiar de sexo', 'sexForce', '', 11, 10, 20, 9, 27),
+	(49, 'Proyecto chido xd', 'sexForce', '', 21, 10, 20, 9, 27),
 	(50, 'Practicas Androidx', 'androidMXx', 'Juan Fuentes Perezx', 30, 29, 29, 0, 27),
 	(51, 'DETERMINACION DE LOS DISPOSITIVOS DE RED QUE PERMITAN PROPORCIONAR SERVICIO DE INTERNET EN EL INSTITUTO TECNOLOGICO DE IGUALA DIJDHBIWEBCIWEBCIBEWINBEWJIONDOWENONCEWJOB', 'abeurp MX', '', 19, 13, 20, 18, 13),
 	(52, 'gggg', 'empresa', '', 3, 16, 17, 19, 18),
@@ -200,7 +232,8 @@ INSERT INTO `proyecto` (`id`, `nombreProyecto`, `nombreEmpresa`, `asesorExt`, `a
 	(58, 'dddddddddddddddddddddddddddddd', 'eeeeeeeeeeeeeeeeeee', 'dvssdvvsdvd', 20, 12, 15, 0, 18),
 	(59, 'AAAAAAAAAAAAA', 'eacacaecaefaefaefae', '0', 1, 22, 21, 12, 13),
 	(60, 'AR', 'armx', 'afaefaeae auhbhwb kbhkhbkj', 1, 18, 21, 0, 13),
-	(61, 'Yonathan ar', 'ar ceacec', '0', 1, 18, 10, 10, 7);
+	(61, 'Yonathan ar', 'ar ceacec', '0', 1, 18, 10, 10, 7),
+	(62, 'fafafafafaf', 'efefefefefe', 'vavevve aecaeca awdwd a', 19, 20, 18, 0, 18);
 /*!40000 ALTER TABLE `proyecto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.residentes
@@ -221,16 +254,16 @@ CREATE TABLE IF NOT EXISTS `residentes` (
   PRIMARY KEY (`id`),
   KEY `fk_residentes_proyecto_idx` (`proyecto_id`),
   CONSTRAINT `fk_residentes_proyecto` FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla sdr.residentes: ~16 rows (aproximadamente)
 /*!40000 ALTER TABLE `residentes` DISABLE KEYS */;
 INSERT INTO `residentes` (`id`, `noControl`, `nombre`, `apellidoP`, `apellidoM`, `carrera`, `periodo`, `anio`, `sexo`, `telefono`, `revisionOk`, `tipo_registro`, `proyecto_id`) VALUES
 	(1, '15670052', 'Juan Manuel', 'Vazquez', 'Juarez', 'Ingenieria en Sistemas Computacionales', 'EJ', '2018', 'M', '7331045454', 3, 1, 44),
-	(2, '15672543', 'Maria', 'Perez', 'Castro', 'Ingenieria Informatica', 'AD', '2019', 'F', '7331458585', 1, 2, 45),
+	(2, '15672543', 'Maria', 'Perez', 'Castro', 'Ingenieria Informatica', 'AD', '2019', 'F', '7331458585', 3, 2, 45),
 	(3, '15672459', 'Bob', 'Karles', 'Godin', 'Ingenieria en Sistemas Computacionales', 'AD', '2018', 'M', '7332548969', 2, 1, 46),
 	(4, '15672548', 'Maribel', 'Gomez', 'Reyes', 'Ingenieria en Sistemas Computacionales', 'EJ', '2019', 'F', '7331472525', 3, 2, 47),
-	(5, '15670054', 'Asael', 'amador', 'arellano', 'Ingenieria Informatica', 'EJ', '2019', 'F', '7331234596', 1, 2, 49),
+	(5, '15670054', 'Asael', 'amador', 'arellano', 'Ingenieria Informatica', 'EJ', '2019', 'F', '7331234596', 0, 2, 49),
 	(6, '111111', 'Pedro Juan x', 'Lopezx', 'Martinezx', 'Ingenieria Informatica', 'AD', '2018', 'F', '7335552233', 1, 1, 50),
 	(7, '15670012', 'Berto', 'Salgado', 'Martinez', 'Ingenieria en Sistemas Computacionales', 'EJ', '2018', 'M', '7331021214', 0, 2, 51),
 	(8, '15670014', 'hola mundo', 'jejeje', 'kkkkk', 'Ingenieria en Sistemas Computacionales', 'AD', '2018', 'F', '7331021578', 0, 2, 52),
@@ -241,7 +274,8 @@ INSERT INTO `residentes` (`id`, `noControl`, `nombre`, `apellidoP`, `apellidoM`,
 	(14, '34235543', 'vervregrggcerg', 'ergerhcewc', 'crthrxtc', 'Ingenieria Informatica', 'AD', '2019', 'M', '1231212123', 2, 1, 58),
 	(15, '1524368', 'Yonathan', 'Román', 'Salgado', 'Ingenieria en Sistemas Computacionales', 'EJ', '2019', 'M', '7331021215', 0, 2, 59),
 	(16, '15670052', 'Yonathan', 'Román', 'aaecaeca', 'Ingenieria en Sistemas Computacionales', 'AD', '2019', 'M', '7331089089', 0, 1, 60),
-	(17, '15670056', 'Yonathan', 'Román', 'ascavada', 'Ingenieria en Sistemas Computacionales', 'EJ', '2019', 'M', '7331089089', 0, 2, 61);
+	(17, '15670056', 'Yonathan', 'Román', 'ascavada', 'Ingenieria en Sistemas Computacionales', 'EJ', '2019', 'M', '7331089089', 0, 2, 61),
+	(18, '15670053', 'Yonathan', 'Román', 'awdwdwda', 'Ingenieria Informatica', 'EJ', '2019', 'M', '7333333333', 0, 1, 62);
 /*!40000 ALTER TABLE `residentes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.usuarios
@@ -261,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password`, `perfil`, `estado`) VALUES
 	(3, 'AdminNameTest', 'admin', '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG', 'Administrador', 1),
 	(5, 'Yonathan Roman Salgado', 'yonathan', '$2a$07$asxx54ahjppf45sd87a5auyn6ZLvJGKf2k4POBdF2YWrS7z6CB99u', 'Administrador', 1),
-	(7, 'Pablo Escobar Gaviria', 'Pablo', 'escobar', 'Administrador', 0),
+	(7, 'Pablo Escobar Gaviria', 'Pablo', 'escobar', 'Usuario', 0),
 	(63, 'Carlos Diaz Sandoval', 'carlos', '$2a$07$asxx54ahjppf45sd87a5auXaW5n/KLY/bEvEkjrWiw6hTlwjyTGja', 'Administrador', 1),
 	(64, 'Ignacio Tetitlan Palatzin', 'ignacio', '$2a$07$asxx54ahjppf45sd87a5auBWx326D7BJ0/jK6SvVDKi3nXG9O3oGe', 'Administrador', 1),
 	(65, 'Prueba Usuario Normal', 'user', '$2a$07$asxx54ahjppf45sd87a5augtYQ5l0YJxtJ.sls/VjJvJD4Oq/Jqk2', 'Usuario', 1);

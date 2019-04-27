@@ -4,23 +4,53 @@ class ControladorResidentes
 {
 
     /*=============================================
-    MOSTRAR TODOS LOS ASESORES/REVISORES/SUPLENTES
+    MOSTRAR TODOS LOS ASESORES
     =============================================*/
     public static function ctrMostrarTodosLosDocesentes()
     {
         $tabla = "asesor";
         $item = "noResidentes";
-        $valor = "6";
         echo $tabla . ' ' . $item . ' ' . $valor;
-        $respuesta = ModeloResidentes::MdlMostrarDocentes($tabla, $item, $valor);
+        $respuesta = ModeloResidentes::MdlMostrarDocentes($tabla, $item);
 
-        foreach ($respuesta as $key => $value) {
-            if ($value["id"] != 0) {
-                if ($value["estado"] != 0) {
-                    echo '<option value="' . $value["id"] . '">' . $value["nombre"] . '</option>';
+        if ($respuesta != null) {
+            foreach ($respuesta as $key => $value) {
+                if ($value["id"] != 0) {
+                    if ($value["estado"] != 0) {
+                        // echo '<option value="' . $value["id"] . '">' . $value["nombre"] . '</option>';
+                        $asesores = $asesores .  '<option value="' . $value["id"] . '">' . $value["nombre"] . '</option>';
+                    }
                 }
             }
+            if ($asesores == null) {
+                echo '<option value="NA">SIN ASESORES POR EL MOMENTO</option>';
+            }else{
+                echo $asesores;
+            }
+        }else{
+            echo '<option value="NA">SIN ASESORES POR EL MOMENTO</option>';
         }
+        
+    }
+
+        /*=============================================
+    MOSTRAR TODOS LOS ASESORES/REVISORES/SUPLENTES
+    =============================================*/
+    public static function ctrMostrarTodosLosDocesentes2()
+    {
+        $tabla = "asesor";
+        $item = null;
+        echo $tabla . ' ' . $item . ' ' . $valor;
+        $respuesta = ModeloResidentes::MdlMostrarDocentes($tabla, $item);
+
+            foreach ($respuesta as $key => $value) {
+                if ($value["id"] != 0) {
+                    if ($value["estado"] != 0) {
+                        echo '<option value="' . $value["id"] . '">' . $value["nombre"] . '</option>';
+                    }
+                }
+            }
+        
     }
 
 
@@ -50,7 +80,7 @@ class ControladorResidentes
                                 <div class="btn-group">';
 
                 if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
-                    echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>';
+                    echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-edit"></i></button>';
                 }
                 echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
@@ -72,7 +102,7 @@ class ControladorResidentes
                                 <div class="btn-group">';
 
                 if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
-                    echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-pencil"></i></button>';
+                    echo '<button class="btn btn-warning btnEditResidente" idResidenteEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalER"><i class="fa fa-edit"></i></button>';
                 }
                 echo '
                                     <button class="btn btn-primary btnInfoResidente" idResidente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfo"><i class="fa fa-info"></i></button>
@@ -342,6 +372,7 @@ class ControladorResidentes
             }
 
 
+
             $na = 0;
             $datosProyecto = array(
                 "idP" => $_POST["idProyectoEdit"],
@@ -391,7 +422,7 @@ class ControladorResidentes
 				Swal.fire({
 					 type: "success",
                      title: "¡Exito!",
-                     text: "¡Se registro correctamente!",						   
+                     text: "¡Se actualizo correctamente!",						   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
@@ -444,14 +475,19 @@ class ControladorResidentes
             $NoRevicion = 0;
 
             // Revicioness
-            if($_POST["customCheck1"]){
-                $NoRevicion = 1;
-            }
-            if ($_POST["customCheck2"]) {
-                $NoRevicion = 2;
-            }
-            if ($_POST["customCheck3"]) {
+            // if($_POST["customCheck1"]){
+            //     $NoRevicion = 1;
+            // }
+            // if ($_POST["customCheck2"]) {
+            //     $NoRevicion = 2;
+            // }
+            // if ($_POST["customCheck3"]) {
+            //     $NoRevicion = 3;
+            // }
+            if ($_POST["CheckTesis"]) {
                 $NoRevicion = 3;
+            }else{
+                $NoRevicion = 0;
             }
 
 
@@ -504,7 +540,7 @@ class ControladorResidentes
 				Swal.fire({
 					 type: "success",
                      title: "¡Exito!",
-                     text: "¡Se registro correctamente!",						   
+                     text: "¡Se actualizo correctamente!",						   
 					showConfirmButton: true,
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{

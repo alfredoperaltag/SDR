@@ -24,9 +24,9 @@ class ControladorDirectorio
                             <div class="btn-group">';
 
                 if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
-                    echo '<button class="btn btn-warning btnEditdireccion" idDireccionEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditDirectory"><i class="fa fa-pencil"></i></button>';
+                    echo '<button class="btn btn-warning btnEditdireccion" idDireccionEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditDirectory"><i class="fa fa-edit"></i></button>';
             }else{
-                echo '<button class="btn btn-warning btnEditdireccion" disabled idDireccionEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditDirectory"><i class="fa fa-pencil"></i></button>';
+                echo '<button class="btn btn-warning btnEditdireccion" disabled idDireccionEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditDirectory"><i class="fa fa-edit"></i></button>';
             
             }
             echo ' </tr>';

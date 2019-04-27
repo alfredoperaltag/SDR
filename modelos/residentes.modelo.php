@@ -9,11 +9,12 @@ class ModeloResidentes
 	MOSTRAR ASESORES/REVISORES/SUPLENTES
 	=============================================*/
 
-    static public function MdlMostrarDocentes($tabla, $item, $valor)
+    static public function MdlMostrarDocentes($tabla, $item)
     {
 
         if ($item != null) {
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item < $valor");
+            // $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item < $valor");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item < setResidentes");
             $stmt->execute();
             // return $stmt -> fetch();
             return $stmt->fetchAll(); //Para ver todos los docentes pero solo los que tienen menos de 7 residentes
@@ -62,7 +63,7 @@ class ModeloResidentes
         $stmt = Conexion::conectar()->prepare("SELECT residentes.noControl, concat(residentes.nombre, ' ', residentes.apellidoP, ' ',residentes.apellidoM) AS 'nombre', 
         residentes.carrera, concat(IF(residentes.periodo = 'EJ', 'Enero - Junio', 'Agosto - Diciembre'), ' ', 
         residentes.anio) AS 'periodo',  IF(residentes.sexo = 'F', 'Femenino', 'Masculino') AS 'sexo', 
-        residentes.telefono, residentes.revisionOK,  IF(residentes.tipo_registro = '1', 'Residencias Profecionales', 'Tesis Profecional') 
+        residentes.telefono, residentes.revisionOK,  IF(residentes.tipo_registro = '1', 'Residencias Profesionales', 'Tesis Profecional') 
         AS 'tipo_registro',  proyecto.nombreProyecto, proyecto.nombreEmpresa, 
         IF(residentes.tipo_registro = '2', '---', proyecto.asesorExt) AS 'asesorExt', asesorIntA.nombre 
         AS 'asesorInt', revisorA.nombre AS 'revisor1', revisorB.nombre AS 'revisor2', 

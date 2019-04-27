@@ -7,6 +7,7 @@ require '../../modelos/residentes.modelo.php';
 require '../../controladores/jerarquia.controlador.php';
 require '../../modelos/jerarquia.modelo.php';
 
+
 class PDF extends FPDF
 {
     // public $docente;

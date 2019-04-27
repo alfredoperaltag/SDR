@@ -21,6 +21,7 @@
                         <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['nombre']; ?> <i class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
                             <a class="dropdown-item  btnEditarMiUsuario" idUsuario=" <?php echo $_SESSION["id"]; ?>" data-toggle="modal" data-target="#modalEditarMiUsuario" href="#">Editar mi cuenta</a>
+                            <a class="dropdown-item"  data-toggle="modal" data-target="#modalConfigSDR" href="#">Configurar SDR</a>
                             <a class="dropdown-item" href="CerrarSesion">Cerrar Sesion</a>
                         </div>
                     </div>
@@ -55,6 +56,9 @@
                             </li>
                             <li>
                                 <a href="Jerarquia"><i class="fa fa-users fa-2x" style="color: #845ef7;"></i><span><strong> Jerarquia</strong></span></a>
+                            </li>
+                            <li>
+                                <a href="Pre-Registro"><i class="fa fa-user-edit fa-2x" style="color: #845ef7;"></i><span><strong> Pre-Registro</strong></span></a>
                             </li>
                         </ul>
                     </nav>
@@ -129,6 +133,27 @@ MODAL EDITAR USUARIO
                     ?>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+<!--=====================================
+    MODAL CONFIG SDR
+======================================-->
+
+<div class="modal fade" id="modalConfigSDR">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Configurar SDR</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5>Aqui va la configuracion</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
         </div>
     </div>
 </div>

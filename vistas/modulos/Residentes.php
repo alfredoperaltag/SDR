@@ -188,7 +188,7 @@ INFORME TECNICO DE RESIDENCIAS Profesionales
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -199,7 +199,7 @@ INFORME TECNICO DE RESIDENCIAS Profesionales
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -212,7 +212,7 @@ INFORME TECNICO DE RESIDENCIAS Profesionales
                                 <option value="">Selecionar suplente</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -223,7 +223,7 @@ INFORME TECNICO DE RESIDENCIAS Profesionales
               ======================================-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-                    <button type="submit" class="btn btn-primary">Guardar residente</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
 
                 <?php
@@ -378,7 +378,7 @@ TESIS PROFESIONAL
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -391,7 +391,7 @@ TESIS PROFESIONAL
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -402,7 +402,7 @@ TESIS PROFESIONAL
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -415,7 +415,7 @@ TESIS PROFESIONAL
                                 <option value="">Selecionar suplente</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -426,7 +426,7 @@ TESIS PROFESIONAL
               ======================================-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-                    <button type="submit" class="btn btn-primary">Guardar residente</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
 
                 <?php
@@ -553,9 +553,9 @@ EDITAR RESIDENTE
                                 autocomplete="off">
                         </div>
                     </div>
-
+                    <!-- liberacion residencias -->
                     <div class="form-row justify-content-center">
-                        <div class="col-sm-8">
+                        <div id="CheckResidenciasView" style="display:none;" class="col-sm-8">
                             <label class="col-form-label mr-4">Revisiones:</label>
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" name="customCheck1" class="custom-control-input"
@@ -571,6 +571,16 @@ EDITAR RESIDENTE
                                 <input type="checkbox" name="customCheck3" class="custom-control-input"
                                     id="customCheck3">
                                 <label class="custom-control-label" for="customCheck3">Revision #3</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- liberacion tesis -->
+                    <div  class="form-row justify-content-center">
+                        <div id="CheckTesisView" style="display:none;" class="col-sm-6">
+                            <label class="col-form-label mr-4">Estado de la liberación:</label>
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" name="CheckTesis" class="custom-control-input" id="CheckTesis">
+                                <label id="StatusTesis" class="custom-control-label" for="CheckTesis">Liberado</label>
                             </div>
                         </div>
                     </div>
@@ -665,7 +675,7 @@ EDITAR RESIDENTE
               ======================================-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-                    <button type="submit" class="btn btn-primary">Guardar residente</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
 
                 <?php
@@ -725,7 +735,7 @@ INFORMACION RESIDENTE
                 </div>
                 <br>
                 <div class="form-row justify-content-center">
-                    <div class="col-sm-8">
+                    <div id="CheckResidenciasView1" style="display:none;" class="col-sm-8">
                         <label class="col-form-label mr-4">Revisiones:</label>
                         <!-- </div>
                     <div class="col-sm-10  "> -->
@@ -743,6 +753,16 @@ INFORMACION RESIDENTE
                         </div>
                     </div>
                 </div>
+                <div  class="form-row justify-content-center">
+                    <div id="CheckTesisView1" style="display:none;" class="col-sm-6">
+                        <label class="col-form-label mr-4">Estado de la liberación:</label>
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" disabled name="CheckTesis1" class="custom-control-input" id="CheckTesis1">
+                            <label id="StatusTesis1" class="custom-control-label" for="CheckTesis1">Liberado</label>
+                        </div>
+                    </div>
+                </div>
+                    <hr>
                 <div class="form-row align-items-center">
                     <div class="col-sm-6 my-1">
                         <label for="example-text-input" class="col-form-label">Nombre del proyecto</label>
@@ -877,6 +897,15 @@ IMPRIMIR DOCUMENTOS TESIS
                     <div class="col-sm-8 my-1">
                         <label for="impNombreT" class="col-form-label">Nombre</label>
                         <input class="form-control" type="text" id="impNombreT" readonly>
+                    </div>
+                </div>
+                <div  class="form-row justify-content-center">
+                    <div id="CheckTesisView1" style="display:block;" class="col-sm-9">
+                        <label class="col-form-label mr-4">Estado de la liberación:</label>
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" disabled name="CheckTesis2" class="custom-control-input" id="CheckTesis2">
+                            <label id="StatusTesis2" class="custom-control-label" for="CheckTesis2">Liberado</label>
+                        </div>
                     </div>
                 </div>
                 <br>

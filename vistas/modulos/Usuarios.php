@@ -33,7 +33,7 @@
                                 }
                                 echo '<td>
                                             <div class="btn-group">
-                                                <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-edit"></i></button>
                                                 <button class="btn btn-danger btnEliminarUsuario" idUsuario="' . $value["id"] . '"><i class="fa fa-times"></i></button>
                                             </div>
                                         </td>
