@@ -41,16 +41,16 @@ CUERPO DOCUMENTO
 
 <body class="body-bg">
 
-<div id="preloader">
-    <div class="loader"></div>
-</div>
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
 
-<!-- <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var d = new Date();
         alert ("Pague cocho joto");
         window.location = "Inicio";
         </script> -->
-        
+
 
     <?php
     if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
@@ -68,7 +68,7 @@ CUERPO DOCUMENTO
         $cargarConfig = ControladorConfig::ctrCargarConfig("configPreRegistro");
         if ($cargarConfig["valor"] == "on") {
             $cargarPreRegistro = "Pre-Registro";
-        }else{
+        } else {
             $cargarPreRegistro = "404";
         }
 
@@ -79,8 +79,8 @@ CUERPO DOCUMENTO
                 $_GET["ruta"] == "Usuarios" ||
                 $_GET["ruta"] == "Residentes" ||
                 $_GET["ruta"] == "Docentes" ||
-                $_GET["ruta"] == "Directorio"||
-                $_GET["ruta"] == "Jerarquia"||
+                $_GET["ruta"] == "Directorio" ||
+                $_GET["ruta"] == "Jerarquia" ||
                 $_GET["ruta"] == $cargarPreRegistro ||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
@@ -95,8 +95,8 @@ CUERPO DOCUMENTO
             if (
                 $_GET["ruta"] == "Inicio" ||
                 $_GET["ruta"] == "Residentes" ||
-                $_GET["ruta"] == "Directorio"||
-                $_GET["ruta"] == $cargarPreRegistro||
+                $_GET["ruta"] == "Directorio" ||
+                $_GET["ruta"] == $cargarPreRegistro ||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
@@ -140,6 +140,7 @@ CUERPO DOCUMENTO
     <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>
 
     <!-- others plugins -->
+    <script src="vistas/assets/js/jerarquia.js"></script>
     <script src="vistas/assets/js/configSDR.js"></script>
     <script src="vistas/assets/js/pre-registro.js"></script>
     <script src="vistas/assets/js/directorio.js"></script>
@@ -151,4 +152,4 @@ CUERPO DOCUMENTO
     <script src="vistas/assets/js/table.js"></script>
 </body>
 
-</html> 
+</html>
