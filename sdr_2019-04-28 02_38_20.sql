@@ -47,8 +47,8 @@ INSERT INTO `asesor` (`id`, `nombre`, `noResidentes`, `estado`, `setResidentes`)
 	(15, 'M.C.C. ARTURO CARLOS RODRIGUEZ ROMAN ', 0, 1, 0),
 	(16, 'I.S.C. MARIA DEL CARMEN URIOSTEGUI PERALTA ', 3, 1, 3),
 	(17, 'M.I.S. SINDYA YADIRA CASTILLO ORTIZ ', 0, 1, 0),
-	(18, 'I.S.C. EMILIO ROMAN CHAVEZ', 1, 1, 1),
-	(19, 'I.S.C. JAVIER TABOADA VAZQUEZ ', 13, 1, 44),
+	(18, 'I.S.C. EMILIO ROMAN CHAVEZ', 2, 1, 2),
+	(19, 'I.S.C. JAVIER TABOADA VAZQUEZ ', 14, 1, 14),
 	(20, 'I.S.C. HUGO ERASMO PERDOMO ROLDAN ', 2, 1, 2),
 	(21, 'I.S.C. PAULINA XITLALI REYNA CORRAIES ', 0, 1, 0),
 	(22, 'M.T.I. JOSE LUIS ZAGAL ARCE ', 0, 1, 0),
@@ -66,12 +66,14 @@ INSERT INTO `asesor` (`id`, `nombre`, `noResidentes`, `estado`, `setResidentes`)
 CREATE TABLE IF NOT EXISTS `config` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `valor` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `valor` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Volcando datos para la tabla sdr.config: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
+INSERT INTO `config` (`id`, `nombre`, `valor`) VALUES
+	(1, 'configPreRegistro', 'off');
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.directorio
@@ -133,8 +135,8 @@ CREATE TABLE IF NOT EXISTS `jerarquia` (
 INSERT INTO `jerarquia` (`id`, `nombre`, `cargo`, `estado`) VALUES
 	(0, 'NA', 'NA', 0),
 	(1, 'M.C. SALVADOR ARIZMENDI LEON ', 'Ninguno', 1),
-	(2, 'M.D.I.S. SILVIA VALLE BAHENA ', 'Ninguno', 1),
-	(3, 'M.D.I.S. LYDIA CUEVAS BRACAMONTES ', 'PRESIDENTE DE ACADEMIA', 1),
+	(2, 'M.D.I.S. SILVIA VALLE BAHENA ', 'PRESIDENTE DE ACADEMIA', 1),
+	(3, 'M.D.I.S. LYDIA CUEVAS BRACAMONTES ', 'Ninguno', 1),
 	(4, 'LIC. ARELI BARCENAS NAVA ', 'Ninguno', 1),
 	(5, 'LIC. MARTIN ORTEGA OCAMPO ', 'Ninguno', 1),
 	(6, 'M.C. ENRIQUE MENA SALGADO ', 'Ninguno', 1),
@@ -179,12 +181,12 @@ CREATE TABLE IF NOT EXISTS `preregistros` (
   UNIQUE KEY `noControl` (`noControl`),
   KEY `asesor` (`asesorPre`),
   CONSTRAINT `FK_preregistros_asesor` FOREIGN KEY (`asesorPre`) REFERENCES `asesor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.preregistros: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.preregistros: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `preregistros` DISABLE KEYS */;
 INSERT INTO `preregistros` (`id`, `noControl`, `carrera`, `nombre`, `apellidoP`, `apellidoM`, `asesorPre`) VALUES
-	(1, '1567', 'Ingenieria en Sistemas Computacionales', 'Yonathan', 'Román', 'Salgado', 19);
+	(1, '15670051', 'Ingenieria en Sistemas Computacionales', 'Yonathan', 'Román', 'Salgado', 19);
 /*!40000 ALTER TABLE `preregistros` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.proyecto

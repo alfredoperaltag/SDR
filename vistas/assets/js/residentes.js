@@ -192,7 +192,6 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editApellidoM").val(respuesta["apellidoM"]);
                 $("#editSexo").val(respuesta["sexo"]);
                 $("#editTelefono").val(respuesta["telefono"]);
-                // TODO CHEACAR EL PERMISO DE LIBERACION TESIS
                 if (respuesta["revision"] == 1) {
                     document.getElementById("customCheck1").checked = true;
                 } else if (respuesta["revision"] == 2) {

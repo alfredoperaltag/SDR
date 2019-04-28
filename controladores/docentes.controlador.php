@@ -58,7 +58,7 @@ class ControladorDocentes
     =============================================*/
     public static function ctrEditarDocente()
     {
-        {
+        // {
             if (isset($_POST["editarNombre"])) {
                 if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["editarNombre"])) {
                     $tabla = "asesor";
@@ -101,7 +101,7 @@ class ControladorDocentes
                      </script>';
                 }
             }
-        }
+        // }
     }
     /*=============================================
     BORRAR DOCENTE

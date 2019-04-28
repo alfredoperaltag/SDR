@@ -201,9 +201,7 @@ class ControladorResidentes
 					});
               </script>';
             //   TODO: RESTAR SOLO AL ASESOR
-              // restarles los residentes a los asesores
                 $tablaDocente = "asesor";
-
               $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
 
               

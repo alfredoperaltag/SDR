@@ -47,9 +47,15 @@
                             <li>
                                 <a href="Directorio"><i class="fa fa-phone fa-2x" style="color: #845ef7;"></i><span><strong> Directorio</strong></span></a>
                             </li>
-                            <li>
-                                <a href="Pre-Registro"><i class="fa fa-user-edit fa-2x" style="color: #845ef7;"></i><span><strong> Pre-Registro</strong></span></a>
-                            </li>
+                            <?php
+                                $cargarConfig = ControladorConfig::ctrCargarConfig("configPreRegistro");
+                                if ($cargarConfig["valor"] == "on") {
+                                    echo '<li>
+                                    <a href="Pre-Registro"><i class="fa fa-user-edit fa-2x"
+                                     style="color: #845ef7;"></i><span><strong> Pre-Registro</strong></span></a>
+                                </li>';
+                                }
+                            ?>
                         </ul>
                     </nav>
                 </div>

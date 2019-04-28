@@ -10,6 +10,7 @@ require_once "controladores/docentes.controlador.php";
 require_once "controladores/directorio.controlador.php";
 require_once "controladores/jerarquia.controlador.php";
 require_once "controladores/pre-registro.controlador.php";
+require_once "controladores/config.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/residentes.modelo.php";
@@ -17,8 +18,7 @@ require_once "modelos/docentes.modelo.php";
 require_once "modelos/directorio.modelo.php";
 require_once "modelos/jerarquia.modelo.php";
 require_once "modelos/pre-registro.modelo.php";
+require_once "modelos/config.modelo.php";
 
 $plantilla = new ControladorPlantilla();
 $plantilla->ctrPlantilla();
-
-//https://drive.google.com/open?id=1J-UnEVuGjgffOjs306Z-k31dpj9YxrPE

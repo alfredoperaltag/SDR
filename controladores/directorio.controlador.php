@@ -4,7 +4,7 @@ class ControladorDirectorio
 {
 
     /*=============================================
-    MOSTRAR TODO EL DIRECTORIO
+    MOSTRAR EL DIRECTORIO
     =============================================*/
     public static function ctrMostrarDirectorio()
     {

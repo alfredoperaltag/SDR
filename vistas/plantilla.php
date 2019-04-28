@@ -10,7 +10,9 @@ session_start();
     <title>SISTEMA DE RESIDENCIAS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="vistas/assets/images/icon/favicon.ico">
+    <!-- <link rel="stylesheet" href="vistas/assets/css/switch-bootstrap4-toggle.min.css"> -->
     <link rel="stylesheet" href="vistas/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vistas/assets/css/swichtCSS.css">
     <!-- <link rel="stylesheet" href="vistas/assets/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="vistas/assets/css/Font-Awesome.css">
     <link rel="stylesheet" href="vistas/assets/css/themify-icons.css">
@@ -61,6 +63,15 @@ CUERPO DOCUMENTO
         } else {
             include "modulos/cabezoteUser.php";
         }
+
+        //MOSTRAR / OCULTAR EL SEGMENTO DE PRE-REGISTRO
+        $cargarConfig = ControladorConfig::ctrCargarConfig("configPreRegistro");
+        if ($cargarConfig["valor"] == "on") {
+            $cargarPreRegistro = "Pre-Registro";
+        }else{
+            $cargarPreRegistro = "404";
+        }
+
         // Usuario administrativo
         if (isset($_GET["ruta"]) && $_SESSION['perfil'] == "Administrador") {
             if (
@@ -70,7 +81,7 @@ CUERPO DOCUMENTO
                 $_GET["ruta"] == "Docentes" ||
                 $_GET["ruta"] == "Directorio"||
                 $_GET["ruta"] == "Jerarquia"||
-                $_GET["ruta"] == "Pre-Registro"||
+                $_GET["ruta"] == $cargarPreRegistro ||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
@@ -85,7 +96,7 @@ CUERPO DOCUMENTO
                 $_GET["ruta"] == "Inicio" ||
                 $_GET["ruta"] == "Residentes" ||
                 $_GET["ruta"] == "Directorio"||
-                $_GET["ruta"] == "Pre-Registro"||
+                $_GET["ruta"] == $cargarPreRegistro||
                 $_GET["ruta"] == "CerrarSesion"
             ) {
 
@@ -111,6 +122,8 @@ CUERPO DOCUMENTO
     <!-- jquery latest version -->
     <!-- <script src="vistas/assets/js/vendor/jquery-2.2.4.min.js"></script> -->
     <script src="vistas/assets/js/vendor/jquery-3.4.0.min.js"></script>
+    <!-- switch bootstrap -->
+    <!-- <script src="vistas/assets/js/switch-bootstrap4-toggle.min.js"></script> -->
     <!-- bootstrap 4 js -->
     <script src="vistas/assets/js/popper.min.js"></script>
     <script src="vistas/assets/js/bootstrap.min.js"></script>
@@ -127,6 +140,7 @@ CUERPO DOCUMENTO
     <script src="vistas/assets/js/responsive.bootstrap.min.js"></script>
 
     <!-- others plugins -->
+    <script src="vistas/assets/js/configSDR.js"></script>
     <script src="vistas/assets/js/pre-registro.js"></script>
     <script src="vistas/assets/js/directorio.js"></script>
     <script src="vistas/assets/js/docentes.js"></script>
