@@ -70,4 +70,31 @@ class ControladorJerarquia
             }
         }
     }
+    /*=============================================
+    BORRAR Jerarquia
+    =============================================*/
+    public static function ctrborrarJerarquia()
+    {
+        if (isset($_GET["idJerarquia"])) {
+            $tabla = "jerarquia";
+            $datos = $_GET["idJerarquia"];
+
+            $respuesta = ModeloDocentesJerarquia::MdlBorrarJerarquia($tabla, $datos);
+            if ($respuesta == "ok") {
+                echo '<script>
+			   Swal.fire({
+					type: "success",
+				   title: "¡Eliminado Correctamente!",
+				   showConfirmButton: true,
+				   confirmButtonText: "Cerrar",
+				   closeOnConfirm: false
+			   }).then((result)=>{
+				   if(result.value){
+					   window.location = "Jerarquia";
+				   }
+				   });
+			 </script>';
+            }
+        }
+    }
 }

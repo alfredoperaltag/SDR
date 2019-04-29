@@ -90,3 +90,7 @@ MODAL EDITAR JERARQUIA
         </div>
     </div>
 </div>
+<?php
+$borrarJerarquia = new ControladorJerarquia();
+$borrarJerarquia->ctrborrarJerarquia();
+?>
