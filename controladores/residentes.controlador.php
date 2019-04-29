@@ -187,25 +187,29 @@ class ControladorResidentes
                 $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
-                    echo '<script>
-				Swal.fire({
-					 type: "success",
-                    title: "¡Exito!",
-                    text: "¡Se registro correctamente!",					   
-					showConfirmButton: true,
-					confirmButtonText: "Cerrar"				   
-				}).then((result)=>{
-					if(result.value){
-						window.location = "Residentes";
-					}
-					});
-              </script>';
+                    echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se registro correctamente!',
+                            showConfirmButton: false,
+                            timer: 1800
+                        }).then((result)=>{
+                            window.location = 'Residentes';
+                            });
+                        </script>";
             //   TODO: RESTAR SOLO AL ASESOR
                 $tablaDocente = "asesor";
               $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
 
               
                 } else {
+                    //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                $tablaE = "proyecto";
+                $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
+                //TERMINA
                     echo '<script>
                     Swal.fire({
                          type: "error",
@@ -583,6 +587,114 @@ class ControladorResidentes
 					});
 			  </script>';
             }
+            }
+        }
+    }
+
+
+
+    /*=============================================
+    REGISTRAR RESIDENTES INFORME TECNICO POR PRE-REGISTRO
+    =============================================*/
+    //ok
+    public static function ctrRegistrarResidentesRPPreRegistro()
+    {
+        if (isset($_POST["nuevoNoControlRPR"])) {
+
+            $tabla1 = "proyecto";
+            $tabla2 = "residentes";
+            $tipo = 1;
+
+            // Quitarles los residentes a los docentes
+            $restarResidente1 = $_POST["nuevoAsesorIntR"]; 
+
+            $na = 0;
+            $datosProyecto = array(
+                "nombreProyecto" => $_POST["nuevoNombreProyectoR"],
+                "nombreEmpresa" => $_POST["nuevoNombreEmpresaR"],
+                "asesorExt" => $_POST["nuevoAsesorExtR"],
+                "asesorInt" => $_POST["nuevoAsesorIntR"],
+                "revisor1" => $_POST["nuevoRevisor1R"],
+                "revisor2" => $_POST["nuevoRevisor2R"],
+                "revisor3" => $na,
+                "suplente" => $_POST["nuevoSuplenteR"]
+            );
+
+            $respuestaProyecto = ModeloResidentes::mdlRegistroResidenteProyecto($tabla1, $datosProyecto);
+
+
+            if ($respuestaProyecto == "ok") {
+
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+
+                $datosResidente = array(
+                    "noControl" => $_POST["nuevoNoControlRPR"],
+                    "carrera" => $_POST["nuevoCarreraR"],
+                    "periodo" => $_POST["nuevoPeriodoR"],
+                    "anio" => $_POST["nuevoPeriodoAnioR"],
+                    "nombre" => $_POST["nuevoNombreR"],
+                    "apellidoP" => $_POST["nuevoApellidoPR"],
+                    "apellidoM" => $_POST["nuevoApellidoMR"],
+                    "sexo" => $_POST["nuevoSexoR"],
+                    "telefono" => $_POST["nuevoTelefonoR"],
+                    "tipo_registro" => $tipo,
+                    "proyecto_id" => $revisarProyecto["id"]
+                );
+
+                $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
+
+                if ($resResidente == "ok") {
+              echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se registro correctamente!',
+                            showConfirmButton: false,
+                            timer: 1800
+                        }).then((result)=>{
+                            window.location = 'Residentes';
+                            });
+                        </script>";
+            //   TODO: RESTAR SOLO AL ASESOR
+                $tablaDocente = "asesor";
+              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
+
+              
+                } else {
+                    echo '<script>
+                    Swal.fire({
+                         type: "error",
+                        title: "¡Error!",
+                        text: "¡No se pudo registrar!",				   
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"				   
+                    }).then((result)=>{
+                        if(result.value){
+                            window.location = "Residentes";
+                        }
+                        });
+                  </script>';
+                }
+            } else {
+                //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                $tablaE = "proyecto";
+                $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
+                //TERMINA
+                echo '<script>
+				Swal.fire({
+					 type: "error",
+                    title: "¡Error",
+                    text: "Revisa los datos del Proyecto.",					   
+					showConfirmButton: true,
+					confirmButtonText: "Cerrar"				   
+				}).then((result)=>{
+					if(result.value){
+						window.location = "Residentes";
+					}
+					});
+			  </script>';
             }
         }
     }

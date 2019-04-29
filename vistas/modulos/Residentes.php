@@ -961,7 +961,7 @@ SELECIONAR RESIDENTE PARE REGISTRO DE PRE-REGISTRO
                                                 echo '<td>' . $value["asesorR"] . '</td>';
                                         echo '<td>
                                                 <div class="btn-group">';
-                                                echo '<button class="btn btn-warning btnPreRegistroRegister" idPreRegistroRegister="' . $value["id"] . '" data-toggle="modal" data-target="#modalITDRP2"><i class="fa fa-pen"></i></button>';
+                                                echo '<button class="btn btn-warning btnPreRegistroRegister" idPreRegistroRegister="' . $value["id"] . '" data-toggle="modal" data-target="#modalITDRPPRE"><i class="fa fa-pen"></i></button>';
                                                 echo '</div>
                                             </td>
                                         </tr>';
@@ -982,7 +982,7 @@ SELECIONAR RESIDENTE PARE REGISTRO DE PRE-REGISTRO
 MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
 ======================================-->
 
-<div class="modal fade" id="modalITDRP2" role="dialog" style="overflow-y: auto;">
+<div class="modal fade" id="modalITDRPPRE" role="dialog" style="overflow-y: auto;">
     <div class="modal-dialog modal-lg" role="document" >
         <div class="modal-content">
             <!--=====================================
@@ -1005,13 +1005,13 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control bg-warning" type="number" name="nuevoNoControlRP" id="nuevoNoControlRP"
+                                <input class="form-control bg-warning" type="number" name="nuevoNoControlRPR" id="nuevoNoControlRPR"
                                     placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
                                 <label class="col-form-label">Carrera</label>
-                                <select class="custom-select bg-warning" name="nuevoCarrera" id="nuevoCarrera" required>
+                                <select class="custom-select bg-warning" name="nuevoCarreraR" id="nuevoCarreraR" required>
                                     <option value="">Selecionar carrera</option>
                                     <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas
                                         Computacionales</option>
@@ -1021,7 +1021,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->
                             <div class="col-sm-3 my-1">
                                 <label class="col-form-label">Periodo</label>
-                                <select class="custom-select" name="nuevoPeriodo" required>
+                                <select class="custom-select" name="nuevoPeriodoR" required>
                                     <option value="">Selecionar periodo</option>
                                     <option value="EJ">Enero/Junio</option>
                                     <option value="AD">Agosto/Diciembre</option>
@@ -1033,7 +1033,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                                 <?php
                                 $cont = date('Y');
                                 ?>
-                                <select class="custom-select" name="nuevoPeriodoAnio" required>
+                                <select class="custom-select" name="nuevoPeriodoAnioR" required>
                                     <?php while ($cont >= 2018) { ?>
                                     <option name="anio" value="<?php echo ($cont); ?>">
                                         <?php echo ($cont); ?>
@@ -1049,19 +1049,19 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control bg-warning" type="text" name="nuevoNombre" id="nuevoNombre" placeholder="Nombre" required
+                            <input class="form-control bg-warning" type="text" name="nuevoNombreR" id="nuevoNombreR" placeholder="Nombre" required
                                 autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control bg-warning" type="text" name="nuevoApellidoP" id="nuevoApellidoP" placeholder="Apellido Paterno"
+                            <input class="form-control bg-warning" type="text" name="nuevoApellidoPR" id="nuevoApellidoPR" placeholder="Apellido Paterno"
                                 required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control bg-warning" type="text" name="nuevoApellidoM" id="nuevoApellidoM" placeholder="Apellido Materno"
+                            <input class="form-control bg-warning" type="text" name="nuevoApellidoMR" id="nuevoApellidoMR" placeholder="Apellido Materno"
                                 required autocomplete="off">
                         </div>
                     </div>
@@ -1069,7 +1069,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA SELECCIONAR SU SEXO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Sexo</label>
-                            <select class="custom-select" name="nuevoSexo" required>
+                            <select class="custom-select" name="nuevoSexoR" required>
                                 <option value="">Selecionar sexo</option>
                                 <option value="F">Femenino</option>
                                 <option value="M">Masculino</option>
@@ -1078,7 +1078,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono"
+                            <input class="form-control" type="tel" name="nuevoTelefonoR" placeholder="Telefono"
                                 autocomplete="off">
                         </div>
                     </div>
@@ -1088,13 +1088,13 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto"
+                            <input class="form-control" type="text" name="nuevoNombreProyectoR"
                                 placeholder="Nombre del Proyecto" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
+                            <input class="form-control" type="text" name="nuevoNombreEmpresaR"
                                 placeholder="Nombre de la Empresa" required autocomplete="off">
                         </div>
                     </div>
@@ -1102,17 +1102,17 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Asesor Externo</label>
-                            <input class="form-control" type="text" name="nuevoAsesorExt" placeholder="Asesor Externo"
+                            <input class="form-control" type="text" name="nuevoAsesorExtR" placeholder="Asesor Externo"
                                 required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
-                            <select class="custom-select bg-warning" name="nuevoAsesorInt" id="nuevoAsesorInt" required>
+                            <select class="custom-select bg-warning" name="nuevoAsesorIntR" id="nuevoAsesorIntR" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -1121,7 +1121,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA REVISOR #1 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #1</label>
-                            <select class="custom-select" name="nuevoRevisor1">
+                            <select class="custom-select" name="nuevoRevisor1R">
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -1132,7 +1132,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA REVISOR #2 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #2</label>
-                            <select class="custom-select" name="nuevoRevisor2">
+                            <select class="custom-select" name="nuevoRevisor2R">
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -1145,7 +1145,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA SUPLENTE -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Suplente</label>
-                            <select class="custom-select" name="nuevoSuplente">
+                            <select class="custom-select" name="nuevoSuplenteR">
                                 <option value="">Selecionar suplente</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -1165,9 +1165,10 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
 
                 <?php
 
-                 $RegistrarResidente = new ControladorResidentes();
-                 $RegistrarResidente->ctrRegistrarResidentesRP();
-
+                if (isset($_POST["nuevoNoControlRPR"])) {
+                    $RegistrarResidente2 = new ControladorResidentes();
+                    $RegistrarResidente2->ctrRegistrarResidentesRPPreRegistro();
+                }   
                 ?>
 
             </form>

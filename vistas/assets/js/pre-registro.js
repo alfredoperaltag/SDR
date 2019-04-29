@@ -81,12 +81,12 @@ $(document).on("click", ".btnPreRegistroRegister", function () {
         dataType: "json",
         success: function (respuesta) {
             // console.log("R:", respuesta);
-            $("#nuevoNoControlRP").val(respuesta["noControl"]);
-            $("#nuevoCarrera").val(respuesta["carrera"]);
-            $("#nuevoNombre").val(respuesta["nombre"]);
-            $("#nuevoApellidoP").val(respuesta["apellidoP"]);
-            $("#nuevoApellidoM").val(respuesta["apellidoM"]);
-            $("#nuevoAsesorInt").val(respuesta["asesorPre"]);
+            $("#nuevoNoControlRPR").val(respuesta["noControl"]);
+            $("#nuevoCarreraR").val(respuesta["carrera"]);
+            $("#nuevoNombreR").val(respuesta["nombre"]);
+            $("#nuevoApellidoPR").val(respuesta["apellidoP"]);
+            $("#nuevoApellidoMR").val(respuesta["apellidoM"]);
+            $("#nuevoAsesorIntR").val(respuesta["asesorPre"]);
             
         }
     });
