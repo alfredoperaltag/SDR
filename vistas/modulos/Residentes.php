@@ -1165,8 +1165,8 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
 
                 <?php
 
-                $RegistrarResidente = new ControladorResidentes();
-                $RegistrarResidente->ctrRegistrarResidentesRP();
+                 $RegistrarResidente = new ControladorResidentes();
+                 $RegistrarResidente->ctrRegistrarResidentesRP();
 
                 ?>
 
