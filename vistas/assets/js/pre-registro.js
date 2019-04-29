@@ -62,3 +62,32 @@ $(document).on("click", ".btnEliminarPreRegistro", function () {
         }
     })
 })
+
+/*<!--=====================================
+LLENAR CAMPOS PARA REGISTRO DESDE PRE-REGISTRO
+======================================-->*/
+$(document).on("click", ".btnPreRegistroRegister", function () {
+    var idPreRegistroRe = $(this).attr("idPreRegistroRegister");
+    // console.log("ID: ", idPreRegistroRe);
+    var datos = new FormData();
+    datos.append("idRegistroView", idPreRegistroRe);
+    $.ajax({
+        url: "ajax/pre-registro.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+            // console.log("R:", respuesta);
+            $("#nuevoNoControlRP").val(respuesta["noControl"]);
+            $("#nuevoCarrera").val(respuesta["carrera"]);
+            $("#nuevoNombre").val(respuesta["nombre"]);
+            $("#nuevoApellidoP").val(respuesta["apellidoP"]);
+            $("#nuevoApellidoM").val(respuesta["apellidoM"]);
+            $("#nuevoAsesorInt").val(respuesta["asesorPre"]);
+            
+        }
+    });
+})

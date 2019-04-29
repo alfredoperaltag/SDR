@@ -9,6 +9,10 @@
                 de<br> Residencias Profesionales</button>
             <button class="btn btn-danger btn-xs mb-3" data-toggle="modal" data-target="#modalTP">Tesis <br>
                 Profesional</button>';
+            }
+            $cargarConfig = ControladorConfig::ctrCargarConfig("configPreRegistro");
+            
+            if ($cargarConfig["valor"] == "on") {
                 echo '<button class="btn btn-primary btn-xs mb-3 ml-5" data-toggle="modal" data-target="#modalPreRegistroOK">Pre-Registro<br> Residencias Profesionales</button>';
             }
             ?>
@@ -957,8 +961,7 @@ SELECIONAR RESIDENTE PARE REGISTRO DE PRE-REGISTRO
                                                 echo '<td>' . $value["asesorR"] . '</td>';
                                         echo '<td>
                                                 <div class="btn-group">';
-                                                echo '<button class="btn btn-warning btnEditarPreRegistro" idPreRegistroEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalITDRP2"><i class="fa fa-pencil-alt"></i></button>';
-                                                    // echo '<a class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#modalITDRP2">Click</a>';
+                                                echo '<button class="btn btn-warning btnPreRegistroRegister" idPreRegistroRegister="' . $value["id"] . '" data-toggle="modal" data-target="#modalITDRP2"><i class="fa fa-pen"></i></button>';
                                                 echo '</div>
                                             </td>
                                         </tr>';
@@ -1002,13 +1005,13 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControlRP" id="nuevoNoControlRP"
+                                <input class="form-control bg-warning" type="number" name="nuevoNoControlRP" id="nuevoNoControlRP"
                                     placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
                                 <label class="col-form-label">Carrera</label>
-                                <select class="custom-select" name="nuevoCarrera" id="nuevoCarrera" required>
+                                <select class="custom-select bg-warning" name="nuevoCarrera" id="nuevoCarrera" required>
                                     <option value="">Selecionar carrera</option>
                                     <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas
                                         Computacionales</option>
@@ -1046,19 +1049,19 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" id="nuevoNombre" placeholder="Nombre" required
+                            <input class="form-control bg-warning" type="text" name="nuevoNombre" id="nuevoNombre" placeholder="Nombre" required
                                 autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" id="nuevoApellidoP" placeholder="Apellido Paterno"
+                            <input class="form-control bg-warning" type="text" name="nuevoApellidoP" id="nuevoApellidoP" placeholder="Apellido Paterno"
                                 required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" id="nuevoApellidoM" placeholder="Apellido Materno"
+                            <input class="form-control bg-warning" type="text" name="nuevoApellidoM" id="nuevoApellidoM" placeholder="Apellido Materno"
                                 required autocomplete="off">
                         </div>
                     </div>
@@ -1105,7 +1108,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
-                            <select class="custom-select" name="nuevoAsesorInt" id="nuevoAsesorInt" required>
+                            <select class="custom-select bg-warning" name="nuevoAsesorInt" id="nuevoAsesorInt" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();

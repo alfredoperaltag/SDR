@@ -13,6 +13,15 @@ class AjaxPreRegistro
         echo json_encode($respuesta);
     }
 
+    public $idRegistroView;
+    public function ajaxEditarPreRegistroAjax2()
+    {
+        $item = "id";
+        $valor = $this->idRegistroView;
+        $respuesta = ControladorPreRegistro::ctrMostrarInfoPreRegistro($item, $valor);
+        echo json_encode($respuesta);
+    }
+
 }
 /*<!--=====================================
     EDITAR PRE-REGISTRO
@@ -22,3 +31,12 @@ class AjaxPreRegistro
         $editar->idPreRegistroEdit = $_POST["idPreRegistroEdit"];
         $editar->ajaxEditarPreRegistroAjax();
     }
+
+/*<!--=====================================
+    EDITAR PRE-REGISTRO
+======================================-->*/
+if (isset($_POST["idRegistroView"])) {
+    $editar = new AjaxPreRegistro();
+    $editar->idRegistroView = $_POST["idRegistroView"];
+    $editar->ajaxEditarPreRegistroAjax2();
+}

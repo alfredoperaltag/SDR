@@ -165,7 +165,7 @@ class ControladorResidentes
 
             $respuestaProyecto = ModeloResidentes::mdlRegistroResidenteProyecto($tabla1, $datosProyecto);
 
-
+            print_r('ERROR: '.$respuestaProyecto);
             if ($respuestaProyecto == "ok") {
 
                 $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
@@ -187,22 +187,22 @@ class ControladorResidentes
                 $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
-                    echo '<script>
-				Swal.fire({
-					 type: "success",
-                    title: "¡Exito!",
-                    text: "¡Se registro correctamente!",					   
-					showConfirmButton: true,
-					confirmButtonText: "Cerrar"				   
-				}).then((result)=>{
-					if(result.value){
-						window.location = "Residentes";
-					}
-					});
-              </script>';
-            //   TODO: RESTAR SOLO AL ASESOR
-                $tablaDocente = "asesor";
-              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
+                        echo '<script>
+                    Swal.fire({
+                        type: "success",
+                        title: "¡Exito!",
+                        text: "¡Se registro correctamente!",					   
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"				   
+                    }).then((result)=>{
+                        if(result.value){
+                            window.location = "Residentes";
+                        }
+                        });
+                    </script>';
+                    //TODO: RESTAR SOLO AL ASESOR
+                    $tablaDocente = "asesor";
+                    $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
 
               
                 } else {
@@ -235,7 +235,7 @@ class ControladorResidentes
 					confirmButtonText: "Cerrar"				   
 				}).then((result)=>{
 					if(result.value){
-						window.location = "Residentes";
+						//window.location = "Residentes";
 					}
 					});
 			  </script>';

@@ -116,8 +116,8 @@ class ModeloResidentes
     static public function mdlRegistroResidenteProyecto($tabla, $datos)
     {
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProyecto, nombreEmpresa, asesorExt, asesorInt, revisor1, revisor2, suplente, revisor3) 
-														VALUES (:nombreProyecto, :nombreEmpresa, :asesorExt, :asesorInt, :revisor1, :revisor2, :suplente, :revisor3)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProyecto, nombreEmpresa, asesorExt, asesorInt, revisor1, revisor2, revisor3, suplente) 
+														VALUES (:nombreProyecto, :nombreEmpresa, :asesorExt, :asesorInt, :revisor1, :revisor2, :revisor3, :suplente)");
         //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         $stmt->bindParam(":nombreProyecto", $datos["nombreProyecto"], PDO::PARAM_STR);
         $stmt->bindParam(":nombreEmpresa", $datos["nombreEmpresa"], PDO::PARAM_STR);
@@ -125,8 +125,8 @@ class ModeloResidentes
         $stmt->bindParam(":asesorInt", $datos["asesorInt"], PDO::PARAM_INT);
         $stmt->bindParam(":revisor1", $datos["revisor1"], PDO::PARAM_INT);
         $stmt->bindParam(":revisor2", $datos["revisor2"], PDO::PARAM_INT);
-        $stmt->bindParam(":suplente", $datos["suplente"], PDO::PARAM_INT);
         $stmt->bindParam(":revisor3", $datos["revisor3"], PDO::PARAM_INT);
+        $stmt->bindParam(":suplente", $datos["suplente"], PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             return "ok";

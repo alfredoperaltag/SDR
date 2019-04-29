@@ -23,7 +23,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item  btnEditarMiUsuario" idUsuario=" <?php echo $_SESSION["id"]; ?>"
                                 data-toggle="modal" data-target="#modalEditarMiUsuario" href="#">Editar mi cuenta</a>
-                            <a class="dropdown-item" data-toggle="modal" data-target="#modalConfigSDR"
+                            <a class="dropdown-item" data-toggle="modal" data-target="#modalConfigSDR" data-controls-modal="modalConfigSDR" data-backdrop="static" data-keyboard="false"
                                 href="#">Configurar SDR</a>
                             <a class="dropdown-item" href="CerrarSesion">Cerrar Sesion</a>
                         </div>
@@ -167,7 +167,7 @@ MODAL EDITAR USUARIO
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Configurar SDR</h5>
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <!-- <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button> -->
             </div>
             <div class="modal-body">
                 <div class="form-row align-items-center">
