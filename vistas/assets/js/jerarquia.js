@@ -15,6 +15,7 @@ function btnEditarJerarquia(idJerarquia) {
         success: function (respuesta) {
             $("#editarNombre").val(respuesta["nombre"]);
             $("#editarJerarquia").val(respuesta["cargo"]);
+            $("#idJerarquia").val(respuesta["id"]);
         }
     });
 }

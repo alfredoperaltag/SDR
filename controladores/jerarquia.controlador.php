@@ -21,4 +21,53 @@ class ControladorJerarquia
         $respuesta = ModeloDocentesJerarquia::MdlMostrarDocentesDictamen($tabla, $item);
         return $respuesta;
     }
+    /*=============================================
+    EDITAR Jerarquia
+    =============================================*/
+    public static function ctrEditarJerarquia()
+    {
+
+        if (isset($_POST["editarNombre"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["editarNombre"])) {
+                $tabla = "jerarquia";
+                $datos = array(
+                    "id" => $_POST["idJerarquia"],
+                    "nombre" => $_POST["editarNombre"],
+                    "jerarquia" => $_POST["editarJerarquia"]
+                );
+                $respuesta = ModeloDocentesJerarquia::mdlEditarJerarquia($tabla, $datos);
+                /* echo $datos["id"];
+                    echo $respuesta; */
+                if ($respuesta == "ok") {
+                    echo '<script>
+                        Swal.fire({
+                        type: "success",
+                        title: "¡Actualizado Correctamente!",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                        }).then((result)=>{
+                        if(result.value){
+                           window.location = "Jerarquia";
+                        }
+                        });
+                        </script>';
+                }
+            } else {
+                echo '<script>
+                       Swal.fire({
+                            type: "error",
+                           title: "¡El campo nombre no puede estar vacio o llevar caracteres especiales!",
+                           showConfirmButton: true,
+                           confirmButtonText: "Cerrar",
+                           closeOnConfirm: false
+                       }).then((result)=>{
+                           if(result.value){
+                               window.location = "Jerarquia";
+                           }
+                           });
+                     </script>';
+            }
+        }
+    }
 }

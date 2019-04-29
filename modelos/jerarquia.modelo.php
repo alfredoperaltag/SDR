@@ -37,4 +37,21 @@ class ModeloDocentesJerarquia
         $stmt = null;
     }
 
+    /*=============================================
+	EDITAR Jerarquia
+    =============================================*/
+    static public function mdlEditarJerarquia($tabla, $datos)
+    {
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, cargo = :jerarquia WHERE id = :id");
+        $stmt->bindParam(":id", $datos["id"], PDO::PARAM_STR);
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":jerarquia", $datos["jerarquia"], PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt->close();
+        $stmt = null;
+    }
 }

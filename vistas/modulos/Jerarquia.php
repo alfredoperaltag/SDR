@@ -71,6 +71,7 @@ MODAL EDITAR JERARQUIA
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
                             <input class="form-control" type="text" id="editarNombre" name="editarNombre" value="" autocomplete="off" required>
+                            <input type="hidden" id="idJerarquia" name="idJerarquia">
                         </div>
                     </div>
                     <!--=====================================
@@ -80,15 +81,12 @@ MODAL EDITAR JERARQUIA
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                         <button type="submit" class="btn btn-primary">modificar Jerarquia</button>
                     </div>
-
+                    <?php
+                    $editarJerarquia = new ControladorJerarquia();
+                    $editarJerarquia->ctrEditarJerarquia();
+                    ?>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
-<?php
-//$editarJerarquia = new ControladorJerarquias();
-//$editarJerarquia->ctrEditarJerarquia("editarJerarquia", "editarNombre", "editarPassword", "confirmarPassword", "passwordActual", "editarPerfil");
-?>
