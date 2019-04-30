@@ -614,7 +614,7 @@ EDITAR RESIDENTE
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
