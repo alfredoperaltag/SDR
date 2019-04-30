@@ -1078,7 +1078,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefonoR" placeholder="Telefono"
+                            <input class="form-control bg-warning" type="tel" name="nuevoTelefonoR" id="nuevoTelefonoRR" placeholder="Telefono"
                                 autocomplete="off">
                         </div>
                     </div>

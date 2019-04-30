@@ -656,6 +656,11 @@ class ControladorResidentes
                             window.location = 'Residentes';
                             });
                         </script>";
+
+                        $borrarPreRegistro = new ControladorPreRegistro();
+                        $borrarPreRegistro->ctrBorrarPreRegistroOK();
+
+
             //   TODO: RESTAR SOLO AL ASESOR
                 $tablaDocente = "asesor";
               $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);

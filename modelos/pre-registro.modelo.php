@@ -31,11 +31,12 @@ class ModeloPreRegistro
     =============================================*/
     static public function mdlHacerPreRegistro($tabla, $datos)
     {
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(noControl, carrera, nombre, apellidoP, apellidoM, asesorPre) 
-        VALUES (:noControl, :carrera, :nombre, :apellidoP, :apellidoM, :asesorPre)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(noControl, carrera, telefono, nombre, apellidoP, apellidoM, asesorPre) 
+        VALUES (:noControl, :carrera, :telefono, :nombre, :apellidoP, :apellidoM, :asesorPre)");
 
         $stmt->bindParam(":noControl", $datos["noControl"], PDO::PARAM_STR);
         $stmt->bindParam(":carrera", $datos["carrera"], PDO::PARAM_STR);
+        $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":apellidoP", $datos["apellidoP"], PDO::PARAM_STR);
         $stmt->bindParam(":apellidoM", $datos["apellidoM"], PDO::PARAM_STR);

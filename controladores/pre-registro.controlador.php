@@ -29,7 +29,8 @@ class ControladorPreRegistro
                     "nombre" => $_POST["nuevoNombrePR"],
                     "apellidoP" => $_POST["nuevoApellidoPPR"],
                     "apellidoM" => $_POST["nuevoApellidoMPR"],
-                    "asesorPre" => $_POST["nuevoAsesorPRE"]
+                    "asesorPre" => $_POST["nuevoAsesorPRE"],
+                    "telefono" => $_POST["nuevoTelefonoPR"]
                 );
                 $respuesta = ModeloPreRegistro::mdlHacerPreRegistro($tabla, $datos);
                 echo $respuesta;
@@ -192,17 +193,43 @@ class ControladorPreRegistro
             $respuesta = ModeloPreRegistro::mdlBorrarPreRegistro($tabla, $datos);
             if ($respuesta == "ok") {
              echo "<script>
-                        Swal.fire({
-                            position: 'top',
-                            type: 'success',
-                            title: '¡Exito!',
-                   text: '¡Eliminado Correctamente!',
-                            showConfirmButton: false,
-                            timer: 1800
-                        }).then((result)=>{
-                                    window.location = 'Pre-Registro';
-                            });
-                        </script>";
+                Swal.fire({
+                    position: 'top',
+                    type: 'success',
+                    title: '¡Exito!',
+                    text: '¡Eliminado Correctamente!',
+                    showConfirmButton: false,
+                    timer: 1800
+                    }).then((result)=>{
+                            window.location = 'Pre-Registro';
+                    });
+                </script>";
+            }
+        }
+    }
+
+    /*=============================================
+    BORRAR PRE-REGISTRO DESPUES DEL REGISTRO
+    =============================================*/
+    public static function ctrBorrarPreRegistroOK(){
+        if (isset($_POST["idPreRegistro"])) {
+            $tabla = "preregistros";
+            $datos = $_POST["idPreRegistro"];
+
+            $respuesta = ModeloPreRegistro::mdlBorrarPreRegistro($tabla, $datos);
+            if ($respuesta == "ok") {
+             echo "<script>
+                Swal.fire({
+                    position: 'top',
+                    type: 'success',
+                    title: '¡Exito!',
+                    text: '¡Eliminado Correctamente!',
+                    showConfirmButton: false,
+                    timer: 1800
+                    }).then((result)=>{
+                            window.location = 'Pre-Registro';
+                    });
+                </script>";
             }
         }
     }

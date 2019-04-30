@@ -46,7 +46,7 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR DOCENTE
+    AGREGAR PRE-REGISTRO
 ======================================-->
 <div class="modal fade" id="modalAgregarPreRegistro">
     <div class="modal-dialog modal-lg" role="document">
@@ -66,12 +66,12 @@ MODAL AGREGAR DOCENTE
                     <div class="box-body">
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
-                        <div class="col-sm-6 my-1">
+                        <div class="col-sm-4 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControlPR" placeholder="Ingresar nomuero de control" autocomplete="off" required>
+                                <input class="form-control" type="number" name="nuevoNoControlPR" placeholder="Ingresar numero de control" autocomplete="off" required>
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
-                            <div class="col-sm-6 my-1">
+                            <div class="col-sm-5 my-1">
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="nuevoCarreraPR" required>
                                     <option value="">Selecionar carrera</option>
@@ -79,6 +79,11 @@ MODAL AGREGAR DOCENTE
                                         Computacionales</option>
                                     <option value="Ingenieria Informatica">Ingenieria Informatica</option>
                                 </select>
+                            </div>
+                            <!-- ENTRADA PARA TELEFONO -->
+                        <div class="col-sm-3 my-1">
+                                <label for="example-text-input" class="col-form-label">Telefono</label>
+                                <input class="form-control" type="number" name="nuevoTelefonoPR" placeholder="Telefono" autocomplete="off" required>
                             </div>
                             </div>
                             <div class="form-row align-items-center">
@@ -118,8 +123,8 @@ MODAL AGREGAR DOCENTE
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                     <?php
-                    $crearDocente = new ControladorPreRegistro();
-                    $crearDocente->ctrPreRegistrar();
+                        $crearDocente = new ControladorPreRegistro();
+                        $crearDocente->ctrPreRegistrar();
                     ?>
                 </div>
             </form>
@@ -128,7 +133,7 @@ MODAL AGREGAR DOCENTE
 </div>
 
 <!--=====================================
-MODAL AGREGAR DOCENTE
+MODAL EDITAR PRE-REGISTRO
 ======================================-->
 <div class="modal fade" id="modalEditarPreRegistro">
     <div class="modal-dialog modal-lg" role="document">

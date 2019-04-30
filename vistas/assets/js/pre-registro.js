@@ -87,6 +87,7 @@ $(document).on("click", ".btnPreRegistroRegister", function () {
             $("#nuevoApellidoPR").val(respuesta["apellidoP"]);
             $("#nuevoApellidoMR").val(respuesta["apellidoM"]);
             $("#nuevoAsesorIntR").val(respuesta["asesorPre"]);
+            $("#nuevoTelefonoRR").val(respuesta["telefono"]);
             
         }
     });
