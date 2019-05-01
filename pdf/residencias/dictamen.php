@@ -23,7 +23,7 @@ class PDF extends FPDF
         $this->Image('../img/iti.jpg', 53, 183, 9);
         $this->SetFont('Arial', 'B', 7);
         $this->SetXY(6, -27);
-        $this->Cell(0, 0, utf8_decode('Copia en PAPEL es "Documento no controlado" a excepción del original'), 0, 0, 'C');
+        $this->Cell(0, 0, utf8_decode('Toda copia en PAPEL es "Documento no controlado" a excepción del original'), 0, 0, 'C');
         $this->SetFont('Arial', '', 9);
         $this->SetXY(188, -24);
         $this->Cell(0, 0, utf8_decode('Rev.1'), 0, 0, 'C');

@@ -29,8 +29,8 @@ $(document).on("click", ".btnInfoResidente", function () {
             // console.log("Tipo: ", respuesta["tipo_registro"]);
 
             if (respuesta["tipo_registro"] == "Residencias Profesionales") { //residensias
-                document.getElementById('CheckResidenciasView1').style.display='block'; //muestra chc de residencias
-                document.getElementById('CheckTesisView1').style.display='none'; //oculta check de tesis
+                document.getElementById('CheckResidenciasView1').style.display = 'block'; //muestra chc de residencias
+                document.getElementById('CheckTesisView1').style.display = 'none'; //oculta check de tesis
 
                 if (respuesta["revisionOK"] == 0) {
                     document.getElementById("customCheck4").checked = false;
@@ -50,17 +50,17 @@ $(document).on("click", ".btnInfoResidente", function () {
                     document.getElementById("customCheck6").checked = true;
                 }
 
-            }else{ //Tesis
-                document.getElementById('CheckResidenciasView1').style.display='none'; //oculta check de residencias
-                document.getElementById('CheckTesisView1').style.display='block'; //muestra chc de tesis
+            } else { //Tesis
+                document.getElementById('CheckResidenciasView1').style.display = 'none'; //oculta check de residencias
+                document.getElementById('CheckTesisView1').style.display = 'block'; //muestra chc de tesis
                 if (respuesta["revisionOK"] == 3) {
                     document.getElementById("CheckTesis1").checked = true;
                     document.querySelector('#StatusTesis1').innerText = 'Liberado';
-                }else{
+                } else {
                     document.getElementById("CheckTesis1").checked = false;
                     document.querySelector('#StatusTesis1').innerText = 'No liberado';
                 }
-            
+
             }
 
             $("#InfoControl").val(respuesta["noControl"]);
@@ -118,13 +118,13 @@ $(document).on("click", ".btnEditResidente", function () {
             document.getElementById("customCheck3").checked = false;
             // console.log("Tipo: ", respuesta["tipo"]);
             if (respuesta["tipo"] == "Residencias Profesionales") { //residensias
-                document.getElementById('CheckResidenciasView').style.display='block'; //muestra chc de residencias
-                document.getElementById('CheckTesisView').style.display='none'; //oculta check de tesis
-            }else{ //Tesis
-                document.getElementById('CheckResidenciasView').style.display='none'; //oculta check de residencias
-                document.getElementById('CheckTesisView').style.display='block'; //muestra chc de tesis
+                document.getElementById('CheckResidenciasView').style.display = 'block'; //muestra chc de residencias
+                document.getElementById('CheckTesisView').style.display = 'none'; //oculta check de tesis
+            } else { //Tesis
+                document.getElementById('CheckResidenciasView').style.display = 'none'; //oculta check de residencias
+                document.getElementById('CheckTesisView').style.display = 'block'; //muestra chc de tesis
             }
-            
+
             $("#idProyectoEdit").val(null);
             $("#editNombreProyecto").val(null);
             $("#editNombreEmpresa").val(null);
@@ -163,7 +163,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 if (respuesta["revision"] == 3) {
                     document.getElementById("CheckTesis").checked = true;
                     document.querySelector('#StatusTesis').innerText = 'Liberado';
-                }else{
+                } else {
                     document.getElementById("CheckTesis").checked = false;
                     document.querySelector('#StatusTesis').innerText = 'No liberado';
                 }
@@ -197,7 +197,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 } else if (respuesta["revision"] == 2) {
                     document.getElementById("customCheck1").checked = true;
                     document.getElementById("customCheck2").checked = true;
-                } else 
+                } else
                 if (respuesta["revision"] == 3) {
                     document.getElementById("customCheck1").checked = true;
                     document.getElementById("customCheck2").checked = true;
@@ -240,7 +240,7 @@ $(document).on("click", ".btnImprimirDoc", function () {
         dataType: "json",
         success: function (respuesta) {
 
-            document.getElementById("btnImprimirAsesores").disabled = true;
+            // document.getElementById("btnImprimirAsesores").disabled = true;
             document.getElementById("btnImprimirLiberacion").disabled = true;
             document.getElementById("btnImprimirJurado").disabled = true;
             document.getElementById("btnImprimirComisionT").disabled = true;
@@ -273,20 +273,20 @@ $(document).on("click", ".btnImprimirDoc", function () {
                 document.getElementById("btnImprimirComisionT").disabled = false;
                 document.getElementById("btnImprimirSinodales").disabled = false;
             }
-            
+
             // document.getElementById('CheckResidenciasView1').style.display='none'; //oculta check de residencias
             // document.getElementById('CheckTesisView1').style.display='block'; //muestra chc de tesis
             document.getElementById("btnImpLiberacionR").disabled = true;
-                document.getElementById("btnImpLiberacion").disabled = true;
+            document.getElementById("btnImpLiberacion").disabled = true;
             if (respuesta["revisionOK"] == 3) {
                 document.getElementById("CheckTesis2").checked = true;
                 document.querySelector('#StatusTesis2').innerText = 'Liberado';
                 document.getElementById("btnImpLiberacionR").disabled = false;
                 document.getElementById("btnImpLiberacion").disabled = false;
-                }else{
-                    document.getElementById("CheckTesis2").checked = false;
-                    document.querySelector('#StatusTesis2').innerText = 'No liberado';
-                }
+            } else {
+                document.getElementById("CheckTesis2").checked = false;
+                document.querySelector('#StatusTesis2').innerText = 'No liberado';
+            }
         }
     });
 });
@@ -358,6 +358,38 @@ $(document).on("click", "#btnImprimirAsesores", function () {
         }
     })
 });
+
+
+/*<!--=====================================
+IMPRIMIR Liberacion
+======================================-->*/
+$(document).on("click", "#btnImprimirLiberacion", function () {
+    console.log("idResidenteDic: " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2']
+    }).queue([{
+            input: 'text',
+            inputValue: fecha,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            title: '# Oficio',
+            text: 'Introduzca el numero de Oficio',
+            input: 'text'
+        }
+    ]).then((result) => {
+        if (result.value) {
+            window.open("pdf/residencias/liberacion.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+            /* window.open("pdf/residencias/dictamen.php"); */
+        }
+    })
+});
+
+
 
 /*<!--=====================================
 IMPRIMIR SINODALES
