@@ -77,6 +77,8 @@ class PDF extends FPDF
 }
 
 $fechaActual = $_GET['fecha'];
+$tablaJ = "jerarquia";
+$itemJefeDivision = "PRESIDENTE DE ACADEMIA";
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
@@ -84,17 +86,20 @@ $pdf->SetLeftMargin(24);
 $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
 $pdf->SetFont('Helvetica', '', '7.3');
 $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-$pdf->Ln(10);
+$pdf->Ln(9);
 $pdf->SetFont('Helvetica', '', '8.5');
 $pdf->Cell(0, 4, utf8_decode('Iguala, Gro.,'), 0, 0, 'L');
 $pdf->SetTextColor(255, 255, 255);
 $pdf->SetX(42);
 $anchoFecha = $pdf->GetStringWidth($fechaActual);
 $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'L', true);
-$pdf->Ln(8);
+$pdf->Ln(7);
 
 $pdf->SetTextColor(0, 0, 0);
 $text = "<ASUNTO:> Liberación de Proyecto para Titulación Integral.";
 $pdf->WriteText(utf8_decode($text));
+$pdf->Ln(7);
+
+
 
 $pdf->Output('I', 'Liberación de Residencias Profesionales.pdf', 'D');

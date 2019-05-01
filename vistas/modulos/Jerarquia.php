@@ -9,6 +9,7 @@
                             <th>#</th>
                             <th>Cargo</th>
                             <th>Nombre</th>
+                            <th>Sexo</th>
                             <!-- <th>Estado</th> -->
                             <th>Acciones</th>
                         </tr>
@@ -24,6 +25,7 @@
                                         <td>' . $value["id"] . '</td>';
                                 echo '<td>' . $value["cargo"] . '</td>';
                                 echo '<td>' . $value["nombre"] . '</td>';
+                                echo '<td>' . $value["sexo"] . '</td>';
                                 echo '<td>
                                             <div class="btn-group">
                                                 <button class="btn btn-warning btnEditarJerarquia" idJerarquia="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarJerarquia"><i class="fa fa-edit"></i></button>
