@@ -45,7 +45,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $valor = $_GET['id'];
     $tabla = "jerarquia";
     $puesto = "JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN";
-    $puesto2 = "JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES PRESENTE";
+    $puesto2 = "JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES";
     $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
     $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
     $res3 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto2);

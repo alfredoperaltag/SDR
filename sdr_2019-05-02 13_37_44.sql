@@ -35,7 +35,7 @@ INSERT INTO `asesor` (`id`, `nombre`, `noResidentes`, `estado`, `setResidentes`)
 	(3, 'M.D.I.S. LYDIA CUEVAS BRACAMONTES ', 0, 1, 0),
 	(4, 'LIC. ARELI BARCENAS NAVA ', 0, 1, 0),
 	(5, 'LIC. MARTIN ORTEGA OCAMPO ', 0, 1, 0),
-	(6, 'M.C. ENRIQUE MENA SALGADO ', 0, 1, 3),
+	(6, 'M.C. ENRIQUE MENA SALGADO ', 1, 1, 3),
 	(7, 'LIC. MAURICIO FLORES SAAVEDRA ', 0, 1, 0),
 	(8, 'M.A. ANGELITA DIONICIO ABRAJAN ', 0, 1, 0),
 	(9, 'M.A. ERNESTINA ANGUIANO BELLO ', 0, 1, 0),
@@ -54,7 +54,7 @@ INSERT INTO `asesor` (`id`, `nombre`, `noResidentes`, `estado`, `setResidentes`)
 	(22, 'M.T.I. JOSE LUIS ZAGAL ARCE ', 0, 1, 0),
 	(23, 'LIC. JERONIMO RAMIREZ TERRONES ', 0, 1, 0),
 	(24, 'LIC. JUAN CARLOS ALEMAN FRIAS ', 0, 1, 0),
-	(25, 'ING. JORGE EDUARDO ORTEGA LOPEZ ', 3, 1, 3),
+	(25, 'ING. JORGE EDUARDO ORTEGA LOPEZ ', 4, 1, 3),
 	(26, 'ING. FRANCISCO JAVIER RAMIREZ SANDOVAL ', 0, 1, 0),
 	(27, 'M.E. SERGIO RICARDO ZAGAL BARRERA ', 0, 1, 0),
 	(28, 'M.T.I. HEIDI JIMENEZ SILVA ', 0, 1, 0),
@@ -65,7 +65,7 @@ INSERT INTO `asesor` (`id`, `nombre`, `noResidentes`, `estado`, `setResidentes`)
 -- Volcando estructura para tabla sdr.config
 CREATE TABLE IF NOT EXISTS `config` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `valor` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -79,13 +79,13 @@ INSERT INTO `config` (`id`, `nombre`, `valor`) VALUES
 -- Volcando estructura para tabla sdr.directorio
 CREATE TABLE IF NOT EXISTS `directorio` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `noExt` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `noExt` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `depto` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `responsable` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.directorio: ~29 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.directorio: ~31 rows (aproximadamente)
 /*!40000 ALTER TABLE `directorio` DISABLE KEYS */;
 INSERT INTO `directorio` (`id`, `noExt`, `depto`, `responsable`) VALUES
 	(1, '221', 'CONMUTADOR', 'C.CRISTINA BUENO ROMÁN'),
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `jerarquia` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.jerarquia: ~31 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.jerarquia: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `jerarquia` DISABLE KEYS */;
 INSERT INTO `jerarquia` (`id`, `nombre`, `cargo`, `estado`, `sexo`) VALUES
 	(0, 'NA', 'NA', 0, '0'),
@@ -139,29 +139,29 @@ INSERT INTO `jerarquia` (`id`, `nombre`, `cargo`, `estado`, `sexo`) VALUES
 	(2, 'ING. JORGE EDUARDO ORTEGA LOPEZ ', 'JEFE DEL DEPTO. ACADEMICO', 1, 'M'),
 	(3, 'M.E. SERGIO RICARDO ZAGAL BARRERA ', 'SUBDIRECTOR ACADÉMICO', 1, 'M'),
 	(4, 'ING. JORGE EDUARDO ORTEGA LOPEZ ', 'JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN', 1, 'M'),
-	(5, 'M.A. JUANA MIRNA VALLE MORALES', 'JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES PRESENTE', 1, 'F');
+	(5, 'M.A. JUANA MIRNA VALLE MORALES', 'JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES', 1, 'F');
 /*!40000 ALTER TABLE `jerarquia` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.preregistros
 CREATE TABLE IF NOT EXISTS `preregistros` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `noControl` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `noControl` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `carrera` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telefono` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `apellidoP` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `apellidoM` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `telefono` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `apellidoP` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `apellidoM` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `asesorPre` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `noControl` (`noControl`),
   KEY `asesor` (`asesorPre`),
   CONSTRAINT `FK_preregistros_asesor` FOREIGN KEY (`asesorPre`) REFERENCES `asesor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.preregistros: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.preregistros: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `preregistros` DISABLE KEYS */;
 INSERT INTO `preregistros` (`id`, `noControl`, `carrera`, `telefono`, `nombre`, `apellidoP`, `apellidoM`, `asesorPre`) VALUES
-	(1, '15670051', 'Ingenieria en Sistemas Computacionales', '7331089089', 'Yonathan', 'Román', 'Salgado', 25);
+	(2, '15670052', 'Ingenieria Informatica', '7331231212', 'Pedro', 'Perez', 'Martinez', 6);
 /*!40000 ALTER TABLE `preregistros` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.proyecto
@@ -192,21 +192,21 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
 -- Volcando datos para la tabla sdr.proyecto: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `proyecto` DISABLE KEYS */;
 INSERT INTO `proyecto` (`id`, `nombreProyecto`, `nombreEmpresa`, `asesorExt`, `asesorInt`, `revisor1`, `revisor2`, `revisor3`, `suplente`) VALUES
-	(1, 'Sistemas de Residencias del Departamento de Sistemas y Computacion', 'Itiguala', 'Juan Apellido1 Apellido2', 25, 2, 10, 0, 19);
+	(1, 'Sistema de Residencias Para el Departamento de Sistemas y Computación', 'Itiguala', 'Juan Apellido1 Apellido2', 25, 19, 2, 0, 10);
 /*!40000 ALTER TABLE `proyecto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.residentes
 CREATE TABLE IF NOT EXISTS `residentes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `noControl` varchar(12) CHARACTER SET utf8 NOT NULL,
-  `nombre` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `apellidoP` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `apellidoM` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `carrera` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `periodo` varchar(45) CHARACTER SET utf8 NOT NULL,
-  `anio` varchar(45) CHARACTER SET utf8 NOT NULL,
-  `sexo` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `telefono` varchar(11) CHARACTER SET utf8 NOT NULL,
+  `noControl` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `apellidoP` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `apellidoM` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `carrera` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `periodo` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `anio` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `sexo` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `telefono` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `revisionOk` int(1) unsigned NOT NULL DEFAULT '0',
   `tipo_registro` int(11) NOT NULL,
   `proyecto_id` int(10) unsigned NOT NULL,
@@ -215,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `residentes` (
   CONSTRAINT `fk_residentes_proyecto` FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.residentes: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.residentes: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `residentes` DISABLE KEYS */;
 INSERT INTO `residentes` (`id`, `noControl`, `nombre`, `apellidoP`, `apellidoM`, `carrera`, `periodo`, `anio`, `sexo`, `telefono`, `revisionOk`, `tipo_registro`, `proyecto_id`) VALUES
 	(1, '15670051', 'Yonathan', 'Román', 'Salgado', 'Ingenieria en Sistemas Computacionales', 'EJ', '2019', 'M', '7331089089', 0, 1, 1);

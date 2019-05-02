@@ -482,3 +482,29 @@ $(document).on("click", "#btnImpLiberacionR", function () {
         }
     })
 });
+
+/*<!--=====================================
+    CHECKS EDITAR RESIDENTE
+======================================-->*/
+$(document).on("click", ".customCheck1", function () {
+
+    if (document.getElementById("customCheck1").checked == false) {
+        document.getElementById("customCheck2").checked = false;
+        document.getElementById("customCheck3").checked = false;
+    }
+})
+$(document).on("click", ".customCheck2", function () {
+
+    if (document.getElementById("customCheck2").checked) {
+        document.getElementById("customCheck1").checked = true;
+    }else{
+        document.getElementById("customCheck3").checked = false;
+    }
+})
+$(document).on("click", ".customCheck3", function () {
+
+    if (document.getElementById("customCheck3").checked) {
+        document.getElementById("customCheck1").checked = true;
+        document.getElementById("customCheck2").checked = true;
+    }
+})

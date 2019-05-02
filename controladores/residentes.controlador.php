@@ -420,19 +420,31 @@ class ControladorResidentes
                 $resResidente = ModeloResidentes::mdlEditResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
-                    echo '<script>
-				Swal.fire({
-					 type: "success",
-                     title: "¡Exito!",
-                     text: "¡Se actualizo correctamente!",						   
-					showConfirmButton: true,
-					confirmButtonText: "Cerrar"				   
-				}).then((result)=>{
-					if(result.value){
-						window.location = "Residentes";
-					}
-					});
-              </script>';
+            //         echo '<script>
+			// 	Swal.fire({
+			// 		 type: "success",
+            //          title: "¡Exito!",
+            //          text: "¡Se actualizo correctamente!",						   
+			// 		showConfirmButton: true,
+			// 		confirmButtonText: "Cerrar"				   
+			// 	}).then((result)=>{
+			// 		if(result.value){
+			// 			window.location = "Residentes";
+			// 		}
+			// 		});
+            //   </script>';
+            echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se actualizo correctamente!',
+                            showConfirmButton: false,
+                            timer: 1000
+                        }).then((result)=>{
+                            window.location = 'Residentes';
+                            });
+                        </script>";
                 } else {
                     echo '<script>
                     Swal.fire({
@@ -538,19 +550,31 @@ class ControladorResidentes
                 $resResidente = ModeloResidentes::mdlEditResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
-                    echo '<script>
-				Swal.fire({
-					 type: "success",
-                     title: "¡Exito!",
-                     text: "¡Se actualizo correctamente!",						   
-					showConfirmButton: true,
-					confirmButtonText: "Cerrar"				   
-				}).then((result)=>{
-					if(result.value){
-						window.location = "Residentes";
-					}
-					});
-              </script>';
+            //         echo '<script>
+			// 	Swal.fire({
+			// 		 type: "success",
+            //          title: "¡Exito!",
+            //          text: "¡Se actualizo correctamente!",						   
+			// 		showConfirmButton: true,
+			// 		confirmButtonText: "Cerrar"				   
+			// 	}).then((result)=>{
+			// 		if(result.value){
+			// 			window.location = "Residentes";
+			// 		}
+			// 		});
+            //   </script>';
+            echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se actualizo correctamente!',
+                            showConfirmButton: false,
+                            timer: 1000
+                        }).then((result)=>{
+                            window.location = 'Residentes';
+                            });
+                        </script>";
                 } else {
                     echo '<script>
                     Swal.fire({

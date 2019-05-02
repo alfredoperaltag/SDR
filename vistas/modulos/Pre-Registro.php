@@ -20,9 +20,11 @@
                         $item = null;
                         $valor = null;
                         $docentes = ControladorPreRegistro::ctrMostrarResidentesPre($item, $valor);
+                        $c = 0;
                         foreach ($docentes as $key => $value) {
+                            $c++;
                                 echo '<tr>
-                                        <td>' . $value["id"] . '</td>';
+                                        <td>' . $c . '</td>';
                                 echo '<td>' . $value["noControl"] . '</td>';
                                 echo '<td>' . $value["carrera"] . '</td>';
                                 echo '<td>' . $value["nombre"] .' '. $value["apellidoP"] .' '.$value["apellidoM"] .'</td>';
