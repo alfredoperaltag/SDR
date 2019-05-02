@@ -81,6 +81,7 @@ $(document).on("click", ".btnPreRegistroRegister", function () {
         dataType: "json",
         success: function (respuesta) {
             // console.log("R:", respuesta);
+            $("#idResidentePreReR").val(respuesta["id"]);
             $("#nuevoNoControlRPR").val(respuesta["noControl"]);
             $("#nuevoCarreraR").val(respuesta["carrera"]);
             $("#nuevoNombreR").val(respuesta["nombre"]);

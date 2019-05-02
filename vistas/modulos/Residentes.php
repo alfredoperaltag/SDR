@@ -1002,6 +1002,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                     <div class="box-body">
                         <h6>Datos de Alumnos</h6>
                         <div class="form-row align-items-center">
+                        <input type="hidden" id="idResidentePreReR" name="idResidentePreReR">
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>

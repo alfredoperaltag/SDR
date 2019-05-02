@@ -131,7 +131,9 @@ class ControladorPreRegistro
     {
         {
             if (isset($_POST["editarNoControlPR"])) {
-                if ($_POST["editarAsesorPRE"] != "NA" || $_POST["CheckPreRegistroEdit"] == "on") {
+                //TODO PUEDE EDITAR A UN "NA" EN EL PRE-REGISTRO CORREGIR
+                // if ($_POST["editarAsesorPRE"] != "NA" || $_POST["CheckPreRegistroEdit"] == "on") {
+                if ($_POST["editarAsesorPRE"] != "NA") {
                     $tabla = "preregistros";
                     
                     if ($_POST["CheckPreRegistroEdit"] == "on") {
@@ -212,9 +214,9 @@ class ControladorPreRegistro
     BORRAR PRE-REGISTRO DESPUES DEL REGISTRO
     =============================================*/
     public static function ctrBorrarPreRegistroOK(){
-        if (isset($_POST["idPreRegistro"])) {
+        if (isset($_POST["idResidentePreReR"])) {
             $tabla = "preregistros";
-            $datos = $_POST["idPreRegistro"];
+            $datos = $_POST["idResidentePreReR"];
 
             $respuesta = ModeloPreRegistro::mdlBorrarPreRegistro($tabla, $datos);
             if ($respuesta == "ok") {
@@ -227,7 +229,7 @@ class ControladorPreRegistro
                     showConfirmButton: false,
                     timer: 1800
                     }).then((result)=>{
-                            window.location = 'Pre-Registro';
+                            window.location = 'Residentes';
                     });
                 </script>";
             }

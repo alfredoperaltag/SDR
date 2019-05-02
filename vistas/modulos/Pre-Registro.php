@@ -65,6 +65,7 @@
                 <div class="modal-body">
                     <div class="box-body">
                     <div class="form-row align-items-center">
+                    <input type="hidden" id="idResidentePreRe" name="idResidentePreRe">
                         <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                         <div class="col-sm-4 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
