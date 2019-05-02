@@ -36,7 +36,7 @@ class ControladorPreRegistro
                 echo $respuesta;
                 if ($respuesta == "ok") {
                     $tablaDocente = "asesor";
-                    $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $_POST["nuevoAsesorPRE"]);
+                    $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $_POST["nuevoAsesorPRE"]);
                 echo "<script>
                 Swal.fire({
                     position: 'top',
