@@ -199,9 +199,9 @@ class ControladorResidentes
                             window.location = 'Residentes';
                             });
                         </script>";
-            //   TODO: RESTAR SOLO AL ASESOR
+            //    RESTAR SOLO AL ASESOR
                 $tablaDocente = "asesor";
-              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
+              $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
 
               
                 } else {
@@ -685,9 +685,9 @@ class ControladorResidentes
                         $borrarPreRegistro->ctrBorrarPreRegistroOK();
 
 
-            //   TODO: RESTAR SOLO AL ASESOR
-                $tablaDocente = "asesor";
-              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
+            //  RESTAR SOLO AL ASESOR   NO TENGO IDEA QUE PASE
+                // $tablaDocente = "asesor";
+            //   $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
 
               
                 } else {

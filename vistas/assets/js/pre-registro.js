@@ -15,7 +15,7 @@ $(document).on("click", ".btnEditarPreRegistro", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            // console.log("OK: ", respuesta);
+            // console.table(respuesta);
             $("#idPreRegistroEdit").val(respuesta["id"]);
             $("#editarNoControlPR").val(respuesta["noControl"]);
             $("#editarCarreraPR").val(respuesta["carrera"]);
@@ -23,6 +23,11 @@ $(document).on("click", ".btnEditarPreRegistro", function () {
             $("#editarApellidoPPR").val(respuesta["apellidoP"]);
             $("#editarApellidoMPR").val(respuesta["apellidoM"]);
             $("#editarAsesorPRE").val(respuesta["asesorPre"]);
+
+            document.getElementById("CheckPreRegistroEdit").checked = false;
+            document.getElementById('AsesorPreRegistroEditView').style.display='block';
+            document.getElementById('AlertAsesorPreRegistroEditView').style.display='block';
+
         }
     });
 })
@@ -31,8 +36,6 @@ $(document).on("click", ".btnEditarPreRegistro", function () {
 MOSTRAR/OCULTAR INPUT ASESOR EN EDITAR PRE-REGISTRO
 ======================================-->*/
 $(document).on("click", ".CheckPreRegistroEdit", function () {
-    var CheckPreRegistroEdit = $(this).attr("checked");
-    console.log("Check: ", CheckPreRegistroEdit);
     if (document.getElementById("CheckPreRegistroEdit").checked) {
         document.getElementById('AsesorPreRegistroEditView').style.display='none';
         document.getElementById('AlertAsesorPreRegistroEditView').style.display='none';
@@ -40,6 +43,7 @@ $(document).on("click", ".CheckPreRegistroEdit", function () {
     }else{
         document.getElementById('AsesorPreRegistroEditView').style.display='block';
         document.getElementById('AlertAsesorPreRegistroEditView').style.display='block';
+        $('#editarAsesorPRE').prop("required", true);
     }
 })
 

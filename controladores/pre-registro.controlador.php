@@ -119,7 +119,7 @@ class ControladorPreRegistro
     public static function ctrMostrarInfoPreRegistro($item, $valor)
     {
         $tabla = "preregistros";
-        $respuesta = ModeloPreRegistro::MdlMostrarDocentes($tabla, $item, $valor);
+        $respuesta = ModeloPreRegistro::MdlMostrarInfoParaEditarPreRegistro($tabla, $item, $valor);
         return $respuesta;
     }
 
@@ -131,10 +131,13 @@ class ControladorPreRegistro
     {
         {
             if (isset($_POST["editarNoControlPR"])) {
-                //TODO PUEDE EDITAR A UN "NA" EN EL PRE-REGISTRO CORREGIR
-                // if ($_POST["editarAsesorPRE"] != "NA" || $_POST["CheckPreRegistroEdit"] == "on") {
-                if ($_POST["editarAsesorPRE"] != "NA") {
+                if ($_POST["editarAsesorPRE"] != "NA" || $_POST["CheckPreRegistroEdit"] == "on") {
+                // if ($_POST["editarAsesorPRE"] != "NA") {
                     $tabla = "preregistros";
+                    $item = 'id';
+                    $valor = $_POST['idPreRegistroEdit'];
+                    $DocenteAnterior = ControladorPreRegistro::ctrMostrarInfoPreRegistro($item, $valor);
+                    
                     
                     if ($_POST["CheckPreRegistroEdit"] == "on") {
                         $aux = 1;
@@ -153,15 +156,18 @@ class ControladorPreRegistro
                     );
                     $respuesta = ModeloPreRegistro::mdlEditarPreRegistro($tabla, $datos);
                     if ($respuesta == "ok") {
+                        $tablaDocente = "asesor";
+                    $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $_POST["editarAsesorPRE"]);
+                    $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $DocenteAnterior['asesorPre']);
                         echo "<script>
                         Swal.fire({
                             position: 'top',
                             type: 'success',
                             title: '¡Actualizado Correctamente!',
                             showConfirmButton: false,
-                            timer: 1800
+                            timer: 1100
                         }).then((result)=>{
-                                    window.location = 'Pre-Registro';
+                                 window.location = 'Pre-Registro';
                             });
                         </script>";
                     }
