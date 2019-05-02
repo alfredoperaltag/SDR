@@ -361,7 +361,7 @@ $(document).on("click", "#btnImprimirAsesores", function () {
 
 
 /*<!--=====================================
-IMPRIMIR Liberacion
+IMPRIMIR LIBERACION
 ======================================-->*/
 $(document).on("click", "#btnImprimirLiberacion", function () {
     console.log("idResidenteDic: " + idResidente);
@@ -427,7 +427,7 @@ $(document).on("click", "#btnImprimirSinodales", function () {
 });
 
 /*<!--=====================================
-IMPRIMIR JURADO SELECCIONADO
+IMPRIMIR JURADO SELECCIONADO TESIS
 ======================================-->*/
 $(document).on("click", "#btnImpJurado", function () {
     // console.log("J=  " + idResidente);
@@ -456,7 +456,7 @@ $(document).on("click", "#btnImpJurado", function () {
 
 
 /*<!--=====================================
-IMPRIMIR LIBERACION
+IMPRIMIR LIBERACION TESIS
 ======================================-->*/
 $(document).on("click", "#btnImpLiberacionR", function () {
     // console.log("J=  " + idResidente);
@@ -464,7 +464,7 @@ $(document).on("click", "#btnImpLiberacionR", function () {
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
-        progressSteps: ['1', '2']
+        progressSteps: ['1', '2', '3']
     }).queue([{
             input: 'text',
             inputValue: fecha2,
@@ -475,6 +475,20 @@ $(document).on("click", "#btnImpLiberacionR", function () {
             title: 'Documento',
             text: 'Introduzca el numero de documento',
             input: 'text'
+        },
+        {
+            title: 'opción de documento',
+            text: 'Seleccione una de las dos opciones',
+            input: 'radio',
+            inputOptions: {
+                'Aceptado': 'TITULACIÓN INTEGRAL OPCIÓN TESIS PROFESIONAL',
+                'Rechazado': 'TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'
+            },
+            inputValidator: function (result) {
+                if (!result) {
+                    return 'Necesita seleccionar una opción!';
+                }
+            }
         }
     ]).then((result) => {
         if (result.value) {
