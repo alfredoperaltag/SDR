@@ -222,13 +222,13 @@ $pdf->Ln(14.5);
 
 $pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(0, 4, utf8_decode('Por este medio le informo que ha sido liberado el siguiente proyecto para la Titulación integral:'), 0, 0, 'J');
-$pdf->Ln(8);
+$pdf->Ln(7.3);
 
-$pdf->SetWidths(array(48.5, 115));
-$pdf->Row(array('a) Nombre del Egresado:', utf8_decode(strtoupper($nombre . 'TÉCNICÁ'))));
-$pdf->Row(array('b) Carrera:', utf8_decode(strtoupper($carrera))));
-$pdf->Row(array('c) No. de Control:', utf8_decode(strtoupper($numeroControl))));
-$pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(strtoupper($proyecto))));
-$pdf->Row(array('e) Producto:', utf8_decode(strtoupper('INFORME TÉCNICO DE RESIDENCIA PROFESIONAL'))));
+$pdf->SetWidths(array(43.8, 120));
+$pdf->Row(array('a) Nombre del Egresado:', utf8_decode(mb_strtoupper($nombre))));
+$pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))));
+$pdf->Row(array('c) No. de Control:', utf8_decode(mb_strtoupper($numeroControl))));
+$pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(mb_strtoupper($proyecto))));
+$pdf->Row(array('e) Producto:', utf8_decode(mb_strtoupper('INFORME TÉCNICO DE RESIDENCIA PROFESIONAL'))));
 
 $pdf->Output('I', 'Liberación de Residencias Profesionales.pdf', 'D');

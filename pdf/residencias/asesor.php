@@ -158,7 +158,7 @@ $pdf->Cell(0, 0, utf8_decode('Asesor interno de'), 0, 0, 'R');
 $pdf->Ln(5);
 $pdf->Cell(0, 0, utf8_decode('Residencias Profesionales.'), 0, 0, 'R');
 $pdf->Ln(16);
-$pdf->Cell(0, 0, utf8_decode('C. ' . strtoupper($asesorInterno)), 0, 0, 'L');
+$pdf->Cell(0, 0, utf8_decode('C. ' . mb_strtoupper($asesorInterno)), 0, 0, 'L');
 $pdf->Ln(4);
 $pdf->Cell(0, 0, utf8_decode('CATEDRÁTICO DEL I.T. DE IGUALA,'), 0, 0, 'L');
 $pdf->Ln(4);
@@ -172,11 +172,11 @@ $pdf->Ln(6);
 
 // $pdf->SetFont('Arial', '', 10);
 $pdf->SetWidths(array(48.5, 134));
-$pdf->Row(array('a) Nombre del Residente:', utf8_decode(strtoupper($nombre))));
-$pdf->Row(array('b) Carrera:', utf8_decode(strtoupper($carrera))));
-$pdf->Row(array('c) Nombre del Proyecto:', utf8_decode(strtoupper($proyecto))));
-$pdf->Row(array(utf8_decode('d) Periodo de Realización'), utf8_decode(strtoupper($periodo))));
-$pdf->Row(array('e) Empresa', utf8_decode(strtoupper($empresa))));
+$pdf->Row(array('a) Nombre del Residente:', utf8_decode(mb_strtoupper($nombre))));
+$pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))));
+$pdf->Row(array('c) Nombre del Proyecto:', utf8_decode(mb_strtoupper($proyecto))));
+$pdf->Row(array(utf8_decode('d) Periodo de Realización'), utf8_decode(mb_strtoupper($periodo))));
+$pdf->Row(array('e) Empresa', utf8_decode(mb_strtoupper($empresa))));
 $pdf->Ln(14);
 
 // $pdf->SetFont('Arial', '', 10);
@@ -191,7 +191,7 @@ $pdf->Ln(18.5);
 
 $pdf->Cell(0, 0, utf8_decode('A t e n t a m e n t e.'), 0, 0, 'C');
 $pdf->Ln(8);
-$pdf->Cell(0, 0, utf8_decode(strtoupper($jefe)), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($jefe)), 0, 0, 'C');
 $pdf->Ln(4.2);
 $pdf->Cell(0, 0, utf8_decode('JEFE DEL DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
 $pdf->Ln(29);

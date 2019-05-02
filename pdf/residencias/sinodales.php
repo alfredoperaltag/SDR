@@ -121,7 +121,7 @@ $pdf->Ln(8);
 $pdf->Ln(4);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Helvetica', 'B', '8');
-// $pdf->Cell(0, 0, utf8_decode('C. ' . strtoupper($asesorInterno)), 0, 0, 'L');
+// $pdf->Cell(0, 0, utf8_decode('C. ' . mb_strtoupper($asesorInterno)), 0, 0, 'L');
 $pdf->Cell(0, 0, utf8_decode('JEFA DE LA DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
 $pdf->Ln(4);
 $pdf->Cell(0, 0, utf8_decode('P R E S E N T E .'), 0, 0, 'L');
@@ -131,8 +131,8 @@ $pdf->Ln(12);
 
 $pdf->SetFont('Helvetica', '', '8');
 $text = "Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del 
-<C. " . strtoupper($nombre) . ",> que presenta su protocolo para su <TITULACIÓN INTEGRAL,> 
-el día <" . strtoupper($fechaTitulacion) . "> del año en curso, a las <10:00 hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
+<C. " . mb_strtoupper($nombre) . ",> que presenta su protocolo para su <TITULACIÓN INTEGRAL,> 
+el día <" . mb_strtoupper($fechaTitulacion) . "> del año en curso, a las <10:00 hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
 $pdf->WriteText(utf8_decode($text));
 
 
