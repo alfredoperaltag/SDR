@@ -81,9 +81,14 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     }else{
         $pdf->Cell(100, 4, utf8_decode($res3['nombre']), 0, 1, 'L');
     }
-    $pdf->Cell(17);
-    // TODO OPCION DEPENDE DEL GENERO
-    $pdf->Cell(100, 4, utf8_decode('JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES'), 0, 1, 'L');
+    // OPCION DEPENDE DEL GENERO
+    if ($res3['sexo'] == 'F') {
+        $pdf->Cell(17);
+        $pdf->Cell(100, 4, utf8_decode('JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES'), 0, 1, 'L');
+    }else{
+        $pdf->Cell(17);
+        $pdf->Cell(100, 4, utf8_decode('JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES'), 0, 1, 'L');
+    }
     $pdf->Cell(17);
     $pdf->Cell(100, 4, utf8_decode('PRESENTE'), 0, 1, 'L');
     $pdf->Ln(10); //CELDA DE ESPACIO
@@ -147,8 +152,13 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Ln(15);
     $pdf->Cell(19);
     $pdf->Cell(158, 4, utf8_decode($res2['nombre']), 0, 1, 'L');
-    $pdf->Cell(19);
-    $pdf->Cell(158, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
+    if ($res2['sexo'] == 'F') {
+        $pdf->Cell(19);
+        $pdf->Cell(158, 4, utf8_decode('JEFA DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
+    }else{
+        $pdf->Cell(19);
+        $pdf->Cell(158, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
+    }
     
     $pdf->Ln(10);
     $pdf->SetFont('Arial', '', '9');

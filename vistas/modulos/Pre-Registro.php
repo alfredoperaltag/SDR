@@ -200,6 +200,11 @@ MODAL EDITAR PRE-REGISTRO
                             </div>
                         </div>
                     </div>
+                    <br>
+                                <div id="AlertAsesorPreRegistroEditView" style="display:block;" class="alert alert-dismissible alert-danger text-center">
+                                <!-- <button type="button" class="text-center" data-dismiss="alert"></button> -->
+                                En el caso de no existir un docente por el momento o uno diferente, mejor espera que un Administrador edite el registro.
+                                </div>
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div id="AsesorPreRegistroEditView" style="display:block;" class="form-group">
                             <label class="col-form-label">Asesor Interno</label>
@@ -210,10 +215,6 @@ MODAL EDITAR PRE-REGISTRO
                                 $verDocente->ctrMostrarTodosLosDocesentes();
                                 ?>
                             </select>
-                        </div>
-                        <div id="AlertAsesorPreRegistroEditView" style="display:block;" class="alert alert-dismissible alert-danger">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        En el caso de no existir un docente por el momento o uno diferente, mejor espera que un Administrador edite el registro.
                         </div>
                     </div>
                     <!--=====================================
