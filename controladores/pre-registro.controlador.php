@@ -119,7 +119,7 @@ class ControladorPreRegistro
     public static function ctrMostrarInfoPreRegistro($item, $valor)
     {
         $tabla = "preregistros";
-        $respuesta = ModeloPreRegistro::MdlMostrarDocentes($tabla, $item, $valor);
+        $respuesta = ModeloPreRegistro::MdlMostrarInfoParaEditarPreRegistro($tabla, $item, $valor);
         return $respuesta;
     }
 
@@ -132,7 +132,12 @@ class ControladorPreRegistro
         {
             if (isset($_POST["editarNoControlPR"])) {
                 if ($_POST["editarAsesorPRE"] != "NA" || $_POST["CheckPreRegistroEdit"] == "on") {
+                // if ($_POST["editarAsesorPRE"] != "NA") {
                     $tabla = "preregistros";
+                    $item = 'id';
+                    $valor = $_POST['idPreRegistroEdit'];
+                    $DocenteAnterior = ControladorPreRegistro::ctrMostrarInfoPreRegistro($item, $valor);
+                    
                     
                     if ($_POST["CheckPreRegistroEdit"] == "on") {
                         $aux = 1;
@@ -151,15 +156,18 @@ class ControladorPreRegistro
                     );
                     $respuesta = ModeloPreRegistro::mdlEditarPreRegistro($tabla, $datos);
                     if ($respuesta == "ok") {
+                        $tablaDocente = "asesor";
+                    $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $_POST["editarAsesorPRE"]);
+                    $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $DocenteAnterior['asesorPre']);
                         echo "<script>
                         Swal.fire({
                             position: 'top',
                             type: 'success',
                             title: '¡Actualizado Correctamente!',
                             showConfirmButton: false,
-                            timer: 1800
+                            timer: 1100
                         }).then((result)=>{
-                                    window.location = 'Pre-Registro';
+                                 window.location = 'Pre-Registro';
                             });
                         </script>";
                     }
@@ -212,9 +220,9 @@ class ControladorPreRegistro
     BORRAR PRE-REGISTRO DESPUES DEL REGISTRO
     =============================================*/
     public static function ctrBorrarPreRegistroOK(){
-        if (isset($_POST["idPreRegistro"])) {
+        if (isset($_POST["idResidentePreReR"])) {
             $tabla = "preregistros";
-            $datos = $_POST["idPreRegistro"];
+            $datos = $_POST["idResidentePreReR"];
 
             $respuesta = ModeloPreRegistro::mdlBorrarPreRegistro($tabla, $datos);
             if ($respuesta == "ok") {
@@ -227,7 +235,7 @@ class ControladorPreRegistro
                     showConfirmButton: false,
                     timer: 1800
                     }).then((result)=>{
-                            window.location = 'Pre-Registro';
+                            window.location = 'Residentes';
                     });
                 </script>";
             }

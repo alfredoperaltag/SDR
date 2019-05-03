@@ -20,9 +20,11 @@
                         $item = null;
                         $valor = null;
                         $docentes = ControladorPreRegistro::ctrMostrarResidentesPre($item, $valor);
+                        $c = 0;
                         foreach ($docentes as $key => $value) {
+                            $c++;
                                 echo '<tr>
-                                        <td>' . $value["id"] . '</td>';
+                                        <td>' . $c . '</td>';
                                 echo '<td>' . $value["noControl"] . '</td>';
                                 echo '<td>' . $value["carrera"] . '</td>';
                                 echo '<td>' . $value["nombre"] .' '. $value["apellidoP"] .' '.$value["apellidoM"] .'</td>';
@@ -65,6 +67,7 @@
                 <div class="modal-body">
                     <div class="box-body">
                     <div class="form-row align-items-center">
+                    <input type="hidden" id="idResidentePreRe" name="idResidentePreRe">
                         <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                         <div class="col-sm-4 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
@@ -217,7 +220,7 @@ MODAL EDITAR PRE-REGISTRO
                     PIE DEL MODAL
                     ======================================-->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                        <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                     <?php

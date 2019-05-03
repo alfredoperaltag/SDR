@@ -188,6 +188,16 @@ class ModeloResidentes
 	=============================================*/
     static public function mdlRestarResidente($tabla, $dato)
     {
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET noResidentes=noResidentes-1 WHERE id = :id");
+        $stmt->execute(['id' => $dato]);
+        return $stmt->fetch();
+    }
+
+    /*=============================================
+	  SUMAR RESIDENTES A LOS ASESORES
+	=============================================*/
+    static public function mdlSumarResidente($tabla, $dato)
+    {
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET noResidentes=noResidentes+1 WHERE id = :id");
         $stmt->execute(['id' => $dato]);
         return $stmt->fetch();

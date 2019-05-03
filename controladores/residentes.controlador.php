@@ -199,9 +199,9 @@ class ControladorResidentes
                             window.location = 'Residentes';
                             });
                         </script>";
-            //   TODO: RESTAR SOLO AL ASESOR
+            //    RESTAR SOLO AL ASESOR
                 $tablaDocente = "asesor";
-              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
+              $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
 
               
                 } else {
@@ -420,19 +420,31 @@ class ControladorResidentes
                 $resResidente = ModeloResidentes::mdlEditResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
-                    echo '<script>
-				Swal.fire({
-					 type: "success",
-                     title: "¡Exito!",
-                     text: "¡Se actualizo correctamente!",						   
-					showConfirmButton: true,
-					confirmButtonText: "Cerrar"				   
-				}).then((result)=>{
-					if(result.value){
-						window.location = "Residentes";
-					}
-					});
-              </script>';
+            //         echo '<script>
+			// 	Swal.fire({
+			// 		 type: "success",
+            //          title: "¡Exito!",
+            //          text: "¡Se actualizo correctamente!",						   
+			// 		showConfirmButton: true,
+			// 		confirmButtonText: "Cerrar"				   
+			// 	}).then((result)=>{
+			// 		if(result.value){
+			// 			window.location = "Residentes";
+			// 		}
+			// 		});
+            //   </script>';
+            echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se actualizo correctamente!',
+                            showConfirmButton: false,
+                            timer: 1000
+                        }).then((result)=>{
+                            window.location = 'Residentes';
+                            });
+                        </script>";
                 } else {
                     echo '<script>
                     Swal.fire({
@@ -538,19 +550,31 @@ class ControladorResidentes
                 $resResidente = ModeloResidentes::mdlEditResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
-                    echo '<script>
-				Swal.fire({
-					 type: "success",
-                     title: "¡Exito!",
-                     text: "¡Se actualizo correctamente!",						   
-					showConfirmButton: true,
-					confirmButtonText: "Cerrar"				   
-				}).then((result)=>{
-					if(result.value){
-						window.location = "Residentes";
-					}
-					});
-              </script>';
+            //         echo '<script>
+			// 	Swal.fire({
+			// 		 type: "success",
+            //          title: "¡Exito!",
+            //          text: "¡Se actualizo correctamente!",						   
+			// 		showConfirmButton: true,
+			// 		confirmButtonText: "Cerrar"				   
+			// 	}).then((result)=>{
+			// 		if(result.value){
+			// 			window.location = "Residentes";
+			// 		}
+			// 		});
+            //   </script>';
+            echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se actualizo correctamente!',
+                            showConfirmButton: false,
+                            timer: 1000
+                        }).then((result)=>{
+                            window.location = 'Residentes';
+                            });
+                        </script>";
                 } else {
                     echo '<script>
                     Swal.fire({
@@ -661,9 +685,9 @@ class ControladorResidentes
                         $borrarPreRegistro->ctrBorrarPreRegistroOK();
 
 
-            //   TODO: RESTAR SOLO AL ASESOR
-                $tablaDocente = "asesor";
-              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
+            //  RESTAR SOLO AL ASESOR   NO TENGO IDEA QUE PASE
+                // $tablaDocente = "asesor";
+            //   $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
 
               
                 } else {

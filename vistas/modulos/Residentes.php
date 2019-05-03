@@ -563,17 +563,17 @@ EDITAR RESIDENTE
                         <div id="CheckResidenciasView" style="display:none;" class="col-sm-8">
                             <label class="col-form-label mr-4">Revisiones:</label>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck1" class="custom-control-input"
+                                <input type="checkbox" name="customCheck1" id="customCheck1" class="custom-control-input customCheck1"
                                     id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">Revision #1</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck2" class="custom-control-input"
+                                <input type="checkbox" name="customCheck2" id="customCheck2" class="custom-control-input customCheck2"
                                     id="customCheck2">
                                 <label class="custom-control-label" for="customCheck2">Revision #2</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck3" class="custom-control-input"
+                                <input type="checkbox" name="customCheck3" id="customCheck3" class="custom-control-input customCheck3"
                                     id="customCheck3">
                                 <label class="custom-control-label" for="customCheck3">Revision #3</label>
                             </div>
@@ -953,9 +953,11 @@ SELECIONAR RESIDENTE PARE REGISTRO DE PRE-REGISTRO
                                 $item = null;
                                 $valor = null;
                                 $docentes = ControladorPreRegistro::ctrMostrarResidentesPre($item, $valor);
+                                $c = 0;
                                 foreach ($docentes as $key => $value) {
+                                    $c++;
                                         echo '<tr>
-                                                <td>' . $value["id"] . '</td>';
+                                                <td>' . $c . '</td>';
                                         echo '<td>' . $value["noControl"] . '</td>';
                                         echo '<td>' . $value["nombre"] .' '. $value["apellidoP"] .' '.$value["apellidoM"] .'</td>';
                                                 echo '<td>' . $value["asesorR"] . '</td>';
@@ -1002,6 +1004,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                     <div class="box-body">
                         <h6>Datos de Alumnos</h6>
                         <div class="form-row align-items-center">
+                        <input type="hidden" id="idResidentePreReR" name="idResidentePreReR">
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>

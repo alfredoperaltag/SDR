@@ -55,7 +55,7 @@ class ModeloPreRegistro
     /*=============================================
 	MOSTRAR INFO PARA EDITAR
 	=============================================*/
-    static public function MdlMostrarDocentes($tabla, $item, $valor)
+    static public function MdlMostrarInfoParaEditarPreRegistro($tabla, $item, $valor)
     {
 
         if ($item != null) {

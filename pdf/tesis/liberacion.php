@@ -45,7 +45,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $valor = $_GET['id'];
     $tabla = "jerarquia";
     $puesto = "JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN";
-    $puesto2 = "JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES PRESENTE";
+    $puesto2 = "JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES";
     $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
     $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
     $res3 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto2);
@@ -82,6 +82,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(100, 4, utf8_decode($res3['nombre']), 0, 1, 'L');
     }
     $pdf->Cell(17);
+    // TODO OPCION DEPENDE DEL GENERO
     $pdf->Cell(100, 4, utf8_decode('JEFA DE LA DIVISION DE ESTUDIOS PROFESIONALES'), 0, 1, 'L');
     $pdf->Cell(17);
     $pdf->Cell(100, 4, utf8_decode('PRESENTE'), 0, 1, 'L');
@@ -107,7 +108,6 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(118, 4, utf8_decode(strtoupper($res['carrera'])), 1, 1, 'L');
     
     
-    // NOTE: CELDAS CON LA MISMA ALTURA
     $pdf->Cell(59);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
@@ -118,7 +118,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $height= $H-$y;
     $pdf->SetXY($x -40 , $y);
     $pdf->MultiCell(40, $height, utf8_decode('d) Nombre del proyecto: '), 1, 'L');
-    // NOTE: FIN
+    
     $pdf->Cell(59);
     $x = $pdf->GetX();
     $y = $pdf->GetY();

@@ -14,8 +14,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- TODO: Hacer la alineacion del texto y el boton de editar -->
-
                         <?php
                         $VerResidentes = new ControladorDirectorio();
                         $VerResidentes->ctrMostrarDirectorio();
