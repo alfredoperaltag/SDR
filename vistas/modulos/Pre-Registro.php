@@ -66,7 +66,11 @@
                 ======================================-->
                 <div class="modal-body">
                     <div class="box-body">
+                    <div id="AlertAsesorPreRegistroEditView" style="display:block;" class="alert alert-dismissible alert-danger text-center">
+                                <h6>¡Cuidado! Revisa que tus datos esten escritos correctamente antes de guardar.</h6>
+                            </div>
                     <div class="form-row align-items-center">
+                            
                     <input type="hidden" id="idResidentePreRe" name="idResidentePreRe">
                         <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                         <div class="col-sm-4 my-1">
@@ -78,9 +82,9 @@
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="nuevoCarreraPR" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas
+                                    <option value="Ingeniería en Sistemas Computacionales">Ingenieria en Sistemas
                                         Computacionales</option>
-                                    <option value="Ingenieria Informatica">Ingenieria Informatica</option>
+                                    <option value="Ingeniería Informática">Ingenieria Informatica</option>
                                 </select>
                             </div>
                             <!-- ENTRADA PARA TELEFONO -->
@@ -167,9 +171,9 @@ MODAL EDITAR PRE-REGISTRO
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="editarCarreraPR" id="editarCarreraPR" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas
+                                    <option value="Ingeniería en Sistemas Computacionales">Ingenieria en Sistemas
                                         Computacionales</option>
-                                    <option value="Ingenieria Informatica">Ingenieria Informatica</option>
+                                    <option value="Ingeniería Informática">Ingenieria Informatica</option>
                                 </select>
                             </div>
                             </div>

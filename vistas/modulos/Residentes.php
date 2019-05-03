@@ -81,9 +81,8 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="nuevoCarrera" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas
-                                        Computacionales</option>
-                                    <option value="Ingenieria Informatica">Ingenieria Informatica</option>
+                                    <option value="Ingeniería en Sistemas Computacionales">Ingeniería en Sistemas Computacionales</option>
+                                    <option value="Ingeniería Informática">Ingeniería Informática</option>
                                 </select>
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->
@@ -279,9 +278,8 @@ TESIS PROFESIONAL
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="nuevoCarrera" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas
-                                        Computacionales</option>
-                                    <option value="Ingenieria Informatica">Ingenieria Informatica</option>
+                                    <option value="Ingeniería en Sistemas Computacionales">Ingeniería en Sistemas Computacionales</option>
+                                    <option value="Ingeniería Informática">Ingeniería Informática</option>
                                 </select>
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->
@@ -414,16 +412,16 @@ TESIS PROFESIONAL
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA SUPLENTE -->
-                        <div class="col-sm-6 my-1">
+                        <!-- <div class="col-sm-6 my-1">
                             <label class="col-form-label">Suplente</label>
                             <select class="custom-select" name="nuevoSuplente">
                                 <option value="">Selecionar suplente</option>
                                 <?php
-                                $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes2();
+                                // $verDocente = new ControladorResidentes();
+                                // $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!--=====================================
@@ -484,8 +482,8 @@ EDITAR RESIDENTE
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="editCarrera" id="editCarrera" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="ISC">Ingenieria en Sistemas Computacionales</option>
-                                    <option value="II">Ingenieria Informatica</option>
+                                    <option value="ISC">Ingeniería en Sistemas Computacionales</option>
+                                    <option value="II">Ingeniería Informática</option>
                                 </select>
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->
@@ -652,7 +650,7 @@ EDITAR RESIDENTE
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA REVISOR #3 -->
-                        <div class="col-sm-6 my-1">
+                        <div class="col-sm-6 my-1" id="ViewRevisor3" style="display:block;">
                             <label class="col-form-label">Revisor #3</label>
                             <select class="custom-select" name="editRevisor3" id="editRevisor3" required>
                                 <option value="">Selecionar revisor</option>
@@ -663,7 +661,7 @@ EDITAR RESIDENTE
                             </select>
                         </div>
                         <!-- ENTRADA PARA SUPLENTE -->
-                        <div class="col-sm-6 my-1">
+                        <div class="col-sm-6 my-1" id="ViewSuplente" style="display:block;">
                             <label class="col-form-label">Suplente</label>
                             <select class="custom-select" name="editSuplente" id="editSuplente" required>
                                 <option value="">Selecionar suplente</option>
@@ -799,11 +797,11 @@ INFORMACION RESIDENTE
                     </div>
                 </div>
                 <div class="form-row align-items-center">
-                    <div class="col-sm-6 my-1">
+                    <div class="col-sm-6 my-1" id="ViewRevisor32" style="display:block;">
                         <label for="example-text-input" class="col-form-label">Revisor #3</label>
                         <input class="form-control" type="text" id="InfoRevisor3" readonly>
                     </div>
-                    <div class="col-sm-6 my-1">
+                    <div class="col-sm-6 my-1" id="ViewSuplente2" style="display:block;">
                         <label for="example-text-input" class="col-form-label">Suplente</label>
                         <input class="form-control" type="text" id="InfoSuplente" readonly>
                     </div>
@@ -914,9 +912,9 @@ IMPRIMIR DOCUMENTOS TESIS
                     </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpJurado">Jurado Seleccionado</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImpLiberacionR">Liberacion por revisores</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImpLiberacion">Liberacion</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpAsesorT">Oficio asignación de asesor</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpJurado">Jurado seleccionado</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImpLiberacionR">Liberación</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -1008,17 +1006,16 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control bg-warning" type="number" name="nuevoNoControlRPR" id="nuevoNoControlRPR"
+                                <input class="form-control" style="background-color:#FDFFA1" type="number" name="nuevoNoControlRPR" id="nuevoNoControlRPR"
                                     placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
                                 <label class="col-form-label">Carrera</label>
-                                <select class="custom-select bg-warning" name="nuevoCarreraR" id="nuevoCarreraR" required>
+                                <select class="custom-select" style="background-color:#FDFFA1" name="nuevoCarreraR" id="nuevoCarreraR" required>
                                     <option value="">Selecionar carrera</option>
-                                    <option value="Ingenieria en Sistemas Computacionales">Ingenieria en Sistemas
-                                        Computacionales</option>
-                                    <option value="Ingenieria Informatica">Ingenieria Informatica</option>
+                                    <option value="Ingeniería en Sistemas Computacionales">Ingeniería en Sistemas Computacionales</option>
+                                    <option value="Ingeniería Informática">Ingeniería Informática</option>
                                 </select>
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR PERIODO -->
@@ -1052,19 +1049,19 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control bg-warning" type="text" name="nuevoNombreR" id="nuevoNombreR" placeholder="Nombre" required
+                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoNombreR" id="nuevoNombreR" placeholder="Nombre" required
                                 autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control bg-warning" type="text" name="nuevoApellidoPR" id="nuevoApellidoPR" placeholder="Apellido Paterno"
+                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoApellidoPR" id="nuevoApellidoPR" placeholder="Apellido Paterno"
                                 required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control bg-warning" type="text" name="nuevoApellidoMR" id="nuevoApellidoMR" placeholder="Apellido Materno"
+                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoApellidoMR" id="nuevoApellidoMR" placeholder="Apellido Materno"
                                 required autocomplete="off">
                         </div>
                     </div>
@@ -1081,7 +1078,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control bg-warning" type="tel" name="nuevoTelefonoR" id="nuevoTelefonoRR" placeholder="Telefono"
+                            <input class="form-control" style="background-color:#FDFFA1" type="tel" name="nuevoTelefonoR" id="nuevoTelefonoRR" placeholder="Telefono"
                                 autocomplete="off">
                         </div>
                     </div>
@@ -1111,7 +1108,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
-                            <select class="custom-select bg-warning" name="nuevoAsesorIntR" id="nuevoAsesorIntR" required>
+                            <select class="custom-select" style="background-color:#FDFFA1" name="nuevoAsesorIntR" id="nuevoAsesorIntR" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
