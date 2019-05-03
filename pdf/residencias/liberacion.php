@@ -2,6 +2,8 @@
 require('../FPDF/fpdf.php');
 require_once "../../controladores/jerarquia.controlador.php";
 require_once "../../modelos/jerarquia.modelo.php";
+require_once "../../controladores/residentes.controlador.php";
+require_once "../../modelos/residentes.modelo.php";
 
 class PDF extends FPDF
 {
@@ -103,7 +105,7 @@ class PDF extends FPDF
         //Draw the cells of the row
         for ($i = 0; $i < count($data); $i++) {
             $w = $this->widths[$i];
-            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'J';
             //Save the current position
             $x = $this->GetX();
             $y = $this->GetY();
@@ -184,8 +186,7 @@ $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
 $nombre = $respuesta["nombre"];
 $carrera = $respuesta["carrera"];
 $numeroControl = $respuesta["noControl"];
-$proyecto = $respuesta["proyecto"];
-$producto = $respuesta["nombreEmpresa"];
+$proyecto = $respuesta["nombreProyecto"];
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
@@ -224,10 +225,10 @@ $pdf->Cell(0, 4, utf8_decode('Por este medio le informo que ha sido liberado el 
 $pdf->Ln(8);
 
 $pdf->SetWidths(array(48.5, 134));
-$pdf->Row(array('a) Nombre del Egresado:', utf8_decode(strtoupper($nombre))));
+$pdf->Row(array('a) Nombre del Egresado:', utf8_decode(strtoupper($nombre . 'TÉCNICO'))));
 $pdf->Row(array('b) Carrera:', utf8_decode(strtoupper($carrera))));
-$pdf->Row(array('c) No. de Control:', utf8_decode(strtoupper($proyecto))));
-$pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(strtoupper($periodo))));
-$pdf->Row(array('e) Producto:', utf8_decode(strtoupper($empresa))));
+$pdf->Row(array('c) No. de Control:', utf8_decode(strtoupper($numeroControl))));
+$pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(strtoupper($proyecto))));
+$pdf->Row(array('e) Producto:', utf8_decode(strtoupper('INFORME TÉCNICO DE RESIDENCIA PROFESIONAL'))));
 
 $pdf->Output('I', 'Liberación de Residencias Profesionales.pdf', 'D');
