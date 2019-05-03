@@ -12,7 +12,7 @@
             }
             $cargarConfig = ControladorConfig::ctrCargarConfig("configPreRegistro");
             
-            if ($cargarConfig["valor"] == "on") {
+            if ($cargarConfig["valor"] == "on" && $_SESSION['perfil'] == "Administrador") {
                 echo '<button class="btn btn-primary btn-xs mb-3 ml-5" data-toggle="modal" data-target="#modalPreRegistroOK">Pre-Registro<br> Residencias Profesionales</button>';
             }
             ?>
