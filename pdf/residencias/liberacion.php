@@ -80,6 +80,7 @@ class PDF extends FPDF
     }
     var $widths;
     var $aligns;
+    //var $alineacion;
 
     function SetWidths($w)
     {
@@ -93,26 +94,26 @@ class PDF extends FPDF
         $this->aligns = $a;
     }
 
-    function Row($data)
+    function Row($data, $margen, $alineacion)
     {
         //Calculate the height of the row
         $nb = 0;
         for ($i = 0; $i < count($data); $i++)
             $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
-        $h = 5 * $nb;
+        $h = $margen * $nb;
         //Issue a page break first if needed
         $this->CheckPageBreak($h);
         //Draw the cells of the row
         for ($i = 0; $i < count($data); $i++) {
             $w = $this->widths[$i];
-            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'J';
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : $alineacion;
             //Save the current position
             $x = $this->GetX();
             $y = $this->GetY();
             //Draw the border
             $this->Rect($x, $y, $w, $h);
             //Print the text
-            $this->MultiCell($w, 5, $data[$i], 0, $a);
+            $this->MultiCell($w, $margen, $data[$i], 0, $a);
             //Put the position to the right of the cell
             $this->SetXY($x + $w, $y);
         }
@@ -176,9 +177,9 @@ class PDF extends FPDF
 $fechaActual = $_GET['fecha'];
 $tablaJ = "jerarquia";
 $itemJefeDivision = "JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES";
-$respuestaJ = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDivision);
-$jefeDivision = $respuestaJ["nombre"];
-$jefeSexo = $respuestaJ["sexo"];
+$respuestajefeDivision = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDivision);
+$jefeDivision = $respuestajefeDivision["nombre"];
+$jefeSexo = $respuestajefeDivision["sexo"];
 
 $item = "id";
 $valor = $_GET['id'];
@@ -187,10 +188,19 @@ $nombre = $respuesta["nombre"];
 $carrera = $respuesta["carrera"];
 $numeroControl = $respuesta["noControl"];
 $proyecto = $respuesta["nombreProyecto"];
+$asesorInterno = $respuesta["asesorInt"];
+$revisor1 = $respuesta["revisor1"];
+$revisor2 = $respuesta["revisor2"];
+
+$itemJefeDepartamento = "JEFE DEL DEPTO. ACADEMICO";
+$respuestajefeDepartamento = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDepartamento);
+$jefeDepartamento = $respuestajefeDepartamento["nombre"];
+$jefeDepartamentoSexo = $respuestajefeDepartamento["sexo"];
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
 $pdf->SetLeftMargin(24);
+$pdf->SetRightMargin(24);
 $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
 $pdf->SetFont('Helvetica', '', '7.3');
 $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
@@ -225,10 +235,45 @@ $pdf->Cell(0, 4, utf8_decode('Por este medio le informo que ha sido liberado el 
 $pdf->Ln(7.3);
 
 $pdf->SetWidths(array(43.8, 113));
-$pdf->Row(array('a) Nombre del Egresado:', utf8_decode(mb_strtoupper($nombre))));
-$pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))));
-$pdf->Row(array('c) No. de Control:', utf8_decode(mb_strtoupper($numeroControl))));
-$pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(mb_strtoupper($proyecto))));
-$pdf->Row(array('e) Producto:', utf8_decode(mb_strtoupper('INFORME TÉCNICO DE RESIDENCIA PROFESIONAL'))));
+$pdf->Row(array('a) Nombre del Egresado:', utf8_decode(mb_strtoupper($nombre))), 3.8, 'J');
+$pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))), 3.8, 'J');
+$pdf->Row(array('c) No. de Control:', utf8_decode(mb_strtoupper($numeroControl))), 3.8, 'J');
+$pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(mb_strtoupper($proyecto))), 3.8, 'J');
+$pdf->Row(array('e) Producto:', utf8_decode(mb_strtoupper('INFORME TÉCNICO DE RESIDENCIA PROFESIONAL
+
+'))), 3.8, 'J');
+$pdf->Ln(3.8);
+
+$pdf->MultiCell(0, 3.7, utf8_decode('Agradezco de antemano su valioso apoyo en esta importante actividad para la formación profesional de nuestros egresados.'), 0, 'J');
+$pdf->Ln(14.5);
+
+$pdf->SetFont('Helvetica', 'B', '9');
+$pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 0, 'L');
+$pdf->Ln(3.3);
+$pdf->Cell(0, 4, utf8_decode('"Tecnología como Sinónimo de Independencia"'), 0, 0, 'J');
+$pdf->Ln(18.4);
+
+$pdf->Cell(0, 4, utf8_decode($jefeDepartamento), 0, 0, 'L');
+$pdf->Ln(3.7);
+if ($jefeDepartamentoSexo == 'M') {
+    $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'L');
+} else {
+    $pdf->Cell(0, 4, utf8_decode('JEFA DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'L');
+}
+$pdf->Ln(18.4);
+
+$pdf->SetFont('Helvetica', '', '9');
+$pdf->SetWidths(array(57, 58.5, 56.5));
+$pdf->Row(array(utf8_decode(mb_strtoupper($asesorInterno . '
+
+')), utf8_decode(mb_strtoupper($revisor1)), utf8_decode(mb_strtoupper($revisor2))), 4.1, 'C');
+$pdf->Row(array('Nombre y Firma
+Asesor', 'Nombre y Firma
+Revisor', 'Nombre y Firma
+Revisor'), 3.7, 'C');
+$pdf->Ln(14.5);
+
+$pdf->SetFont('Helvetica', '', '8');
+$pdf->Cell(0, 4, utf8_decode('c.c.p.- Expediente'), 0, 0, 'L');
 
 $pdf->Output('I', 'Liberación de Residencias Profesionales.pdf', 'D');
