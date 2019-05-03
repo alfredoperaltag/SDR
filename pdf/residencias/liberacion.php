@@ -222,9 +222,9 @@ $pdf->Ln(14.5);
 
 $pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(0, 4, utf8_decode('Por este medio le informo que ha sido liberado el siguiente proyecto para la Titulación integral:'), 0, 0, 'J');
-$pdf->Ln(8);
+$pdf->Ln(7.3);
 
-$pdf->SetWidths(array(48.5, 134));
+$pdf->SetWidths(array(43.8, 120));
 $pdf->Row(array('a) Nombre del Egresado:', utf8_decode(mb_strtoupper($nombre))));
 $pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))));
 $pdf->Row(array('c) No. de Control:', utf8_decode(mb_strtoupper($numeroControl))));

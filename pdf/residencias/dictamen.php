@@ -176,7 +176,7 @@ if ($semestre == 'EJ') {
 }
 $pdf->SetFont('Arial', 'B', 11);
 $pdf->SetXY(10, 80);
-$pdf->Cell(0, 0, utf8_decode(strtoupper($carrera)), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($carrera)), 0, 0, 'C');
 $pdf->SetXY(17, 85);
 $pdf->Cell(15, 12, utf8_decode('NUM.'), 1, 0, 'C');
 $pdf->Cell(23, 12, utf8_decode('CONTROL'), 1, 0, 'C');
@@ -202,7 +202,7 @@ if ($sexo == 'Masculino') {
 }
 $pdf->SetWidths(array(15, 23, 38, 6, 36, 34, 23, 22, 25, 25));
 for ($i = 0; $i < 1; $i++)
-    $pdf->Row(array($id, $numeroControl, strtoupper($nombre), $sexo, strtoupper($proyecto), strtoupper($empresa), strtoupper($asesorInterno), strtoupper($asesorExterno), strtoupper($estado), strtoupper($fechaActual)));
+    $pdf->Row(array($id, $numeroControl, utf8_decode(mb_strtoupper($nombre)), $sexo, utf8_decode(mb_strtoupper($proyecto)), utf8_decode(mb_strtoupper($empresa)), utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($asesorExterno)), utf8_decode(mb_strtoupper($estado)), utf8_decode(mb_strtoupper($fechaActual))));
 
 
 $pdf->SetY(148);
@@ -210,11 +210,11 @@ $pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazado
 
 $pdf->SetFont('Arial', '', 10);
 $pdf->SetXY(36, 171);
-$pdf->Cell(0, 0, utf8_decode(strtoupper($presidente)), 0, 0, 'L');
+$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($presidente)), 0, 0, 'L');
 $pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode(strtoupper($jefe)), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($jefe)), 0, 0, 'C');
 $pdf->SetX(185);
-$pdf->Cell(0, 0, utf8_decode(strtoupper($subdirector)), 0, 0, 'C');
+$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($subdirector)), 0, 0, 'C');
 $pdf->Ln(4);
 $pdf->SetX(36);
 $pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL PRESIDENTE DE'), 0, 0, 'L');
