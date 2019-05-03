@@ -209,7 +209,7 @@ $pdf->SetY(148);
 $pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados'), 0, 0, 'C');
 
 $pdf->SetFont('Arial', '', 10);
-$pdf->SetXY(36, 171);
+$pdf->SetXY(44, 171);
 $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($presidente)), 0, 0, 'L');
 $pdf->SetX(30);
 $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($jefe)), 0, 0, 'C');
