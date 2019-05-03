@@ -9,6 +9,7 @@ var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 // MyDate.setDate(MyDate.getDate());
 // var fecha1 = ('0' + MyDate.getDate()).slice(-2) + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 //FIN
+var fechaTesis = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 var fecha2 = f.getFullYear() + "-" + meses[f.getMonth()] + "-" + f.getDate();
 var fecha3 = f.getDate() + "/" + mesesNumero[f.getMonth()] + "/" + f.getFullYear();
 var fecha4 = f.getDate() + " De " + meses[f.getMonth()];
@@ -457,7 +458,7 @@ $(document).on("click", "#btnImpAsesorT", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha2,
+            inputValue: fechaTesis,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
@@ -485,7 +486,7 @@ $(document).on("click", "#btnImpJurado", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha2,
+            inputValue: fechaTesis,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
@@ -514,7 +515,7 @@ $(document).on("click", "#btnImpLiberacionR", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha2,
+            inputValue: fechaTesis,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
