@@ -1,6 +1,7 @@
 //FECHA DEL SISTEMA
 var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 var mesesNumero = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+
 var f = new Date();
 var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 var fecha2 = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
@@ -384,7 +385,6 @@ $(document).on("click", "#btnImprimirLiberacion", function () {
 });
 
 
-
 /*<!--=====================================
 IMPRIMIR SINODALES
 ======================================-->*/
@@ -394,7 +394,7 @@ $(document).on("click", "#btnImprimirSinodales", function () {
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
-        progressSteps: ['1', '2', '3']
+        progressSteps: ['1', '2', '3', '4']
     }).queue([{
             input: 'text',
             inputValue: fecha,
@@ -411,10 +411,16 @@ $(document).on("click", "#btnImprimirSinodales", function () {
             inputValue: fecha4,
             title: 'Fecha de la Titulación',
             text: 'Introduzca una fecha valida'
+        },
+        {
+            input: 'text',
+            inputValue: "10:00",
+            title: 'Hora de la Titulación',
+            text: 'Introduzca una hora valida'
         }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/residencias/sinodales.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaTitulacion=" + result.value[2], "_blank");
+            window.open("pdf/residencias/sinodales.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaTitulacion=" + result.value[2] + "&hora=" + result.value[3], "_blank");
             /* window.open("pdf/residencias/dictamen.php"); */
         }
     })

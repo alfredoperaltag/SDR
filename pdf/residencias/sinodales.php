@@ -78,6 +78,99 @@ class PDF extends FPDF
             }
         }
     }
+    var $widths;
+    var $aligns;
+
+    function SetWidths($w)
+    {
+        //Set the array of column widths
+        $this->widths = $w;
+    }
+
+    function SetAligns($a)
+    {
+        //Set the array of column alignments
+        $this->aligns = $a;
+    }
+
+    function Row($data)
+    {
+        //Calculate the height of the row
+        $nb = 0;
+        for ($i = 0; $i < count($data); $i++)
+            $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
+        $h = 5 * $nb;
+        //Issue a page break first if needed
+        $this->CheckPageBreak($h);
+        //Draw the cells of the row
+        for ($i = 0; $i < count($data); $i++) {
+            $w = $this->widths[$i];
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'C';
+            //Save the current position
+            $x = $this->GetX();
+            $y = $this->GetY();
+            //Draw the border
+            $this->Rect($x, $y, $w, $h);
+            //Print the text
+            $this->MultiCell($w, 5, $data[$i], 0, $a);
+            //Put the position to the right of the cell
+            $this->SetXY($x + $w, $y);
+        }
+        //Go to the next line
+        $this->Ln($h);
+    }
+
+    function CheckPageBreak($h)
+    {
+        //If the height h would cause an overflow, add a new page immediately
+        if ($this->GetY() + $h > $this->PageBreakTrigger)
+            $this->AddPage($this->CurOrientation);
+    }
+
+    function NbLines($w, $txt)
+    {
+        //Computes the number of lines a MultiCell of width w will take
+        $cw = &$this->CurrentFont['cw'];
+        if ($w == 0)
+            $w = $this->w - $this->rMargin - $this->x;
+        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+        $s = str_replace("\r", '', $txt);
+        $nb = strlen($s);
+        if ($nb > 0 and $s[$nb - 1] == "\n")
+            $nb--;
+        $sep = -1;
+        $i = 0;
+        $j = 0;
+        $l = 0;
+        $nl = 1;
+        while ($i < $nb) {
+            $c = $s[$i];
+            if ($c == "\n") {
+                $i++;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+                continue;
+            }
+            if ($c == ' ')
+                $sep = $i;
+            $l += $cw[$c];
+            if ($l > $wmax) {
+                if ($sep == -1) {
+                    if ($i == $j)
+                        $i++;
+                } else
+                    $i = $sep + 1;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+            } else
+                $i++;
+        }
+        return $nl;
+    }
 }
 
 $item = "id";
@@ -85,12 +178,20 @@ $valor = $_GET['id'];
 $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
 $nombre = $respuesta["nombre"];
 
+$tablaJ = "jerarquia";
+$itemJefeDivision = "JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES";
+$respuestajefeDivision = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDivision);
+$jefeDivision = $respuestajefeDivision["nombre"];
+$jefeSexo = $respuestajefeDivision["sexo"];
+
 $numero = $_GET['numero'];
 $fechaActual = $_GET['fecha'];
 $fechaTitulacion = $_GET['fechaTitulacion'];
+$hora = $_GET['hora'];
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
+$pdf->SetLeftMargin(29);
 $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
 $pdf->SetFont('Helvetica', '', '7.3');
 $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
@@ -99,12 +200,12 @@ $pdf->SetFont('Helvetica', 'B', '8');
 $pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'R');
 $pdf->Ln(4);
 $pdf->SetFont('Helvetica', 'B', '9');
-$pdf->Cell(125.5);
+$pdf->Cell(106.6);
 $pdf->Cell(0, 0, utf8_decode('OF. No. DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'L');
 
 $pdf->Ln(4);
 $pdf->SetFont('Helvetica', 'B', '8');
-$pdf->Cell(267, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
+$pdf->Cell(229, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
 $pdf->SetXY(132, 73);
 
 $pdf->SetFont('Helvetica', 'BU', '8');
@@ -121,19 +222,52 @@ $pdf->Ln(8);
 $pdf->Ln(4);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Helvetica', 'B', '8');
-// $pdf->Cell(0, 0, utf8_decode('C. ' . mb_strtoupper($asesorInterno)), 0, 0, 'L');
-$pdf->Cell(0, 0, utf8_decode('JEFA DE LA DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
+
+$pdf->Cell(0, 0, utf8_decode($jefeDivision), 0, 0, 'L');
 $pdf->Ln(4);
+if ($jefeSexo == 'M') {
+    $pdf->Cell(0, 0, utf8_decode('JEFE DE DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
+} else {
+    $pdf->Cell(0, 0, utf8_decode('JEFA DE DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
+}
+$pdf->Ln(4);
+
 $pdf->Cell(0, 0, utf8_decode('P R E S E N T E .'), 0, 0, 'L');
 $pdf->Ln(8);
-$pdf->Cell(0, 0, utf8_decode('AT´N: COORDINADORA DE TITULACIÓN.'), 0, 0, 'L');
+
+if ($jefeSexo == 'M') {
+    $pdf->Cell(0, 0, utf8_decode('AT´N: COORDINADOR DE TITULACIÓN.'), 0, 0, 'L');
+} else {
+    $pdf->Cell(0, 0, utf8_decode('AT´N: COORDINADORA DE TITULACIÓN.'), 0, 0, 'L');
+}
 $pdf->Ln(12);
 
 $pdf->SetFont('Helvetica', '', '8');
 $text = "Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del 
 <C. " . mb_strtoupper($nombre) . ",> que presenta su protocolo para su <TITULACIÓN INTEGRAL,> 
-el día <" . mb_strtoupper($fechaTitulacion) . "> del año en curso, a las <10:00 hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
+el día <" . mb_strtoupper($fechaTitulacion) . "> del año en curso, a las <" . $hora . " hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
 $pdf->WriteText(utf8_decode($text));
+$pdf->Ln(8);
 
+$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->MultiCell(40, 4, utf8_decode('PRESIDENTE
+
+'), 1, 'C');
+$pdf->SetXY(69, 137);
+$pdf->MultiCell(40, 4, utf8_decode('SECRETARIO
+
+'), 1, 'C');
+$pdf->SetXY(109, 137);
+$pdf->MultiCell(40, 4, utf8_decode('VOCAL
+
+'), 1, 'C');
+$pdf->SetXY(149, 137);
+$pdf->MultiCell(40, 4, utf8_decode('VOCAL SUPLENTE
+
+'), 1, 'C');
+$pdf->SetWidths(array(40, 40, 40, 40));
+$pdf->SetXY(69, 137);
+// $pdf->Row(array('PRESIDENTE', 'SECRETARIO', 'VOCAL', 'VOCAL SUPLENTE'));
+// $pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))), 3.8, 'J');
 
 $pdf->Output('I', 'Asignación de Sinodales.pdf', 'D');
