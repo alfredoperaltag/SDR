@@ -1,5 +1,7 @@
 <?php
 require('../FPDF/fpdf.php');
+require_once "../../controladores/jerarquia.controlador.php";
+require_once "../../modelos/jerarquia.modelo.php";
 
 class PDF extends FPDF
 {
@@ -74,11 +76,116 @@ class PDF extends FPDF
             }
         }
     }
+    var $widths;
+    var $aligns;
+
+    function SetWidths($w)
+    {
+        //Set the array of column widths
+        $this->widths = $w;
+    }
+
+    function SetAligns($a)
+    {
+        //Set the array of column alignments
+        $this->aligns = $a;
+    }
+
+    function Row($data)
+    {
+        //Calculate the height of the row
+        $nb = 0;
+        for ($i = 0; $i < count($data); $i++)
+            $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
+        $h = 5 * $nb;
+        //Issue a page break first if needed
+        $this->CheckPageBreak($h);
+        //Draw the cells of the row
+        for ($i = 0; $i < count($data); $i++) {
+            $w = $this->widths[$i];
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
+            //Save the current position
+            $x = $this->GetX();
+            $y = $this->GetY();
+            //Draw the border
+            $this->Rect($x, $y, $w, $h);
+            //Print the text
+            $this->MultiCell($w, 5, $data[$i], 0, $a);
+            //Put the position to the right of the cell
+            $this->SetXY($x + $w, $y);
+        }
+        //Go to the next line
+        $this->Ln($h);
+    }
+
+    function CheckPageBreak($h)
+    {
+        //If the height h would cause an overflow, add a new page immediately
+        if ($this->GetY() + $h > $this->PageBreakTrigger)
+            $this->AddPage($this->CurOrientation);
+    }
+
+    function NbLines($w, $txt)
+    {
+        //Computes the number of lines a MultiCell of width w will take
+        $cw = &$this->CurrentFont['cw'];
+        if ($w == 0)
+            $w = $this->w - $this->rMargin - $this->x;
+        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+        $s = str_replace("\r", '', $txt);
+        $nb = strlen($s);
+        if ($nb > 0 and $s[$nb - 1] == "\n")
+            $nb--;
+        $sep = -1;
+        $i = 0;
+        $j = 0;
+        $l = 0;
+        $nl = 1;
+        while ($i < $nb) {
+            $c = $s[$i];
+            if ($c == "\n") {
+                $i++;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+                continue;
+            }
+            if ($c == ' ')
+                $sep = $i;
+            $l += $cw[$c];
+            if ($l > $wmax) {
+                if ($sep == -1) {
+                    if ($i == $j)
+                        $i++;
+                } else
+                    $i = $sep + 1;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+            } else
+                $i++;
+        }
+        return $nl;
+    }
 }
 
 $fechaActual = $_GET['fecha'];
 $tablaJ = "jerarquia";
-$itemJefeDivision = "PRESIDENTE DE ACADEMIA";
+$itemJefeDivision = "JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES";
+$respuestaJ = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDivision);
+$jefeDivision = $respuestaJ["nombre"];
+$jefeSexo = $respuestaJ["sexo"];
+
+$item = "id";
+$valor = $_GET['id'];
+$respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+$nombre = $respuesta["nombre"];
+$carrera = $respuesta["carrera"];
+$numeroControl = $respuesta["noControl"];
+$proyecto = $respuesta["proyecto"];
+$producto = $respuesta["nombreEmpresa"];
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
@@ -87,19 +194,40 @@ $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
 $pdf->SetFont('Helvetica', '', '7.3');
 $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
 $pdf->Ln(9);
-$pdf->SetFont('Helvetica', '', '8.5');
+$pdf->SetFont('Helvetica', '', '9');
 $pdf->Cell(0, 4, utf8_decode('Iguala, Gro.,'), 0, 0, 'L');
 $pdf->SetTextColor(255, 255, 255);
-$pdf->SetX(42);
+$pdf->SetX(43);
 $anchoFecha = $pdf->GetStringWidth($fechaActual);
 $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'L', true);
-$pdf->Ln(7);
+$pdf->Ln(7.3);
 
 $pdf->SetTextColor(0, 0, 0);
 $text = "<ASUNTO:> Liberación de Proyecto para Titulación Integral.";
 $pdf->WriteText(utf8_decode($text));
-$pdf->Ln(7);
+$pdf->Ln(14.5);
 
+$pdf->SetFont('Helvetica', 'B', '9');
+$pdf->Cell(0, 4, utf8_decode($jefeDivision), 0, 0, 'L');
+$pdf->Ln(3.7);
+if ($jefeSexo == 'M') {
+    $pdf->Cell(0, 4, utf8_decode('JEFE DE DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
+} else {
+    $pdf->Cell(0, 4, utf8_decode('JEFA DE DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
+}
+$pdf->Ln(3.7);
+$pdf->Cell(0, 4, utf8_decode('P R E S E N T E .'), 0, 0, 'L');
+$pdf->Ln(14.5);
 
+$pdf->SetFont('Helvetica', '', '9');
+$pdf->Cell(0, 4, utf8_decode('Por este medio le informo que ha sido liberado el siguiente proyecto para la Titulación integral:'), 0, 0, 'J');
+$pdf->Ln(8);
+
+$pdf->SetWidths(array(48.5, 134));
+$pdf->Row(array('a) Nombre del Egresado:', utf8_decode(strtoupper($nombre))));
+$pdf->Row(array('b) Carrera:', utf8_decode(strtoupper($carrera))));
+$pdf->Row(array('c) No. de Control:', utf8_decode(strtoupper($proyecto))));
+$pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(strtoupper($periodo))));
+$pdf->Row(array('e) Producto:', utf8_decode(strtoupper($empresa))));
 
 $pdf->Output('I', 'Liberación de Residencias Profesionales.pdf', 'D');

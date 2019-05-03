@@ -29,7 +29,7 @@ class ModeloDocentesJerarquia
     =============================================*/
     public static function MdlMostrarDocentesDictamen($tabla, $item)
     {
-        $stmt = Conexion::conectar()->prepare("SELECT nombre FROM $tabla WHERE cargo = :item");
+        $stmt = Conexion::conectar()->prepare("SELECT nombre, sexo FROM $tabla WHERE cargo = :item");
         $stmt->execute(['item' => $item]);
         return $stmt->fetch();
 
