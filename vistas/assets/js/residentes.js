@@ -5,9 +5,9 @@ var mesesNumero = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09"
 var f = new Date();
 var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 // FECHA CON CERO INICIAL "02/Mayo/2019"
-// var MyDate = new Date();
-// MyDate.setDate(MyDate.getDate());
-// var fecha1 = ('0' + MyDate.getDate()).slice(-2) + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
+var MyDate = new Date();
+MyDate.setDate(MyDate.getDate());
+var fechaR = ('0' + MyDate.getDate()).slice(-2) + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 //FIN
 var fechaTesis = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 var fecha2 = f.getFullYear() + "-" + meses[f.getMonth()] + "-" + f.getDate();
@@ -370,7 +370,12 @@ $(document).on("click", "#btnImprimirAsesores", function () {
         {
             title: '# Oficio',
             text: 'Introduzca el numero de Oficio',
-            input: 'text'
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                  return '¡Necesita llenar la información!'
+                }
+              }
         }
     ]).then((result) => {
         if (result.value) {
@@ -423,7 +428,12 @@ $(document).on("click", "#btnImprimirComisionT", function () {
         {
             title: 'Documento',
             text: 'Introduzca el numero de documento',
-            input: 'text'
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                  return '¡Necesita llenar la información!'
+                }
+              }
         },
         {
             input: 'text',
@@ -447,7 +457,7 @@ $(document).on("click", "#btnImprimirComisionT", function () {
             },
             inputValidator: function (result) {
                 if (!result) {
-                    return 'Necesita seleccionar una opción!'+result;
+                    return '¡Necesita seleccionar una opción!';
                 }
             }
         }
@@ -501,7 +511,12 @@ $(document).on("click", "#btnImprimirSinodales", function () {
         {
             title: '# Oficio',
             text: 'Introduzca el numero de Oficio',
-            input: 'text'
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                  return '¡Necesita llenar la información!'
+                }
+              }
         },
         {
             input: 'text',
@@ -535,14 +550,20 @@ $(document).on("click", "#btnImpAsesorT", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fechaTesis,
+            // inputValue: fechaTesis,
+            inputValue: fechaR,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
         {
             title: 'Documento',
             text: 'Introduzca el numero de documento',
-            input: 'text'
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                  return '¡Necesita llenar la información!'
+                }
+              }
         }
     ]).then((result) => {
         if (result.value) {
@@ -563,14 +584,20 @@ $(document).on("click", "#btnImpJurado", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fechaTesis,
+            // inputValue: fechaTesis,
+            inputValue: fechaR,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
         {
             title: 'Documento',
             text: 'Introduzca el numero de documento',
-            input: 'text'
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                  return '¡Necesita llenar la información!'
+                }
+              }
         }
     ]).then((result) => {
         if (result.value) {
@@ -592,14 +619,20 @@ $(document).on("click", "#btnImpLiberacionR", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fechaTesis,
+            // inputValue: fechaTesis,
+            inputValue: fechaR,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
         {
             title: 'Documento',
             text: 'Introduzca el numero de documento',
-            input: 'text'
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                  return '¡Necesita llenar la información!'
+                }
+              }
         }
     ]).then((result) => {
         if (result.value) {
