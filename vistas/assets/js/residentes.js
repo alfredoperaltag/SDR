@@ -449,7 +449,7 @@ $(document).on("click", "#btnImprimirComisionT", function () {
         },
         {
             title: 'Tipo de documento',
-            text: '¿El residente defiende si promedio?',
+            text: '¿El residente defiende su proyecto?',
             input: 'radio',
             inputOptions: {
                 'si': 'SI',

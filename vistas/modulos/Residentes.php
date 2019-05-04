@@ -155,14 +155,14 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
-                                placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresa"
+                                placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -179,7 +179,7 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -352,14 +352,14 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresa"
-                                placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresa"
+                                placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -370,7 +370,7 @@ TESIS PROFESIONAL
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                $verDocente->ctrMostrarTodosLosDocesentes2();
                                 ?>
                             </select>
                         </div>
@@ -594,14 +594,14 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="editNombreProyecto" id="editNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="editNombreProyecto" id="editNombreProyecto"
+                                placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="editNombreEmpresa" id="editNombreEmpresa"
-                                placeholder="Nombre del asesor" required autocomplete="off">
+                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="editNombreEmpresa" id="editNombreEmpresa"
+                                placeholder="Nombre del asesor" required autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -769,11 +769,11 @@ INFORMACION RESIDENTE
                 <div class="form-row align-items-center">
                     <div class="col-sm-6 my-1">
                         <label for="example-text-input" class="col-form-label">Nombre del proyecto</label>
-                        <input class="form-control" type="text" id="InfoProyecto" readonly>
+                        <textarea rows = "2" maxlength="200" class="form-control" type="text" id="InfoProyecto" readonly></textarea>
                     </div>
                     <div class="col-sm-6 my-1">
                         <label for="example-text-input" class="col-form-label">Empresa</label>
-                        <input class="form-control" type="text" id="InfoEmpresa" readonly>
+                        <textarea rows = "2" maxlength="200" class="form-control" type="text" id="InfoEmpresa" readonly></textarea>
                     </div>
                 </div>
                 <div class="form-row align-items-center">
@@ -1088,14 +1088,14 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <input class="form-control" type="text" name="nuevoNombreProyectoR"
-                                placeholder="Nombre del Proyecto" required autocomplete="off">
+                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyectoR"
+                                placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <input class="form-control" type="text" name="nuevoNombreEmpresaR"
-                                placeholder="Nombre de la Empresa" required autocomplete="off">
+                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresaR"
+                                placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-row align-items-center">

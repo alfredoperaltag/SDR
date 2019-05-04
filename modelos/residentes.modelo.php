@@ -129,8 +129,8 @@ class ModeloResidentes
         if ($stmt->execute()) {
             return "ok";
         } else {
-            print_r($stmt->errorInfo());
-            return "error";
+            // return "A: ".print_r($stmt->errorInfo());
+            return 'error';
         }
 
         $stmt->close();
@@ -174,7 +174,8 @@ class ModeloResidentes
         if ($stmt->execute()) {
             return "ok";
         } else {
-            return "error";
+            // return print_r($stmt->errorInfo());
+            return 'error';
         }
 
         $stmt->close();
