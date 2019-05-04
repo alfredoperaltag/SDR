@@ -26,7 +26,7 @@ class PDF extends FPDF
         // $this->Cell(20);
         $this->Cell(0, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425'), 0, 1, 'C');
         // $this->Cell(44);
-        $this->Cell(0, 4, utf8_decode('Ext. 225, e-mail: comunicacion@itiguala.edu.mx,'), 0, 1, 'C');
+        $this->Cell(0, 4, utf8_decode('Ext. 244, e-mail: sistemas@itiguala.edu.mx,'), 0, 1, 'C');
         $this->SetFont('Helvetica', 'B', '7');
         // $this->Cell(20);
         $this->Cell(0, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'C');
@@ -99,7 +99,7 @@ class PDF extends FPDF
         $nb = 0;
         for ($i = 0; $i < count($data); $i++)
             $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
-        $h = 5 * $nb;
+        $h = 3.8 * $nb;
         //Issue a page break first if needed
         $this->CheckPageBreak($h);
         //Draw the cells of the row
@@ -112,7 +112,7 @@ class PDF extends FPDF
             //Draw the border
             $this->Rect($x, $y, $w, $h);
             //Print the text
-            $this->MultiCell($w, 5, $data[$i], 0, $a);
+            $this->MultiCell($w, 3.8, $data[$i], 0, $a);
             //Put the position to the right of the cell
             $this->SetXY($x + $w, $y);
         }
@@ -177,12 +177,21 @@ $item = "id";
 $valor = $_GET['id'];
 $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
 $nombre = $respuesta["nombre"];
+$asesorInterno = $respuesta["asesorInt"];
+$revisor1 = $respuesta["revisor1"];
+$revisor2 = $respuesta["revisor2"];
+$suplente = $respuesta["suplente"];
 
 $tablaJ = "jerarquia";
 $itemJefeDivision = "JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES";
 $respuestajefeDivision = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDivision);
 $jefeDivision = $respuestajefeDivision["nombre"];
 $jefeSexo = $respuestajefeDivision["sexo"];
+
+$itemJefeDepartamento = "JEFE DEL DEPTO. ACADEMICO";
+$respuestajefeDepartamento = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDepartamento);
+$jefeDepartamento = $respuestajefeDepartamento["nombre"];
+$jefeDepartamentoSexo = $respuestajefeDepartamento["sexo"];
 
 $numero = $_GET['numero'];
 $fechaActual = $_GET['fecha'];
@@ -192,6 +201,7 @@ $hora = $_GET['hora'];
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
 $pdf->SetLeftMargin(29);
+$pdf->SetRightMargin(29);
 $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
 $pdf->SetFont('Helvetica', '', '7.3');
 $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
@@ -265,9 +275,36 @@ $pdf->SetXY(149, 137);
 $pdf->MultiCell(40, 4, utf8_decode('VOCAL SUPLENTE
 
 '), 1, 'C');
+$pdf->SetFont('Helvetica', '', '7');
 $pdf->SetWidths(array(40, 40, 40, 40));
-$pdf->SetXY(69, 137);
-// $pdf->Row(array('PRESIDENTE', 'SECRETARIO', 'VOCAL', 'VOCAL SUPLENTE'));
-// $pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))), 3.8, 'J');
+// $pdf->SetXY(69, 137);
+$pdf->Row(array(utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($revisor1)), utf8_decode(mb_strtoupper($revisor2)), utf8_decode(mb_strtoupper($suplente))));
+$pdf->Ln(8);
+
+$pdf->SetFont('Helvetica', '', '8');
+$pdf->Cell(80, 0, utf8_decode('Sin otro particular, reciba un cordial saludo.'), 0, 0, 'C');
+$pdf->Ln(14.5);
+
+$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 0, 'C');
+$pdf->Ln(3.3);
+$pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 0, 'C');
+$pdf->Ln(18.4);
+
+$pdf->Cell(0, 4, utf8_decode($jefeDepartamento), 0, 0, 'C');
+$pdf->Ln(3.7);
+if ($jefeDepartamentoSexo == 'M') {
+    $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
+} else {
+    $pdf->Cell(0, 4, utf8_decode('JEFA DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
+}
+$pdf->Ln(18.4);
+
+$pdf->SetFont('Helvetica', '', '5.5');
+$pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO'), 0, 0, 'L');
+$pdf->Ln(3);
+$pdf->Cell(3);
+$pdf->Cell(0, 4, utf8_decode('*JEOL*Ere'), 0, 0, 'L');
+
 
 $pdf->Output('I', 'Asignación de Sinodales.pdf', 'D');

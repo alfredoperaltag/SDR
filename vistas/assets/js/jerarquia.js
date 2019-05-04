@@ -37,7 +37,7 @@ $(document).on("click", ".btnEliminarJerarquia", function () {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: "#d33",
         cancelButtonText: 'Cancelar',
-        confirmButtontext: '¡Eliminar!'
+        confirmButtonText: '¡Eliminar!'
     }).then((result) => {
         if (result.value) {
             window.location = "index.php?ruta=Jerarquia&idJerarquia=" + idJerarquia;

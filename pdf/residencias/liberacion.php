@@ -251,17 +251,17 @@ $pdf->MultiCell(0, 3.7, utf8_decode('Agradezco de antemano su valioso apoyo en e
 $pdf->Ln(14.5);
 
 $pdf->SetFont('Helvetica', 'B', '9');
-$pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 0, 'L');
+$pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 0, 'C');
 $pdf->Ln(3.3);
-$pdf->Cell(0, 4, utf8_decode('"Tecnología como Sinónimo de Independencia"'), 0, 0, 'J');
+$pdf->Cell(0, 4, utf8_decode('"Tecnología como Sinónimo de Independencia"'), 0, 0, 'C');
 $pdf->Ln(18.4);
 
-$pdf->Cell(0, 4, utf8_decode($jefeDepartamento), 0, 0, 'L');
+$pdf->Cell(0, 4, utf8_decode($jefeDepartamento), 0, 0, 'C');
 $pdf->Ln(3.7);
 if ($jefeDepartamentoSexo == 'M') {
-    $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'L');
+    $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
 } else {
-    $pdf->Cell(0, 4, utf8_decode('JEFA DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'L');
+    $pdf->Cell(0, 4, utf8_decode('JEFA DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
 }
 $pdf->Ln(18.4);
 
