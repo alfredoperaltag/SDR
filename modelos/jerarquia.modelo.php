@@ -38,17 +38,40 @@ class ModeloDocentesJerarquia
     }
 
     /*=============================================
+	REGISTRO DE JERARQUIA
+    =============================================*/
+    static public function mdlRegistroJerarquia($tabla, $datos)
+    {
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, cargo, sexo) VALUES (:nombre, :cargo, :sexo)");
+
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":cargo", $datos["cargo"], PDO::PARAM_STR);
+        $stmt->bindParam(":sexo", $datos["sexo"], PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            print_r($stmt->errorInfo());
+            return "error";
+        }
+        $stmt->close();
+        $stmt = null;
+    }
+
+    /*=============================================
 	EDITAR Jerarquia
     =============================================*/
     static public function mdlEditarJerarquia($tabla, $datos)
     {
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, cargo = :jerarquia WHERE id = :id");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, cargo = :cargo, sexo = :sexo WHERE id = :id");
         $stmt->bindParam(":id", $datos["id"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-        $stmt->bindParam(":jerarquia", $datos["jerarquia"], PDO::PARAM_INT);
+        $stmt->bindParam(":cargo", $datos["cargo"], PDO::PARAM_STR);
+        $stmt->bindParam(":sexo", $datos["sexo"], PDO::PARAM_STR);
         if ($stmt->execute()) {
+            // print_r($stmt->errorInfo());
             return "ok";
         } else {
+            // print_r($stmt->errorInfo());
             return "error";
         }
         $stmt->close();

@@ -13,9 +13,10 @@ function btnEditarJerarquia(idJerarquia) {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            $("#editarNombre").val(respuesta["nombre"]);
-            $("#editarJerarquia").val(respuesta["cargo"]);
+            $("#editarNombreJ").val(respuesta["nombre"]);
+            $("#editarCargoJ").val(respuesta["cargo"]);
             $("#idJerarquia").val(respuesta["id"]);
+            $("#editarSexoJ").val(respuesta["sexo"]);
         }
     });
 }
@@ -31,13 +32,13 @@ ELIMINAR Jerarquia
 $(document).on("click", ".btnEliminarJerarquia", function () {
     var idJerarquia = $(this).attr("idJerarquia");
     Swal.fire({
-        title: '¿Esta seguro de eliminarlo?',
-        type: "warning",
+        title: '¿Eliminar?',
+        text: "¡Esta acción no se puede revertir!",
+        type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
-        cancelButtonColor: "#d33",
-        cancelButtonText: 'Cancelar',
-        confirmButtontext: '¡Eliminar!'
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Eliminar!'
     }).then((result) => {
         if (result.value) {
             window.location = "index.php?ruta=Jerarquia&idJerarquia=" + idJerarquia;

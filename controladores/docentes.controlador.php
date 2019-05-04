@@ -1,6 +1,9 @@
 <?php
 class ControladorDocentes
 {
+    /*=============================================
+        AGREGAR DOCENTE
+    =============================================*/
     public static function ctrCrearDocente()
     {
         if (isset($_POST["nuevoNombre"])) {

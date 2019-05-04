@@ -404,6 +404,83 @@ $(document).on("click", "#btnImprimirLiberacion", function () {
     })
 });
 
+/*<!--=====================================
+COMISION PARA TITULACION RESIDENCIAS
+======================================-->*/
+$(document).on("click", "#btnImprimirComisionT", function () {
+    // console.log("J=  " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2', '3', '4', '5']
+    }).queue([{
+            input: 'text',
+            inputValue: fechaTesis,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida para el documento'
+        },
+        {
+            title: 'Documento',
+            text: 'Introduzca el numero de documento',
+            input: 'text'
+        },
+        {
+            input: 'text',
+            inputValue: fecha4,
+            title: 'Fecha de Titulación',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            input: 'text',
+            inputValue: "10:00",
+            title: 'Hora de la Titulación',
+            text: 'Introduzca una hora valida'
+        },
+        {
+            title: 'Tipo de documento',
+            text: '¿El residente defiende si promedio?',
+            input: 'radio',
+            inputOptions: {
+                'si': 'SI',
+                'no': 'NO'
+            },
+            inputValidator: function (result) {
+                if (!result) {
+                    return 'Necesita seleccionar una opción!'+result;
+                }
+            }
+        }
+    ]).then((result) => {
+        if (result.value) {
+            if (result.value[4] == 'si') {
+                PreguntarPromedio(result.value);
+            }else{
+                window.open("pdf/residencias/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
+            }
+        }
+    })
+});
+
+async function PreguntarPromedio(resulte) {
+    // console.table(resulte);
+    const {value: promedio} = await Swal.fire({
+        title: 'Promedio',
+        text: '¿Cual es el promedio del residente?',
+        input: 'text',
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return '¡Necesita escribir el propmedio!'
+          }
+        }
+      })
+      if (promedio) {
+        // Swal.fire(`Your IP address is ${promedio}`)
+        window.open("pdf/residencias/comision.php?id=" + idResidente + "&fecha=" + resulte[0] + "&numero=" + resulte[1] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
+      }
+  }
+
 
 /*<!--=====================================
 IMPRIMIR SINODALES

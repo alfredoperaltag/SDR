@@ -421,19 +421,6 @@ class ControladorResidentes
                 $resResidente = ModeloResidentes::mdlEditResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
-            //         echo '<script>
-			// 	Swal.fire({
-			// 		 type: "success",
-            //          title: "¡Exito!",
-            //          text: "¡Se actualizo correctamente!",						   
-			// 		showConfirmButton: true,
-			// 		confirmButtonText: "Cerrar"				   
-			// 	}).then((result)=>{
-			// 		if(result.value){
-			// 			window.location = "Residentes";
-			// 		}
-			// 		});
-            //   </script>';
             echo "<script>
                         Swal.fire({
                             position: 'top',

@@ -14,6 +14,53 @@ class ControladorJerarquia
     }
 
     /*=============================================
+        AGREGAR JERARQUIA
+    =============================================*/
+    public static function ctrCrearDocente()
+    {
+        if (isset($_POST["nuevoNombreJ"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["nuevoNombreJ"])) {
+                $tabla = "jerarquia";
+                $datos = array(
+                    "nombre" => $_POST["nuevoNombreJ"],
+                    "cargo" => $_POST["nuevoCargoJ"],
+                    "sexo" => $_POST["nuevoSexoJ"]
+                );
+                $respuesta = ModeloDocentesJerarquia::mdlRegistroJerarquia($tabla, $datos);
+                echo $respuesta;
+                if ($respuesta == "ok") {
+                    echo "<script>
+                        Swal.fire({
+                            position: 'center',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se registro correctamente!',
+                            showConfirmButton: false,
+                            timer: 1200
+                        }).then((result)=>{
+                            window.location = 'Jerarquia';
+                            });
+                        </script>";
+                }
+            } else {
+                echo '<script>
+                       Swal.fire({
+                            type: "error",
+                           title: "¡El campo nombre no puede estar vacio o llevar caracteres especiales!",
+                           showConfirmButton: true,
+                           confirmButtonText: "Cerrar",
+                           closeOnConfirm: false
+                       }).then((result)=>{
+                           if(result.value){
+                               window.location = "Jerarquia";
+                           }
+                           });
+                     </script>';
+            }
+        }
+    }
+
+    /*=============================================
     MOSTRAR DOCENTE EN DICTAMEN
     =============================================*/
     public static function ctrMostrarDocentesDictamen($tabla, $item)
@@ -22,36 +69,34 @@ class ControladorJerarquia
         return $respuesta;
     }
     /*=============================================
-    EDITAR Jerarquia
+    EDITAR JERARQUIA
     =============================================*/
     public static function ctrEditarJerarquia()
     {
 
-        if (isset($_POST["editarNombre"])) {
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["editarNombre"])) {
+        if (isset($_POST["editarNombreJ"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ. ]+$/', $_POST["editarNombreJ"])) {
                 $tabla = "jerarquia";
                 $datos = array(
                     "id" => $_POST["idJerarquia"],
-                    "nombre" => $_POST["editarNombre"],
-                    "jerarquia" => $_POST["editarJerarquia"]
+                    "nombre" => $_POST["editarNombreJ"],
+                    "cargo" => $_POST["editarCargoJ"],
+                    "sexo" => $_POST["editarSexoJ"]
                 );
                 $respuesta = ModeloDocentesJerarquia::mdlEditarJerarquia($tabla, $datos);
-                /* echo $datos["id"];
-                    echo $respuesta; */
                 if ($respuesta == "ok") {
-                    echo '<script>
+                    echo "<script>
                         Swal.fire({
-                        type: "success",
-                        title: "¡Actualizado Correctamente!",
-                        showConfirmButton: true,
-                        confirmButtonText: "Cerrar",
-                        closeOnConfirm: false
+                            position: 'center',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se actualizo correctamente!',
+                            showConfirmButton: false,
+                            timer: 1100
                         }).then((result)=>{
-                        if(result.value){
-                           window.location = "Jerarquia";
-                        }
-                        });
-                        </script>';
+                            window.location = 'Jerarquia';
+                            });
+                        </script>";
                 }
             } else {
                 echo '<script>
@@ -71,7 +116,7 @@ class ControladorJerarquia
         }
     }
     /*=============================================
-    BORRAR Jerarquia
+    BORRAR JERARQUIA
     =============================================*/
     public static function ctrborrarJerarquia()
     {
@@ -81,19 +126,18 @@ class ControladorJerarquia
 
             $respuesta = ModeloDocentesJerarquia::MdlBorrarJerarquia($tabla, $datos);
             if ($respuesta == "ok") {
-                echo '<script>
-			   Swal.fire({
-					type: "success",
-				   title: "¡Eliminado Correctamente!",
-				   showConfirmButton: true,
-				   confirmButtonText: "Cerrar",
-				   closeOnConfirm: false
-			   }).then((result)=>{
-				   if(result.value){
-					   window.location = "Jerarquia";
-				   }
-				   });
-			 </script>';
+                echo "<script>
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: '¡Exito!',
+                    text: '¡Se elimino correctamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then((result)=>{
+                    window.location = 'Jerarquia';
+                    });
+                </script>";
             }
         }
     }
