@@ -30,9 +30,11 @@ class PDF extends FPDF
         $this->SetXY($x, $y - 12);
         $this->Cell(0, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López  Mateos  Infonavit, C.P. 40030, '), 0, 1, 'C');
         $this->Cell(0, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425'), 0, 1, 'C');
-        $this->Cell(0, 4, utf8_decode('Ext. 225, e-mail: comunicacion@itiguala.edu.mx,'), 0, 1, 'C');
+        $this->Cell(71);
+        $this->Cell(20, 4, utf8_decode('Ext. 225, e-mail:'), 0, 0, 'L');
         $this->SetFont('Helvetica', 'B', '7');
-        $this->Cell(0, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'C');
+        // $this->Cell(20);
+        $this->Cell(35, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'L');
         $this->Image('../img/iso14001.jpg', 155 + 12, 253, 17);
         $x = $this->GetX();
         $this->Image('../img/norma.jpg', 155 + 31, 253, 15);
@@ -79,7 +81,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     if ($res3['nombre'] == null) {
         $pdf->Cell(100, 4, utf8_decode('==== LA JERARQUIA EN LA BASE DE DATOS ESTA MAL ===='), 0, 1, 'L');
     }else{
-        $pdf->Cell(100, 4, utf8_decode($res3['nombre']), 0, 1, 'L');
+        $pdf->Cell(100, 4, utf8_decode(mb_strtoupper($res3['nombre'])), 0, 1, 'L');
     }
     // OPCION DEPENDE DEL GENERO
     if ($res3['sexo'] == 'F') {
@@ -100,7 +102,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(19);
     $pdf->Cell(40, 4, utf8_decode('a)	Nombre del Egresado:'), 1, 0, 'L');
     $pdf->SetFont('Arial', 'B', '9');
-    $pdf->Cell(118, 4, utf8_decode(strtoupper($res['nombre'])), 1, 1, 'L');
+    $pdf->Cell(118, 4, utf8_decode(mb_strtoupper($res['nombre'])), 1, 1, 'L');
     $pdf->Cell(19);
     $pdf->SetFont('Arial', '', '9');
     $pdf->Cell(40, 4, utf8_decode('a)	Numero de Control:'), 1, 0, 'L');
@@ -110,13 +112,13 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->SetFont('Arial', '', '9');
     $pdf->Cell(40, 4, utf8_decode('c)	Carrera:'), 1, 0, 'L');
     $pdf->SetFont('Arial', 'B', '9');
-    $pdf->Cell(118, 4, utf8_decode(strtoupper($res['carrera'])), 1, 1, 'L');
+    $pdf->Cell(118, 4, utf8_decode(mb_strtoupper($res['carrera'])), 1, 1, 'L');
     
     
     $pdf->Cell(59);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(118, 4, utf8_decode(strtoupper($res['nombreProyecto'])), 1, 'L');
+    $pdf->MultiCell(118, 4, utf8_decode(mb_strtoupper($res['nombreProyecto'])), 1, 'L');
     $pdf->SetFont('Arial', '', '9');
     $H = $pdf->GetY();
     $pdf->Cell(19);
@@ -151,7 +153,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(158, 4, utf8_decode('"Tecnología como Sinónimo de Independencia"'), 0, 1, 'L');
     $pdf->Ln(15);
     $pdf->Cell(19);
-    $pdf->Cell(158, 4, utf8_decode($res2['nombre']), 0, 1, 'L');
+    $pdf->Cell(158, 4, utf8_decode(mb_strtoupper($res2['nombre'])), 0, 1, 'L');
     if ($res2['sexo'] == 'F') {
         $pdf->Cell(19);
         $pdf->Cell(158, 4, utf8_decode('JEFA DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
@@ -171,13 +173,13 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(53, 4, utf8_decode(strtoupper($res['revisor1'])), 'LTR', 'C');
+    $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor1'])), 'LTR', 'C');
     $pdf->SetXY($x + 53, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(53, 4, utf8_decode(strtoupper($res['revisor2'])), 'LTR', 'C');
+    $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor2'])), 'LTR', 'C');
     $pdf->SetXY($x + 53, $y);
-    $pdf->MultiCell(53, 4, utf8_decode(strtoupper($res['revisor3'])), 'LTR', 'C');
+    $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor3'])), 'LTR', 'C');
     //ESPACIO BAA
     $pdf->Cell(19);
     $x = $pdf->GetX();
@@ -210,7 +212,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(158, 4, utf8_decode('c.c.p.- Expediente'), 0, 1, 'L');
 
     
-    $pdf->Output('I', 'Jurado_Seleccionado.pdf');
+    $pdf->Output('I', 'Liberación_'.$res['nombre'].'.pdf', 'D');
 
 } else {
     echo '<h1>Aqui no puedes hacer eso :)<h1>';

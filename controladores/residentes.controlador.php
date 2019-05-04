@@ -160,7 +160,7 @@ class ControladorResidentes
                 "revisor1" => $_POST["nuevoRevisor1"],
                 "revisor2" => $_POST["nuevoRevisor2"],
                 "revisor3" => $na,
-                "suplente" => $_POST["nuevoSuplente"]
+                "suplente" => $_POST['nuevoSuplente']
             );
 
             $respuestaProyecto = ModeloResidentes::mdlRegistroResidenteProyecto($tabla1, $datosProyecto);
@@ -270,7 +270,8 @@ class ControladorResidentes
                 "revisor1" => $_POST["nuevoRevisor1"],
                 "revisor2" => $_POST["nuevoRevisor2"],
                 "revisor3" => $_POST["nuevoRevisor3"],
-                "suplente" => $_POST["nuevoSuplente"]
+                // "suplente" => $_POST["nuevoSuplente"]
+                "suplente" => $na
             );
 
             $respuestaProyecto = ModeloResidentes::mdlRegistroResidenteProyecto($tabla1, $datosProyecto);
@@ -385,7 +386,7 @@ class ControladorResidentes
                 "revisor1" => $_POST["editRevisor1"],
                 "revisor2" => $_POST["editRevisor2"],
                 "revisor3" => $na,
-                "suplente" => $_POST["editSuplente"]
+                "suplente" => $_POST['editSuplente']
             );
 
             $respuestaProyecto = ModeloResidentes::mdlEditResidenteProyecto($tabla1, $datosProyecto);
@@ -396,9 +397,9 @@ class ControladorResidentes
                 $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
 
                 if ($_POST["editCarrera"] == "ISC") {
-                    $var1 = "Ingenieria en Sistemas Computacionales";
+                    $var1 = "Ingeniería en Sistemas Computacionales";
                 } elseif ($_POST["editCarrera"] == "II") {
-                    $var1 = "Ingenieria Informatica";
+                    $var1 = "Ingeniería Informática";
                 }
 
                 $datosResidente = array(
@@ -526,9 +527,9 @@ class ControladorResidentes
                 $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
 
                 if ($_POST["editCarrera"] == "ISC") {
-                    $var1 = "Ingenieria en Sistemas Computacionales";
+                    $var1 = "Ingeniería en Sistemas Computacionales";
                 } elseif ($_POST["editCarrera"] == "II") {
-                    $var1 = "Ingenieria Informatica";
+                    $var1 = "Ingeniería Informática";
                 }
 
                 $datosResidente = array(

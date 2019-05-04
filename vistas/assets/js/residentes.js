@@ -4,7 +4,12 @@ var mesesNumero = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09"
 
 var f = new Date();
 var fecha = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
-var fecha2 = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
+// FECHA CON CERO INICIAL "02/Mayo/2019"
+// var MyDate = new Date();
+// MyDate.setDate(MyDate.getDate());
+// var fecha1 = ('0' + MyDate.getDate()).slice(-2) + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
+//FIN
+var fechaTesis = f.getDate() + "/" + meses[f.getMonth()] + "/" + f.getFullYear();
 var fecha2 = f.getFullYear() + "-" + meses[f.getMonth()] + "-" + f.getDate();
 var fecha3 = f.getDate() + "/" + mesesNumero[f.getMonth()] + "/" + f.getFullYear();
 var fecha4 = f.getDate() + " De " + meses[f.getMonth()];
@@ -26,7 +31,7 @@ $(document).on("click", ".btnInfoResidente", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            // console.log("respuesta::", respuesta);
+            // console.table(respuesta);
             // console.log("Tipo: ", respuesta["tipo_registro"]);
 
             if (respuesta["tipo_registro"] == "Residencias Profesionales") { //residensias
@@ -50,6 +55,9 @@ $(document).on("click", ".btnInfoResidente", function () {
                     document.getElementById("customCheck5").checked = true;
                     document.getElementById("customCheck6").checked = true;
                 }
+                document.getElementById('ViewRevisor32').style.display='none';
+                document.getElementById('ViewSuplente2').style.display='block';
+                
 
             } else { //Tesis
                 document.getElementById('CheckResidenciasView1').style.display = 'none'; //oculta check de residencias
@@ -61,6 +69,10 @@ $(document).on("click", ".btnInfoResidente", function () {
                     document.getElementById("CheckTesis1").checked = false;
                     document.querySelector('#StatusTesis1').innerText = 'No liberado';
                 }
+                
+
+                document.getElementById('ViewRevisor32').style.display='block';
+                document.getElementById('ViewSuplente2').style.display='none';
 
             }
 
@@ -178,8 +190,13 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editAsesorExt").attr("readonly", "readonly");
                 $("#editRevisor1").val(respuesta["revisor1"]);
                 $("#editRevisor2").val(respuesta["revisor2"]);
+
+                
+                document.getElementById('ViewRevisor3').style.display='block';
+                document.getElementById('ViewSuplente').style.display='none';
                 $("#editRevisor3").attr("disabled", false);
                 $("#editRevisor3").val(respuesta["revisor3"]);
+                $("#editSuplente").attr("disabled", false);
                 $("#editSuplente").val(respuesta["suplente"]);
             } else { //RESIDENCIAS
                 // console.log("respuesta::", respuesta);
@@ -213,6 +230,9 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editAsesorExt").val(respuesta["asesorExt"]);
                 $("#editRevisor1").val(respuesta["revisor1"]);
                 $("#editRevisor2").val(respuesta["revisor2"]);
+
+                document.getElementById('ViewRevisor3').style.display='none';
+                document.getElementById('ViewSuplente').style.display='block';
                 $("#editRevisor3").attr("disabled", true);
                 $("#editRevisor3").val(respuesta["revisor3"]);
                 $("#editSuplente").val(respuesta["suplente"]);
@@ -278,12 +298,12 @@ $(document).on("click", ".btnImprimirDoc", function () {
             // document.getElementById('CheckResidenciasView1').style.display='none'; //oculta check de residencias
             // document.getElementById('CheckTesisView1').style.display='block'; //muestra chc de tesis
             document.getElementById("btnImpLiberacionR").disabled = true;
-            document.getElementById("btnImpLiberacion").disabled = true;
+            // document.getElementById("btnImpLiberacion").disabled = true;
             if (respuesta["revisionOK"] == 3) {
                 document.getElementById("CheckTesis2").checked = true;
                 document.querySelector('#StatusTesis2').innerText = 'Liberado';
                 document.getElementById("btnImpLiberacionR").disabled = false;
-                document.getElementById("btnImpLiberacion").disabled = false;
+                // document.getElementById("btnImpLiberacion").disabled = false;
             } else {
                 document.getElementById("CheckTesis2").checked = false;
                 document.querySelector('#StatusTesis2').innerText = 'No liberado';
@@ -427,6 +447,34 @@ $(document).on("click", "#btnImprimirSinodales", function () {
 });
 
 /*<!--=====================================
+IMPRIMIR OFICIO DE ASIGNACION DE ASESOR TESIS
+======================================-->*/
+$(document).on("click", "#btnImpAsesorT", function () {
+    // console.log("J=  " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2']
+    }).queue([{
+            input: 'text',
+            inputValue: fechaTesis,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            title: 'Documento',
+            text: 'Introduzca el numero de documento',
+            input: 'text'
+        }
+    ]).then((result) => {
+        if (result.value) {
+            window.open("pdf/tesis/asesor.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+        }
+    })
+});
+
+/*<!--=====================================
 IMPRIMIR JURADO SELECCIONADO TESIS
 ======================================-->*/
 $(document).on("click", "#btnImpJurado", function () {
@@ -438,7 +486,7 @@ $(document).on("click", "#btnImpJurado", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha2,
+            inputValue: fechaTesis,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
@@ -464,10 +512,10 @@ $(document).on("click", "#btnImpLiberacionR", function () {
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
-        progressSteps: ['1', '2', '3']
+        progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha2,
+            inputValue: fechaTesis,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
@@ -475,20 +523,6 @@ $(document).on("click", "#btnImpLiberacionR", function () {
             title: 'Documento',
             text: 'Introduzca el numero de documento',
             input: 'text'
-        },
-        {
-            title: 'opción de documento',
-            text: 'Seleccione una de las dos opciones',
-            input: 'radio',
-            inputOptions: {
-                'Aceptado': 'TITULACIÓN INTEGRAL OPCIÓN TESIS PROFESIONAL',
-                'Rechazado': 'TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'
-            },
-            inputValidator: function (result) {
-                if (!result) {
-                    return 'Necesita seleccionar una opción!';
-                }
-            }
         }
     ]).then((result) => {
         if (result.value) {
