@@ -1,9 +1,9 @@
 <?php
+require('../FPDF/fpdf.php');
 require_once "../../controladores/residentes.controlador.php";
 require_once "../../modelos/residentes.modelo.php";
 require_once "../../controladores/jerarquia.controlador.php";
 require_once "../../modelos/jerarquia.modelo.php";
-require('../FPDF/fpdf.php');
 
 class PDF extends FPDF
 {
@@ -99,20 +99,20 @@ class PDF extends FPDF
         $nb = 0;
         for ($i = 0; $i < count($data); $i++)
             $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
-        $h = 3.8 * $nb;
+        $h = 4 * $nb;
         //Issue a page break first if needed
         $this->CheckPageBreak($h);
         //Draw the cells of the row
         for ($i = 0; $i < count($data); $i++) {
             $w = $this->widths[$i];
-            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'C';
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : 'J';
             //Save the current position
             $x = $this->GetX();
             $y = $this->GetY();
             //Draw the border
             $this->Rect($x, $y, $w, $h);
             //Print the text
-            $this->MultiCell($w, 3.8, $data[$i], 0, $a);
+            $this->MultiCell($w, 4, $data[$i], 0, $a);
             //Put the position to the right of the cell
             $this->SetXY($x + $w, $y);
         }
@@ -180,14 +180,10 @@ $nombre = $respuesta["nombre"];
 $asesorInterno = $respuesta["asesorInt"];
 $revisor1 = $respuesta["revisor1"];
 $revisor2 = $respuesta["revisor2"];
-$suplente = $respuesta["suplente"];
+$carrera = $respuesta["carrera"];
+$proyecto = $respuesta["nombreProyecto"];
 
 $tablaJ = "jerarquia";
-$itemJefeDivision = "JEFE DE LA DIVISION DE ESTUDIOS PROFESIONALES";
-$respuestajefeDivision = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDivision);
-$jefeDivision = $respuestajefeDivision["nombre"];
-$jefeSexo = $respuestajefeDivision["sexo"];
-
 $itemJefeDepartamento = "JEFE DEL DEPTO. ACADEMICO";
 $respuestajefeDepartamento = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDepartamento);
 $jefeDepartamento = $respuestajefeDepartamento["nombre"];
@@ -195,102 +191,90 @@ $jefeDepartamentoSexo = $respuestajefeDepartamento["sexo"];
 
 $numero = $_GET['numero'];
 $fechaActual = $_GET['fecha'];
-$fechaTitulacion = $_GET['fechaTitulacion'];
-$hora = $_GET['hora'];
 
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AddPage();
-$pdf->SetLeftMargin(29);
-$pdf->SetRightMargin(29);
+$pdf->SetLeftMargin(24);
+$pdf->SetRightMargin(19);
 $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
 $pdf->SetFont('Helvetica', '', '7.3');
 $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
 $pdf->Ln(12);
 
-$pdf->SetFont('Helvetica', 'B', '8');
-$pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'R');
+$pdf->SetFont('Helvetica', '', '9');
+$pdf->Cell(238, 0, utf8_decode('DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
 $pdf->Ln(4);
-$pdf->SetFont('Helvetica', 'B', '9');
-$pdf->Cell(106.6);
-$pdf->Cell(0, 0, utf8_decode('OF. No. DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'L');
-
+$pdf->Cell(87);
+$pdf->Cell(0, 0, utf8_decode('OF. No. DSC-IT-' . $numero . '/' . date("Y") . ''), 0, 0, 'L');
 $pdf->Ln(4);
-$pdf->SetFont('Helvetica', 'B', '8');
-$pdf->Cell(229, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
-$pdf->SetXY(132, 73);
-
+$pdf->Cell(191, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
+$pdf->SetXY(113, 73);
 $pdf->SetFont('Helvetica', 'BU', '8');
-$pdf->Cell(0, 0, utf8_decode('JURADO SELECCIONADO.'), 0, 0, 'C');
-$pdf->Ln(8);
+$pdf->Cell(0, 0, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN'), 0, 0, 'C');
+$pdf->Ln(4);
 $pdf->SetFont('Helvetica', '', '8.5');
-$pdf->SetX(91);
+$pdf->SetX(52);
 $pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
-$pdf->SetX(160);
+$pdf->SetX(136);
 $pdf->SetTextColor(255, 255, 255);
 $anchoFecha = $pdf->GetStringWidth($fechaActual);
 $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
-$pdf->Ln(8);
-$pdf->Ln(4);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->SetFont('Helvetica', 'B', '9');
+$pdf->Ln(8);
 
-$pdf->Cell(0, 0, utf8_decode($jefeDivision), 0, 0, 'L');
+$pdf->Cell(0, 0, utf8_decode($revisor1), 0, 0, 'L');
 $pdf->Ln(4);
-if ($jefeSexo == 'M') {
-    $pdf->Cell(0, 0, utf8_decode('JEFE DE DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
-} else {
-    $pdf->Cell(0, 0, utf8_decode('JEFA DE DIVISIÓN DE ESTUDIOS PROFESIONALES'), 0, 0, 'L');
-}
+$pdf->Cell(0, 0, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN'), 0, 0, 'L');
 $pdf->Ln(4);
-
 $pdf->Cell(0, 0, utf8_decode('P R E S E N T E .'), 0, 0, 'L');
-$pdf->Ln(8);
+$pdf->Ln(10);
 
-if ($jefeSexo == 'M') {
-    $pdf->Cell(0, 0, utf8_decode('AT´N: COORDINADOR DE TITULACIÓN.'), 0, 0, 'L');
-} else {
-    $pdf->Cell(0, 0, utf8_decode('AT´N: COORDINADORA DE TITULACIÓN.'), 0, 0, 'L');
+$pdf->SetFont('Helvetica', '', '9');
+$pdf->Cell(13);
+$pdf->Cell(0, 0, utf8_decode('Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para llevar a cabo la'), 0, 0, 'L');
+$pdf->Ln(4);
+$pdf->Cell(0, 0, utf8_decode('Revisión del Trabajo de Titulación.'), 0, 0, 'L');
+$pdf->Ln(6);
+
+if ($carrera == 'Ingeniería en Sistemas Computacionales') {
+    $carrera = 'ING. EN SISTEMAS COMPUTACIONALES';
+} else if ($carrera == 'Ingeniería Informática') {
+    $carrera = 'ING. INFORMATICA';
 }
-$pdf->Ln(12);
+$pdf->SetWidths(array(30, 80, 50));
+$pdf->Row(array(utf8_decode('Alumno (s) :'), utf8_decode(mb_strtoupper($nombre)), utf8_decode('Área: ' . mb_strtoupper($carrera))));
+$pdf->SetWidths(array(30, 130));
+$pdf->Row(array(utf8_decode('Opción'), utf8_decode(mb_strtoupper('TRABAJO DE TITULACIÓN INTEGRAL'))));
+$pdf->Row(array(utf8_decode('Proyecto:'), utf8_decode(mb_strtoupper($proyecto))));
+$pdf->Row(array(utf8_decode('Asesor:'), utf8_decode(mb_strtoupper($asesorInterno))));
+$pdf->Row(array(utf8_decode('Revisor 1:'), utf8_decode(mb_strtoupper($revisor1))));
+$pdf->Row(array(utf8_decode('Revisor 2:'), utf8_decode(mb_strtoupper($revisor2))));
+$pdf->SetWidths(array(45, 115));
+$pdf->Row(array(utf8_decode('Documentos entregados:'), utf8_decode(mb_strtoupper('1 EJEMPLAR PARA CADA REVISOR'))));
+$pdf->Ln(8);
 
-$pdf->SetFont('Helvetica', '', '8');
-$text = "Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del 
-<C. " . mb_strtoupper($nombre) . ",> que presenta su protocolo para su <TITULACIÓN INTEGRAL,> 
-el día <" . mb_strtoupper($fechaTitulacion) . "> del año en curso, a las <" . $hora . " hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
+$pdf->SetFont('Helvetica', 'BUI', '9');
+$pdf->Cell(0, 0, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 0, 'C');
+
+$pdf->Ln(8);
+$pdf->SetFont('Helvetica', '', '9');
+$pdf->Cell(13);
+$text = "Asimismo, hago de su conocimiento que deberá entregar a este departamento el resultado de dicha revisión a
+más tardar en <10 (DIEZ) días hábiles a partir de la fecha de entrega,> en el entendido que, de no cumplir dentro de este
+plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.";
 $pdf->WriteText(utf8_decode($text));
-$pdf->Ln(8);
+$pdf->Ln(10);
 
-$pdf->SetFont('Helvetica', 'B', '8');
-$pdf->MultiCell(40, 4, utf8_decode('PRESIDENTE
-
-'), 1, 'C');
-$pdf->SetXY(69, 137);
-$pdf->MultiCell(40, 4, utf8_decode('SECRETARIO
-
-'), 1, 'C');
-$pdf->SetXY(109, 137);
-$pdf->MultiCell(40, 4, utf8_decode('VOCAL
-
-'), 1, 'C');
-$pdf->SetXY(149, 137);
-$pdf->MultiCell(40, 4, utf8_decode('VOCAL SUPLENTE
-
-'), 1, 'C');
-$pdf->SetFont('Helvetica', '', '7');
-$pdf->SetWidths(array(40, 40, 40, 40));
-// $pdf->SetXY(69, 137);
-$pdf->Row(array(utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($revisor1)), utf8_decode(mb_strtoupper($revisor2)), utf8_decode(mb_strtoupper($suplente))));
-$pdf->Ln(8);
-
-$pdf->SetFont('Helvetica', '', '8');
-$pdf->Cell(80, 0, utf8_decode('Sin otro particular, reciba un cordial saludo.'), 0, 0, 'C');
+$pdf->Cell(13);
+$pdf->Cell(0, 0, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted.'), 0, 0, 'J');
 $pdf->Ln(14.5);
 
-$pdf->SetFont('Helvetica', 'B', '8');
+$pdf->SetFont('Helvetica', 'B', '9');
 $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 0, 'C');
 $pdf->Ln(3.3);
 $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 0, 'C');
-$pdf->Ln(18.4);
+$pdf->Ln(14);
 
 $pdf->Cell(0, 4, utf8_decode($jefeDepartamento), 0, 0, 'C');
 $pdf->Ln(3.7);
@@ -299,13 +283,13 @@ if ($jefeDepartamentoSexo == 'M') {
 } else {
     $pdf->Cell(0, 4, utf8_decode('JEFA DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
 }
-$pdf->Ln(18.4);
+$pdf->Ln(14);
 
-$pdf->SetFont('Helvetica', '', '5.5');
-$pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO'), 0, 0, 'L');
+$pdf->SetFont('Helvetica', '', '8');
+$pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 0, 'L');
 $pdf->Ln(3);
-$pdf->Cell(3);
-$pdf->Cell(0, 4, utf8_decode('*JEOL*Ere'), 0, 0, 'L');
+$pdf->SetFont('Helvetica', '', '6');
+$pdf->Cell(9);
+$pdf->Cell(0, 4, utf8_decode('*JEOL*ere'), 0, 0, 'L');
 
-
-$pdf->Output('I', 'Asignación de Sinodales.pdf', 'D');
+$pdf->Output('I', 'Asignación de Jurado.pdf', 'D');
