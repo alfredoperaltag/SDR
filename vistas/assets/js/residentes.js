@@ -55,9 +55,9 @@ $(document).on("click", ".btnInfoResidente", function () {
                     document.getElementById("customCheck5").checked = true;
                     document.getElementById("customCheck6").checked = true;
                 }
-                document.getElementById('ViewRevisor32').style.display='none';
-                document.getElementById('ViewSuplente2').style.display='block';
-                
+                document.getElementById('ViewRevisor32').style.display = 'none';
+                document.getElementById('ViewSuplente2').style.display = 'block';
+
 
             } else { //Tesis
                 document.getElementById('CheckResidenciasView1').style.display = 'none'; //oculta check de residencias
@@ -69,10 +69,10 @@ $(document).on("click", ".btnInfoResidente", function () {
                     document.getElementById("CheckTesis1").checked = false;
                     document.querySelector('#StatusTesis1').innerText = 'No liberado';
                 }
-                
 
-                document.getElementById('ViewRevisor32').style.display='block';
-                document.getElementById('ViewSuplente2').style.display='none';
+
+                document.getElementById('ViewRevisor32').style.display = 'block';
+                document.getElementById('ViewSuplente2').style.display = 'none';
 
             }
 
@@ -191,9 +191,9 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editRevisor1").val(respuesta["revisor1"]);
                 $("#editRevisor2").val(respuesta["revisor2"]);
 
-                
-                document.getElementById('ViewRevisor3').style.display='block';
-                document.getElementById('ViewSuplente').style.display='none';
+
+                document.getElementById('ViewRevisor3').style.display = 'block';
+                document.getElementById('ViewSuplente').style.display = 'none';
                 $("#editRevisor3").attr("disabled", false);
                 $("#editRevisor3").val(respuesta["revisor3"]);
                 $("#editSuplente").attr("disabled", false);
@@ -231,8 +231,8 @@ $(document).on("click", ".btnEditResidente", function () {
                 $("#editRevisor1").val(respuesta["revisor1"]);
                 $("#editRevisor2").val(respuesta["revisor2"]);
 
-                document.getElementById('ViewRevisor3').style.display='none';
-                document.getElementById('ViewSuplente').style.display='block';
+                document.getElementById('ViewRevisor3').style.display = 'none';
+                document.getElementById('ViewSuplente').style.display = 'block';
                 $("#editRevisor3").attr("disabled", true);
                 $("#editRevisor3").val(respuesta["revisor3"]);
                 $("#editSuplente").val(respuesta["suplente"]);
@@ -373,9 +373,9 @@ $(document).on("click", "#btnImprimirAsesores", function () {
             input: 'text',
             inputValidator: (value) => {
                 if (!value) {
-                  return '¡Necesita llenar la información!'
+                    return '¡Necesita llenar la información!'
                 }
-              }
+            }
         }
     ]).then((result) => {
         if (result.value) {
@@ -409,6 +409,40 @@ $(document).on("click", "#btnImprimirLiberacion", function () {
     })
 });
 
+
+/*<!--=====================================
+IMPRIMIR Jurado
+======================================-->*/
+$(document).on("click", "#btnImprimirJurado", function () {
+    console.log("idResidenteDic: " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2']
+    }).queue([{
+            input: 'text',
+            inputValue: fecha,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            title: '# Oficio',
+            text: 'Introduzca el numero de Oficio',
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                    return '¡Necesita llenar la información!'
+                }
+            }
+        }
+    ]).then((result) => {
+        if (result.value) {
+            window.open("pdf/residencias/jurado.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+            /* window.open("pdf/residencias/dictamen.php"); */
+        }
+    })
+});
 /*<!--=====================================
 COMISION PARA TITULACION RESIDENCIAS
 ======================================-->*/
@@ -431,9 +465,9 @@ $(document).on("click", "#btnImprimirComisionT", function () {
             input: 'text',
             inputValidator: (value) => {
                 if (!value) {
-                  return '¡Necesita llenar la información!'
+                    return '¡Necesita llenar la información!'
                 }
-              }
+            }
         },
         {
             input: 'text',
@@ -465,7 +499,7 @@ $(document).on("click", "#btnImprimirComisionT", function () {
         if (result.value) {
             if (result.value[4] == 'si') {
                 PreguntarPromedio(result.value);
-            }else{
+            } else {
                 window.open("pdf/residencias/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
             }
         }
@@ -474,22 +508,24 @@ $(document).on("click", "#btnImprimirComisionT", function () {
 
 async function PreguntarPromedio(resulte) {
     // console.table(resulte);
-    const {value: promedio} = await Swal.fire({
+    const {
+        value: promedio
+    } = await Swal.fire({
         title: 'Promedio',
         text: '¿Cual es el promedio del residente?',
         input: 'text',
         showCancelButton: true,
         inputValidator: (value) => {
-          if (!value) {
-            return '¡Necesita escribir el propmedio!'
-          }
+            if (!value) {
+                return '¡Necesita escribir el propmedio!'
+            }
         }
-      })
-      if (promedio) {
+    })
+    if (promedio) {
         // Swal.fire(`Your IP address is ${promedio}`)
         window.open("pdf/residencias/comision.php?id=" + idResidente + "&fecha=" + resulte[0] + "&numero=" + resulte[1] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
-      }
-  }
+    }
+}
 
 
 /*<!--=====================================
@@ -514,9 +550,9 @@ $(document).on("click", "#btnImprimirSinodales", function () {
             input: 'text',
             inputValidator: (value) => {
                 if (!value) {
-                  return '¡Necesita llenar la información!'
+                    return '¡Necesita llenar la información!'
                 }
-              }
+            }
         },
         {
             input: 'text',
@@ -561,9 +597,9 @@ $(document).on("click", "#btnImpAsesorT", function () {
             input: 'text',
             inputValidator: (value) => {
                 if (!value) {
-                  return '¡Necesita llenar la información!'
+                    return '¡Necesita llenar la información!'
                 }
-              }
+            }
         }
     ]).then((result) => {
         if (result.value) {
@@ -595,9 +631,9 @@ $(document).on("click", "#btnImpJurado", function () {
             input: 'text',
             inputValidator: (value) => {
                 if (!value) {
-                  return '¡Necesita llenar la información!'
+                    return '¡Necesita llenar la información!'
                 }
-              }
+            }
         }
     ]).then((result) => {
         if (result.value) {
@@ -630,9 +666,9 @@ $(document).on("click", "#btnImpLiberacionR", function () {
             input: 'text',
             inputValidator: (value) => {
                 if (!value) {
-                  return '¡Necesita llenar la información!'
+                    return '¡Necesita llenar la información!'
                 }
-              }
+            }
         }
     ]).then((result) => {
         if (result.value) {
