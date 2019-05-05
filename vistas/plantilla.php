@@ -131,6 +131,8 @@ CUERPO DOCUMENTO
     <script src="vistas/assets/js/metisMenu.min.js"></script>
     <script src="vistas/assets/js/jquery.slimscroll.min.js"></script>
     <script src="vistas/assets/js/jquery.slicknav.min.js"></script>
+    <script src="vistas/assets/js/Chart.min.js"></script>
+    <script src="vistas/assets/js/chartInicio.js"></script>
 
     <!-- Start datatable js -->
     <script src="vistas/assets/js/jquery.dataTables.js"></script>
