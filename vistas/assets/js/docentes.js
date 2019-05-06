@@ -103,6 +103,8 @@ $(document).on("click", ".btnCeroDocente", function () {
         cancelButtonText: 'Cancelar',
         confirmButtonText: '¡Eliminar!'
     }).then((result) => {
+        // console.table(result['value']);
+        if (result['value'] == true) {
         $.ajax({
             url: "ajax/docentes.ajax.php",
             method: "POST",
@@ -135,5 +137,7 @@ $(document).on("click", ".btnCeroDocente", function () {
                 });
             }
         });
+    }
     })
+
 })

@@ -300,11 +300,15 @@ $(document).on("click", ".btnImprimirDoc", function () {
 
             // document.getElementById('CheckResidenciasView1').style.display='none'; //oculta check de residencias
             // document.getElementById('CheckTesisView1').style.display='block'; //muestra chc de tesis
+            document.getElementById("btnImpJurado").disabled = true;
+            document.getElementById("btnImpComisionT").disabled = true;
             document.getElementById("btnImpLiberacionR").disabled = true;
             // document.getElementById("btnImpLiberacion").disabled = true;
             if (respuesta["revisionOK"] == 3) {
                 document.getElementById("CheckTesis2").checked = true;
                 document.querySelector('#StatusTesis2').innerText = 'Liberado';
+                document.getElementById("btnImpJurado").disabled = false;
+                document.getElementById("btnImpComisionT").disabled = false;
                 document.getElementById("btnImpLiberacionR").disabled = false;
                 // document.getElementById("btnImpLiberacion").disabled = false;
             } else {
@@ -640,7 +644,7 @@ $(document).on("click", "#btnImpJurado", function () {
         }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/tesis/jurado.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+            window.open("pdf/tesis/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
         }
     })
 });
@@ -679,6 +683,95 @@ $(document).on("click", "#btnImpLiberacionR", function () {
         }
     })
 });
+/*<!--=====================================
+COMISION PARA TITULACION TESIS
+======================================-->*/
+$(document).on("click", "#btnImpComisionT", function () {
+    // console.log("J=  " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2', '3', '4', '5']
+    }).queue([{
+            input: 'text',
+            inputValue: fechaR,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida para el documento'
+        },
+        {
+            title: 'Documento',
+            text: 'Introduzca el numero de documento',
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                    return '¡Necesita llenar la información!'
+                }
+            }
+        },
+        {
+            input: 'text',
+            inputValue: fecha4,
+            title: 'Fecha de Titulación',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            input: 'text',
+            inputValue: "10:00",
+            title: 'Hora de la Titulación',
+            text: 'Introduzca una hora valida'
+        },
+        {
+            title: 'Tipo de documento',
+            text: '¿El residente defiende su proyecto?',
+            input: 'radio',
+            inputOptions: {
+                'si': 'SI',
+                'no': 'NO'
+            },
+            inputValidator: function (result) {
+                if (!result) {
+                    return '¡Necesita seleccionar una opción!';
+                }
+            }
+        }
+    ]).then((result) => {
+        if (result.value) {
+            if (result.value[4] == 'si') {
+                PreguntarPromedio(result.value);
+            } else {
+                window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
+            }
+        }
+    })
+});
+
+async function PreguntarPromedio(resulte) {
+    // console.table(resulte);
+    const {
+        value: promedio
+    } = await Swal.fire({
+        title: 'Promedio',
+        text: '¿Cual es el promedio del residente?',
+        input: 'text',
+        showCancelButton: true,
+        inputValidator: (value) => {
+            if (!value) {
+                return '¡Necesita escribir el propmedio!'
+            }
+        }
+    })
+    if (promedio) {
+        // Swal.fire(`Your IP address is ${promedio}`)
+        window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + resulte[0] + "&numero=" + resulte[1] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
+    }
+}
+
+
+
+
+
+
 
 /*<!--=====================================
     CHECKS EDITAR RESIDENTE
@@ -703,5 +796,13 @@ $(document).on("click", ".customCheck3", function () {
     if (document.getElementById("customCheck3").checked) {
         document.getElementById("customCheck1").checked = true;
         document.getElementById("customCheck2").checked = true;
+    }
+})
+$(document).on("click", ".CheckTesis", function () {
+
+    if (document.getElementById("CheckTesis").checked) {
+        document.querySelector('#StatusTesis').innerText = 'Liberado';
+    }else{
+        document.querySelector('#StatusTesis').innerText = 'No liberado';
     }
 })
