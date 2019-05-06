@@ -297,19 +297,18 @@ class ControladorResidentes
 
                 $resResidente = ModeloResidentes::mdlRegistroResidenteDatos($tabla2, $datosResidente);
                 if ($resResidente == "ok") {
-                    echo '<script>
-				Swal.fire({
-					 type: "success",
-                     title: "¡Exito!",
-                     text: "¡Se registro correctamente!",					   
-					showConfirmButton: true,
-					confirmButtonText: "Cerrar"				   
-				}).then((result)=>{
-					if(result.value){
-						window.location = "Residentes";
-					}
-					});
-              </script>';
+                    echo "<script>
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se registro correctamente!',
+                            showConfirmButton: false,
+                            timer: 1800
+                        }).then((result)=>{
+                            window.location = 'Residentes';
+                            });
+                        </script>";
               $tablaDocente = "asesor";
               $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
                 } else {
@@ -475,17 +474,6 @@ class ControladorResidentes
             $tabla2 = "residentes";
             $tipo = 2;
             $NoRevicion = 0;
-
-            // Revicioness
-            // if($_POST["customCheck1"]){
-            //     $NoRevicion = 1;
-            // }
-            // if ($_POST["customCheck2"]) {
-            //     $NoRevicion = 2;
-            // }
-            // if ($_POST["customCheck3"]) {
-            //     $NoRevicion = 3;
-            // }
             if ($_POST["CheckTesis"]) {
                 $NoRevicion = 3;
             }else{
@@ -538,19 +526,6 @@ class ControladorResidentes
                 $resResidente = ModeloResidentes::mdlEditResidenteDatos($tabla2, $datosResidente);
 
                 if ($resResidente == "ok") {
-            //         echo '<script>
-			// 	Swal.fire({
-			// 		 type: "success",
-            //          title: "¡Exito!",
-            //          text: "¡Se actualizo correctamente!",						   
-			// 		showConfirmButton: true,
-			// 		confirmButtonText: "Cerrar"				   
-			// 	}).then((result)=>{
-			// 		if(result.value){
-			// 			window.location = "Residentes";
-			// 		}
-			// 		});
-            //   </script>';
             echo "<script>
                         Swal.fire({
                             position: 'top',
@@ -672,12 +647,6 @@ class ControladorResidentes
                         $borrarPreRegistro = new ControladorPreRegistro();
                         $borrarPreRegistro->ctrBorrarPreRegistroOK();
 
-
-            //  RESTAR SOLO AL ASESOR   NO TENGO IDEA QUE PASE
-                // $tablaDocente = "asesor";
-            //   $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
-
-              
                 } else {
                     echo '<script>
                     Swal.fire({

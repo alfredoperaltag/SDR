@@ -74,19 +74,18 @@ class ControladorDocentes
                     /* echo $datos["id"];
                     echo $respuesta; */
                     if ($respuesta == "ok") {
-                        echo '<script>
+                        echo "<script>
                         Swal.fire({
-                        type: "success",
-                        title: "¡Actualizado Correctamente!",
-                        showConfirmButton: true,
-                        confirmButtonText: "Cerrar",
-                        closeOnConfirm: false
+                            position: 'top',
+                            type: 'success',
+                            title: '¡Exito!',
+                            text: '¡Se actualizo correctamente!',
+                            showConfirmButton: false,
+                            timer: 1000
                         }).then((result)=>{
-                        if(result.value){
-                           window.location = "Docentes";
-                        }
-                        });
-                        </script>';
+                            window.location = 'Docentes';
+                            });
+                        </script>";
                     }
                 } else {
                     echo '<script>
