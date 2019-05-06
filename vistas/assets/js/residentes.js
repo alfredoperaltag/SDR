@@ -35,6 +35,7 @@ $(document).on("click", ".btnInfoResidente", function () {
             // console.log("Tipo: ", respuesta["tipo_registro"]);
 
             if (respuesta["tipo_registro"] == "Residencias Profesionales") { //residensias
+                // console.table(respuesta);
                 document.getElementById('CheckResidenciasView1').style.display = 'block'; //muestra chc de residencias
                 document.getElementById('CheckTesisView1').style.display = 'none'; //oculta check de tesis
 
@@ -60,6 +61,7 @@ $(document).on("click", ".btnInfoResidente", function () {
 
 
             } else { //Tesis
+                // console.table(respuesta);
                 document.getElementById('CheckResidenciasView1').style.display = 'none'; //oculta check de residencias
                 document.getElementById('CheckTesisView1').style.display = 'block'; //muestra chc de tesis
                 if (respuesta["revisionOK"] == 3) {
@@ -196,7 +198,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 document.getElementById('ViewSuplente').style.display = 'none';
                 $("#editRevisor3").attr("disabled", false);
                 $("#editRevisor3").val(respuesta["revisor3"]);
-                $("#editSuplente").attr("disabled", false);
+                $("#editSuplente").attr("disabled", true);
                 $("#editSuplente").val(respuesta["suplente"]);
             } else { //RESIDENCIAS
                 // console.log("respuesta::", respuesta);
@@ -235,6 +237,7 @@ $(document).on("click", ".btnEditResidente", function () {
                 document.getElementById('ViewSuplente').style.display = 'block';
                 $("#editRevisor3").attr("disabled", true);
                 $("#editRevisor3").val(respuesta["revisor3"]);
+                $("#editSuplente").attr("disabled", false);
                 $("#editSuplente").val(respuesta["suplente"]);
             }
 
@@ -316,7 +319,7 @@ $(document).on("click", ".btnImprimirDoc", function () {
 IMPRIMIR DICTAMEN
 ======================================-->*/
 $(document).on("click", "#btnImprimirDictamen", function () {
-    console.log("idResidenteDic: " + idResidente);
+    // console.log("idResidenteDic: " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
@@ -355,7 +358,7 @@ $(document).on("click", "#btnImprimirDictamen", function () {
 IMPRIMIR ASESORES
 ======================================-->*/
 $(document).on("click", "#btnImprimirAsesores", function () {
-    console.log("idResidenteDic: " + idResidente);
+    // console.log("idResidenteDic: " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
@@ -390,7 +393,7 @@ $(document).on("click", "#btnImprimirAsesores", function () {
 IMPRIMIR LIBERACION
 ======================================-->*/
 $(document).on("click", "#btnImprimirLiberacion", function () {
-    console.log("idResidenteDic: " + idResidente);
+    // console.log("idResidenteDic: " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,

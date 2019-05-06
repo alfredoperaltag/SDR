@@ -583,7 +583,7 @@ EDITAR RESIDENTE
                             <label class="col-form-label mr-4">Estado de la liberación:</label>
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" name="CheckTesis" class="custom-control-input" id="CheckTesis">
-                                <label id="StatusTesis" class="custom-control-label" for="CheckTesis">Liberado</label>
+                                <label id="StatusTesis" class="custom-control-label" for="CheckTesis"></label>
                             </div>
                         </div>
                     </div>

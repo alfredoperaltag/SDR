@@ -30,7 +30,11 @@ $(document).ready(function () {
                     type: 'doughnut',
                     data: data,
                     options: {
-                        responsive: true
+                        responsive: true,
+                        // title: {
+                        //     display: true,
+                        //     text: 'Predicted world population (millions) in 2050'
+                        //   }
                     }
                 });
             }

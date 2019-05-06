@@ -481,7 +481,7 @@ class ControladorResidentes
             }
 
 
-            $na = "";
+            $na = 0;
             $datosProyecto = array(
                 "idP" => $_POST["idProyectoEdit"],
                 "nombreProyecto" => $_POST["editNombreProyecto"],
@@ -491,7 +491,7 @@ class ControladorResidentes
                 "revisor1" => $_POST["editRevisor1"],
                 "revisor2" => $_POST["editRevisor2"],
                 "revisor3" => $_POST["editRevisor3"],
-                "suplente" => $_POST["editSuplente"]
+                "suplente" => $na
             );
 
             $respuestaProyecto = ModeloResidentes::mdlEditResidenteProyecto($tabla1, $datosProyecto);

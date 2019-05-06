@@ -4,11 +4,8 @@ class ControladorInicio
     /*=============================================
     TOTAL DE RESIDENTES EN NUMERO
     =============================================*/
-    // public static function ctrMostrarResidentesInicio($item, $valor)
-    public static function ctrMostrarResidentesInicio($valor)
+    public static function ctrMostrarResidentesInicio($valor, $tabla, $item)
     {
-        $item = "tipo_registro";
-        $tabla = "residentes";
         $respuesta = ModeloInicio::MdlMostrarRInicio($tabla, $item, $valor);
         return $respuesta;
     }
@@ -16,7 +13,6 @@ class ControladorInicio
     /*=============================================
     GRAFICAR RESIDENTES
     =============================================*/
-    // public static function ctrMostrarResidentesInicio($item, $valor)
     public static function ctrMostrarResidentesGrafo($valor)
     {
         $item = "tipo_registro";
