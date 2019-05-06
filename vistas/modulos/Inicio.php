@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card align-self-start  mt-3">
-                <h4 class="header-title mb-3">Grafica de registros</h4>
+                <h4 class="header-title mb-3">Total de registros</h4>
                         <div class="seo-fact sbg2 mt-4" id="divResidenciasInit">
                             <div class="p-4 d-flex justify-content-between align-items-center">
                                 <div class="seofct-icon"><i class="fa fa-user-friends"></i>Informe Tecnico de Residencias Profesionales</div>
