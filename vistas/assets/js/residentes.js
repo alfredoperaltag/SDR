@@ -266,9 +266,9 @@ $(document).on("click", ".btnImprimirDoc", function () {
 
             // document.getElementById("btnImprimirAsesores").disabled = true;
             document.getElementById("btnImprimirLiberacion").disabled = true;
-            document.getElementById("btnImprimirJurado").disabled = true;
+            document.getElementById("btnImprimirRevision").disabled = true;
             document.getElementById("btnImprimirComisionT").disabled = true;
-            document.getElementById("btnImprimirSinodales").disabled = true;
+            document.getElementById("btnImprimirJuradoSeleccionado").disabled = true;
 
             $("#impNoControl").val(respuesta["noControl"]);
             $("#impNoControlT").val(respuesta["noControl"]);
@@ -293,9 +293,9 @@ $(document).on("click", ".btnImprimirDoc", function () {
 
                 document.getElementById("btnImprimirAsesores").disabled = false;
                 document.getElementById("btnImprimirLiberacion").disabled = false;
-                document.getElementById("btnImprimirJurado").disabled = false;
+                document.getElementById("btnImprimirRevision").disabled = false;
                 document.getElementById("btnImprimirComisionT").disabled = false;
-                document.getElementById("btnImprimirSinodales").disabled = false;
+                document.getElementById("btnImprimirJuradoSeleccionado").disabled = false;
             }
 
             // document.getElementById('CheckResidenciasView1').style.display='none'; //oculta check de residencias
@@ -414,9 +414,9 @@ $(document).on("click", "#btnImprimirLiberacion", function () {
 
 
 /*<!--=====================================
-IMPRIMIR Jurado
+IMPRIMIR Revision
 ======================================-->*/
-$(document).on("click", "#btnImprimirJurado", function () {
+$(document).on("click", "#btnImprimirRevision", function () {
     console.log("idResidenteDic: " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
@@ -441,7 +441,7 @@ $(document).on("click", "#btnImprimirJurado", function () {
         }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/residencias/jurado.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+            window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
             /* window.open("pdf/residencias/dictamen.php"); */
         }
     })
@@ -532,9 +532,9 @@ async function PreguntarPromedio(resulte) {
 
 
 /*<!--=====================================
-IMPRIMIR SINODALES
+IMPRIMIR JuradoSeleccionado
 ======================================-->*/
-$(document).on("click", "#btnImprimirSinodales", function () {
+$(document).on("click", "#btnImprimirJuradoSeleccionado", function () {
     console.log("idResidenteDic: " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
@@ -571,7 +571,7 @@ $(document).on("click", "#btnImprimirSinodales", function () {
         }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/residencias/sinodales.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaTitulacion=" + result.value[2] + "&hora=" + result.value[3], "_blank");
+            window.open("pdf/residencias/juradoSeleccionado.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaTitulacion=" + result.value[2] + "&hora=" + result.value[3], "_blank");
             /* window.open("pdf/residencias/dictamen.php"); */
         }
     })

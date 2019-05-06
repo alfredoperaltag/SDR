@@ -3,7 +3,7 @@
         <h2 class="ml-4">Residentes</h2>
         <div class="card-body">
             <!-- <h1 class="header-title">Usuarios</h1> -->
-            <?php 
+            <?php
             if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
                 echo '<button class="btn btn-success btn-xs mb-3" data-toggle="modal" data-target="#modalITDRP">Informe Tecnico
                 de<br> Residencias Profesionales</button>
@@ -11,7 +11,7 @@
                 Profesional</button>';
             }
             $cargarConfig = ControladorConfig::ctrCargarConfig("configPreRegistro");
-            
+
             if ($cargarConfig["valor"] == "on" && $_SESSION['perfil'] == "Administrador") {
                 echo '<button class="btn btn-primary btn-xs mb-3 ml-5" data-toggle="modal" data-target="#modalPreRegistroOK">Pre-Registro<br> Residencias Profesionales</button>';
             }
@@ -73,8 +73,7 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControlRP" 
-                                    placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControlRP" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -102,11 +101,11 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                                 ?>
                                 <select class="custom-select" name="nuevoPeriodoAnio" required>
                                     <?php while ($cont >= 2018) { ?>
-                                    <option name="anio" value="<?php echo ($cont); ?>">
-                                        <?php echo ($cont); ?>
-                                    </option>
-                                    <?php $cont = ($cont - 1);
-                                } ?>
+                                        <option name="anio" value="<?php echo ($cont); ?>">
+                                            <?php echo ($cont); ?>
+                                        </option>
+                                        <?php $cont = ($cont - 1);
+                                    } ?>
                                 </select>
                             </div>
                         </div>
@@ -116,20 +115,17 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required
-                                autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -145,8 +141,7 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono"
-                                autocomplete="off">
+                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono" autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -155,22 +150,19 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
+                            <textarea rows="2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresa"
-                                placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
+                            <textarea rows="2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Asesor Externo</label>
-                            <input class="form-control" type="text" name="nuevoAsesorExt" placeholder="Asesor Externo"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoAsesorExt" placeholder="Asesor Externo" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
@@ -270,8 +262,7 @@ TESIS PROFESIONAL
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="nuevoNoControlT"
-                                    placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="nuevoNoControlT" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -299,11 +290,11 @@ TESIS PROFESIONAL
                                 ?>
                                 <select class="custom-select" name="nuevoPeriodoAnio" required>
                                     <?php while ($cont >= 2018) { ?>
-                                    <option name="anio" value="<?php echo ($cont); ?>">
-                                        <?php echo ($cont); ?>
-                                    </option>
-                                    <?php $cont = ($cont - 1);
-                                } ?>
+                                        <option name="anio" value="<?php echo ($cont); ?>">
+                                            <?php echo ($cont); ?>
+                                        </option>
+                                        <?php $cont = ($cont - 1);
+                                    } ?>
                                 </select>
                             </div>
                         </div>
@@ -313,20 +304,17 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required
-                                autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoNombre" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoApellidoM" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -342,8 +330,7 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono"
-                                autocomplete="off">
+                            <input class="form-control" type="tel" name="nuevoTelefono" placeholder="Telefono" autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -352,14 +339,12 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
+                            <textarea rows="2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresa"
-                                placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
+                            <textarea rows="2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresa" placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -474,8 +459,7 @@ EDITAR RESIDENTE
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" type="number" name="editNoControlEdit"
-                                    id="editNoControlEdit" placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" type="number" name="editNoControlEdit" id="editNoControlEdit" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -503,11 +487,11 @@ EDITAR RESIDENTE
                                 ?>
                                 <select class="custom-select" name="editPeriodoAnio" id="editPeriodoAnio" required>
                                     <?php while ($cont >= 2018) { ?>
-                                    <option name="anio" value="<?php echo ($cont); ?>">
-                                        <?php echo ($cont); ?>
-                                    </option>
-                                    <?php $cont = ($cont - 1);
-                                } ?>
+                                        <option name="anio" value="<?php echo ($cont); ?>">
+                                            <?php echo ($cont); ?>
+                                        </option>
+                                        <?php $cont = ($cont - 1);
+                                    } ?>
                                 </select>
                             </div>
                         </div>
@@ -517,20 +501,17 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="editNombre" id="editNombre"
-                                placeholder="Nombre" required autocomplete="off">
+                            <input class="form-control" type="text" name="editNombre" id="editNombre" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="editApellidoP" id="editApellidoP"
-                                placeholder="Apellido Paterno" required autocomplete="off">
+                            <input class="form-control" type="text" name="editApellidoP" id="editApellidoP" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="editApellidoM" id="editApellidoM"
-                                placeholder="Apellido Materno" required autocomplete="off">
+                            <input class="form-control" type="text" name="editApellidoM" id="editApellidoM" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -546,14 +527,12 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" type="tel" name="editTelefono" id="editTelefono"
-                                placeholder="Telefono" autocomplete="off">
+                            <input class="form-control" type="tel" name="editTelefono" id="editTelefono" placeholder="Telefono" autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL TIPO DE REGISTRO -->
                         <div class="col-sm-5 my-1">
                             <label for="example-text-input" class="col-form-label">Tipo de registro</label>
-                            <input class="form-control" type="tel" name="editTipo" id="editTipo" placeholder="Tipo"
-                                autocomplete="off">
+                            <input class="form-control" type="tel" name="editTipo" id="editTipo" placeholder="Tipo" autocomplete="off">
                         </div>
                     </div>
                     <!-- liberacion residencias -->
@@ -561,24 +540,21 @@ EDITAR RESIDENTE
                         <div id="CheckResidenciasView" style="display:none;" class="col-sm-8">
                             <label class="col-form-label mr-4">Revisiones:</label>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck1" id="customCheck1" class="custom-control-input customCheck1"
-                                    id="customCheck1">
+                                <input type="checkbox" name="customCheck1" id="customCheck1" class="custom-control-input customCheck1" id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">Revision #1</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck2" id="customCheck2" class="custom-control-input customCheck2"
-                                    id="customCheck2">
+                                <input type="checkbox" name="customCheck2" id="customCheck2" class="custom-control-input customCheck2" id="customCheck2">
                                 <label class="custom-control-label" for="customCheck2">Revision #2</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="customCheck3" id="customCheck3" class="custom-control-input customCheck3"
-                                    id="customCheck3">
+                                <input type="checkbox" name="customCheck3" id="customCheck3" class="custom-control-input customCheck3" id="customCheck3">
                                 <label class="custom-control-label" for="customCheck3">Revision #3</label>
                             </div>
                         </div>
                     </div>
                     <!-- liberacion tesis -->
-                    <div  class="form-row justify-content-center">
+                    <div class="form-row justify-content-center">
                         <div id="CheckTesisView" style="display:none;" class="col-sm-6">
                             <label class="col-form-label mr-4">Estado de la liberación:</label>
                             <div class="custom-control custom-checkbox custom-control-inline">
@@ -594,14 +570,12 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="editNombreProyecto" id="editNombreProyecto"
-                                placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
+                            <textarea rows="2" maxlength="200" class="form-control" type="text" name="editNombreProyecto" id="editNombreProyecto" placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="editNombreEmpresa" id="editNombreEmpresa"
-                                placeholder="Nombre del asesor" required autocomplete="off"></textarea>
+                            <textarea rows="2" maxlength="200" class="form-control" type="text" name="editNombreEmpresa" id="editNombreEmpresa" placeholder="Nombre del asesor" required autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -619,8 +593,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Asesor Externo</label>
-                            <input class="form-control" type="text" name="editAsesorExt" id="editAsesorExt"
-                                placeholder="No llena asesor externo" required autocomplete="off">
+                            <input class="form-control" type="text" name="editAsesorExt" id="editAsesorExt" placeholder="No llena asesor externo" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -756,7 +729,7 @@ INFORMACION RESIDENTE
                         </div>
                     </div>
                 </div>
-                <div  class="form-row justify-content-center">
+                <div class="form-row justify-content-center">
                     <div id="CheckTesisView1" style="display:none;" class="col-sm-6">
                         <label class="col-form-label mr-4">Estado de la liberación:</label>
                         <div class="custom-control custom-checkbox custom-control-inline">
@@ -765,15 +738,15 @@ INFORMACION RESIDENTE
                         </div>
                     </div>
                 </div>
-                    <hr>
+                <hr>
                 <div class="form-row align-items-center">
                     <div class="col-sm-6 my-1">
                         <label for="example-text-input" class="col-form-label">Nombre del proyecto</label>
-                        <textarea rows = "2" maxlength="200" class="form-control" type="text" id="InfoProyecto" readonly></textarea>
+                        <textarea rows="2" maxlength="200" class="form-control" type="text" id="InfoProyecto" readonly></textarea>
                     </div>
                     <div class="col-sm-6 my-1">
                         <label for="example-text-input" class="col-form-label">Empresa</label>
-                        <textarea rows = "2" maxlength="200" class="form-control" type="text" id="InfoEmpresa" readonly></textarea>
+                        <textarea rows="2" maxlength="200" class="form-control" type="text" id="InfoEmpresa" readonly></textarea>
                     </div>
                 </div>
                 <div class="form-row align-items-center">
@@ -838,7 +811,7 @@ IMPRIMIR DOCUMENTOS RESIDENCIAS PROFESIONALES
                     </div>
                     <div class="form-row justify-content-center">
                         <div class="col-sm-12 my-1">
-                            <label class="col-form-label">Revisiones:   </label>
+                            <label class="col-form-label">Revisiones: </label>
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" disabled class="custom-control-input" id="customCheck7">
                                 <label class="custom-control-label" for="customCheck7">Revision #1</label>
@@ -855,14 +828,14 @@ IMPRIMIR DOCUMENTOS RESIDENCIAS PROFESIONALES
                     </div>
                 </div>
                 <br>
-                        <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImprimirDictamen">Dictamen
-                            de anteproyecto de
-                            Residencias
-                            Profesionales</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImprimirDictamen">Dictamen
+                    de anteproyecto de
+                    Residencias
+                    Profesionales</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesores">Asignación de asesor</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJurado">Revisión del trabajo de Titulación</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirRevision">Revisión del trabajo de Titulación</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de Residencias Profesionales</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirSinodales">Jurado Seleccionado</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJuradoSeleccionado">Jurado Seleccionado</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirComisionT">Jurado de Titulación</button>
             </div>
             <div class="modal-footer">
@@ -880,7 +853,7 @@ IMPRIMIR DOCUMENTOS TESIS
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background:#DC3545; color:white">
-                <h5 class="modal-title" >Formatos de Impresion Tesis</h5>
+                <h5 class="modal-title">Formatos de Impresion Tesis</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
@@ -895,7 +868,7 @@ IMPRIMIR DOCUMENTOS TESIS
                         <input class="form-control" type="text" id="impNombreT" readonly>
                     </div>
                 </div>
-                <div  class="form-row justify-content-center">
+                <div class="form-row justify-content-center">
                     <div id="CheckTesisView1" style="display:block;" class="col-sm-9">
                         <label class="col-form-label mr-4">Estado de la liberación:</label>
                         <div class="custom-control custom-checkbox custom-control-inline">
@@ -924,42 +897,42 @@ SELECIONAR RESIDENTE PARE REGISTRO DE PRE-REGISTRO
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white" color:white">
-                <h5 class="modal-title" >Registrar desde Pre-Registro</h5>
+                <h5 class="modal-title">Registrar desde Pre-Registro</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
                 <div class="data-tables datatable-primary">
                     <table class="text-center tablaES">
-                            <thead class="text-capitalize">
-                                <tr>
-                                    <th>#</th>
-                                    <th>No. Control</th>
-                                    <th>Nombre</th>
-                                    <th>Asesor</th>
-                                    <th>Registrar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <thead class="text-capitalize">
+                            <tr>
+                                <th>#</th>
+                                <th>No. Control</th>
+                                <th>Nombre</th>
+                                <th>Asesor</th>
+                                <th>Registrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             <?php
-                                $item = null;
-                                $valor = null;
-                                $docentes = ControladorPreRegistro::ctrMostrarResidentesPre($item, $valor);
-                                $c = 0;
-                                foreach ($docentes as $key => $value) {
-                                    $c++;
-                                        echo '<tr>
+                            $item = null;
+                            $valor = null;
+                            $docentes = ControladorPreRegistro::ctrMostrarResidentesPre($item, $valor);
+                            $c = 0;
+                            foreach ($docentes as $key => $value) {
+                                $c++;
+                                echo '<tr>
                                                 <td>' . $c . '</td>';
-                                        echo '<td>' . $value["noControl"] . '</td>';
-                                        echo '<td>' . $value["nombre"] .' '. $value["apellidoP"] .' '.$value["apellidoM"] .'</td>';
-                                                echo '<td>' . $value["asesorR"] . '</td>';
-                                        echo '<td>
+                                echo '<td>' . $value["noControl"] . '</td>';
+                                echo '<td>' . $value["nombre"] . ' ' . $value["apellidoP"] . ' ' . $value["apellidoM"] . '</td>';
+                                echo '<td>' . $value["asesorR"] . '</td>';
+                                echo '<td>
                                                 <div class="btn-group">';
-                                                echo '<button class="btn btn-warning btnPreRegistroRegister" idPreRegistroRegister="' . $value["id"] . '" data-toggle="modal" data-target="#modalITDRPPRE"><i class="fa fa-pen"></i></button>';
-                                                echo '</div>
+                                echo '<button class="btn btn-warning btnPreRegistroRegister" idPreRegistroRegister="' . $value["id"] . '" data-toggle="modal" data-target="#modalITDRPPRE"><i class="fa fa-pen"></i></button>';
+                                echo '</div>
                                             </td>
                                         </tr>';
-                                }
-                                ?>
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -976,7 +949,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
 ======================================-->
 
 <div class="modal fade" id="modalITDRPPRE" role="dialog" style="overflow-y: auto;">
-    <div class="modal-dialog modal-lg" role="document" >
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <!--=====================================
               CABEZA DEL MODAL
@@ -995,12 +968,11 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                     <div class="box-body">
                         <h6>Datos de Alumnos</h6>
                         <div class="form-row align-items-center">
-                        <input type="hidden" id="idResidentePreReR" name="idResidentePreReR">
+                            <input type="hidden" id="idResidentePreReR" name="idResidentePreReR">
                             <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
                             <div class="col-sm-2 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
-                                <input class="form-control" style="background-color:#FDFFA1" type="number" name="nuevoNoControlRPR" id="nuevoNoControlRPR"
-                                    placeholder="No. Control" required autocomplete="off">
+                                <input class="form-control" style="background-color:#FDFFA1" type="number" name="nuevoNoControlRPR" id="nuevoNoControlRPR" placeholder="No. Control" required autocomplete="off">
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
                             <div class="col-sm-5 my-1">
@@ -1028,11 +1000,11 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                                 ?>
                                 <select class="custom-select" name="nuevoPeriodoAnioR" required>
                                     <?php while ($cont >= 2018) { ?>
-                                    <option name="anio" value="<?php echo ($cont); ?>">
-                                        <?php echo ($cont); ?>
-                                    </option>
-                                    <?php $cont = ($cont - 1);
-                                } ?>
+                                        <option name="anio" value="<?php echo ($cont); ?>">
+                                            <?php echo ($cont); ?>
+                                        </option>
+                                        <?php $cont = ($cont - 1);
+                                    } ?>
                                 </select>
                             </div>
                         </div>
@@ -1042,20 +1014,17 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoNombreR" id="nuevoNombreR" placeholder="Nombre" required
-                                autocomplete="off">
+                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoNombreR" id="nuevoNombreR" placeholder="Nombre" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoApellidoPR" id="nuevoApellidoPR" placeholder="Apellido Paterno"
-                                required autocomplete="off">
+                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoApellidoPR" id="nuevoApellidoPR" placeholder="Apellido Paterno" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoApellidoMR" id="nuevoApellidoMR" placeholder="Apellido Materno"
-                                required autocomplete="off">
+                            <input class="form-control" style="background-color:#FDFFA1" type="text" name="nuevoApellidoMR" id="nuevoApellidoMR" placeholder="Apellido Materno" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row align-items-center">
@@ -1071,8 +1040,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL TELEFONO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Telefono</label>
-                            <input class="form-control" style="background-color:#FDFFA1" type="tel" name="nuevoTelefonoR" id="nuevoTelefonoRR" placeholder="Telefono"
-                                autocomplete="off">
+                            <input class="form-control" style="background-color:#FDFFA1" type="tel" name="nuevoTelefonoR" id="nuevoTelefonoRR" placeholder="Telefono" autocomplete="off">
                         </div>
                     </div>
                     <hr>
@@ -1081,22 +1049,19 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                         <!-- ENTRADA PARA EL NOMBRE DEL PROYECTO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre del Proyecto</label>
-                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyectoR"
-                                placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
+                            <textarea rows="2" maxlength="200" class="form-control" type="text" name="nuevoNombreProyectoR" placeholder="Nombre del Proyecto" required autocomplete="off"></textarea>
                         </div>
                         <!-- ENTRADA PARA EL NOMBRE DE LA EMPRESA -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre de la Empresa</label>
-                            <textarea rows = "2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresaR"
-                                placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
+                            <textarea rows="2" maxlength="200" class="form-control" type="text" name="nuevoNombreEmpresaR" placeholder="Nombre de la Empresa" required autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="form-row align-items-center">
                         <!-- ENTRADA PARA ASESOR EXTERNO -->
                         <div class="col-sm-6 my-1">
                             <label for="example-text-input" class="col-form-label">Asesor Externo</label>
-                            <input class="form-control" type="text" name="nuevoAsesorExtR" placeholder="Asesor Externo"
-                                required autocomplete="off">
+                            <input class="form-control" type="text" name="nuevoAsesorExtR" placeholder="Asesor Externo" required autocomplete="off">
                         </div>
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
@@ -1161,7 +1126,7 @@ MODAL DE PRE-REGISTRO RESIDENCIAS PROFESIONALES
                 if (isset($_POST["nuevoNoControlRPR"])) {
                     $RegistrarResidente2 = new ControladorResidentes();
                     $RegistrarResidente2->ctrRegistrarResidentesRPPreRegistro();
-                }   
+                }
                 ?>
 
             </form>
