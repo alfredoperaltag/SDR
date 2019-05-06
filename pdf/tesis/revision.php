@@ -110,7 +110,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $y = $pdf->GetY();
         $pdf->SetFont('Helvetica', 'B', '9');
         // $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
-        $pdf->MultiCell(95, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
+        $pdf->MultiCell(95, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '
+        
+        '), 'LTB', 'L');
         $pdf->SetFont('Helvetica', '', '9');
         $pdf->SetXY($x + 95, $y);
         $pdf->MultiCell(45, 4, utf8_decode(' ' . mb_strtoupper($res['carrera'])), 1, 'L');
@@ -200,7 +202,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(19);
         // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
         // NOTE AQUI
-        $pdf->Cell(80, 4, utf8_decode($res['revisor1'] . '.'), 0, 1, 'L');
+        $pdf->Cell(80, 4, utf8_decode($res['revisor2'] . '.'), 0, 1, 'L');
         $pdf->Cell(19);
         $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
         $pdf->Cell(19);
@@ -221,7 +223,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $y = $pdf->GetY();
         $pdf->SetFont('Helvetica', 'B', '9');
         // $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
-        $pdf->MultiCell(95, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
+        $pdf->MultiCell(95, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '
+        
+        '), 'LTB', 'L');
         $pdf->SetFont('Helvetica', '', '9');
         $pdf->SetXY($x + 95, $y);
         $pdf->MultiCell(45, 4, utf8_decode(' ' . mb_strtoupper($res['carrera'])), 1, 'L');

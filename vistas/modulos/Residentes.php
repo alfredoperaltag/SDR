@@ -558,7 +558,7 @@ EDITAR RESIDENTE
                         <div id="CheckTesisView" style="display:none;" class="col-sm-6">
                             <label class="col-form-label mr-4">Estado de la liberación:</label>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" name="CheckTesis" class="custom-control-input" id="CheckTesis">
+                                <input type="checkbox" name="CheckTesis" class="custom-control-input CheckTesis" id="CheckTesis">
                                 <label id="StatusTesis" class="custom-control-label" for="CheckTesis"></label>
                             </div>
                         </div>
@@ -879,7 +879,8 @@ IMPRIMIR DOCUMENTOS TESIS
                 </div>
                 <br>
                 <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpAsesorT">Oficio asignación de asesor</button>
-                <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpJurado">Jurado seleccionado</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpJurado">Revisión de Trabajo de Titulación</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpComisionT">Jurado Titulación</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImpLiberacionR">Liberación</button>
             </div>
             <div class="modal-footer">
