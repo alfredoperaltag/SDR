@@ -129,7 +129,7 @@ class ControladorPreRegistro
     =============================================*/
     public static function ctrEditarPreRegistro()
     {
-        {
+        // {
             if (isset($_POST["editarNoControlPR"])) {
                 if ($_POST["editarAsesorPRE"] != "NA" || $_POST["CheckPreRegistroEdit"] == "on") {
                 // if ($_POST["editarAsesorPRE"] != "NA") {
@@ -148,6 +148,7 @@ class ControladorPreRegistro
                         "id" => $_POST["idPreRegistroEdit"],
                         "noControl" => $_POST["editarNoControlPR"],
                         "carrera" => $_POST["editarCarreraPR"],
+                        "telefono" => $_POST["editarTelefonoPR"],
                         "nombre" => $_POST["editarNombrePR"],
                         "apellidoP" => $_POST["editarApellidoPPR"],
                         "apellidoM" => $_POST["editarApellidoMPR"],
@@ -187,7 +188,7 @@ class ControladorPreRegistro
 				 </script>';
                     }
             }
-        }
+        // }
     }
 
     /*=============================================

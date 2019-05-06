@@ -15,10 +15,11 @@ $(document).on("click", ".btnEditarPreRegistro", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            // console.table(respuesta);
+            console.table(respuesta);
             $("#idPreRegistroEdit").val(respuesta["id"]);
             $("#editarNoControlPR").val(respuesta["noControl"]);
             $("#editarCarreraPR").val(respuesta["carrera"]);
+            $("#editarTelefonoPR").val(respuesta["telefono"]);
             $("#editarNombrePR").val(respuesta["nombre"]);
             $("#editarApellidoPPR").val(respuesta["apellidoP"]);
             $("#editarApellidoMPR").val(respuesta["apellidoM"]);

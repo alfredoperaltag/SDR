@@ -11,8 +11,13 @@
                             <th>No. Control</th>
                             <th>Carrera</th>
                             <th>Nombre</th>
+                            <th>Teléfono</th>
                             <th>Asesor</th>
-                            <th>Acciones</th>
+                            <?php
+                            if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+                            echo '<th>Acciones</th>';
+                            }
+                            ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,11 +33,12 @@
                                 echo '<td>' . $value["noControl"] . '</td>';
                                 echo '<td>' . $value["carrera"] . '</td>';
                                 echo '<td>' . $value["nombre"] .' '. $value["apellidoP"] .' '.$value["apellidoM"] .'</td>';
+                                        echo '<td>' . $value["telefono"] . '</td>';
                                         echo '<td>' . $value["asesorR"] . '</td>';
                                 echo '<td>
-                                        <div class="btn-group">
-                                            <button class="btn btn-warning btnEditarPreRegistro" idPreRegistroEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarPreRegistro"><i class="fa fa-edit"></i></button>';
-                                            if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+                                        <div class="btn-group">';
+                                        if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
+                                        echo '<button class="btn btn-warning btnEditarPreRegistro" idPreRegistroEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarPreRegistro"><i class="fa fa-edit"></i></button>';
                                             echo '<button class="btn btn-danger btnEliminarPreRegistro" idPreRegistroDel="' . $value["id"] . '"><i class="fa fa-times"></i></button>';
                                             }
                                         echo '</div>
@@ -162,12 +168,12 @@ MODAL EDITAR PRE-REGISTRO
                         <!-- ID PRE-REGISTRO -->
                     <input type="hidden" id="idPreRegistroEdit" name="idPreRegistroEdit">
                         <!-- ENTRADA PARA EL NUMERO DE CONTROL -->
-                        <div class="col-sm-6 my-1">
+                        <div class="col-sm-4 my-1">
                                 <label for="example-text-input" class="col-form-label">No. Control</label>
                                 <input class="form-control" type="number" name="editarNoControlPR" id="editarNoControlPR" placeholder="Ingresar nomuero de control" autocomplete="off" required>
                             </div>
                             <!-- ENTRADA PARA SELECCIONAR SU CARRERA -->
-                            <div class="col-sm-6 my-1">
+                            <div class="col-sm-5 my-1">
                                 <label class="col-form-label">Carrera</label>
                                 <select class="custom-select" name="editarCarreraPR" id="editarCarreraPR" required>
                                     <option value="">Selecionar carrera</option>
@@ -175,6 +181,11 @@ MODAL EDITAR PRE-REGISTRO
                                         Computacionales</option>
                                     <option value="Ingeniería Informática">Ingenieria Informatica</option>
                                 </select>
+                            </div>
+                            <!-- ENTRADA PARA TELEFONO -->
+                            <div class="col-sm-3 my-1">
+                                <label for="example-text-input" class="col-form-label">Telefono</label>
+                                <input class="form-control" type="number" name="editarTelefonoPR" id="editarTelefonoPR" placeholder="Telefono" autocomplete="off" required>
                             </div>
                             </div>
                             <div class="form-row align-items-center">
