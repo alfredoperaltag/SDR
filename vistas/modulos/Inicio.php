@@ -61,11 +61,11 @@
                 </div>
                 <!-- circular -->
                 <div class="col-lg-6 align-self-start">
-                    <div class="card">
-                        <div class="card-body">
+                    <div class="card mt-3">
+                        <!-- <div class="card-body"> -->
                             <h4 class="header-title">Grafica de registros</h4>
-                            <canvas id="GrafoRT" height="200"></canvas>
-                        </div>
+                            <canvas id="GrafoRT" height="400"></canvas>
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
