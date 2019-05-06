@@ -859,18 +859,11 @@ IMPRIMIR DOCUMENTOS RESIDENCIAS PROFESIONALES
                             de anteproyecto de
                             Residencias
                             Profesionales</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesores">Asignación de
-                    asesor</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de
-                    Residencias
-                    Profesionales</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJurado">Asignacion de
-                    jurado</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirComisionT">Comision para
-                    titulación</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirSinodales">Ofició de
-                    asignacion de
-                    sinodales</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirAsesores">Asignación de asesor</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJurado">Revisión del trabajo de Titulación</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de Residencias Profesionales</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirSinodales">Jurado Seleccionado</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirComisionT">Jurado de Titulación</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -34,10 +34,106 @@ class PDF extends FPDF
         $this->Cell(20, 4, utf8_decode('Ext. 225, e-mail:'), 0, 0, 'L');
         $this->SetFont('Helvetica', 'B', '7');
         // $this->Cell(20);
-        $this->Cell(35, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'L');
+        $this->Cell(35, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 1, 'L');
+        $this->Cell(0, 4, utf8_decode('www.itiguala.edu.mx'), 0, 0, 'C');
         $this->Image('../img/iso14001.jpg', 155 + 12, 253, 17);
         $x = $this->GetX();
         $this->Image('../img/norma.jpg', 155 + 31, 253, 15);
+    }
+
+    var $widths;
+    var $aligns;
+    //var $alineacion;
+
+    function SetWidths($w)
+    {
+        //Set the array of column widths
+        $this->widths = $w;
+    }
+
+    function SetAligns($a)
+    {
+        //Set the array of column alignments
+        $this->aligns = $a;
+    }
+
+    function Row($data, $margen, $alineacion)
+    {
+        //Calculate the height of the row
+        $nb = 0;
+        for ($i = 0; $i < count($data); $i++)
+            $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
+        $h = $margen * $nb;
+        //Issue a page break first if needed
+        $this->CheckPageBreak($h);
+        //Draw the cells of the row
+        for ($i = 0; $i < count($data); $i++) {
+            $w = $this->widths[$i];
+            $a = isset($this->aligns[$i]) ? $this->aligns[$i] : $alineacion;
+            //Save the current position
+            $x = $this->GetX();
+            $y = $this->GetY();
+            //Draw the border
+            $this->Rect($x, $y, $w, $h);
+            //Print the text
+            $this->MultiCell($w, $margen, $data[$i], 0, $a);
+            //Put the position to the right of the cell
+            $this->SetXY($x + $w, $y);
+        }
+        //Go to the next line
+        $this->Ln($h);
+    }
+
+    function CheckPageBreak($h)
+    {
+        //If the height h would cause an overflow, add a new page immediately
+        if ($this->GetY() + $h > $this->PageBreakTrigger)
+            $this->AddPage($this->CurOrientation);
+    }
+
+    function NbLines($w, $txt)
+    {
+        //Computes the number of lines a MultiCell of width w will take
+        $cw = &$this->CurrentFont['cw'];
+        if ($w == 0)
+            $w = $this->w - $this->rMargin - $this->x;
+        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+        $s = str_replace("\r", '', $txt);
+        $nb = strlen($s);
+        if ($nb > 0 and $s[$nb - 1] == "\n")
+            $nb--;
+        $sep = -1;
+        $i = 0;
+        $j = 0;
+        $l = 0;
+        $nl = 1;
+        while ($i < $nb) {
+            $c = $s[$i];
+            if ($c == "\n") {
+                $i++;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+                continue;
+            }
+            if ($c == ' ')
+                $sep = $i;
+            $l += $cw[$c];
+            if ($l > $wmax) {
+                if ($sep == -1) {
+                    if ($i == $j)
+                        $i++;
+                } else
+                    $i = $sep + 1;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++;
+            } else
+                $i++;
+        }
+        return $nl;
     }
 }
 
@@ -56,7 +152,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
     $pdf->Cell(0, 5, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-    $pdf->Ln(5);
+    $pdf->Ln(15);
     $pdf->SetFont('Arial', '', '9');
     $pdf->Cell(17);
     $pdf->Cell(0, 4, utf8_decode('DEPTO. DE SISTEMAS Y COMPUTACION'), 0, 1, 'L');
@@ -130,7 +226,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $x = $pdf->GetX();
     $y = $pdf->GetY();
     $pdf->SetFont('Arial', 'B', '9');
-    $pdf->MultiCell(118, 4, utf8_decode('TRABAJO DE TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL"'), 1, 'L');
+    $pdf->MultiCell(118, 4, utf8_decode('TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 'L');
     $pdf->SetFont('Arial', '', '9');
     $H = $pdf->GetY();
     $pdf->Cell(19);
@@ -171,45 +267,56 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     // $pdf->Cell(158, 4, utf8_decode(''), 0, 1, 'L');
     // $pdf->SetY($pdf->GetY()+4);
 
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor1'])), 'LTR', 'C');
-    $pdf->SetXY($x + 53, $y);
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor2'])), 'LTR', 'C');
-    $pdf->SetXY($x + 53, $y);
-    $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor3'])), 'LTR', 'C');
-    //ESPACIO BAA
-    $pdf->Cell(19);
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
-    $pdf->SetXY($x + 53, $y);
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
-    $pdf->SetXY($x + 53, $y);
-    $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
-    // BAAA
+    // $x = $pdf->GetX();
+    // $y = $pdf->GetY();
+    // $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor1'])), 'LTR', 'C');
+    // $pdf->SetXY($x + 53, $y);
+    // $x = $pdf->GetX();
+    // $y = $pdf->GetY();
+    // $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor2'])), 'LTR', 'C');
+    // $pdf->SetXY($x + 53, $y);
+    // $pdf->MultiCell(53, 4, utf8_decode(mb_strtoupper($res['revisor3'])), 'LTR', 'C');
+    // //ESPACIO BAA
+    // $pdf->Cell(19);
+    // $x = $pdf->GetX();
+    // $y = $pdf->GetY();
+    // $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
+    // $pdf->SetXY($x + 53, $y);
+    // $x = $pdf->GetX();
+    // $y = $pdf->GetY();
+    // $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
+    // $pdf->SetXY($x + 53, $y);
+    // $pdf->MultiCell(53, 4, utf8_decode(''), 'LBR', 'C');
+    // // BAAA
 
 
 
-    $pdf->Cell(19);
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
-    $pdf->SetXY($x + 53, $y);
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
-    $pdf->SetXY($x + 53, $y);
-    $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
+    // $pdf->Cell(19);
+    // $x = $pdf->GetX();
+    // $y = $pdf->GetY();
+    // $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
+    // $pdf->SetXY($x + 53, $y);
+    // $x = $pdf->GetX();
+    // $y = $pdf->GetY();
+    // $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
+    // $pdf->SetXY($x + 53, $y);
+    // $pdf->MultiCell(53, 7, utf8_decode('Nombre y Firma Asesor'), 1, 'C');
 
-    $pdf->Ln(8);
-    $pdf->Cell(19);
-    $pdf->SetFont('Arial', '', '8');
-    $pdf->Cell(158, 4, utf8_decode('c.c.p.- Expediente'), 0, 1, 'L');
+    // $pdf->Ln(8);
+    // $pdf->Cell(19);
+    // $pdf->SetFont('Arial', '', '8');
+    // $pdf->Cell(158, 4, utf8_decode('c.c.p.- Expediente'), 0, 1, 'L');
+
+    $pdf->SetFont('Helvetica', '', '9');
+$pdf->SetWidths(array(53, 53, 53));
+$pdf->Row(array(utf8_decode(mb_strtoupper($res['asesorInt'] . '
+
+')), utf8_decode(mb_strtoupper($res['revisor1'])), utf8_decode(mb_strtoupper($res['revisor2']))), 4.1, 'C');
+$pdf->Cell(19);
+$pdf->Row(array('Nombre y Firma
+Asesor', 'Nombre y Firma
+Revisor', 'Nombre y Firma
+Revisor'), 3.7, 'C');
 
     
     $pdf->Output('I', 'Liberación_'.$res['nombre'].'.pdf', 'D');

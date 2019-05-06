@@ -39,7 +39,8 @@ class PDF extends FPDF
         $this->Cell(20, 4, utf8_decode('Ext. 225, e-mail:'), 0, 0, 'L');
         $this->SetFont('Helvetica', 'B', '7');
         // $this->Cell(20);
-        $this->Cell(35, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'L');
+        $this->Cell(35, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 1, 'L');
+        $this->Cell(0, 4, utf8_decode('www.itiguala.edu.mx'), 0, 0, 'C');
         // $x = $this->GetX();
         $this->Image('../img/iso14001.jpg', 155 + 12, 253, 17);
         $x = $this->GetX();
