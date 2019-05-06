@@ -215,5 +215,5 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Output('I', 'Liberación_'.$res['nombre'].'.pdf', 'D');
 
 } else {
-    echo '<h1>Aqui no puedes hacer eso :)<h1>';
+    echo "<script>window.location = '../../Inicio';</script>";
 }

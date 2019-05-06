@@ -64,8 +64,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
         //OTRO
         // $pdf->AddPage();
-        $h = $pdf->GetPageHeight();
-        $w = $pdf->GetPageWidth();
+        // $h = $pdf->GetPageHeight();
+        // $w = $pdf->GetPageWidth();
         $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
         $pdf->SetFont('Helvetica', '', '7');
         $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
@@ -100,7 +100,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(18);
         $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
         $pdf->Ln(3); //CELDA DE ESPACIO
-        $pdf->Cell(23);
+        $pdf->Cell(19);
         $x = $pdf->GetX();
         $y = $pdf->GetY();
         $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
@@ -109,30 +109,30 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $y = $pdf->GetY();
         $pdf->SetFont('Helvetica', 'B', '9');
         // $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
+        $pdf->MultiCell(95, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
         $pdf->SetFont('Helvetica', '', '9');
-        $pdf->SetXY($x + 70, $y);
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . mb_strtoupper($res['carrera'])), 1, 'L');
-        $pdf->Cell(23);
+        $pdf->SetXY($x + 95, $y);
+        $pdf->MultiCell(45, 4, utf8_decode(' ' . mb_strtoupper($res['carrera'])), 1, 'L');
+        $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
         $pdf->Cell(140, 4, utf8_decode(' TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(19);
 // OBTENER CORDENADAS PARA PONER UNA MULTICELL AL LADO DE UNA CELL
         $x = $pdf->GetX();
         $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
+        $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                                                         '), 1, 'L');
         $pdf->SetXY($x + 28, $y);
         $pdf->MultiCell(140, 4, utf8_decode(' ' . mb_strtoupper($res['nombreProyecto'])), 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
         $pdf->Cell(140, 4, utf8_decode(' ' . mb_strtoupper($res['asesorInt'])), 1, 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
         $pdf->Cell(140, 4, utf8_decode(' ' . mb_strtoupper($res['revisor1'])), 1, 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
         $pdf->Cell(140, 4, utf8_decode(' ' . mb_strtoupper($res['revisor2'])), 1, 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(19);
         $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
         $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
         $pdf->Ln(6); //CELDA DE ESPACIO
@@ -177,8 +177,6 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
         //OTRO
         $pdf->AddPage();
-        $h = $pdf->GetPageHeight();
-        $w = $pdf->GetPageWidth();
         $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
         $pdf->SetFont('Helvetica', '', '7');
         $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
@@ -201,7 +199,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(19);
         // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
         // NOTE AQUI
-        $pdf->Cell(80, 4, utf8_decode($res['revisor2'] . '.'), 0, 1, 'L');
+        $pdf->Cell(80, 4, utf8_decode($res['revisor1'] . '.'), 0, 1, 'L');
         $pdf->Cell(19);
         $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
         $pdf->Cell(19);
@@ -213,7 +211,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(18);
         $pdf->Cell(0, 4, utf8_decode('llevar a cabo la Revisión del Trabajo de Titulación. '), 0, 1, 'L');
         $pdf->Ln(3); //CELDA DE ESPACIO
-        $pdf->Cell(23);
+        $pdf->Cell(19);
         $x = $pdf->GetX();
         $y = $pdf->GetY();
         $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
@@ -221,30 +219,31 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $x = $pdf->GetX();
         $y = $pdf->GetY();
         $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
+        // $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
+        $pdf->MultiCell(95, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
         $pdf->SetFont('Helvetica', '', '9');
-        $pdf->SetXY($x + 70, $y);
-        $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['carrera'])), 1, 'L');
-        $pdf->Cell(23);
+        $pdf->SetXY($x + 95, $y);
+        $pdf->MultiCell(45, 4, utf8_decode(' ' . mb_strtoupper($res['carrera'])), 1, 'L');
+        $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' TRABAJO DE TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(140, 4, utf8_decode(' TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
+        $pdf->Cell(19);
 // OBTENER CORDENADAS PARA PONER UNA MULTICELL AL LADO DE UNA CELL
         $x = $pdf->GetX();
         $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                    '), 1, 'L');
+        $pdf->MultiCell(28, 4, utf8_decode(' Proyecto:                                                         '), 1, 'L');
         $pdf->SetXY($x + 28, $y);
-        $pdf->MultiCell(140, 4, utf8_decode(' ' . strtoupper($res['nombreProyecto'])), 1, 'L');
-        $pdf->Cell(23);
+        $pdf->MultiCell(140, 4, utf8_decode(' ' . mb_strtoupper($res['nombreProyecto'])), 1, 'L');
+        $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Asesor:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['asesorInt'])), 1, 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(140, 4, utf8_decode(' ' . mb_strtoupper($res['asesorInt'])), 1, 1, 'L');
+        $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Revisor 1:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor1'])), 1, 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(140, 4, utf8_decode(' ' . mb_strtoupper($res['revisor1'])), 1, 1, 'L');
+        $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Revisor 2:'), 1, 0, 'L');
-        $pdf->Cell(140, 4, utf8_decode(' ' . strtoupper($res['revisor2'])), 1, 1, 'L');
-        $pdf->Cell(23);
+        $pdf->Cell(140, 4, utf8_decode(' ' . mb_strtoupper($res['revisor2'])), 1, 1, 'L');
+        $pdf->Cell(19);
         $pdf->Cell(45, 4, utf8_decode(' Documentos entregados:'), 1, 0, 'L');
         $pdf->Cell(123, 4, utf8_decode(' 1 EJEMPLAR PARA CADA REVISOR'), 1, 1, 'L');
         $pdf->Ln(6); //CELDA DE ESPACIO
@@ -272,7 +271,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(0, 4, utf8_decode('"TECNOLOGÍA COMO SINÓNIMO DE INDEPENDENCIA"'), 0, 1, 'C');
         $pdf->Ln(15);
         $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(0, 4, utf8_decode($res2['nombre']), 0, 1, 'C');
+        $pdf->Cell(0, 4, utf8_decode(mb_strtoupper($res2['nombre'])), 0, 1, 'C');
         // $pdf->Cell(0, 4, utf8_decode('JEFE DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
         if ($res2['sexo'] == 'F') {
             $pdf->Cell(0, 4, utf8_decode('JEFA DEL DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'C');
@@ -289,5 +288,5 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Output('I', 'Jurado_Seleccionado_'.$res['nombre'].'.pdf', 'D');
 
 } else {
-    echo '<h1>Aqui no puedes hacer eso :)<h1>';
+    echo "<script>window.location = '../../Inicio';</script>";
 }
