@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../../controladores/residentes.controlador.php";
 require_once "../../modelos/residentes.modelo.php";
 require_once "../../controladores/jerarquia.controlador.php";
@@ -122,119 +123,122 @@ class PDF extends FPDF
         return $nl;
     }
 }
+if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
+    $item = "id";
+    $valor = $_GET['id'];
+    $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
+    $tablaJ = "jerarquia";
+    $itemPresi = "PRESIDENTE DE ACADEMIA";
+    $itemJefe = "JEFE DEL DEPTO. ACADEMICO";
+    $itemSub = "SUBDIRECTOR ACADÉMICO";
+    $resP = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemPresi);
+    $resJe = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefe);
+    $resSub = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemSub);
+    $id = $valor;
+    $numeroControl = $respuesta["noControl"];
+    $carrera = $respuesta["carrera"];
+    $proyecto = $respuesta["nombreProyecto"];
+    $nombre = $respuesta["nombre"];
+    $sexo = $respuesta["sexo"];
+    $empresa = $respuesta["nombreEmpresa"];
+    $asesorInterno = $respuesta["asesorInt"];
+    $asesorExterno = $respuesta["asesorExt"];
+    $periodo = $respuesta["periodo"];
+    $anio = $respuesta["anio"];
+    $semestre = $respuesta["semestre"];
+    $fechaActual = $_GET['fecha'];
+    $estado = $_GET['estado'];
+    // JERARQUIA
+    $presidente = $resP['nombre'];
+    $jefe = $resJe['nombre'];
+    $subdirector = $resSub['nombre'];
 
-$item = "id";
-$valor = $_GET['id'];
-$respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
-$tablaJ = "jerarquia";
-$itemPresi = "PRESIDENTE DE ACADEMIA";
-$itemJefe = "JEFE DEL DEPTO. ACADEMICO";
-$itemSub = "SUBDIRECTOR ACADÉMICO";
-$resP = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemPresi);
-$resJe = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefe);
-$resSub = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemSub);
-$id = $valor;
-$numeroControl = $respuesta["noControl"];
-$carrera = $respuesta["carrera"];
-$proyecto = $respuesta["nombreProyecto"];
-$nombre = $respuesta["nombre"];
-$sexo = $respuesta["sexo"];
-$empresa = $respuesta["nombreEmpresa"];
-$asesorInterno = $respuesta["asesorInt"];
-$asesorExterno = $respuesta["asesorExt"];
-$periodo = $respuesta["periodo"];
-$anio = $respuesta["anio"];
-$semestre = $respuesta["semestre"];
-$fechaActual = $_GET['fecha'];
-$estado = $_GET['estado'];
-// JERARQUIA
-$presidente = $resP['nombre'];
-$jefe = $resJe['nombre'];
-$subdirector = $resSub['nombre'];
+    $pdf = new PDF('L', 'mm', 'Letter');
+    $pdf->AddPage();
+    $pdf->SetFont('Arial', 'B', 11);
+    $pdf->Cell(0, 0, utf8_decode('INSTITUTO TECNOLÓGICO DE IGUALA'), 0, 0, 'C');
+    $pdf->Ln(4);
+    $pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
+    $pdf->Ln(4);
+    $pdf->Cell(0, 0, utf8_decode('DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES'), 0, 0, 'C');
+    $pdf->Ln(4);
+    $pdf->SetFont('Arial', '', 9);
+    $pdf->SetXY(191, 64);
+    $pdf->Cell(29, 9, utf8_decode('SEMESTRE'), 1, 0, 'C');
+    $pdf->Cell(22, 4.5, utf8_decode('ENE - JUN'), 1, 2, 'C');
+    $pdf->Cell(22, 4.5, utf8_decode('AGO - DIC'), 1, 0, 'C');
+    $pdf->SetXY(242, 64);
+    if ($semestre == 'EJ') {
+        $pdf->Cell(18, 4.5, utf8_decode($anio), 1, 2, 'C');
+        $pdf->Cell(18, 4.5, utf8_decode(''), 1, 0, 'C');
+    } else {
+        $pdf->Cell(18, 4.5, utf8_decode(''), 1, 2, 'C');
+        $pdf->Cell(18, 4.5, utf8_decode($anio), 1, 0, 'C');
+    }
+    $pdf->SetFont('Arial', 'B', 11);
+    $pdf->SetXY(10, 80);
+    $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($carrera)), 0, 0, 'C');
+    $pdf->SetXY(17, 85);
+    $pdf->Cell(15, 12, utf8_decode('NUM.'), 1, 0, 'C');
+    $pdf->Cell(23, 12, utf8_decode('CONTROL'), 1, 0, 'C');
+    $pdf->MultiCell(38, 6, utf8_decode('NOMBRE DEL ESTUDIANTE'), 1, 'C');
+    $pdf->SetXY(93, 85);
+    $pdf->Cell(6, 12, utf8_decode('S'), 1, 0, 'C');
+    $pdf->Cell(36, 12, utf8_decode('ANTEPROYECTO'), 1, 0, 'C');
+    $pdf->Cell(34, 12, utf8_decode('EMPRESA'), 1, 0, 'C');
+    $pdf->Cell(45, 5, utf8_decode('ASESORES'), 1, 0, 'C');
+    $pdf->Cell(25, 12, utf8_decode('DICTAMEN'), 1, 0, 'C');
+    $pdf->MultiCell(25, 6, utf8_decode('FECHA DE DICTAMEN'), 1, 'C');
+    $pdf->SetXY(169, 90);
+    $pdf->Cell(23, 7, utf8_decode('INTERNO'), 1, 0, 'C');
+    $pdf->Cell(22, 7, utf8_decode('EXTERNO'), 1, 0, 'C');
 
-$pdf = new PDF('L', 'mm', 'Letter');
-$pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 11);
-$pdf->Cell(0, 0, utf8_decode('INSTITUTO TECNOLÓGICO DE IGUALA'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->Cell(0, 0, utf8_decode('DICTAMEN DE ANTEPROYECTOS DE RESIDENCIAS PROFESIONALES'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->SetFont('Arial', '', 9);
-$pdf->SetXY(191, 64);
-$pdf->Cell(29, 9, utf8_decode('SEMESTRE'), 1, 0, 'C');
-$pdf->Cell(22, 4.5, utf8_decode('ENE - JUN'), 1, 2, 'C');
-$pdf->Cell(22, 4.5, utf8_decode('AGO - DIC'), 1, 0, 'C');
-$pdf->SetXY(242, 64);
-if ($semestre == 'EJ') {
-    $pdf->Cell(18, 4.5, utf8_decode($anio), 1, 2, 'C');
-    $pdf->Cell(18, 4.5, utf8_decode(''), 1, 0, 'C');
+    // $pdf->SetXY(17, 103);
+    $pdf->SetXY(17, 97);
+    $pdf->SetFont('Arial', '', 11);
+    if ($sexo == 'Masculino') {
+        $sexo = 'M';
+    } else {
+        $sexo = 'F';
+    }
+    $pdf->SetWidths(array(15, 23, 38, 6, 36, 34, 23, 22, 25, 25));
+    for ($i = 0; $i < 1; $i++)
+        $pdf->Row(array('1', $numeroControl, utf8_decode(mb_strtoupper($nombre)), $sexo, utf8_decode(mb_strtoupper($proyecto)), utf8_decode(mb_strtoupper($empresa)), utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($asesorExterno)), utf8_decode(mb_strtoupper($estado)), utf8_decode(mb_strtoupper($fechaActual))));
+
+
+    $pdf->SetY(148);
+    $pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados'), 0, 0, 'C');
+
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetXY(44, 171);
+    $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($presidente)), 0, 0, 'L');
+    $pdf->SetX(30);
+    $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($jefe)), 0, 0, 'C');
+    $pdf->SetX(185);
+    $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($subdirector)), 0, 0, 'C');
+    $pdf->Ln(4);
+    $pdf->SetX(36);
+    $pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL PRESIDENTE DE'), 0, 0, 'L');
+    $pdf->SetX(30);
+    $pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL JEFE DEL'), 0, 0, 'C');
+    $pdf->SetX(185);
+    $pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL SUBDIRECTOR'), 0, 0, 'C');
+    $pdf->Ln(4);
+    $pdf->SetX(60);
+    $pdf->Cell(0, 0, utf8_decode('ACADEMIA'), 0, 0, 'L');
+    $pdf->SetX(30);
+    $pdf->Cell(0, 0, utf8_decode('DEPTO. ACADÉMICO'), 0, 0, 'C');
+    $pdf->SetX(185);
+    $pdf->Cell(0, 0, utf8_decode('ACADÉMICO'), 0, 0, 'C');
+    $pdf->Ln(4);
+    $pdf->SetX(63);
+    $pdf->Cell(0, 0, utf8_decode('Propone'), 0, 0, 'L');
+    $pdf->SetX(30);
+    $pdf->Cell(0, 0, utf8_decode('Valida'), 0, 0, 'C');
+    $pdf->SetX(185);
+    $pdf->Cell(0, 0, utf8_decode('Vo. Bo.'), 0, 0, 'C');
+
+    $pdf->Output();
 } else {
-    $pdf->Cell(18, 4.5, utf8_decode(''), 1, 2, 'C');
-    $pdf->Cell(18, 4.5, utf8_decode($anio), 1, 0, 'C');
+    echo "<script>window.location = '../../Inicio';</script>";
 }
-$pdf->SetFont('Arial', 'B', 11);
-$pdf->SetXY(10, 80);
-$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($carrera)), 0, 0, 'C');
-$pdf->SetXY(17, 85);
-$pdf->Cell(15, 12, utf8_decode('NUM.'), 1, 0, 'C');
-$pdf->Cell(23, 12, utf8_decode('CONTROL'), 1, 0, 'C');
-$pdf->MultiCell(38, 6, utf8_decode('NOMBRE DEL ESTUDIANTE'), 1, 'C');
-$pdf->SetXY(93, 85);
-$pdf->Cell(6, 12, utf8_decode('S'), 1, 0, 'C');
-$pdf->Cell(36, 12, utf8_decode('ANTEPROYECTO'), 1, 0, 'C');
-$pdf->Cell(34, 12, utf8_decode('EMPRESA'), 1, 0, 'C');
-$pdf->Cell(45, 5, utf8_decode('ASESORES'), 1, 0, 'C');
-$pdf->Cell(25, 12, utf8_decode('DICTAMEN'), 1, 0, 'C');
-$pdf->MultiCell(25, 6, utf8_decode('FECHA DE DICTAMEN'), 1, 'C');
-$pdf->SetXY(169, 90);
-$pdf->Cell(23, 7, utf8_decode('INTERNO'), 1, 0, 'C');
-$pdf->Cell(22, 7, utf8_decode('EXTERNO'), 1, 0, 'C');
-
-// $pdf->SetXY(17, 103);
-$pdf->SetXY(17, 97);
-$pdf->SetFont('Arial', '', 11);
-if ($sexo == 'Masculino') {
-    $sexo = 'M';
-} else {
-    $sexo = 'F';
-}
-$pdf->SetWidths(array(15, 23, 38, 6, 36, 34, 23, 22, 25, 25));
-for ($i = 0; $i < 1; $i++)
-    $pdf->Row(array($id, $numeroControl, utf8_decode(mb_strtoupper($nombre)), $sexo, utf8_decode(mb_strtoupper($proyecto)), utf8_decode(mb_strtoupper($empresa)), utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($asesorExterno)), utf8_decode(mb_strtoupper($estado)), utf8_decode(mb_strtoupper($fechaActual))));
-
-
-$pdf->SetY(148);
-$pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados'), 0, 0, 'C');
-
-$pdf->SetFont('Arial', '', 10);
-$pdf->SetXY(44, 171);
-$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($presidente)), 0, 0, 'L');
-$pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($jefe)), 0, 0, 'C');
-$pdf->SetX(185);
-$pdf->Cell(0, 0, utf8_decode(mb_strtoupper($subdirector)), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->SetX(36);
-$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL PRESIDENTE DE'), 0, 0, 'L');
-$pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL JEFE DEL'), 0, 0, 'C');
-$pdf->SetX(185);
-$pdf->Cell(0, 0, utf8_decode('NOMBRE Y FIRMA DEL SUBDIRECTOR'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->SetX(60);
-$pdf->Cell(0, 0, utf8_decode('ACADEMIA'), 0, 0, 'L');
-$pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode('DEPTO. ACADÉMICO'), 0, 0, 'C');
-$pdf->SetX(185);
-$pdf->Cell(0, 0, utf8_decode('ACADÉMICO'), 0, 0, 'C');
-$pdf->Ln(4);
-$pdf->SetX(63);
-$pdf->Cell(0, 0, utf8_decode('Propone'), 0, 0, 'L');
-$pdf->SetX(30);
-$pdf->Cell(0, 0, utf8_decode('Valida'), 0, 0, 'C');
-$pdf->SetX(185);
-$pdf->Cell(0, 0, utf8_decode('Vo. Bo.'), 0, 0, 'C');
-
-$pdf->Output();

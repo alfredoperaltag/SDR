@@ -327,7 +327,7 @@ $(document).on("click", "#btnImprimirDictamen", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha,
+            inputValue: fechaR,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
@@ -366,7 +366,7 @@ $(document).on("click", "#btnImprimirAsesores", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha3,
+            inputValue: fechaR,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
@@ -401,7 +401,7 @@ $(document).on("click", "#btnImprimirLiberacion", function () {
         progressSteps: ['1']
     }).queue([{
         input: 'text',
-        inputValue: fecha,
+        inputValue: fechaR,
         title: 'Fecha',
         text: 'Introduzca una fecha valida'
     }]).then((result) => {
@@ -425,7 +425,7 @@ $(document).on("click", "#btnImprimirJurado", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fecha,
+            inputValue: fechaR,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
@@ -458,7 +458,7 @@ $(document).on("click", "#btnImprimirComisionT", function () {
         progressSteps: ['1', '2', '3', '4', '5']
     }).queue([{
             input: 'text',
-            inputValue: fechaTesis,
+            inputValue: fechaR,
             title: 'Fecha',
             text: 'Introduzca una fecha valida para el documento'
         },
@@ -543,7 +543,7 @@ $(document).on("click", "#btnImprimirSinodales", function () {
         progressSteps: ['1', '2', '3', '4']
     }).queue([{
             input: 'text',
-            inputValue: fecha,
+            inputValue: fechaR,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
