@@ -120,8 +120,7 @@ class ControladorDocentes
 					type: "success",
 				   title: "¡Eliminado Correctamente!",
 				   showConfirmButton: true,
-				   confirmButtonText: "Cerrar",
-				   closeOnConfirm: false
+				   confirmButtonText: "Cerrar"
 			   }).then((result)=>{
 				   if(result.value){
 					   window.location = "Docentes";
@@ -129,6 +128,18 @@ class ControladorDocentes
 				   });
 			 </script>';
             }
+        }
+    }
+
+    /*=============================================
+    PONER EN CERO LOS DOCENTES
+    =============================================*/
+    public static function ctrCeroDocentes()
+    {
+        $tabla = "asesor";
+        $respuesta = ModeloDocentes::mdlEditarCeroDocente($tabla);
+        if ($respuesta == "ok") {
+            return $respuesta;
         }
     }
 }

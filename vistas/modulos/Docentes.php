@@ -3,6 +3,7 @@
         <h2 class="ml-4">Docentes</h2>
         <div class="card-body">
             <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#modalAgregarDocente">Agregar Docente</button>
+            <button class="btn btn-danger mb-3 ml-5 btnCeroDocente">Poner en ceros a docentes</button>
             <div class="data-tables datatable-primary">
                 <table class="text-center tablaES">
                     <thead class="text-capitalize">

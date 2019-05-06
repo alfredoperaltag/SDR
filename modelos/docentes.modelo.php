@@ -89,5 +89,19 @@ class ModeloDocentes
 		$stmt->close();
 		$stmt = null;
     }
+    /*=============================================
+	PONER EN CERO LOS DOCENTES
+    =============================================*/
+    static public function mdlEditarCeroDocente($tabla){
+        $stmt = Conexion::conectar()->prepare("UPDATE ".$tabla." SET ".$tabla.".noResidentes = 0, ".$tabla.".setResidentes = 0;");
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return print_r($stmt->errorInfo()).$valor;
+            return "error";
+        }
+        $stmt->close();
+        $stmt = null;
+    }
 }
  

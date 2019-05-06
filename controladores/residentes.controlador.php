@@ -200,8 +200,8 @@ class ControladorResidentes
                             });
                         </script>";
             //    RESTAR SOLO AL ASESOR
-                $tablaDocente = "asesor";
-              $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
+            //     $tablaDocente = "asesor";
+            //   $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
 
               
                 } else {
@@ -309,8 +309,8 @@ class ControladorResidentes
                             window.location = 'Residentes';
                             });
                         </script>";
-              $tablaDocente = "asesor";
-              $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $restarResidente1);
+            //   $tablaDocente = "asesor";
+            //   $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
                 } else {
                     echo '<script>
                     Swal.fire({
