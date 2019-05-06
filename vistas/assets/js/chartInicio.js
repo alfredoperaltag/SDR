@@ -8,12 +8,20 @@ $(document).ready(function () {
             data: { GraficaR: 1, GraficaT: 2 },
             dataType: "json"
         }).done(function (res) {
-            //  console.table(res);
-            //  console.log(res);
-            //  console.log('R: ',res[0]['total']);
-            //  console.log('T: ',res[1]['total']);
+
+            if (res.length == 0) {
+                var res;
+                res.push('0');
+                res.push('0');
+            } else if (res.length == 1) {
+                if (res[0][0] == "1") {
+                    res.push('0');
+                }else{
+                    res.unshift('0');
+                }
+            }
+
             if (res != null && res != "") {
-                // console.table('paso');
                 data = {
                     datasets: [{
                         backgroundColor: ["#5cb85c", "#d9534f"],
@@ -33,7 +41,7 @@ $(document).ready(function () {
                         responsive: true,
                         // title: {
                         //     display: true,
-                        //     text: 'Predicted world population (millions) in 2050'
+                        //     text: 'Grafica de Residencias y Tesis'
                         //   }
                     }
                 });

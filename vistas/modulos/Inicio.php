@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card align-self-center mt-3">
+                    <div class="card align-self-center mt-2">
                         <div class="seo-fact sbg3">
                             <div class="p-4 d-flex justify-content-between align-items-center">
                                 <div class="seofct-icon"><i class="fa fa-user-friends"></i> Tesis Profesional</div>
@@ -47,7 +47,7 @@
                         $tabla = "preregistros";
                         $totalP = ControladorInicio::ctrMostrarResidentesInicio($valor, $tabla, $item);
                         echo '
-                        <div class="card align-self-end mt-3">
+                        <div class="card align-self-end mt-2">
                             <div class="seo-fact sbg1">
                                 <div class="p-4 d-flex justify-content-between align-items-center">
                                     <div class="seofct-icon"><i class="fa fa-user-edit"></i> Pre-Registros</div>
@@ -60,7 +60,7 @@
                     ?>
                 </div>
                 <!-- circular -->
-                <div class="col-lg-6 align-self-center">
+                <div class="col-lg-6 align-self-start">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="header-title">Grafica de registros</h4>
