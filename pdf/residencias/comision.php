@@ -228,7 +228,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(20, 4, utf8_decode('JEOL*ere'), 0, 1, 'R');
 
     //OTRO DOCUMENTO
-$pdf->AddPage();
+    $pdf->AddPage();
     $h = $pdf->GetPageHeight();
     $w = $pdf->GetPageWidth();
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
@@ -601,7 +601,6 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(20, 4, utf8_decode('JEOL*ere'), 0, 1, 'R');
 
     $pdf->Output('I', 'Comisión para titulacion ' . $res['nombre'] . '.pdf', 'D');
-
 } else {
-    echo '<h1>Aqui no puedes hacer eso :)<h1>';
+    echo "<script>window.location = '../../Inicio';</script>";
 }
