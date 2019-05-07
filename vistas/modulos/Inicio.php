@@ -2,6 +2,7 @@
     <div class="card">
         <!-- <h2 class="ml-4">Docentes</h2> -->
         <div class="card-body">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="card align-self-start  mt-3">
@@ -71,4 +72,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

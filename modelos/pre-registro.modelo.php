@@ -77,10 +77,11 @@ class ModeloPreRegistro
     =============================================*/
     static public function mdlEditarPreRegistro($tabla, $datos){
         if ($datos["aux"] == "1") {
-            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET noControl = :noControl, carrera = :carrera,  nombre = :nombre, apellidoP = :apellidoP, apellidoM = :apellidoM WHERE id = :id");
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET noControl = :noControl, carrera = :carrera, telefono = :telefono,  nombre = :nombre, apellidoP = :apellidoP, apellidoM = :apellidoM WHERE id = :id");
         $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
         $stmt->bindParam(":noControl", $datos["noControl"], PDO::PARAM_STR);
         $stmt->bindParam(":carrera", $datos["carrera"], PDO::PARAM_STR);
+        $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":apellidoP", $datos["apellidoP"], PDO::PARAM_STR);
         $stmt->bindParam(":apellidoM", $datos["apellidoM"], PDO::PARAM_STR);
@@ -91,10 +92,11 @@ class ModeloPreRegistro
             return "error";
         }
         }else{
-            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET noControl = :noControl, carrera = :carrera,  nombre = :nombre, apellidoP = :apellidoP, apellidoM = :apellidoM, asesorPre = :asesorPre WHERE id = :id");
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET noControl = :noControl, carrera = :carrera, telefono = :telefono, nombre = :nombre, apellidoP = :apellidoP, apellidoM = :apellidoM, asesorPre = :asesorPre WHERE id = :id");
         $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
         $stmt->bindParam(":noControl", $datos["noControl"], PDO::PARAM_STR);
         $stmt->bindParam(":carrera", $datos["carrera"], PDO::PARAM_STR);
+        $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
         $stmt->bindParam(":apellidoP", $datos["apellidoP"], PDO::PARAM_STR);
         $stmt->bindParam(":apellidoM", $datos["apellidoM"], PDO::PARAM_STR);

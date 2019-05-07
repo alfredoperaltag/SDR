@@ -29,6 +29,18 @@ class AjaxDocentes
         $valor2 = $this->activarId;
         $respuesta = ModeloDocentes::mdlActualizarDocente($tabla, $item1, $valor1, $item2, $valor2);
     }
+
+    /*<!--=====================================
+    PONER EN CERO LOS DOCENTES
+    ======================================-->*/
+    public $ceroD;
+    public function ajaxCeroDocente()
+    {
+        
+        $valor1 = $this->ceroD;
+        $respuesta = ControladorDocentes::ctrCeroDocentes();
+        echo json_encode($respuesta);
+    }
 }
 /*<!--=====================================
     EDITAR DOCENTE
@@ -46,4 +58,12 @@ if (isset($_POST["activarDocente"])) {
     $activarDocente->activarDocente = $_POST["activarDocente"];
     $activarDocente->activarId = $_POST["activarId"];
     $activarDocente->ajaxActivarDocente();
+}
+/*<!--=====================================
+    PONER EN CERO LOS DOCENTES
+======================================-->*/
+if (isset($_POST["ceroD"])) {
+    $cero = new AjaxDocentes();
+    $cero->ceroD = $_POST["ceroD"];
+    $cero->ajaxCeroDocente();
 }

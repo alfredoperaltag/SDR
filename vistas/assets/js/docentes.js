@@ -46,8 +46,7 @@ $(document).on("click", ".btnActivarDocente", function () {
                     type: "success",
                     title: "¡Actualizado Correctamente",
                     showConfirmButton: true,
-                    confirmButtontext: "Cerrar",
-                    closeOnConfirm: false
+                    confirmButtontext: "Cerrar"
                 }).then((result) => {
                     if (result.value) {
                         window.location = "Docentes";
@@ -75,15 +74,66 @@ $(document).on("click", ".btnEliminarDocente", function () {
     var idDocente = $(this).attr("idDocente");
     Swal.fire({
         title: '¿Esta seguro de eliminarlo?',
+        text: '¡Esta acción no se puede revertir, tenga cuidado!',
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: "#d33",
         cancelButtonText: 'Cancelar',
-        confirmButtontext: '¡Eliminar!'
+        confirmButtonText: '¡Eliminar!'
     }).then((result) => {
         if (result.value) {
             window.location = "index.php?ruta=Docentes&idDocente=" + idDocente;
         }
+    })
+})
+
+/*<!--=====================================
+PONER EN CEROS LOS DOCENTES (MAXIMO DE RESIDENTES Y RESIDENTES ACTUALES)
+======================================-->*/
+$(document).on("click", ".btnCeroDocente", function () {
+    // var idDocente = $(this).attr("idDocente");
+    Swal.fire({
+        title: '¿Esta seguro de eliminarlo?',
+        text: '¡Esta acción no se puede revertir, tenga cuidado!',
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: "#3085d6",
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: '¡Eliminar!'
+    }).then((result) => {
+        $.ajax({
+            url: "ajax/docentes.ajax.php",
+            method: "POST",
+            data: { ceroD: 0 }
+        }).done(function (res) {
+            if (res == '"ok"') {
+
+                Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: '¡Exito!',
+                    text: '¡Se actualizo correctamente!',
+                    showConfirmButton: false,
+                    timer: 1000
+                }).then((result) => {
+                    window.location = 'Docentes';
+                });
+            } else {
+                Swal.fire({
+                    type: "error",
+                    title: "¡Error!",
+                    text: "Algo salió mal, intenta recargar la pagina y trata nuevamente.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                }).then((result) => {
+                    if (result.value) {
+                        window.location = "Docentes";
+                    }
+                });
+            }
+        });
     })
 })
