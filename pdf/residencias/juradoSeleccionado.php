@@ -176,6 +176,7 @@ class PDF extends FPDF
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $item = "id";
     $valor = $_GET['id'];
+    $promedio = $_GET['pro'];
     $respuesta = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
     $nombre = $respuesta["nombre"];
     $asesorInterno = $respuesta["asesorInt"];
@@ -255,32 +256,58 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Ln(12);
 
     $pdf->SetFont('Helvetica', '', '8');
-    $text = "Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del 
+    $text1 = "Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del 
 <C. " . mb_strtoupper($nombre) . ",> que presenta su protocolo para su <TITULACIÓN INTEGRAL,> 
 el día <" . mb_strtoupper($fechaTitulacion) . "> del año en curso, a las <" . $hora . " hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
-    $pdf->WriteText(utf8_decode($text));
-    $pdf->Ln(8);
+    $text2 = "Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del 
+<C. " . mb_strtoupper($nombre) . ",> que presenta su protocolo para su <TITULACIÓN INTEGRAL,>
+defendiendo su proyecto (promedio " . $promedio . "), el día <" . mb_strtoupper($fechaTitulacion) . "> del año en curso, a las <" . $hora . " hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
+    if ($_GET['defiende'] == 'no') {
+        $pdf->WriteText(utf8_decode($text1));
+        $pdf->Ln(8);
 
-    $pdf->SetFont('Helvetica', 'B', '8');
-    $pdf->MultiCell(40, 4, utf8_decode('PRESIDENTE
-
-'), 1, 'C');
-    $pdf->SetXY(69, 137);
-    $pdf->MultiCell(40, 4, utf8_decode('SECRETARIO
-
-'), 1, 'C');
-    $pdf->SetXY(109, 137);
-    $pdf->MultiCell(40, 4, utf8_decode('VOCAL
+        $pdf->SetFont('Helvetica', 'B', '8');
+        $pdf->MultiCell(40, 4, utf8_decode('PRESIDENTE
 
 '), 1, 'C');
-    $pdf->SetXY(149, 137);
-    $pdf->MultiCell(40, 4, utf8_decode('VOCAL SUPLENTE
+        $pdf->SetXY(69, 137);
+        $pdf->MultiCell(40, 4, utf8_decode('SECRETARIO
 
 '), 1, 'C');
+        $pdf->SetXY(109, 137);
+        $pdf->MultiCell(40, 4, utf8_decode('VOCAL
+
+'), 1, 'C');
+        $pdf->SetXY(149, 137);
+        $pdf->MultiCell(40, 4, utf8_decode('VOCAL SUPLENTE
+
+'), 1, 'C');
+    } else {
+        $pdf->WriteText(utf8_decode($text2));
+        $pdf->Ln(8);
+
+        $pdf->SetFont('Helvetica', 'B', '8');
+        $pdf->MultiCell(40, 4, utf8_decode('PRESIDENTE
+
+'), 1, 'C');
+        $pdf->SetXY(69, 141);
+        $pdf->MultiCell(40, 4, utf8_decode('SECRETARIO
+
+'), 1, 'C');
+        $pdf->SetXY(109, 141);
+        $pdf->MultiCell(40, 4, utf8_decode('VOCAL
+
+'), 1, 'C');
+        $pdf->SetXY(149, 141);
+        $pdf->MultiCell(40, 4, utf8_decode('VOCAL SUPLENTE
+
+'), 1, 'C');
+    }
     $pdf->SetFont('Helvetica', '', '7');
     $pdf->SetWidths(array(40, 40, 40, 40));
     $pdf->Row(array(utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($revisor1)), utf8_decode(mb_strtoupper($revisor2)), utf8_decode(mb_strtoupper($suplente))));
     $pdf->Ln(8);
+
     $pdf->SetFont('Helvetica', '', '8');
     $pdf->Cell(80, 0, utf8_decode('Sin otro particular, reciba un cordial saludo.'), 0, 0, 'C');
     $pdf->Ln(14.5);
@@ -301,7 +328,7 @@ el día <" . mb_strtoupper($fechaTitulacion) . "> del año en curso, a las <" . 
     $pdf->Ln(18.4);
 
     $pdf->SetFont('Helvetica', '', '5.5');
-    $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO'), 0, 0, 'L');
+    $pdf->Cell(0, 4, utf8_decode('C.c.p. archivo'), 0, 0, 'L');
     $pdf->Ln(3);
     $pdf->Cell(3);
     $pdf->Cell(0, 4, utf8_decode('*JEOL*Ere'), 0, 0, 'L');
