@@ -420,34 +420,33 @@ $(document).on("click", "#btnImprimirLiberacion", function () {
 /*<!--=====================================
 IMPRIMIR Revision
 ======================================-->*/
-$(document).on("click", "#btnImprimirRevision", async function () {
-    const {
-        value: formValues
-    } = await Swal.fire({
-        title: 'Escriba los numeros de folio',
-        html: '<input id="swal-input1" class="swal2-input" placeholder="Folio #1">' +
-            '<input id="swal-input2" class="swal2-input" placeholder="Folio #2">',
-        focusConfirm: false,
-        preConfirm: () => {
-            return [
-                document.getElementById('swal-input1').value,
-                document.getElementById('swal-input2').value
-            ]
-        }
-    })
+$(document).on("click", "#btnImprimirRevision", function () {
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
-        progressSteps: ['1']
+        progressSteps: ['1', '2']
     }).queue([{
-        input: 'text',
-        inputValue: fechaR,
-        title: 'Fecha',
-        text: 'Introduzca una fecha valida'
-    }, ]).then((result) => {
+            input: 'text',
+            inputValue: fechaR,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            title: 'Escriba los numeros de folio',
+            html: '<input id="swal-input1" class="swal2-input" placeholder="Folio #1">' +
+                '<input id="swal-input2" class="swal2-input" placeholder="Folio #2">',
+            focusConfirm: false,
+            preConfirm: () => {
+                return [
+                    document.getElementById('swal-input1').value,
+                    document.getElementById('swal-input2').value
+                ]
+            }
+        }
+    ]).then((result) => {
         if (result.value) {
-            window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&folio1=" + formValues[0] + "&folio2=" + formValues[1], "_blank");
+            window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&folio1=" + result.value[1][0] + "&folio2=" + result.value[1][1], "_blank");
         }
     })
 });
@@ -455,7 +454,6 @@ $(document).on("click", "#btnImprimirRevision", async function () {
 COMISION PARA TITULACION RESIDENCIAS
 ======================================-->*/
 $(document).on("click", "#btnImprimirJuradoTitulacion", function () {
-    // console.log("J=  " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
@@ -468,13 +466,19 @@ $(document).on("click", "#btnImprimirJuradoTitulacion", function () {
             text: 'Introduzca una fecha valida para el documento'
         },
         {
-            title: 'Documento',
-            text: 'Introduzca el numero de documento',
-            input: 'text',
-            inputValidator: (value) => {
-                if (!value) {
-                    return '¡Necesita llenar la información!'
-                }
+            title: 'Escriba los numeros de folio',
+            html: '<input id="swal-input1" class="swal2-input" placeholder="Folio #1">' +
+                '<input id="swal-input2" class="swal2-input" placeholder="Folio #2">' +
+                '<input id="swal-input3" class="swal2-input" placeholder="Folio #3">' +
+                '<input id="swal-input4" class="swal2-input" placeholder="Folio #4">',
+            focusConfirm: false,
+            preConfirm: () => {
+                return [
+                    document.getElementById('swal-input1').value,
+                    document.getElementById('swal-input2').value,
+                    document.getElementById('swal-input3').value,
+                    document.getElementById('swal-input4').value
+                ]
             }
         },
         {
@@ -506,15 +510,15 @@ $(document).on("click", "#btnImprimirJuradoTitulacion", function () {
     ]).then((result) => {
         if (result.value) {
             if (result.value[4] == 'si') {
-                PreguntarPromedio(result.value);
+                PreguntarPromedioJuradoTitulacion(result.value);
             } else {
-                window.open("pdf/residencias/juradoTitulacion.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
+                window.open("pdf/residencias/juradoTitulacion.php?id=" + idResidente + "&fecha=" + result.value[0] + "&folio1=" + result.value[1][0] + "&folio2=" + result.value[1][1] + "&folio3=" + result.value[1][2] + "&folio4=" + result.value[1][3] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
             }
         }
     })
 });
 
-async function PreguntarPromedio(resulte) {
+async function PreguntarPromedioJuradoTitulacion(resulte) {
     // console.table(resulte);
     const {
         value: promedio
@@ -531,7 +535,7 @@ async function PreguntarPromedio(resulte) {
     })
     if (promedio) {
         // Swal.fire(`Your IP address is ${promedio}`)
-        window.open("pdf/residencias/comision.php?id=" + idResidente + "&fecha=" + resulte[0] + "&numero=" + resulte[1] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
+        window.open("pdf/residencias/juradoTitulacion.php?id=" + idResidente + "&fecha=" + resulte[0] + "&folio1=" + resulte[1][0] + "&folio2=" + resulte[1][1] + "&folio3=" + resulte[1][2] + "&folio4=" + resulte[1][3] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
     }
 }
 
@@ -545,7 +549,7 @@ $(document).on("click", "#btnImprimirJuradoSeleccionado", function () {
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
-        progressSteps: ['1', '2', '3', '4']
+        progressSteps: ['1', '2', '3', '4', '5']
     }).queue([{
             input: 'text',
             inputValue: fechaR,
@@ -573,14 +577,53 @@ $(document).on("click", "#btnImprimirJuradoSeleccionado", function () {
             inputValue: "10:00",
             title: 'Hora de la Titulación',
             text: 'Introduzca una hora valida'
+        },
+        {
+            title: 'Tipo de documento',
+            text: '¿El residente defiende su proyecto?',
+            input: 'radio',
+            inputOptions: {
+                'si': 'SI',
+                'no': 'NO'
+            },
+            inputValidator: function (result) {
+                if (!result) {
+                    return '¡Necesita seleccionar una opción!';
+                }
+            }
         }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/residencias/juradoSeleccionado.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaTitulacion=" + result.value[2] + "&hora=" + result.value[3], "_blank");
-            /* window.open("pdf/residencias/dictamen.php"); */
+            if (result.value[4] == 'si') {
+                PreguntarPromedioJuradoSeleccionado(result.value);
+            } else {
+                window.open("pdf/residencias/juradoSeleccionado.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaTitulacion=" + result.value[2] + "&hora=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
+                /* window.open("pdf/residencias/dictamen.php"); */
+            }
         }
     })
 });
+async function PreguntarPromedioJuradoSeleccionado(resulte) {
+    // console.table(resulte);
+    const {
+        value: promedio
+    } = await Swal.fire({
+        title: 'Promedio',
+        text: '¿Cual es el promedio del residente?',
+        input: 'text',
+        showCancelButton: true,
+        inputValidator: (value) => {
+            if (!value) {
+                return '¡Necesita escribir el propmedio!'
+            }
+        }
+    })
+    if (promedio) {
+        // Swal.fire(`Your IP address is ${promedio}`)
+        window.open("pdf/residencias/juradoSeleccionado.php?id=" + idResidente + "&fecha=" + resulte[0] + "&numero=" + resulte[1] + "&fechaTitulacion=" + resulte[2] + "&hora=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
+        // window.open("pdf/residencias/comision.php?id=" + idResidente + "&fecha=" + resulte[0] + "&numero=" + resulte[1] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
+    }
+}
 
 /*<!--===================================== PDF TESIS ======================================-->*/
 
@@ -637,16 +680,15 @@ $(document).on("click", "#btnImpJurado", function () {
         },
         {
             title: 'Numeros de Documentos',
-            html:
-                '<label for="swal-input1">Documento para Revisor #1</label>' +
+            html: '<label for="swal-input1">Documento para Revisor #1</label>' +
                 '<input id="swal-input1" class="swal2-input" placeholder="Documento #1">' +
                 '<label for="swal-input2">Documento para Revisor #2</label>' +
                 '<input id="swal-input2" class="swal2-input" placeholder="Documento #1">',
             focusConfirm: false,
             preConfirm: () => {
                 return [
-                document.getElementById('swal-input1').value,
-                document.getElementById('swal-input2').value
+                    document.getElementById('swal-input1').value,
+                    document.getElementById('swal-input2').value
                 ]
             }
         }
@@ -674,8 +716,7 @@ $(document).on("click", "#btnImpComisionT", function () {
         },
         {
             title: 'Numeros de Documentos',
-            html:
-                '<label for="swal-input1">Documento para Jefa de división de estudios profesionales</label>' +
+            html: '<label for="swal-input1">Documento para Jefa de división de estudios profesionales</label>' +
                 '<input id="swal-input1" class="swal2-input" placeholder="Documento #1">' +
 
                 '<label for="swal-input2">Documento para Presidente</label>' +
@@ -685,18 +726,18 @@ $(document).on("click", "#btnImpComisionT", function () {
                 '<input id="swal-input3" class="swal2-input" placeholder="Documento #3">' +
 
                 '<label for="swal-input4">Documento para Vocal</label>' +
-                '<input id="swal-input4" class="swal2-input" placeholder="Documento #4">' + 
+                '<input id="swal-input4" class="swal2-input" placeholder="Documento #4">' +
 
                 '<label for="swal-input5">Documento para Secretario(a)</label>' +
                 '<input id="swal-input5" class="swal2-input" placeholder="Documento #5">',
             focusConfirm: false,
             preConfirm: () => {
                 return [
-                document.getElementById('swal-input1').value,
-                document.getElementById('swal-input2').value,
-                document.getElementById('swal-input3').value,
-                document.getElementById('swal-input4').value,
-                document.getElementById('swal-input5').value
+                    document.getElementById('swal-input1').value,
+                    document.getElementById('swal-input2').value,
+                    document.getElementById('swal-input3').value,
+                    document.getElementById('swal-input4').value,
+                    document.getElementById('swal-input5').value
                 ]
             }
         },
