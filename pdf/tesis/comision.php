@@ -201,7 +201,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $jefeDepartamento = $respuestajefeDepartamento["nombre"];
     $jefeDepartamentoSexo = $respuestajefeDepartamento["sexo"];
 
-    $numero = $_GET['numero'];
+    $numero = $_GET['num1'];
     $fechaActual = $_GET['fecha'];
     $fechaTitulacion = $_GET['fechaT'];
     $hora = $_GET['horaT'];
@@ -340,7 +340,7 @@ el día <" . mb_strtoupper($fechaTitulacion) . "> del año en curso, a las <" . 
     $pdf->Cell(20, 4, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['num2'] . '/' . date("Y"), 0, 1, 'L');
     $pdf->Cell(107);
     $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
     $pdf->SetFont('Helvetica', 'BUI', '9');
@@ -464,7 +464,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(20, 4, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['num3'] . '/' . date("Y"), 0, 1, 'L');
     $pdf->Cell(107);
     $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
     $pdf->SetFont('Helvetica', 'BUI', '9');
@@ -588,7 +588,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(20, 4, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['num4'] . '/' . date("Y"), 0, 1, 'L');
     $pdf->Cell(107);
     $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
     $pdf->SetFont('Helvetica', 'BUI', '9');
@@ -713,7 +713,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(20, 4, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+    $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['num5'] . '/' . date("Y"), 0, 1, 'L');
     $pdf->Cell(107);
     $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
     $pdf->SetFont('Helvetica', 'BUI', '9');

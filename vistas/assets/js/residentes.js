@@ -638,9 +638,9 @@ $(document).on("click", "#btnImpJurado", function () {
         {
             title: 'Numeros de Documentos',
             html:
-                '<label for="swal-input1">Documento #1</label>' +
+                '<label for="swal-input1">Documento para Revisor #1</label>' +
                 '<input id="swal-input1" class="swal2-input" placeholder="Documento #1">' +
-                '<label for="swal-input2">Documento #2</label>' +
+                '<label for="swal-input2">Documento para Revisor #2</label>' +
                 '<input id="swal-input2" class="swal2-input" placeholder="Documento #1">',
             focusConfirm: false,
             preConfirm: () => {
@@ -649,7 +649,6 @@ $(document).on("click", "#btnImpJurado", function () {
                 document.getElementById('swal-input2').value
                 ]
             }
-              
         }
     ]).then((result) => {
         if (result.value) {
@@ -674,13 +673,31 @@ $(document).on("click", "#btnImpComisionT", function () {
             text: 'Introduzca una fecha valida para el documento'
         },
         {
-            title: 'Documento',
-            text: 'Introduzca el numero de documento',
-            input: 'text',
-            inputValidator: (value) => {
-                if (!value) {
-                    return '¡Necesita llenar la información!'
-                }
+            title: 'Numeros de Documentos',
+            html:
+                '<label for="swal-input1">Documento para Jefa de división de estudios profesionales</label>' +
+                '<input id="swal-input1" class="swal2-input" placeholder="Documento #1">' +
+
+                '<label for="swal-input2">Documento para Presidente</label>' +
+                '<input id="swal-input2" class="swal2-input" placeholder="Documento #2">' +
+
+                '<label for="swal-input3">Documento para Secretario(a)</label>' +
+                '<input id="swal-input3" class="swal2-input" placeholder="Documento #3">' +
+
+                '<label for="swal-input4">Documento para Vocal</label>' +
+                '<input id="swal-input4" class="swal2-input" placeholder="Documento #4">' + 
+
+                '<label for="swal-input5">Documento para Secretario(a)</label>' +
+                '<input id="swal-input5" class="swal2-input" placeholder="Documento #5">',
+            focusConfirm: false,
+            preConfirm: () => {
+                return [
+                document.getElementById('swal-input1').value,
+                document.getElementById('swal-input2').value,
+                document.getElementById('swal-input3').value,
+                document.getElementById('swal-input4').value,
+                document.getElementById('swal-input5').value
+                ]
             }
         },
         {
@@ -714,7 +731,8 @@ $(document).on("click", "#btnImpComisionT", function () {
             if (result.value[4] == 'si') {
                 PreguntarPromedio(result.value);
             } else {
-                window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
+                console.table(result);
+                window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&num1=" + result.value[1][0] + "&num2=" + result.value[1][1] + "&num3=" + result.value[1][2] + "&num4=" + result.value[1][3] + "&num5=" + result.value[1][4] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
             }
         }
     })
@@ -737,7 +755,7 @@ async function PreguntarPromedio(resulte) {
     })
     if (promedio) {
         // Swal.fire(`Your IP address is ${promedio}`)
-        window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + resulte[0] + "&numero=" + resulte[1] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
+        window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + resulte[0] + "&num1=" + resulte[1][0] + "&num2=" + resulte[1][1] + "&num3=" + resulte[1][2] + "&num4=" + resulte[1][3] + "&num5=" + resulte[1][4] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
     }
 }
 /*<!--=====================================
