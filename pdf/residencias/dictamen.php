@@ -203,7 +203,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     }
     $pdf->SetWidths(array(15, 23, 38, 6, 36, 34, 23, 22, 25, 25));
     for ($i = 0; $i < 1; $i++)
-        $pdf->Row(array($id, $numeroControl, utf8_decode(mb_strtoupper($nombre)), $sexo, utf8_decode(mb_strtoupper($proyecto)), utf8_decode(mb_strtoupper($empresa)), utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($asesorExterno)), utf8_decode(mb_strtoupper($estado)), utf8_decode(mb_strtoupper($fechaActual))));
+        $pdf->Row(array('1', $numeroControl, utf8_decode(mb_strtoupper($nombre)), $sexo, utf8_decode(mb_strtoupper($proyecto)), utf8_decode(mb_strtoupper($empresa)), utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($asesorExterno)), utf8_decode(mb_strtoupper($estado)), utf8_decode(mb_strtoupper($fechaActual))));
 
 
     $pdf->SetY(148);

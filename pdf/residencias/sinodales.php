@@ -27,7 +27,7 @@ class PDF extends FPDF
         // $this->Cell(20);
         $this->Cell(0, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425'), 0, 1, 'C');
         // $this->Cell(44);
-        $this->Cell(0, 4, utf8_decode('Ext. 244, e-mail: sistemas@itiguala.edu.mx,'), 0, 1, 'C');
+        $this->Cell(0, 4, utf8_decode('Ext. 225, e-mail: sistemas@itiguala.edu.mx,'), 0, 1, 'C');
         $this->SetFont('Helvetica', 'B', '7');
         // $this->Cell(20);
         $this->Cell(0, 4, utf8_decode('sistemas@itiguala.edu.mx'), 0, 0, 'C');
