@@ -212,21 +212,21 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'R');
     $pdf->Ln(4);
     $pdf->SetFont('Helvetica', 'B', '9');
-    $pdf->Cell(106.6);
+    $pdf->Cell(87.4);
     $pdf->Cell(0, 0, utf8_decode('OF. No. DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'L');
 
     $pdf->Ln(4);
     $pdf->SetFont('Helvetica', 'B', '8');
-    $pdf->Cell(229, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
-    $pdf->SetXY(132, 73);
+    $pdf->Cell(191, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
+    $pdf->SetXY(113, 73);
 
     $pdf->SetFont('Helvetica', 'BU', '8');
     $pdf->Cell(0, 0, utf8_decode('JURADO SELECCIONADO.'), 0, 0, 'C');
     $pdf->Ln(8);
     $pdf->SetFont('Helvetica', '', '8.5');
-    $pdf->SetX(91);
+    $pdf->SetX(73);
     $pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
-    $pdf->SetX(160);
+    $pdf->SetX(142);
     $pdf->SetTextColor(255, 255, 255);
     $anchoFecha = $pdf->GetStringWidth($fechaActual);
     $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
