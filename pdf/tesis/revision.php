@@ -47,6 +47,48 @@ class PDF extends FPDF
         // $this->Image('../img/iso9001.jpg', $x + 31, 253, 12);
         $this->Image('../img/norma.jpg', 155 + 31, 253, 15);
     }
+    public function WriteText($text)
+    {
+        $intPosIni = 0;
+        $intPosFim = 0;
+        if (strpos($text, '<') !== false && strpos($text, '[') !== false) {
+            if (strpos($text, '<') < strpos($text, '[')) {
+                $this->Write(4, substr($text, 0, strpos($text, '<')));
+                $intPosIni = strpos($text, '<');
+                $intPosFim = strpos($text, '>');
+                $this->SetFont('', 'B');
+                $this->Write(4, substr($text, $intPosIni + 1, $intPosFim - $intPosIni - 1));
+                $this->SetFont('', '');
+                $this->WriteText(substr($text, $intPosFim + 1, strlen($text)));
+            } else {
+                $this->Write(4, substr($text, 0, strpos($text, '[')));
+                $intPosIni = strpos($text, '[');
+                $intPosFim = strpos($text, ']');
+                $w = $this->GetStringWidth('a') * ($intPosFim - $intPosIni - 1);
+                $this->Cell($w, $this->FontSize + 0.75, substr($text, $intPosIni + 1, $intPosFim - $intPosIni - 1), 1, 0, '');
+                $this->WriteText(substr($text, $intPosFim + 1, strlen($text)));
+            }
+        } else {
+            if (strpos($text, '<') !== false) {
+                $this->Write(4, substr($text, 0, strpos($text, '<')));
+                $intPosIni = strpos($text, '<');
+                $intPosFim = strpos($text, '>');
+                $this->SetFont('', 'B');
+                $this->WriteText(substr($text, $intPosIni + 1, $intPosFim - $intPosIni - 1));
+                $this->SetFont('', '');
+                $this->WriteText(substr($text, $intPosFim + 1, strlen($text)));
+            } elseif (strpos($text, '[') !== false) {
+                $this->Write(4, substr($text, 0, strpos($text, '[')));
+                $intPosIni = strpos($text, '[');
+                $intPosFim = strpos($text, ']');
+                $w = $this->GetStringWidth('a') * ($intPosFim - $intPosIni - 1);
+                $this->Cell($w, $this->FontSize + 0.75, substr($text, $intPosIni + 1, $intPosFim - $intPosIni - 1), 1, 0, '');
+                $this->WriteText(substr($text, $intPosFim + 1, strlen($text)));
+            } else {
+                $this->Write(4, $text);
+            }
+        }
+    }
 }
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     
@@ -145,18 +187,28 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
         $pdf->Ln(8); //CELDA DE ESPACIO
         $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(31);
-        $pdf->Cell(0, 4, utf8_decode('Asi mismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
-        $pdf->Ln(2); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
+        // $pdf->Cell(31);
+        // $pdf->Cell(0, 4, utf8_decode('Asi mismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
+        // $pdf->Cell(21);
+        // $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
+        // $pdf->SetFont('Helvetica', 'B', '9');
+        // $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
+        // $pdf->SetFont('Helvetica', '', '9');
+        // $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
+        // $pdf->Cell(21);
+        // $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
+        // $pdf->Ln(2); //CELDA DE ESPACIO
+        // $pdf->SetFont('Helvetica', '', '9');
+        
+        $pdf->SetLeftMargin(27);
+    $pdf->SetRightMargin(19);
+        $text1 = "Asi mismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha revisión a más tardar en <10 (DIEZ) días hábiles a partir de la fecha de entrega> en el entendido que de no cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.";
+        
+        $pdf->WriteText(utf8_decode($text1));
+        $pdf->SetLeftMargin(10);
+    $pdf->SetRightMargin(10);
+        
+    $pdf->Ln(7); //CELDA DE ESPACIO
         $pdf->Cell(30);
         $pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
         $pdf->Ln(7); //CELDA DE ESPACIO
@@ -260,18 +312,27 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(0, 4, utf8_decode('Los revisores deberán ponerse en contacto para unificar criterios, y emitir un solo dictamen.'), 0, 1, 'C');
         $pdf->Ln(8); //CELDA DE ESPACIO
         $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(31);
-        $pdf->Cell(0, 4, utf8_decode('Asi mismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', 'B', '9');
-        $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
-        $pdf->SetFont('Helvetica', '', '9');
-        $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
-        $pdf->Cell(21);
-        $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
-        $pdf->Ln(2); //CELDA DE ESPACIO
-        $pdf->SetFont('Helvetica', '', '9');
+        // $pdf->Cell(31);
+        // $pdf->Cell(0, 4, utf8_decode('Asi mismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha'), 0, 1, 'L');
+        // $pdf->Cell(21);
+        // $pdf->Cell(36, 4, utf8_decode('revisión a más tardar en '), 0, 0, 'L');
+        // $pdf->SetFont('Helvetica', 'B', '9');
+        // $pdf->Cell(81, 4, utf8_decode('10 (DIEZ) días hábiles a partir de la fecha de entrega '), 0, 0, 'L');
+        // $pdf->SetFont('Helvetica', '', '9');
+        // $pdf->Cell(39, 4, utf8_decode('en el entendido que de no'), 0, 1, 'L');
+        // $pdf->Cell(21);
+        // $pdf->Cell(0, 4, utf8_decode('cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.'), 0, 1, 'L');
+        // $pdf->Ln(2); //CELDA DE ESPACIO
+        // $pdf->SetFont('Helvetica', '', '9');
+        $pdf->SetLeftMargin(27);
+        $pdf->SetRightMargin(19);
+        $text1 = "Asi mismo hago de su conocimiento que deberá entregar a este departamento el resultado de dicha revisión a más tardar en <10 (DIEZ) días hábiles a partir de la fecha de entrega> en el entendido que de no cumplir dentro de este plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.";
+        
+        $pdf->WriteText(utf8_decode($text1));
+        $pdf->SetLeftMargin(10);
+        $pdf->SetRightMargin(10);
+        
+        $pdf->Ln(7); //CELDA DE ESPACIO
         $pdf->Cell(30);
         $pdf->Cell(80, 4, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted. '), 0, 1, 'L');
         $pdf->Ln(7); //CELDA DE ESPACIO

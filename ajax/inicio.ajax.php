@@ -11,7 +11,9 @@ class AjaxInicio
     {
         $item = "tipo_registro";
         $valor = $this->GraficaInicio;
-        $respuesta = ControladorInicio::ctrMostrarResidentesGrafo($valor);
+        $tabla = "residentes";
+        // $respuesta = ControladorInicio::ctrMostrarResidentesGrafo($valor);
+        $respuesta = ControladorInicio::ctrMostrarResidentesInicio($valor, $tabla, $item);
         echo json_encode($respuesta);
     }
 }
