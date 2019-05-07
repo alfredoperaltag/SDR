@@ -131,9 +131,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(19);
         // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
         // NOTE AQUI
-        $pdf->Cell(80, 4, utf8_decode($res['revisor1'] . '.'), 0, 1, 'L');
+        $pdf->Cell(80, 4, utf8_decode($res['revisor1'] . ''), 0, 1, 'L');
         $pdf->Cell(19);
-        $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
+        $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN'), 0, 1, 'L');
         $pdf->Cell(19);
         $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
         $pdf->Ln(7); //CELDA DE ESPACIO
@@ -256,9 +256,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(19);
         // $pdf->Cell(80, 4, utf8_decode($res['asesorInt'] . '.'), 0, 1, 'L');
         // NOTE AQUI
-        $pdf->Cell(80, 4, utf8_decode($res['revisor2'] . '.'), 0, 1, 'L');
+        $pdf->Cell(80, 4, utf8_decode($res['revisor2'] . ''), 0, 1, 'L');
         $pdf->Cell(19);
-        $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN.'), 0, 1, 'L');
+        $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN'), 0, 1, 'L');
         $pdf->Cell(19);
         $pdf->Cell(80, 4, 'P R E S E N T E', 0, 1, 'L');
         $pdf->Ln(7); //CELDA DE ESPACIO
