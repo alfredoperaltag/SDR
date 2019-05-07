@@ -420,36 +420,6 @@ $(document).on("click", "#btnImprimirLiberacion", function () {
 /*<!--=====================================
 IMPRIMIR Revision
 ======================================-->*/
-/* $(document).on("click", "#btnImprimirRevision", function () {
-    console.log("idResidenteDic: " + idResidente);
-    Swal.mixin({
-        confirmButtonText: 'Siguiente &rarr;',
-        showCancelButton: true,
-        cancelButtonText: 'Cancelar',
-        progressSteps: ['1', '2']
-    }).queue([{
-            input: 'text',
-            inputValue: fechaR,
-            title: 'Fecha',
-            text: 'Introduzca una fecha valida'
-        },
-        {
-            title: '# Oficio',
-            text: 'Introduzca el numero de Oficio',
-            input: 'text',
-            inputValidator: (value) => {
-                if (!value) {
-                    return '¡Necesita llenar la información!'
-                }
-            }
-        }
-    ]).then((result) => {
-        if (result.value) {
-            window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
-        }
-    })
-}); */
-
 $(document).on("click", "#btnImprimirRevision", async function () {
     const {
         value: formValues
@@ -477,14 +447,9 @@ $(document).on("click", "#btnImprimirRevision", async function () {
         text: 'Introduzca una fecha valida'
     }, ]).then((result) => {
         if (result.value) {
-            // window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
-            window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&folio1=" + JSON.stringify(formValues[0]) + "&folio2=" + JSON.stringify(formValues[1]), "_blank");
+            window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&folio1=" + formValues[0] + "&folio2=" + formValues[1], "_blank");
         }
     })
-
-    /* if (formValues) {
-        // Swal.fire(JSON.stringify(formValues))
-    } */
 });
 /*<!--=====================================
 COMISION PARA TITULACION RESIDENCIAS
