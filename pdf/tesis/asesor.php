@@ -172,10 +172,10 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Ln(14); //CELDA DE ESPACIO
         $pdf->SetFont('Helvetica', '', '9');
         $pdf->Cell(20);
-        $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
+        $pdf->Cell(0, 4, utf8_decode('C.c.p. archivo.'), 0, 1, 'L');
         $pdf->SetFont('Helvetica', '', '6');
         $pdf->Cell(20);
-        $pdf->Cell(25, 4, utf8_decode('*SRZB*ere'), 0, 1, 'R');
+        $pdf->Cell(25, 4, utf8_decode('JEOL*ere'), 0, 1, 'R');
         $pdf->Output('I', 'Oficio_asignacion_de_asesor_'.$res['nombre'].'.pdf', 'D');
 
 } else {

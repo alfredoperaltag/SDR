@@ -138,8 +138,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(19);
     $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
             <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
-            HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
+            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a 
+            las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
     $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
             <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C." . $res['nombre'] . ">, que realiza su protocolo
             para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
@@ -175,7 +175,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetXY($x + 43, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(43, 7, utf8_decode('SECRETARIO'), 1, 'C');
+    $pdf->MultiCell(43, 7, utf8_decode('SECRETARIO(A)'), 1, 'C');
     $pdf->SetXY($x + 43, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
@@ -261,11 +261,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
     $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
-            HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
+            <SECRETARIO (A)>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las 
+            <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
     $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-        <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+        <SECRETARIO (A)>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
         para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
         YOHUALCEHUATL.>";
     if ($_GET['defiende'] == 'si') {
@@ -299,7 +299,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetXY($x + 43, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(43, 7, utf8_decode('SECRETARIO'), 1, 'C');
+    $pdf->MultiCell(43, 7, utf8_decode('SECRETARIO(A)'), 1, 'C');
     $pdf->SetXY($x + 43, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
@@ -385,11 +385,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
     $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
-            HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
+            <VOCAL>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo para 
+            su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las 
+            <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
     $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            <VOCAL>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
             para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
             YOHUALCEHUATL.>";
     if ($_GET['defiende'] == 'si') {
@@ -423,7 +423,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetXY($x + 43, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(43, 7, utf8_decode('SECRETARIO'), 1, 'C');
+    $pdf->MultiCell(43, 7, utf8_decode('SECRETARIO(A)'), 1, 'C');
     $pdf->SetXY($x + 43, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
@@ -501,7 +501,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Ln(5); //CELDA DE ESPACIO
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(11);
-    $pdf->Cell(80, 4, utf8_decode($res['suplente']), 0, 1, 'L');
+    $pdf->Cell(80, 4, utf8_decode($res['revisor3']), 0, 1, 'L');
     $pdf->Cell(11);
     $pdf->Cell(80, 4, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN'), 0, 1, 'L');
     $pdf->Cell(11);
@@ -510,11 +510,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
     $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
-            HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
+            <VOCAL SUPLENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las 
+            <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
     $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            <VOCAL SUPLENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
             para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
             YOHUALCEHUATL.>";
     if ($_GET['defiende'] == 'si') {
@@ -548,7 +548,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetXY($x + 43, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
-    $pdf->MultiCell(43, 7, utf8_decode('SECRETARIO'), 1, 'C');
+    $pdf->MultiCell(43, 7, utf8_decode('SECRETARIO(A)'), 1, 'C');
     $pdf->SetXY($x + 43, $y);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
