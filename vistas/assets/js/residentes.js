@@ -267,7 +267,7 @@ $(document).on("click", ".btnImprimirDoc", function () {
             // document.getElementById("btnImprimirAsesores").disabled = true;
             document.getElementById("btnImprimirLiberacion").disabled = true;
             document.getElementById("btnImprimirRevision").disabled = true;
-            document.getElementById("btnImprimirComisionT").disabled = true;
+            document.getElementById("btnImprimirJuradoTitulacion").disabled = true;
             document.getElementById("btnImprimirJuradoSeleccionado").disabled = true;
 
             $("#impNoControl").val(respuesta["noControl"]);
@@ -294,7 +294,7 @@ $(document).on("click", ".btnImprimirDoc", function () {
                 document.getElementById("btnImprimirAsesores").disabled = false;
                 document.getElementById("btnImprimirLiberacion").disabled = false;
                 document.getElementById("btnImprimirRevision").disabled = false;
-                document.getElementById("btnImprimirComisionT").disabled = false;
+                document.getElementById("btnImprimirJuradoTitulacion").disabled = false;
                 document.getElementById("btnImprimirJuradoSeleccionado").disabled = false;
             }
 
@@ -420,7 +420,7 @@ $(document).on("click", "#btnImprimirLiberacion", function () {
 /*<!--=====================================
 IMPRIMIR Revision
 ======================================-->*/
-$(document).on("click", "#btnImprimirRevision", function () {
+/* $(document).on("click", "#btnImprimirRevision", function () {
     console.log("idResidenteDic: " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
@@ -446,14 +446,50 @@ $(document).on("click", "#btnImprimirRevision", function () {
     ]).then((result) => {
         if (result.value) {
             window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
-            /* window.open("pdf/residencias/dictamen.php"); */
         }
     })
+}); */
+
+$(document).on("click", "#btnImprimirRevision", async function () {
+    const {
+        value: formValues
+    } = await Swal.fire({
+        title: 'Escriba los numeros de folio',
+        html: '<input id="swal-input1" class="swal2-input" placeholder="Folio #1">' +
+            '<input id="swal-input2" class="swal2-input" placeholder="Folio #2">',
+        focusConfirm: false,
+        preConfirm: () => {
+            return [
+                document.getElementById('swal-input1').value,
+                document.getElementById('swal-input2').value
+            ]
+        }
+    })
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1']
+    }).queue([{
+        input: 'text',
+        inputValue: fechaR,
+        title: 'Fecha',
+        text: 'Introduzca una fecha valida'
+    }, ]).then((result) => {
+        if (result.value) {
+            // window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+            window.open("pdf/residencias/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&folio1=" + JSON.stringify(formValues[0]) + "&folio2=" + JSON.stringify(formValues[1]), "_blank");
+        }
+    })
+
+    /* if (formValues) {
+        // Swal.fire(JSON.stringify(formValues))
+    } */
 });
 /*<!--=====================================
 COMISION PARA TITULACION RESIDENCIAS
 ======================================-->*/
-$(document).on("click", "#btnImprimirComisionT", function () {
+$(document).on("click", "#btnImprimirJuradoTitulacion", function () {
     // console.log("J=  " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
@@ -507,7 +543,7 @@ $(document).on("click", "#btnImprimirComisionT", function () {
             if (result.value[4] == 'si') {
                 PreguntarPromedio(result.value);
             } else {
-                window.open("pdf/residencias/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
+                window.open("pdf/residencias/juradoTitulacion.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
             }
         }
     })
@@ -802,7 +838,7 @@ $(document).on("click", ".CheckTesis", function () {
 
     if (document.getElementById("CheckTesis").checked) {
         document.querySelector('#StatusTesis').innerText = 'Liberado';
-    }else{
+    } else {
         document.querySelector('#StatusTesis').innerText = 'No liberado';
     }
 })

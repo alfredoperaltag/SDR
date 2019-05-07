@@ -190,7 +190,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $jefeDepartamento = $respuestajefeDepartamento["nombre"];
     $jefeDepartamentoSexo = $respuestajefeDepartamento["sexo"];
 
-    $numero = $_GET['numero'];
+    $numero = $_GET['folio1'];
     $fechaActual = $_GET['fecha'];
 
     $pdf = new PDF('P', 'mm', 'Letter');
@@ -287,10 +287,10 @@ plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.
     $pdf->Ln(14);
 
     $pdf->SetFont('Helvetica', '', '8');
-    $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 0, 'L');
+    $pdf->Cell(0, 4, utf8_decode('C.c.p. archivo.'), 0, 0, 'L');
     $pdf->Ln(3);
     $pdf->SetFont('Helvetica', '', '6');
-    $pdf->Cell(9);
+    $pdf->Cell(8);
     $pdf->Cell(0, 4, utf8_decode('*JEOL*ere'), 0, 0, 'L');
 
     $pdf->Output('I', 'Asignación de Jurado.pdf', 'D');

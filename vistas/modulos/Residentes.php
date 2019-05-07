@@ -836,7 +836,7 @@ IMPRIMIR DOCUMENTOS RESIDENCIAS PROFESIONALES
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirRevision">Revisión del trabajo de Titulación</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de Residencias Profesionales</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJuradoSeleccionado">Jurado Seleccionado</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirComisionT">Jurado de Titulación</button>
+                <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJuradoTitulacion">Jurado de Titulación</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
