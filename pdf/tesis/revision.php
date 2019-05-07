@@ -73,7 +73,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Ln(5);
         $pdf->SetFont('Helvetica', '', '9');
         $pdf->Cell(107);
-        $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+        $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['Document1'] . '/' . date("Y"), 0, 1, 'L');
         $pdf->Cell(107);
         $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
         $pdf->SetFont('Helvetica', 'B', '9');
@@ -104,18 +104,20 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(19);
         $x = $pdf->GetX();
         $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
+        $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):
+        
+        '), 1, 'L');
         $pdf->SetXY($x + 28, $y);
         $x = $pdf->GetX();
         $y = $pdf->GetY();
         $pdf->SetFont('Helvetica', 'B', '9');
         // $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
-        $pdf->MultiCell(95, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '
+        $pdf->MultiCell(80, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '
         
         '), 'LTB', 'L');
         $pdf->SetFont('Helvetica', '', '9');
-        $pdf->SetXY($x + 95, $y);
-        $pdf->MultiCell(45, 4, utf8_decode(' ' . mb_strtoupper($res['carrera'])), 1, 'L');
+        $pdf->SetXY($x + 80, $y);
+        $pdf->MultiCell(60, 4, utf8_decode('Área: ' . mb_strtoupper($res['carrera'])), 1, 'L');
         $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
         $pdf->Cell(140, 4, utf8_decode(' TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');
@@ -186,7 +188,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Ln(5);
         $pdf->SetFont('Helvetica', '', '9');
         $pdf->Cell(107);
-        $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['numero'] . '/' . date("Y"), 0, 1, 'L');
+        $pdf->Cell(80, 4, 'OF. No. DSC-ITI/' . $_GET['Document2'] . '/' . date("Y"), 0, 1, 'L');
         $pdf->Cell(107);
         $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
         $pdf->SetFont('Helvetica', 'B', '9');
@@ -217,18 +219,20 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Cell(19);
         $x = $pdf->GetX();
         $y = $pdf->GetY();
-        $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):                            '), 1, 'L');
+        $pdf->MultiCell(28, 4, utf8_decode(' Alumno (s):
+        
+        '), 1, 'L');
         $pdf->SetXY($x + 28, $y);
         $x = $pdf->GetX();
         $y = $pdf->GetY();
         $pdf->SetFont('Helvetica', 'B', '9');
         // $pdf->MultiCell(70, 4, utf8_decode(' ' . strtoupper($res['nombre']) . '                                  '), 'LTB', 'L');
-        $pdf->MultiCell(95, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '
+        $pdf->MultiCell(80, 4, utf8_decode(' ' . mb_strtoupper($res['nombre']) . '
         
         '), 'LTB', 'L');
         $pdf->SetFont('Helvetica', '', '9');
-        $pdf->SetXY($x + 95, $y);
-        $pdf->MultiCell(45, 4, utf8_decode(' ' . mb_strtoupper($res['carrera'])), 1, 'L');
+        $pdf->SetXY($x + 80, $y);
+        $pdf->MultiCell(60, 4, utf8_decode('Área: ' . mb_strtoupper($res['carrera'])), 1, 'L');
         $pdf->Cell(19);
         $pdf->Cell(28, 4, utf8_decode(' Opción'), 1, 0, 'L');
         $pdf->Cell(140, 4, utf8_decode(' TITULACIÓN INTEGRAL "TESIS PROFESIONAL"'), 1, 1, 'L');

@@ -318,6 +318,14 @@ Asesor', 'Nombre y Firma
 Revisor', 'Nombre y Firma
 Revisor'), 3.7, 'C');
 
+$pdf->Ln(5);
+    $pdf->SetFont('Helvetica', '', '7');
+    $pdf->Cell(20);
+    $pdf->Cell(0, 4, utf8_decode('C.C.P. ARCHIVO.'), 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '6');
+    $pdf->Cell(20);
+    $pdf->Cell(20, 4, utf8_decode('JEOL*ere'), 0, 1, 'R');
+
     
     $pdf->Output('I', 'Liberación_'.$res['nombre'].'.pdf', 'D');
 

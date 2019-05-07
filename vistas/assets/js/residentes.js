@@ -582,8 +582,10 @@ $(document).on("click", "#btnImprimirJuradoSeleccionado", function () {
     })
 });
 
+/*<!--===================================== PDF TESIS ======================================-->*/
+
 /*<!--=====================================
-IMPRIMIR OFICIO DE ASIGNACION DE ASESOR TESIS
+IMPRIMIR OFICIO ASIGNACIÓN DE ASESOR TESIS
 ======================================-->*/
 $(document).on("click", "#btnImpAsesorT", function () {
     // console.log("J=  " + idResidente);
@@ -617,7 +619,7 @@ $(document).on("click", "#btnImpAsesorT", function () {
 });
 
 /*<!--=====================================
-IMPRIMIR JURADO SELECCIONADO TESIS
+IMPRIMIR REVISIÓN DE TRABAJO DE TITULACIÓN TESIS
 ======================================-->*/
 $(document).on("click", "#btnImpJurado", function () {
     // console.log("J=  " + idResidente);
@@ -634,58 +636,29 @@ $(document).on("click", "#btnImpJurado", function () {
             text: 'Introduzca una fecha valida'
         },
         {
-            title: 'Documento',
-            text: 'Introduzca el numero de documento',
-            input: 'text',
-            inputValidator: (value) => {
-                if (!value) {
-                    return '¡Necesita llenar la información!'
-                }
+            title: 'Numeros de Documentos',
+            html:
+                '<label for="swal-input1">Documento #1</label>' +
+                '<input id="swal-input1" class="swal2-input" placeholder="Documento #1">' +
+                '<label for="swal-input2">Documento #2</label>' +
+                '<input id="swal-input2" class="swal2-input" placeholder="Documento #1">',
+            focusConfirm: false,
+            preConfirm: () => {
+                return [
+                document.getElementById('swal-input1').value,
+                document.getElementById('swal-input2').value
+                ]
             }
+              
         }
     ]).then((result) => {
         if (result.value) {
-            window.open("pdf/tesis/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
-        }
-    })
-});
-
-
-/*<!--=====================================
-IMPRIMIR LIBERACION TESIS
-======================================-->*/
-$(document).on("click", "#btnImpLiberacionR", function () {
-    // console.log("J=  " + idResidente);
-    Swal.mixin({
-        confirmButtonText: 'Siguiente &rarr;',
-        showCancelButton: true,
-        cancelButtonText: 'Cancelar',
-        progressSteps: ['1', '2']
-    }).queue([{
-            input: 'text',
-            // inputValue: fechaTesis,
-            inputValue: fechaR,
-            title: 'Fecha',
-            text: 'Introduzca una fecha valida'
-        },
-        {
-            title: 'Documento',
-            text: 'Introduzca el numero de documento',
-            input: 'text',
-            inputValidator: (value) => {
-                if (!value) {
-                    return '¡Necesita llenar la información!'
-                }
-            }
-        }
-    ]).then((result) => {
-        if (result.value) {
-            window.open("pdf/tesis/liberacion.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+            window.open("pdf/tesis/revision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&Document1=" + result.value[1][0] + "&Document2=" + result.value[1][1], "_blank");
         }
     })
 });
 /*<!--=====================================
-COMISION PARA TITULACION TESIS
+IMPRIMIR JURADO TITULACIÓN TESIS
 ======================================-->*/
 $(document).on("click", "#btnImpComisionT", function () {
     // console.log("J=  " + idResidente);
@@ -767,6 +740,42 @@ async function PreguntarPromedio(resulte) {
         window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + resulte[0] + "&numero=" + resulte[1] + "&fechaT=" + resulte[2] + "&horaT=" + resulte[3] + "&defiende=" + resulte[4] + "&pro=" + `${promedio}`, "_blank");
     }
 }
+/*<!--=====================================
+IMPRIMIR LIBERACIÓN TESIS
+======================================-->*/
+$(document).on("click", "#btnImpLiberacionR", function () {
+    // console.log("J=  " + idResidente);
+    Swal.mixin({
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        progressSteps: ['1', '2']
+    }).queue([{
+            input: 'text',
+            // inputValue: fechaTesis,
+            inputValue: fechaR,
+            title: 'Fecha',
+            text: 'Introduzca una fecha valida'
+        },
+        {
+            title: 'Documento',
+            text: 'Introduzca el numero de documento',
+            input: 'text',
+            inputValidator: (value) => {
+                if (!value) {
+                    return '¡Necesita llenar la información!'
+                }
+            }
+        }
+    ]).then((result) => {
+        if (result.value) {
+            window.open("pdf/tesis/liberacion.php?id=" + idResidente + "&fecha=" + result.value[0] + "&numero=" + result.value[1], "_blank");
+        }
+    })
+});
+
+
+
 
 
 
