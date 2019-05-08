@@ -261,11 +261,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
     $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            <SECRETARIO (A)>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
             para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
             HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
     $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-        <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+        <SECRETARIO (A)>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
         para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
         YOHUALCEHUATL.>";
     if ($_GET['defiende'] == 'si') {
@@ -385,11 +385,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
     $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            <VOCAL>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
             para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
             HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
     $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            <VOCAL>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
             para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
             YOHUALCEHUATL.>";
     if ($_GET['defiende'] == 'si') {
@@ -510,11 +510,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
     $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            <VOCAL SUPLENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
             para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
             HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
     $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
+            <VOCAL SUPLENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
             para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
             YOHUALCEHUATL.>";
     if ($_GET['defiende'] == 'si') {
