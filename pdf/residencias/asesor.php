@@ -200,7 +200,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Ln(4);
     $pdf->Cell(0, 0, utf8_decode('c.c.p. Expediente'), 0, 0, 'J');
 
-    $pdf->Output();
+    $pdf->Output('I', 'Asignacion de Asesor ' . $nombre . '.pdf', 'D');
 } else {
     echo "<script>window.location = '../../Inicio';</script>";
 }

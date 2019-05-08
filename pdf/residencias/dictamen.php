@@ -238,7 +238,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->SetX(185);
     $pdf->Cell(0, 0, utf8_decode('Vo. Bo.'), 0, 0, 'C');
 
-    $pdf->Output();
+    $pdf->Output('I', 'Dictamen ' . $nombre . '.pdf', 'D');
 } else {
     echo "<script>window.location = '../../Inicio';</script>";
 }

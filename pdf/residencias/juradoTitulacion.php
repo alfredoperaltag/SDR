@@ -135,20 +135,22 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(80, 4, 'P R E S E N T E.', 0, 1, 'L');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(19);
-    $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
-            HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
-    $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C." . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
-            YOHUALCEHUATL.>";
+
+    $pdf->SetLeftMargin(25);
+    $pdf->SetRightMargin(25);
+
+    // $pdf->Cell(10);
+    $text1 = 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C. ' . $res['nombre'] . '>, que realiza su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL">, defendiendo su proyecto (promedio ' . $_GET['pro'] . '), el día <' . utf8_decode(mb_strtoupper($_GET['fechaT'])) . ' del año en curso>,  a las <' . $_GET['horaT'] . ' HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
+    $text2 = 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como <PRESIDENTE>, en el Acto de Recepción Profesional de él (la) <C.' . $res['nombre'] . '>, que realiza su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL">, el día <' . utf8_decode(mb_strtoupper($_GET['fechaT'])) . ' del año en curso>,  a las <' . $_GET['horaT'] . ' HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
     if ($_GET['defiende'] == 'si') {
         $pdf->WriteText(utf8_decode($text1));
     } else {
         $pdf->WriteText(utf8_decode($text2));
     }
+
+    $pdf->SetLeftMargin(10);
+    $pdf->SetRightMargin(10);
+
     $pdf->Ln(10);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
@@ -259,20 +261,22 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(80, 4, 'P R E S E N T E.', 0, 1, 'L');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(19);
-    $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <SECRETARIO (A)>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
-            HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
-    $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-        <SECRETARIO (A)>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-        para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
-        YOHUALCEHUATL.>";
+
+    $pdf->SetLeftMargin(25);
+    $pdf->SetRightMargin(25);
+
+    // $pdf->Cell(19);
+    $text1 = 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como <SECRETARIO (A)>, en el Acto de Recepción Profesional de él (la) <C. ' . $res['nombre'] . '>, que realiza su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL">, defendiendo su proyecto (promedio ' . $_GET['pro'] . '), el día <' . utf8_decode(mb_strtoupper($_GET['fechaT'])) . ' del año en curso>,  a las <' . $_GET['horaT'] . ' HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
+    $text2 = 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como <SECRETARIO (A)>, en el Acto de Recepción Profesional de él (la) <C. ' . $res['nombre'] . '>, que realiza su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL">, el día <' . utf8_decode(mb_strtoupper($_GET['fechaT'])) . ' del año en curso>,  a las <' . $_GET['horaT'] . ' HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
     if ($_GET['defiende'] == 'si') {
         $pdf->WriteText(utf8_decode($text1));
     } else {
         $pdf->WriteText(utf8_decode($text2));
     }
+
+    $pdf->SetLeftMargin(10);
+    $pdf->SetRightMargin(10);
+
     $pdf->Ln(10);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
@@ -383,20 +387,22 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(80, 4, 'P R E S E N T E.', 0, 1, 'L');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(19);
-    $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <VOCAL>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
-            HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
-    $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <VOCAL>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
-            YOHUALCEHUATL.>";
+
+    $pdf->SetLeftMargin(25);
+    $pdf->SetRightMargin(25);
+
+    // $pdf->Cell(19);
+    $text1 = 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como <VOCAL>, en el Acto de Recepción Profesional de él (la) <C. ' . $res['nombre'] . '>, que realiza su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL">, defendiendo su proyecto (promedio ' . $_GET['pro'] . '), el día <' . utf8_decode(mb_strtoupper($_GET['fechaT'])) . ' del año en curso>,  a las <' . $_GET['horaT'] . ' HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
+    $text2 = 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como <VOCAL>, en el Acto de Recepción Profesional de él (la) <C. ' . $res['nombre'] . '>, que realiza su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL">, el día <' . utf8_decode(mb_strtoupper($_GET['fechaT'])) . ' del año en curso>,  a las <' . $_GET['horaT'] . ' HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
     if ($_GET['defiende'] == 'si') {
         $pdf->WriteText(utf8_decode($text1));
     } else {
         $pdf->WriteText(utf8_decode($text2));
     }
+
+    $pdf->SetLeftMargin(10);
+    $pdf->SetRightMargin(10);
+
     $pdf->Ln(10);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);
@@ -508,20 +514,22 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(80, 4, 'P R E S E N T E.', 0, 1, 'L');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(19);
-    $text1 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <VOCAL SUPLENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, defendiendo su proyecto (promedio " . $_GET['pro'] . "), el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " 
-            HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>";
-    $text2 = "Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como
-            <VOCAL SUPLENTE>, en el Acto de Recepción Profesional de él (la) <C. " . $res['nombre'] . ">, que realiza su protocolo
-            para su <TITULACIÓN INTEGRAL>, el día <" . utf8_decode(mb_strtoupper($_GET['fechaT'])) . " del año en curso>,  a las <" . $_GET['horaT'] . " HRS.>, en la <SALA DE TITULACIÓN
-            YOHUALCEHUATL.>";
+    // $pdf->Cell(19);
+
+    $pdf->SetLeftMargin(25);
+    $pdf->SetRightMargin(25);
+
+    $text1 = 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como <VOCAL SUPLENTE>, en el Acto de Recepción Profesional de él (la) <C. ' . $res['nombre'] . '>, que realiza su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL">, defendiendo su proyecto (promedio ' . $_GET['pro'] . '), el día <' . utf8_decode(mb_strtoupper($_GET['fechaT'])) . ' del año en curso>,  a las <' . $_GET['horaT'] . ' HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
+    $text2 = 'Por medio del presente, me permito hacer de su conocimiento que ha sido comisionado (a) para fungir como <VOCAL SUPLENTE>, en el Acto de Recepción Profesional de él (la) <C. ' . $res['nombre'] . '>, que realiza su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL">, el día <' . utf8_decode(mb_strtoupper($_GET['fechaT'])) . ' del año en curso>,  a las <' . $_GET['horaT'] . ' HRS.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
     if ($_GET['defiende'] == 'si') {
         $pdf->WriteText(utf8_decode($text1));
     } else {
         $pdf->WriteText(utf8_decode($text2));
     }
+
+    $pdf->SetLeftMargin(10);
+    $pdf->SetRightMargin(10);
+
     $pdf->Ln(10);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(19);

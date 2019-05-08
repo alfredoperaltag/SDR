@@ -243,8 +243,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))), 3.8, 'J');
     $pdf->Row(array('c) No. de Control:', utf8_decode(mb_strtoupper($numeroControl))), 3.8, 'J');
     $pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(mb_strtoupper($proyecto))), 3.8, 'J');
-    $pdf->Row(array('e) Producto:', utf8_decode(mb_strtoupper('INFORME TÉCNICO DE RESIDENCIA PROFESIONAL
-
+    $pdf->Row(array('e) Producto:', utf8_decode(mb_strtoupper('TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL"
 '))), 3.8, 'J');
     $pdf->Ln(3.8);
 
@@ -280,7 +279,7 @@ Revisor'), 3.7, 'C');
     $pdf->SetFont('Helvetica', '', '8');
     $pdf->Cell(0, 4, utf8_decode('c.c.p.- Expediente'), 0, 0, 'L');
 
-    $pdf->Output('I', 'Liberación de Residencias Profesionales.pdf', 'D');
+    $pdf->Output('I', 'Liberación de Residencias Profesionales ' . $nombre . '.pdf', 'D');
 } else {
     echo "<script>window.location = '../../Inicio';</script>";
 }
