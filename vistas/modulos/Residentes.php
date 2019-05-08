@@ -837,6 +837,8 @@ IMPRIMIR DOCUMENTOS RESIDENCIAS PROFESIONALES
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirLiberacion">Liberacion de Residencias Profesionales</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJuradoSeleccionado">Jurado Seleccionado</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImprimirJuradoTitulacion">Jurado de Titulación</button>
+                <br>
+                        ¿Problemas con el PDF?  Conviértalo <a href="https://www.ilovepdf.com/pdf_to_word" target="_blank">Aquí</a>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -882,6 +884,8 @@ IMPRIMIR DOCUMENTOS TESIS
                 <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpJurado">Revisión de Trabajo de Titulación</button>
                 <button type="submit" class="btn btn-success btn-lg btn-block" id="btnImpComisionT">Jurado Titulación</button>
                 <button type="button" class="btn btn-success btn-lg btn-block" id="btnImpLiberacionR">Liberación</button>
+                <br>
+                        ¿Problemas con el PDF?  Conviértalo <a href="https://www.ilovepdf.com/pdf_to_word" target="_blank">Aquí</a>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

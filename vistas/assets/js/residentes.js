@@ -707,7 +707,7 @@ $(document).on("click", "#btnImpComisionT", function () {
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
-        progressSteps: ['1', '2', '3', '4', '5']
+        progressSteps: ['1', '2', '3', '4']
     }).queue([{
             input: 'text',
             inputValue: fechaR,
@@ -752,29 +752,29 @@ $(document).on("click", "#btnImpComisionT", function () {
             inputValue: "10:00",
             title: 'Hora de la Titulación',
             text: 'Introduzca una hora valida'
-        },
-        {
-            title: 'Tipo de documento',
-            text: '¿El residente defiende su proyecto?',
-            input: 'radio',
-            inputOptions: {
-                'si': 'SI',
-                'no': 'NO'
-            },
-            inputValidator: function (result) {
-                if (!result) {
-                    return '¡Necesita seleccionar una opción!';
-                }
-            }
         }
+        // ,{
+        //     title: 'Tipo de documento',
+        //     text: '¿El residente defiende su proyecto?',
+        //     input: 'radio',
+        //     inputOptions: {
+        //         'si': 'SI',
+        //         'no': 'NO'
+        //     },
+        //     inputValidator: function (result) {
+        //         if (!result) {
+        //             return '¡Necesita seleccionar una opción!';
+        //         }
+        //     }
+        // }
     ]).then((result) => {
         if (result.value) {
-            if (result.value[4] == 'si') {
-                PreguntarPromedio(result.value);
-            } else {
-                console.table(result);
-                window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&num1=" + result.value[1][0] + "&num2=" + result.value[1][1] + "&num3=" + result.value[1][2] + "&num4=" + result.value[1][3] + "&num5=" + result.value[1][4] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3] + "&defiende=" + result.value[4] + "&pro=0", "_blank");
-            }
+            // if (result.value[4] == 'si') {
+            //     PreguntarPromedio(result.value);
+            // } else {
+            //     console.table(result);
+                window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&num1=" + result.value[1][0] + "&num2=" + result.value[1][1] + "&num3=" + result.value[1][2] + "&num4=" + result.value[1][3] + "&num5=" + result.value[1][4] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3], "_blank");
+            // }
         }
     })
 });
