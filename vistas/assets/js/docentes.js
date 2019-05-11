@@ -139,5 +139,30 @@ $(document).on("click", ".btnCeroDocente", function () {
         });
     }
     })
+})
 
+/*<!--=====================================
+INFO DOCENTE
+======================================-->*/
+$(document).on("click", ".btnInfoDocente", function () {
+    var idDocente = $(this).attr("idDocente");
+    var datos = new FormData();
+    datos.append("idDocenteInfo", idDocente);
+    $.ajax({
+        url: "ajax/docentes.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+            $("#InfoAsesor").val(respuesta["asesorA"]);
+            $("#InfoRevisor1").val(respuesta["revisor1A"]);
+            $("#InfoRevisor2").val(respuesta["revisor2A"]);
+            $("#InfoRevisor3").val(respuesta["revisor3A"]);
+            $("#InfoSuplente").val(respuesta["suplenteA"]);
+            document.querySelector('#InfoNombreAsesor').innerText = respuesta["nombre"];
+        }
+    });
 })

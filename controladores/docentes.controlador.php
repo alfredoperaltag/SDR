@@ -142,5 +142,15 @@ class ControladorDocentes
             return $respuesta;
         }
     }
+
+    /*=============================================
+    MOSTRAR DOCENTE
+    =============================================*/
+    public static function ctrInfoDocentes($valor)
+    {
+        $tabla = "proyecto";
+        $respuesta = ModeloDocentes::MdlInfoDocentes($tabla, $valor);
+        return $respuesta;
+    }
 }
  

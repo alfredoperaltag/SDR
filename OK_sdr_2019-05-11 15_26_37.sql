@@ -2,7 +2,7 @@
 -- Host:                         localhost
 -- Versión del servidor:         8.0.14 - MySQL Community Server - GPL
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             10.1.0.5552
+-- HeidiSQL Versión:             10.1.0.5559
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `asesor` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla sdr.asesor: ~30 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.asesor: ~31 rows (aproximadamente)
 /*!40000 ALTER TABLE `asesor` DISABLE KEYS */;
 INSERT INTO `asesor` (`id`, `nombre`, `noResidentes`, `estado`, `setResidentes`) VALUES
 	(0, 'NA', 0, 0, 0),
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `config` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.config: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.config: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
 INSERT INTO `config` (`id`, `nombre`, `valor`) VALUES
 	(1, 'configPreRegistro', 'on');
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `preregistros` (
   CONSTRAINT `FK_preregistros_asesor` FOREIGN KEY (`asesorPre`) REFERENCES `asesor` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.preregistros: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.preregistros: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `preregistros` DISABLE KEYS */;
 /*!40000 ALTER TABLE `preregistros` ENABLE KEYS */;
 
@@ -185,10 +185,12 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   CONSTRAINT `fk_proyecto_asesor3` FOREIGN KEY (`revisor2`) REFERENCES `asesor` (`id`),
   CONSTRAINT `fk_proyecto_asesor4` FOREIGN KEY (`suplente`) REFERENCES `asesor` (`id`),
   CONSTRAINT `fk_proyecto_asesor5` FOREIGN KEY (`revisor3`) REFERENCES `asesor` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.proyecto: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.proyecto: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `proyecto` DISABLE KEYS */;
+INSERT INTO `proyecto` (`id`, `nombreProyecto`, `nombreEmpresa`, `asesorExt`, `asesorInt`, `revisor1`, `revisor2`, `revisor3`, `suplente`) VALUES
+	(0, 'NA', 'NA', 'NA', 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `proyecto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sdr.residentes
@@ -211,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `residentes` (
   CONSTRAINT `fk_residentes_proyecto` FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla sdr.residentes: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.residentes: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `residentes` DISABLE KEYS */;
 /*!40000 ALTER TABLE `residentes` ENABLE KEYS */;
 
@@ -227,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   UNIQUE KEY `usuario_UNIQUE` (`usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
--- Volcando datos para la tabla sdr.usuarios: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla sdr.usuarios: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password`, `perfil`, `estado`) VALUES
 	(1, 'AdminNameTest', 'admin', '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG', 'Administrador', 1);

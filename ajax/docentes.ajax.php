@@ -41,6 +41,16 @@ class AjaxDocentes
         $respuesta = ControladorDocentes::ctrCeroDocentes();
         echo json_encode($respuesta);
     }
+    /*<!--=====================================
+    INFORMACION DOCENTE
+    ======================================-->*/
+    public $idDocenteInfo;
+    public function ajaxInfoDocente()
+    {
+        $valor = $this->idDocenteInfo;
+        $respuesta = ControladorDocentes::ctrInfoDocentes($valor);
+        echo json_encode($respuesta);
+    }
 }
 /*<!--=====================================
     EDITAR DOCENTE
@@ -51,8 +61,8 @@ if (isset($_POST["idDocente"])) {
     $editar->ajaxEditarDocente();
 }
 /*<!--=====================================
-    ACTIVAR DOCENTE
-    ======================================-->*/
+ACTIVAR DOCENTE
+======================================-->*/
 if (isset($_POST["activarDocente"])) {
     $activarDocente = new AjaxDocentes();
     $activarDocente->activarDocente = $_POST["activarDocente"];
@@ -61,9 +71,17 @@ if (isset($_POST["activarDocente"])) {
 }
 /*<!--=====================================
     PONER EN CERO LOS DOCENTES
-======================================-->*/
+    ======================================-->*/
 if (isset($_POST["ceroD"])) {
     $cero = new AjaxDocentes();
     $cero->ceroD = $_POST["ceroD"];
     $cero->ajaxCeroDocente();
+}
+/*<!--=====================================
+    INFORMACION DOCENTE
+======================================-->*/
+if (isset($_POST["idDocenteInfo"])) {
+    $info = new AjaxDocentes();
+    $info->idDocenteInfo = $_POST["idDocenteInfo"];
+    $info->ajaxInfoDocente();
 }

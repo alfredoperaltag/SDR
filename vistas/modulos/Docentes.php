@@ -34,6 +34,7 @@
                                 echo '<td>
                                             <div class="btn-group">
                                                 <button class="btn btn-warning btnEditarDocente" idDocente="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarDocente"><i class="fa fa-edit"></i></button>
+                                                <button class="btn btn-primary btnInfoDocente" idDocente="' . $value["id"] . '" data-toggle="modal" data-target="#modalInfoDocente"><i class="fa fa-info"></i></button>
                                                 <button class="btn btn-danger btnEliminarDocente" idDocente="' . $value["id"] . '"><i class="fa fa-times"></i></button>
                                             </div>
                                         </td>
@@ -136,6 +137,76 @@ MODAL EDITAR DOCENTE
         </div>
     </div>
 </div>
+
+<!--=====================================
+MODAL INFO DOCENTE
+======================================-->
+<div class="modal fade" id="modalInfoDocente">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!--=====================================
+              CABEZA DEL MODAL
+              ======================================-->
+            <div class="modal-header  bg-primary text-white">
+                <h5 class="modal-tittle">Información docente</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form role="form" method="post" enctype="multipart/form-data">
+                <!--=====================================
+                CUERPO DEL MODAL
+                ======================================-->
+                <div class="modal-body">
+                    <div class="box-body">
+                        <div class="text-center">
+                        <label class="font-weight-bold text-uppercase" id="InfoNombreAsesor"></label>
+                        </div>
+                        <!-- <input type="hidden" id="idDocenteInfo"> -->
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-6 my-1">
+                                <label for="InfoAsesor" class="col-form-label">Asesor</label>
+                                <input class="form-control" disabled type="text" id="InfoAsesor">
+                            </div>
+                            <div class="col-sm-6 my-1">
+                                <label for="InfoRevisor1" class="col-form-label">Revisor #1</label>
+                                <input class="form-control" disabled type="text" id="InfoRevisor1">
+                            </div>
+                        </div>
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-6 my-1">
+                                <label for="InfoRevisor2" class="col-form-label">Revisor #2</label>
+                                <input class="form-control" disabled type="text" id="InfoRevisor2">
+                            </div>
+                            <div class="col-sm-6 my-1">
+                                <label for="InfoRevisor3" class="col-form-label">Revisor #3</label>
+                                <input class="form-control" disabled type="text" id="InfoRevisor3">
+                            </div>
+                        </div>
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-6 my-1">
+                                <label for="InfoSuplente" class="col-form-label">Suplente</label>
+                                <input class="form-control" disabled type="text" id="InfoSuplente">
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--=====================================
+                    PIE DEL MODAL
+                    ======================================-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <!-- <button type="submit" class="btn btn-primary">Guardar</button> -->
+                    </div>
+                    <?php
+                    $crearDocente = new ControladorDocentes();
+                    $crearDocente->ctrCrearDocente();
+                    ?>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <?php
 $borrarDocente = new ControladorDocentes();
 $borrarDocente->ctrborrarDocente();

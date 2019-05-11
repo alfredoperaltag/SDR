@@ -103,5 +103,27 @@ class ModeloDocentes
         $stmt->close();
         $stmt = null;
     }
+    /*=============================================
+	INFORMACION DOCENTES
+	=============================================*/
+    static public function MdlInfoDocentes($tabla, $valor)
+    {
+
+        
+            // $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+            $stmt = Conexion::conectar()->prepare("SELECT (select asesor.nombre FROM asesor WHERE asesor.id = :$valor) AS 'nombre', 
+            (select COUNT(proyecto.asesorInt) FROM $tabla WHERE proyecto.asesorInt = :$valor) AS 'asesorA', 
+            (select COUNT(proyecto.revisor1) FROM $tabla WHERE proyecto.revisor1 = :$valor) AS 'revisor1A', 
+            (select COUNT(proyecto.revisor2) FROM $tabla WHERE proyecto.revisor2 = :$valor) AS 'revisor2A', 
+            (select COUNT(proyecto.revisor3) FROM $tabla WHERE proyecto.revisor3 = :$valor) AS 'revisor3A', 
+            (select COUNT(proyecto.suplente) FROM $tabla WHERE proyecto.suplente = :$valor) AS 'suplenteA' 
+            FROM proyecto WHERE proyecto.id = 0;");
+            $stmt->bindParam(":" . $valor, $valor, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch();
+        
+        $stmt->close();
+        $stmt = null;
+    }
 }
  
