@@ -158,8 +158,11 @@ class ControladorPreRegistro
                     $respuesta = ModeloPreRegistro::mdlEditarPreRegistro($tabla, $datos);
                     if ($respuesta == "ok") {
                         $tablaDocente = "asesor";
-                    $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $_POST["editarAsesorPRE"]);
-                    $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $DocenteAnterior['asesorPre']);
+                        // NOTE corregir resta a asesor
+                        if ($_POST["CheckPreRegistroEdit"] != "on") {
+                            $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $_POST["editarAsesorPRE"]);
+                            $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $DocenteAnterior['asesorPre']);
+                        }
                         echo "<script>
                         Swal.fire({
                             position: 'top',
