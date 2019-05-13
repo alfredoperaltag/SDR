@@ -16,7 +16,9 @@
                             <?php
                             if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
                             echo '<th>Acciones</th>';
-                            }
+                            }else{
+								echo '<th>Acciones</th>';
+							}
                             ?>
                         </tr>
                     </thead>
@@ -40,7 +42,10 @@
                                         if (isset($_SESSION['perfil']) && $_SESSION['perfil'] == "Administrador") {
                                         echo '<button class="btn btn-warning btnEditarPreRegistro" idPreRegistroEdit="' . $value["id"] . '" data-toggle="modal" data-target="#modalEditarPreRegistro"><i class="fa fa-edit"></i></button>';
                                             echo '<button class="btn btn-danger btnEliminarPreRegistro" idPreRegistroDel="' . $value["id"] . '"><i class="fa fa-times"></i></button>';
-                                            }
+                                            }else{
+												//echo '<button class="btn btn-warning" disabled><i class="fa fa-edit"></i></button>';
+												echo '<p>Sin acciones</p>';
+											}
                                         echo '</div>
                                     </td>
                                 </tr>';
@@ -103,17 +108,17 @@
                         <!-- ENTRADA PARA EL NOMBRE -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Nombre</label>
-                            <input class="form-control" type="text" name="nuevoNombrePR" placeholder="Ingresar nombre" autocomplete="off" required>
+                            <input class="form-control" type="text" name="nuevoNombrePR" placeholder="Ingresar nombre" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO PATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Paterno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoPPR" placeholder="Ingresar apellido paterno" autocomplete="off" required>
+                            <input class="form-control" type="text" name="nuevoApellidoPPR" placeholder="Ingresar apellido paterno" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
                         <div class="col-sm-4 my-1">
                             <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoMPR" placeholder="Ingresar apellido materno" autocomplete="off" required>
+                            <input class="form-control" type="text" name="nuevoApellidoMPR" placeholder="Ingresar apellido materno" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
                         </div>
                         </div>
                         <!-- ENTRADA PARA ASESOR INTERNO -->
@@ -250,6 +255,13 @@ MODAL EDITAR PRE-REGISTRO
 </div>
 
 <?php
+if (isset($_GET['idPreRegistro'])) {
+    $item = 'id';
+    $valor = $_GET['idPreRegistro'];
+    $DocenteAnterior = ControladorPreRegistro::ctrMostrarInfoPreRegistro($item, $valor);
+    $tablaDocente = "asesor";
+    $res1 = ModeloResidentes::mdlRestarResidente($tablaDocente, $DocenteAnterior['asesorPre']);
+}
 $borrarPreRegistro = new ControladorPreRegistro();
 $borrarPreRegistro->ctrBorrarPreRegistro();
 ?> 

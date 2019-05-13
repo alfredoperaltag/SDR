@@ -199,6 +199,7 @@ class ControladorPreRegistro
             $tabla = "preregistros";
             $datos = $_GET["idPreRegistro"];
 
+            
             $respuesta = ModeloPreRegistro::mdlBorrarPreRegistro($tabla, $datos);
             if ($respuesta == "ok") {
              echo "<script>
