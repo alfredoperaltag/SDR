@@ -81,7 +81,7 @@ class ControladorDocentes
                             title: '¡Exito!',
                             text: '¡Se actualizo correctamente!',
                             showConfirmButton: false,
-                            timer: 1000
+                            timer: 800
                         }).then((result)=>{
                             window.location = 'Docentes';
                             });

@@ -14,7 +14,7 @@ function btnEditarUsuario(idUsuario, nombre, usuario, perfil, password) {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            console.log("respuesta", respuesta);
+            // console.log("respuesta", respuesta);
             $(nombre).val(respuesta["nombre"]);
             $(usuario).val(respuesta["usuario"]);
             $(perfil).val(respuesta["perfil"]);

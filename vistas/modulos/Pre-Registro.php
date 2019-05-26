@@ -116,28 +116,42 @@
                             <input class="form-control" type="text" name="nuevoApellidoPPR" placeholder="Ingresar apellido paterno" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
                         </div>
                         <!-- ENTRADA PARA EL APELLIDO MATERNO -->
-                        <div class="col-sm-4 my-1">
-                            <label for="example-text-input" class="col-form-label">Apellido Materno</label>
-                            <input class="form-control" type="text" name="nuevoApellidoMPR" placeholder="Ingresar apellido materno" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
-                        </div>
+                            <div class="col-sm-4 my-1">
+                                <label for="example-text-input" class="col-form-label">Apellido Materno</label>
+                                <input class="form-control" type="text" name="nuevoApellidoMPR" placeholder="Ingresar apellido materno" autocomplete="off" onkeyup="this.value = this.value.toUpperCase();" required>
+                            </div>
                         </div>
                         <!-- ENTRADA PARA ASESOR INTERNO -->
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="col-form-label">Asesor Interno</label>
                             <select class="custom-select" name="nuevoAsesorPRE" required>
                                 <option value="">Selecionar Asesor</option>
                                 <?php
-                                $verDocente = new ControladorResidentes();
-                                $verDocente->ctrMostrarTodosLosDocesentes();
+                                // $verDocente = new ControladorResidentes();
+                                // $verDocente->ctrMostrarTodosLosDocesentes();
                                 ?>
                             </select>
+                        </div> -->
+                        <div class="form-row align-items-center">
+                        <div class="col-sm-11 my-1">
+                            <label class="col-form-label">Asesor Interno</label>
+                            <select class="custom-select DocentesDisponibles" name="nuevoAsesorPRE" id="DocentesDisponibles" required>
+                            <option value="NA" selected>Recarga por favor -></option>
+                            </select>
+                        </div>
+                            <div class="col-sm-1 my-1">
+                                <!-- <input class="form-control" type="text" placeholder="Ingresar apellido materno" required> -->
+                                <label class="col-form-label">Recargar</label>
+                                <button type="button" class="btn btn-primary btnActuDocDisp"><span class="fa fa-redo-alt"></span></button>
+                            </div>
                         </div>
                     </div>
                     <!--=====================================
                     PIE DEL MODAL
                     ======================================-->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+                        <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button> -->
+                        <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                     <?php

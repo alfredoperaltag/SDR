@@ -23,7 +23,6 @@ function NumeroTesis() {
         data: { GraficaR: 2},
         dataType: "json"
     }).done(function (res) {
-        console.table("T:",res[0]);
         data = {
             datasets: [{
                 backgroundColor: ["#5cb85c","#d9534f"],

@@ -15,7 +15,7 @@ $(document).on("click", ".btnEditarPreRegistro", function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-            console.table(respuesta);
+            // console.table(respuesta);
             $("#idPreRegistroEdit").val(respuesta["id"]);
             $("#editarNoControlPR").val(respuesta["noControl"]);
             $("#editarCarreraPR").val(respuesta["carrera"]);
@@ -96,5 +96,34 @@ $(document).on("click", ".btnPreRegistroRegister", function () {
             $("#nuevoTelefonoRR").val(respuesta["telefono"]);
             
         }
+    });
+})
+/*<!--=====================================
+VER DOCENTES DISPONIBLES SIN ACTUALIZAR
+======================================-->*/
+$(document).on("click", ".btnActuDocDisp", function () {
+    var datos = new FormData();
+    datos.append("varDocDisponible", "noResidentes");
+    $.ajax({
+        url: "ajax/pre-registro.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        beforeSend: function () {
+            $("#DocentesDisponibles").find('option').remove();
+        },
+        success: function (respuesta) {
+            $("#DocentesDisponibles").append('<option value="NA" >Seleccione un asesor</option>');
+            $.each(respuesta,function(key, registro) {
+                $("#DocentesDisponibles").append('<option value='+registro.id+'>'+registro.nombre+'</option>');
+              }); 
+        },
+        error: function(respuesta) {
+            console.table(respuesta);
+            alert('¡Error en el Ajax Status 200, mas info en la consola!');
+          }
     });
 })

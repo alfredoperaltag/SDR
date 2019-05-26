@@ -544,7 +544,7 @@ async function PreguntarPromedioJuradoTitulacion(resulte) {
 IMPRIMIR JuradoSeleccionado
 ======================================-->*/
 $(document).on("click", "#btnImprimirJuradoSeleccionado", function () {
-    console.log("idResidenteDic: " + idResidente);
+    // console.log("idResidenteDic: " + idResidente);
     Swal.mixin({
         confirmButtonText: 'Siguiente &rarr;',
         showCancelButton: true,

@@ -247,4 +247,14 @@ class ControladorPreRegistro
         }
     }
 
+    /*=============================================
+    VER DOCENTES DISPONIBLES SIN ACTUALIZAR
+    =============================================*/
+    public static function ctrMostrarDocentesPreRegistro($item)
+    {
+        $tabla = "asesor";
+        $respuesta = ModeloPreRegistro::MdlMostrarDocentesPreRegistro($tabla, $item);
+        return $respuesta;
+    }
+
 }

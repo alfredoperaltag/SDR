@@ -129,4 +129,19 @@ class ModeloPreRegistro
 		$stmt->close();
 		$stmt = null;
     }
+
+    /*=============================================
+	VER DOCENTES DISPONIBLES SIN ACTUALIZAR
+	=============================================*/
+    static public function MdlMostrarDocentesPreRegistro($tabla, $item)
+    {
+            // $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item < $valor");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item < setResidentes");
+            $stmt->execute();
+            // return $stmt -> fetch();
+            return $stmt->fetchAll(); //Para ver todos los docentes pero solo los que tienen menos de 7 residentes
+        
+        $stmt->close();
+        $stmt = null;
+    }
 }

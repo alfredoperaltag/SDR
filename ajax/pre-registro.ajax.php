@@ -22,6 +22,15 @@ class AjaxPreRegistro
         echo json_encode($respuesta);
     }
 
+    // Docentes disponibles ajax
+    public $varDocDisponible;
+    public function ajaxDocentesDisponibles()
+    {
+        $item = $this->varDocDisponible;
+        $respuesta = ControladorPreRegistro::ctrMostrarDocentesPreRegistro($item);
+        echo json_encode($respuesta);
+    }
+
 }
 /*<!--=====================================
     EDITAR PRE-REGISTRO
@@ -39,4 +48,13 @@ if (isset($_POST["idRegistroView"])) {
     $editar = new AjaxPreRegistro();
     $editar->idRegistroView = $_POST["idRegistroView"];
     $editar->ajaxEditarPreRegistroAjax2();
+}
+
+/*<!--=====================================
+VER DOCENTES DISPONIBLES SIN ACTUALIZAR
+======================================-->*/
+if (isset($_POST["varDocDisponible"])) {
+    $editar = new AjaxPreRegistro();
+    $editar->varDocDisponible = $_POST["varDocDisponible"];
+    $editar->ajaxDocentesDisponibles();
 }

@@ -94,8 +94,8 @@ PONER EN CEROS LOS DOCENTES (MAXIMO DE RESIDENTES Y RESIDENTES ACTUALES)
 $(document).on("click", ".btnCeroDocente", function () {
     // var idDocente = $(this).attr("idDocente");
     Swal.fire({
-        title: '¿Esta seguro de eliminarlo?',
-        text: '¡Esta acción no se puede revertir, tenga cuidado!',
+        title: '¿Reiniciar docentes?',
+        text: '¡Esta acción no se puede revertir, tenga cuidado! Todos los docentes tendran cero residentes',
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: '#d33',
