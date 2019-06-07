@@ -373,6 +373,16 @@ class ControladorResidentes
                 $NoRevicion = 3;
             }
 
+            if ($_POST["editRevisor1"] == null) {
+                $_POST["editRevisor1"] = 0;
+            }
+            if ($_POST["editRevisor2"] == null) {
+                $_POST["editRevisor2"] = 0;
+            }
+            if ($_POST["editSuplente"] == null) {
+                $_POST["editSuplente"] = 0;
+            }
+
 
 
             $na = 0;
@@ -478,6 +488,16 @@ class ControladorResidentes
                 $NoRevicion = 3;
             }else{
                 $NoRevicion = 0;
+            }
+
+            if ($_POST["editRevisor1"] == null) {
+                $_POST["editRevisor1"] = 0;
+            }
+            if ($_POST["editRevisor2"] == null) {
+                $_POST["editRevisor2"] = 0;
+            }
+            if ($_POST["editRevisor3"] == null) {
+                $_POST["editRevisor3"] = 0;
             }
 
 

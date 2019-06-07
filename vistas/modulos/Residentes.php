@@ -168,7 +168,7 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
                             <select class="custom-select" name="nuevoAsesorInt" required>
-                                <option value="">Selecionar Asesor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -181,7 +181,7 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #1</label>
                             <select class="custom-select" name="nuevoRevisor1">
-                                <option value="">Selecionar revisor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -192,7 +192,7 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #2</label>
                             <select class="custom-select" name="nuevoRevisor2">
-                                <option value="">Selecionar revisor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -205,7 +205,7 @@ INFORME TECNICO DE RESIDENCIAS PROFESIONALES
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Suplente</label>
                             <select class="custom-select" name="nuevoSuplente">
-                                <option value="">Selecionar suplente</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -352,7 +352,7 @@ TESIS PROFESIONAL
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
                             <select class="custom-select" name="nuevoAsesorInt" required>
-                                <option value="">Selecionar Asesor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -362,8 +362,8 @@ TESIS PROFESIONAL
                         <!-- ENTRADA PARA REVISOR #1 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #1</label>
-                            <select class="custom-select" name="nuevoRevisor1" required>
-                                <option value="">Selecionar revisor</option>
+                            <select class="custom-select" name="nuevoRevisor1">
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -376,7 +376,7 @@ TESIS PROFESIONAL
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #2</label>
                             <select class="custom-select" name="nuevoRevisor2">
-                                <option value="">Selecionar revisor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -387,7 +387,7 @@ TESIS PROFESIONAL
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #3</label>
                             <select class="custom-select" name="nuevoRevisor3">
-                                <option value="">Selecionar revisor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -583,7 +583,7 @@ EDITAR RESIDENTE
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
                             <select class="custom-select" name="editAsesorInt" id="editAsesorInt" >
-                                <option value="">Selecionar Asesor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -601,7 +601,7 @@ EDITAR RESIDENTE
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #1</label>
                             <select class="custom-select" name="editRevisor1" id="editRevisor1" >
-                                <option value="">Selecionar revisor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -612,7 +612,7 @@ EDITAR RESIDENTE
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #2</label>
                             <select class="custom-select" name="editRevisor2" id="editRevisor2" >
-                                <option value="">Selecionar revisor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -626,7 +626,7 @@ EDITAR RESIDENTE
                         <div class="col-sm-6 my-1" id="ViewRevisor3" style="display:block;">
                             <label class="col-form-label">Revisor #3</label>
                             <select class="custom-select" name="editRevisor3" id="editRevisor3" >
-                                <option value="">Selecionar revisor</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
@@ -637,7 +637,7 @@ EDITAR RESIDENTE
                         <div class="col-sm-6 my-1" id="ViewSuplente" style="display:block;">
                             <label class="col-form-label">Suplente</label>
                             <select class="custom-select" name="editSuplente" id="editSuplente" >
-                                <option value="">Selecionar suplente</option>
+                                <option value=""> -- POR ASIGNAR -- </option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
                                 $verDocente->ctrMostrarTodosLosDocesentes2();
