@@ -582,7 +582,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA ASESOR INTERNO -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Asesor Interno</label>
-                            <select class="custom-select" name="editAsesorInt" id="editAsesorInt" required>
+                            <select class="custom-select" name="editAsesorInt" id="editAsesorInt" >
                                 <option value="">Selecionar Asesor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -600,7 +600,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA REVISOR #1 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #1</label>
-                            <select class="custom-select" name="editRevisor1" id="editRevisor1" required>
+                            <select class="custom-select" name="editRevisor1" id="editRevisor1" >
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -611,7 +611,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA REVISOR #2 -->
                         <div class="col-sm-6 my-1">
                             <label class="col-form-label">Revisor #2</label>
-                            <select class="custom-select" name="editRevisor2" id="editRevisor2" required>
+                            <select class="custom-select" name="editRevisor2" id="editRevisor2" >
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -625,7 +625,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA REVISOR #3 -->
                         <div class="col-sm-6 my-1" id="ViewRevisor3" style="display:block;">
                             <label class="col-form-label">Revisor #3</label>
-                            <select class="custom-select" name="editRevisor3" id="editRevisor3" required>
+                            <select class="custom-select" name="editRevisor3" id="editRevisor3" >
                                 <option value="">Selecionar revisor</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
@@ -636,7 +636,7 @@ EDITAR RESIDENTE
                         <!-- ENTRADA PARA SUPLENTE -->
                         <div class="col-sm-6 my-1" id="ViewSuplente" style="display:block;">
                             <label class="col-form-label">Suplente</label>
-                            <select class="custom-select" name="editSuplente" id="editSuplente" required>
+                            <select class="custom-select" name="editSuplente" id="editSuplente" >
                                 <option value="">Selecionar suplente</option>
                                 <?php
                                 $verDocente = new ControladorResidentes();
