@@ -248,7 +248,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Row(array(utf8_decode('Alumno (s) :'), utf8_decode(mb_strtoupper($nombre)), utf8_decode('Área: ' . mb_strtoupper($carrera))));
     $pdf->SetWidths(array(30, 130));
     $pdf->Row(array(utf8_decode('Opción'), utf8_decode(mb_strtoupper('TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL"'))));
-    $pdf->Row(array(utf8_decode('Proyecto:'), utf8_decode(mb_strtoupper($proyecto))));
+    $pdf->Row(array(utf8_decode('Proyecto:'), utf8_decode($proyecto)));
     $pdf->Row(array(utf8_decode('Asesor:'), utf8_decode(mb_strtoupper($asesorInterno))));
     $pdf->Row(array(utf8_decode('Revisor 1:'), utf8_decode(mb_strtoupper($revisor1))));
     $pdf->Row(array(utf8_decode('Revisor 2:'), utf8_decode(mb_strtoupper($revisor2))));
@@ -347,8 +347,8 @@ plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.
     $pdf->SetWidths(array(30, 80, 50));
     $pdf->Row(array(utf8_decode('Alumno (s) :'), utf8_decode(mb_strtoupper($nombre)), utf8_decode('Área: ' . mb_strtoupper($carrera))));
     $pdf->SetWidths(array(30, 130));
-    $pdf->Row(array(utf8_decode('Opción'), utf8_decode(mb_strtoupper('TRABAJO DE TITULACIÓN INTEGRAL'))));
-    $pdf->Row(array(utf8_decode('Proyecto:'), utf8_decode(mb_strtoupper($proyecto))));
+    $pdf->Row(array(utf8_decode('Opción'), utf8_decode(mb_strtoupper('TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL"'))));
+    $pdf->Row(array(utf8_decode('Proyecto:'), utf8_decode($proyecto)));
     $pdf->Row(array(utf8_decode('Asesor:'), utf8_decode(mb_strtoupper($asesorInterno))));
     $pdf->Row(array(utf8_decode('Revisor 1:'), utf8_decode(mb_strtoupper($revisor1))));
     $pdf->Row(array(utf8_decode('Revisor 2:'), utf8_decode(mb_strtoupper($revisor2))));

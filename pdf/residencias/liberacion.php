@@ -242,7 +242,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Row(array('a) Nombre del Egresado:', utf8_decode(mb_strtoupper($nombre))), 3.8, 'J');
     $pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))), 3.8, 'J');
     $pdf->Row(array('c) No. de Control:', utf8_decode(mb_strtoupper($numeroControl))), 3.8, 'J');
-    $pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode(mb_strtoupper($proyecto))), 3.8, 'J');
+    $pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode($proyecto)), 3.8, 'J');
     $pdf->Row(array('e) Producto:', utf8_decode(mb_strtoupper('TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL"
 '))), 3.8, 'J');
     $pdf->Ln(3.8);

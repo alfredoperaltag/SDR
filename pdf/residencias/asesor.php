@@ -175,7 +175,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->SetWidths(array(48.5, 134));
     $pdf->Row(array('a) Nombre del Residente:', utf8_decode(mb_strtoupper($nombre))));
     $pdf->Row(array('b) Carrera:', utf8_decode(mb_strtoupper($carrera))));
-    $pdf->Row(array('c) Nombre del Proyecto:', utf8_decode(mb_strtoupper($proyecto))));
+    $pdf->Row(array('c) Nombre del Proyecto:', utf8_decode($proyecto)));
     $pdf->Row(array(utf8_decode('d) Periodo de Realización'), utf8_decode(mb_strtoupper($periodo))));
     $pdf->Row(array('e) Empresa', utf8_decode(mb_strtoupper($empresa))));
     $pdf->Ln(14);
