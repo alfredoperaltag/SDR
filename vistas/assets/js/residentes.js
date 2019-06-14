@@ -331,7 +331,7 @@ $(document).on("click", "#btnImprimirDictamen", function () {
         progressSteps: ['1', '2']
     }).queue([{
             input: 'text',
-            inputValue: fechaR,
+            inputValue: fecha3,
             title: 'Fecha',
             text: 'Introduzca una fecha valida'
         },
@@ -773,7 +773,7 @@ $(document).on("click", "#btnImpComisionT", function () {
             //     PreguntarPromedio(result.value);
             // } else {
             //     console.table(result);
-                window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&num1=" + result.value[1][0] + "&num2=" + result.value[1][1] + "&num3=" + result.value[1][2] + "&num4=" + result.value[1][3] + "&num5=" + result.value[1][4] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3], "_blank");
+            window.open("pdf/tesis/comision.php?id=" + idResidente + "&fecha=" + result.value[0] + "&num1=" + result.value[1][0] + "&num2=" + result.value[1][1] + "&num3=" + result.value[1][2] + "&num4=" + result.value[1][3] + "&num5=" + result.value[1][4] + "&fechaT=" + result.value[2] + "&horaT=" + result.value[3], "_blank");
             // }
         }
     })
