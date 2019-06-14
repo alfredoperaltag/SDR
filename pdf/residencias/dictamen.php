@@ -222,7 +222,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Row(array('1', $numeroControl, utf8_decode(mb_strtoupper($nombre)), $sexo, utf8_decode($proyecto), utf8_decode($empresa), utf8_decode(mb_strtoupper($asesorInterno)), utf8_decode(mb_strtoupper($asesorExterno)), utf8_decode(mb_strtoupper($estado)), utf8_decode(mb_strtoupper($fechaActual))));
 
 
-    $pdf->SetY(148);
+    // $pdf->SetY(148);
+    $pdf->Ln(7);
     $pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados'), 0, 0, 'C');
 
     $pdf->SetFont('Arial', '', 10);
