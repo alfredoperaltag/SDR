@@ -14,10 +14,9 @@ class PDF extends FPDF
     public function Header()
     {
         $this->SetFont('Arial', 'B', '10');
-        $this->Image('../img/sepNew_R.png', 15, 12, 67, 25, 'PNG');
-        $this->Image('../img/TecNacMex.PNG', 137, 12, 66, 24, 'PNG');
-        // $this->Cell(0, 46, '', 0, 1, 'C');
-        $this->Cell(0, 28, '', 0, 1, 'C');
+        $this->Image('../img/membrete1.png', 25, 17, 84, 17, 'PNG');
+        $this->Image('../img/membrete2.png', 145, 12, 50, 24, 'PNG');
+        $this->Ln(28);//NOTE no borrar
     }
     public function Footer()
     {
@@ -25,7 +24,8 @@ class PDF extends FPDF
         $this->SetFont('Arial', 'I', 8);
         $x = $this->GetX();
         $y = $this->GetY();
-        $this->Image('../img/iti.jpg', 15, 253, 12);
+        // $this->Image('../img/iti.jpg', 15, 253, 12);
+        $this->Image('../img/iti.jpg', 24, 256, 14);
         $this->SetFont('Helvetica', '', '7');
         $this->SetXY($x, $y - 12);
         $this->Cell(0, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López  Mateos  Infonavit, C.P. 40030, '), 0, 1, 'C');

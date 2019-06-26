@@ -167,8 +167,8 @@ class ControladorResidentes
 
 
             if ($respuestaProyecto == "ok") {
-
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["nuevoNombreProyecto"]);
 
                 $datosResidente = array(
                     "noControl" => $_POST["nuevoNoControlRP"],
@@ -206,7 +206,8 @@ class ControladorResidentes
               
                 } else {
                     //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                    //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["nuevoNombreProyecto"]);
                 $tablaE = "proyecto";
                 $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
                 //TERMINA
@@ -226,7 +227,8 @@ class ControladorResidentes
                 }
             } else {
                 //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["nuevoNombreProyecto"]);
                 $tablaE = "proyecto";
                 $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
                 //TERMINA
@@ -278,8 +280,8 @@ class ControladorResidentes
 
 
             if ($respuestaProyecto == "ok") {
-
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["nuevoNombreProyecto"]);
 
                 $datosResidente = array(
                     "noControl" => $_POST["nuevoNoControlT"],
@@ -312,11 +314,17 @@ class ControladorResidentes
             //   $tablaDocente = "asesor";
             //   $res1 = ModeloResidentes::mdlSumarResidente($tablaDocente, $restarResidente1);
                 } else {
+                    //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
+                    //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["nuevoNombreProyecto"]);
+                $tablaE = "proyecto";
+                $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
+                //TERMINA
                     echo '<script>
                     Swal.fire({
                          type: "error",
                          title: "¡Error!",
-                         text: "¡No se pudo registrar!",					   
+                         text: "¡No se pudo registrar! Revise los datos del residente",					   
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"				   
                     }).then((result)=>{
@@ -328,10 +336,13 @@ class ControladorResidentes
                 }
             } else {
                 //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["nuevoNombreProyecto"]);
                 $tablaE = "proyecto";
                 $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
                 //TERMINA
+                echo '<script>console.log("336 - RPE: '.$revisarProyecto.'");</script>';
+                echo '<script>console.log("337 - '.$respuestaProyecto.'");</script>';
                 echo '<script>
 				Swal.fire({
 					 type: "error",
@@ -344,7 +355,7 @@ class ControladorResidentes
 					 	window.location = "Residentes";
 					 }
 					});
-			  </script>';
+              </script>';
             }
         }
     }
@@ -403,7 +414,8 @@ class ControladorResidentes
 
             if ($respuestaProyecto == "ok") {
 
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["editNombreProyecto"]);
 
                 if ($_POST["editCarrera"] == "ISC") {
                     $var1 = "Ingeniería en Sistemas Computacionales";
@@ -459,7 +471,8 @@ class ControladorResidentes
                 }
             } else {
                 //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["editNombreProyecto"]);
                 $tablaE = "proyecto";
                 $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
                 //TERMINA
@@ -519,7 +532,8 @@ class ControladorResidentes
 
             if ($respuestaProyecto == "ok") {
 
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["editNombreProyecto"]);
 
                 if ($_POST["editCarrera"] == "ISC") {
                     $var1 = "Ingeniería en Sistemas Computacionales";
@@ -575,7 +589,8 @@ class ControladorResidentes
                 }
             } else {
                 //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["editNombreProyecto"]);
                 $tablaE = "proyecto";
                 $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
                 //TERMINA
@@ -632,7 +647,8 @@ class ControladorResidentes
 
             if ($respuestaProyecto == "ok") {
 
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["nuevoNombreProyectoR"]);
 
                 $datosResidente = array(
                     "noControl" => $_POST["nuevoNoControlRPR"],
@@ -684,7 +700,8 @@ class ControladorResidentes
                 }
             } else {
                 //BORRAR PROYECTO SINO SE PUEDE REGISTRAR
-                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $datosProyecto);
+                //NOTE CAMBIO LOS ATRIBUTOS ENVIADOS AL METODO
+                $revisarProyecto = ModeloResidentes::mdlRevisarPro($tabla1, $_POST["nuevoNombreProyectoR"]);
                 $tablaE = "proyecto";
                 $revisarProyecto = ModeloResidentes::mdlEliminarPro($tablaE, $revisarProyecto["id"]);
                 //TERMINA

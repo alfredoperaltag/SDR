@@ -129,8 +129,8 @@ class ModeloResidentes
         if ($stmt->execute()) {
             return "ok";
         } else {
-            // return "A: ".print_r($stmt->errorInfo());
-            return 'error';
+            return "E: ".$stmt->errorInfo();
+            // return 'error';
         }
 
         $stmt->close();
@@ -141,11 +141,25 @@ class ModeloResidentes
 	REVISA PROYECTO
 	=============================================*/
 
-    static public function mdlRevisarPro($tabla, $datos)
+    static public function mdlRevisarPro($tabla, $dato)
     {
+        // echo '<script>console.log("P1: '.$tabla.' - '. $dato .'");</script>';
+        $stmt = Conexion::conectar()->prepare("SELECT id FROM $tabla WHERE nombreProyecto = :nombre");
+        $stmt->bindParam(":nombre", $dato, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 
-        $stmt = Conexion::conectar()->prepare("SELECT id FROM $tabla WHERE nombreProyecto = :id ");
-        $stmt->execute(['id' => $datos["nombreProyecto"]]);
+    /*=============================================
+	ELIMINAR PROYECTO SI SALE MAL EL REGISTRO
+	=============================================*/
+
+    static public function mdlEliminarPro($tabla, $dato)
+    {
+        // echo '<script>console.log("P2: '.$tabla.' - '. $dato .'");</script>';
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :idPro");
+        $stmt->bindParam(":idPro", $dato, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetch();
     }
 
@@ -174,8 +188,8 @@ class ModeloResidentes
         if ($stmt->execute()) {
             return "ok";
         } else {
-            // return print_r($stmt->errorInfo());
-            return 'error';
+            return "E: ".$stmt->errorInfo();
+            // return 'error';
         }
 
         $stmt->close();
@@ -198,17 +212,6 @@ class ModeloResidentes
     static public function mdlSumarResidente($tabla, $dato)
     {
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET noResidentes=noResidentes+1 WHERE id = :id");
-        $stmt->execute(['id' => $dato]);
-        return $stmt->fetch();
-    }
-
-    /*=============================================
-	ELIMINAR PROYECTO SI SALE MAL EL REGISTRO
-	=============================================*/
-
-    static public function mdlEliminarPro($tabla, $dato)
-    {
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE = :id");
         $stmt->execute(['id' => $dato]);
         return $stmt->fetch();
     }
@@ -240,7 +243,7 @@ class ModeloResidentes
         if ($stmt->execute()) {
             return "ok";
         } else {
-            print_r($stmt->errorInfo());
+            // print_r($stmt->errorInfo());
             // return "error";
             return "ERROR: " . $stmt->errorInfo();
         }

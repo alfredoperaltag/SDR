@@ -13,12 +13,9 @@ class PDF extends FPDF
     public function Header()
     {
         $this->SetFont('Arial', 'B', '10');
-        // $this->Image('../img/sep-logo.jpg', 20, 2, 67, 52, 'JPG');
-        $this->Image('../img/sepNew_R.png', 15, 12, 67, 25, 'PNG');
-        $this->Image('../img/TecNacMex.PNG', 137, 12, 66, 24, 'PNG');
-        $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
-        // $this->Cell(80, 25, 'gggggggggggggggg', 1, 1, 'C');
-        // $this->Ln(20);
+        $this->Image('../img/membrete1.png', 25, 17, 84, 17, 'PNG');
+        $this->Image('../img/membrete2.png', 145, 12, 50, 24, 'PNG');
+        $this->Ln(46);//NOTE no borrar
     }
     public function Footer()
     {
@@ -234,7 +231,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
     $pdf->Ln(4);
     $pdf->SetFont('Helvetica', 'B', '8');
-    $pdf->Cell(191, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
+    $pdf->Cell(191, 0, utf8_decode('ASUNTO: '), 0, 1, 'C');
     $pdf->SetXY(113, 73);
 
     $pdf->SetFont('Helvetica', 'BU', '8');
@@ -338,7 +335,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
     $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-    $pdf->Ln(5);
+    $pdf->Ln(10);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', 'B', '9');
@@ -460,7 +457,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
     $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-    $pdf->Ln(5);
+    $pdf->Ln(10);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', 'B', '9');
@@ -582,7 +579,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
     $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-    $pdf->Ln(5);
+    $pdf->Ln(10);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', 'B', '9');
@@ -705,7 +702,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
     $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
-    $pdf->Ln(5);
+    $pdf->Ln(10);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', 'B', '9');

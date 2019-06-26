@@ -34,7 +34,7 @@
 <div class="header-area header-bottom">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-9  d-none d-lg-block">
+            <div class="col-lg-12  d-none d-lg-block">
                 <div class="horizontal-menu">
                     <nav>
                         <ul id="nav_menu">
