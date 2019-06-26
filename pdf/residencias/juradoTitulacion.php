@@ -13,12 +13,16 @@ class PDF extends FPDF
     public function Header()
     {
         $this->SetFont('Arial', 'B', '10');
-        // $this->Image('../img/sep-logo.jpg', 20, 2, 67, 52, 'JPG');
-        $this->Image('../img/sepNew_R.png', 15, 12, 67, 25, 'PNG');
-        $this->Image('../img/TecNacMex.PNG', 137, 12, 66, 24, 'PNG');
-        $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
-        // $this->Cell(80, 25, 'gggggggggggggggg', 1, 1, 'C');
-        // $this->Ln(20);
+        // // $this->Image('../img/sep-logo.jpg', 20, 2, 67, 52, 'JPG');
+        // $this->Image('../img/sepNew_R.png', 15, 12, 67, 25, 'PNG');
+        // $this->Image('../img/TecNacMex.PNG', 137, 12, 66, 24, 'PNG');
+        // $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
+        // // $this->Cell(80, 25, 'gggggggggggggggg', 1, 1, 'C');
+        // // $this->Ln(20);
+        $this->SetFont('Arial', 'B', '10');
+        $this->Image('../img/membrete1.png', 25, 17, 84, 17, 'PNG');
+        $this->Image('../img/membrete2.png', 145, 12, 50, 24, 'PNG');
+        $this->Ln(40);//NOTE no borrar
     }
     public function Footer()
     {

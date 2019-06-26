@@ -10,9 +10,13 @@ class PDF extends FPDF
 {
     public function Header()
     {
-        $this->Image('../img/sepNew_R.png', 20.6, 17.5, 61.5);
-        $this->Image('../img/TecNacMex.PNG', 130, 21, 66);
-        $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
+        // $this->Image('../img/sepNew_R.png', 20.6, 17.5, 61.5);
+        // $this->Image('../img/TecNacMex.PNG', 130, 21, 66);
+        // $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
+        $this->SetFont('Arial', 'B', '10');
+        $this->Image('../img/membrete1.png', 25, 17, 84, 17, 'PNG');
+        $this->Image('../img/membrete2.png', 145, 12, 50, 24, 'PNG');
+        $this->Ln(40);//NOTE no borrar
     }
     public function Footer()
     {
