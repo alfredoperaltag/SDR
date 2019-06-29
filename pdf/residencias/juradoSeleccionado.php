@@ -213,33 +213,32 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
     $pdf->Ln(12);
 
+    $pdf->SetFont('Helvetica', '', '8.5');
+    $pdf->SetX(71);
+    $pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
+    $pdf->SetX(142);
+    $pdf->SetTextColor(255, 255, 255);
+    $anchoFecha = $pdf->GetStringWidth($fechaActual);
+    $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->Ln(8);
+
     $pdf->SetFont('Helvetica', 'B', '8');
     $pdf->Cell(0, 0, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'R');
     $pdf->Ln(4);
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(87.4);
     $pdf->Cell(0, 0, utf8_decode('OF. No. DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'L');
-
     $pdf->Ln(4);
     $pdf->SetFont('Helvetica', 'B', '8');
     $pdf->Cell(191, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
-    $pdf->SetXY(113, 73);
+    $pdf->SetX(113);
 
     $pdf->SetFont('Helvetica', 'BU', '8');
     $pdf->Cell(0, 0, utf8_decode('JURADO SELECCIONADO.'), 0, 0, 'C');
-    $pdf->Ln(8);
-    $pdf->SetFont('Helvetica', '', '8.5');
-    $pdf->SetX(73);
-    $pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
-    $pdf->SetX(142);
-    $pdf->SetTextColor(255, 255, 255);
-    $anchoFecha = $pdf->GetStringWidth($fechaActual);
-    $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
-    $pdf->Ln(8);
-    $pdf->Ln(4);
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Helvetica', 'B', '8');
+    $pdf->Ln(12);
 
+    $pdf->SetFont('Helvetica', 'B', '8');
     $pdf->Cell(0, 0, utf8_decode($jefeDivision), 0, 0, 'L');
     $pdf->Ln(4);
     if ($jefeSexo == 'M') {
@@ -267,6 +266,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Ln(8);
 
         $pdf->SetFont('Helvetica', 'B', '8');
+        $pdf->SetY(137);
         $pdf->MultiCell(40, 4, utf8_decode('PRESIDENTE
 
 '), 1, 'C');
@@ -287,6 +287,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         $pdf->Ln(8);
 
         $pdf->SetFont('Helvetica', 'B', '8');
+        $pdf->SetY(141);
         $pdf->MultiCell(40, 4, utf8_decode('PRESIDENTE
 
 '), 1, 'C');

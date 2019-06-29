@@ -207,6 +207,16 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
     $pdf->Ln(12);
 
+    
+    $pdf->SetFont('Helvetica', '', '8.5');
+    $pdf->SetX(51);
+    $pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
+    $pdf->SetX(136);
+    $pdf->SetTextColor(255, 255, 255);
+    $anchoFecha = $pdf->GetStringWidth($fechaActual);
+    $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->Ln(8);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(238, 0, utf8_decode('DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
     $pdf->Ln(4);
@@ -214,21 +224,12 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(0, 0, utf8_decode('OF. No. DSC-IT-' . $numero1 . '/' . date("Y") . ''), 0, 0, 'L');
     $pdf->Ln(4);
     $pdf->Cell(191, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
-    $pdf->SetXY(113, 73);
+    $pdf->SetX(113);
     $pdf->SetFont('Helvetica', 'BU', '8');
     $pdf->Cell(0, 0, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN'), 0, 0, 'C');
-    $pdf->Ln(4);
-    $pdf->SetFont('Helvetica', '', '8.5');
-    $pdf->SetX(52);
-    $pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
-    $pdf->SetX(136);
-    $pdf->SetTextColor(255, 255, 255);
-    $anchoFecha = $pdf->GetStringWidth($fechaActual);
-    $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Ln(8);
 
+    $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(0, 0, utf8_decode($revisor1), 0, 0, 'L');
     $pdf->Ln(4);
     $pdf->Cell(0, 0, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN'), 0, 0, 'L');
@@ -307,6 +308,15 @@ plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.
     $pdf->Cell(0, -3, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
     $pdf->Ln(12);
 
+    $pdf->SetFont('Helvetica', '', '8.5');
+    $pdf->SetX(51);
+    $pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
+    $pdf->SetX(136);
+    $pdf->SetTextColor(255, 255, 255);
+    $anchoFecha = $pdf->GetStringWidth($fechaActual);
+    $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->Ln(8);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(238, 0, utf8_decode('DEPTO. DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
     $pdf->Ln(4);
@@ -314,21 +324,12 @@ plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.
     $pdf->Cell(0, 0, utf8_decode('OF. No. DSC-IT-' . $numero2 . '/' . date("Y") . ''), 0, 0, 'L');
     $pdf->Ln(4);
     $pdf->Cell(191, 0, utf8_decode('ASUNTO: '), 0, 0, 'C');
-    $pdf->SetXY(113, 73);
+    $pdf->SetX(113);
     $pdf->SetFont('Helvetica', 'BU', '8');
     $pdf->Cell(0, 0, utf8_decode('REVISIÓN DE TRABAJO DE TITULACIÓN'), 0, 0, 'C');
-    $pdf->Ln(4);
-    $pdf->SetFont('Helvetica', '', '8.5');
-    $pdf->SetX(52);
-    $pdf->Cell(0, 4, utf8_decode('Iguala, Guerrero, '), 0, 0, 'C');
-    $pdf->SetX(136);
-    $pdf->SetTextColor(255, 255, 255);
-    $anchoFecha = $pdf->GetStringWidth($fechaActual);
-    $pdf->Cell($anchoFecha + 2, 4, utf8_decode($fechaActual), 0, 0, 'C', true);
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Ln(8);
-
+    
+    $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(0, 0, utf8_decode($revisor2), 0, 0, 'L');
     $pdf->Ln(4);
     $pdf->Cell(0, 0, utf8_decode('DOCENTE DE ESTA INSTITUCIÓN'), 0, 0, 'L');
