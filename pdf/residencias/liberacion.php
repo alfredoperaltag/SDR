@@ -196,6 +196,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $asesorInterno = $respuesta["asesorInt"];
     $revisor1 = $respuesta["revisor1"];
     $revisor2 = $respuesta["revisor2"];
+    $periodo = $respuesta["periodo"];
 
     $itemJefeDepartamento = "JEFE DEL DEPTO. ACADEMICO";
     $respuestajefeDepartamento = ControladorJerarquia::ctrMostrarDocentesDictamen($tablaJ, $itemJefeDepartamento);
@@ -248,7 +249,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Row(array('c) No. de Control:', utf8_decode(mb_strtoupper($numeroControl))), 3.8, 'J');
     $pdf->Row(array(utf8_decode('d) Nombre del proyecto:'), utf8_decode($proyecto)), 3.8, 'J');
     $pdf->Row(array('e) Producto:', utf8_decode(mb_strtoupper('TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL"
-'))), 3.8, 'J');
+    '))), 3.8, 'J');
+    $pdf->Row(array(utf8_decode('f) Periodo:'), utf8_decode($periodo)), 3.8, 'J');
     $pdf->Ln(3.8);
 
     $pdf->MultiCell(0, 3.7, utf8_decode('Agradezco de antemano su valioso apoyo en esta importante actividad para la formación profesional de nuestros egresados.'), 0, 'J');
