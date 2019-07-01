@@ -113,6 +113,13 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->SetFont('Helvetica', '', '7');
     $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
     $pdf->Ln(5);
+
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
+    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
+
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
     $pdf->SetFont('Helvetica', 'B', '9');
@@ -124,12 +131,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
     $pdf->SetFont('Helvetica', 'BUI', '9');
     $pdf->Cell(15, 4, utf8_decode('JURADO DE TITULACIÓN.'), 0, 1, 'L');
-    $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(107);
-    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
-    $pdf->SetFont('Helvetica', 'B', '9');
-    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
     $pdf->Ln(5); //CELDA DE ESPACIO
+
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(11);
     $pdf->Cell(80, 4, utf8_decode($res['asesorInt']), 0, 1, 'L');
@@ -241,6 +244,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
+    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(20, 4, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
     $pdf->Cell(107);
@@ -250,11 +258,6 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
     $pdf->SetFont('Helvetica', 'BUI', '9');
     $pdf->Cell(15, 4, utf8_decode('JURADO DE TITULACIÓN.'), 0, 1, 'L');
-    $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(107);
-    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
-    $pdf->SetFont('Helvetica', 'B', '9');
-    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
     $pdf->Ln(5); //CELDA DE ESPACIO
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(11);
@@ -367,6 +370,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
+    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(20, 4, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
     $pdf->Cell(107);
@@ -376,11 +384,6 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
     $pdf->SetFont('Helvetica', 'BUI', '9');
     $pdf->Cell(15, 4, utf8_decode('JURADO DE TITULACIÓN.'), 0, 1, 'L');
-    $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(107);
-    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
-    $pdf->SetFont('Helvetica', 'B', '9');
-    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
     $pdf->Ln(5); //CELDA DE ESPACIO
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(11);
@@ -494,6 +497,11 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
+    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
+    $pdf->SetFont('Helvetica', 'B', '9');
+    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
+    $pdf->SetFont('Helvetica', '', '9');
+    $pdf->Cell(107);
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(20, 4, utf8_decode('DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 1, 'L');
     $pdf->Cell(107);
@@ -503,11 +511,6 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->Cell(15, 4, 'ASUNTO: ', 0, 0, 'L');
     $pdf->SetFont('Helvetica', 'BUI', '9');
     $pdf->Cell(15, 4, utf8_decode('JURADO DE TITULACIÓN.'), 0, 1, 'L');
-    $pdf->SetFont('Helvetica', '', '9');
-    $pdf->Cell(107);
-    $pdf->Cell(25, 4, 'IGUALA, GRO., ', 0, 0, 'L');
-    $pdf->SetFont('Helvetica', 'B', '9');
-    $pdf->Cell(50, 4, $_GET['fecha'], 0, 1, 'L');
     $pdf->Ln(5); //CELDA DE ESPACIO
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(11);
