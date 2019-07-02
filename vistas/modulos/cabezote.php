@@ -5,12 +5,14 @@
             <div class="col-md-3 d-none d-md-block">
                 <div class="logo">
                     <a href="Inicio"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
+                        <a href="Inicio" class="ml-3"><img src="vistas/assets/images/icon/LogoDSC.svg" alt="logo"></a>
                 </div>
             </div>
-            <div class="col-8 d-block d-md-none pt-2 pb-2">
+            <div class="col-12 d-block d-md-none pt-2 pb-2">
                 <div class="col clearfix">
-                    <div class="logo float-right">
-                        <a href="Inicio"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
+                    <div class="logo d-flex justify-content-center">
+                        <a href="Inicio" class="m-2"><img src="vistas/assets/images/icon/logo-1.svg" alt="logo"></a>
+                        <a href="Inicio"><img src="vistas/assets/images/icon/LogoDSC.svg" alt="logo"></a>
                     </div>
                 </div>
             </div>
