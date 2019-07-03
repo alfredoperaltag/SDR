@@ -3,10 +3,10 @@
         <div class="login-box ptb--100">
             <form method="post" novalidate="">
                 <div class="login-form-head">
-                    <div class="logo d-flex justify-content-around my-3">
-                        <a href="#"><img class="d-inline-block" src="vistas/assets/images/icon/sep-logo.png" alt="logo"></a>
-                        <a href="#" class="mx-1"><img class="d-inline-block" src="vistas/assets/images/icon/LogoDSC.svg" alt="logo"></a>
-                        <a href="#"><img class="d-inline-block" src="vistas/assets/images/icon/logo-tec.png" alt="logo"></a>
+                    <div class="logo d-flex justify-content-around my-4">
+                        <a href="#" class="my-1 w-100"><img class="d-inline-block" src="vistas/assets/images/icon/sep-logo.svg" alt="logo"></a>
+                        <a href="#" class="mx-3 "><img class="d-inline-block" src="vistas/assets/images/icon/logo-tec.svg" alt="logo"></a>
+                        <a href="#" class="mt-1 "><img class="d-inline-block" src="vistas/assets/images/icon/LogoDSC.svg" alt="logo"></a>
                     </div>
                     <h5 style="color:black;">Sistema De Residencias</h5>
                     <p style="color:black;">Inicia sesion para acceder a las opciones del sistema.</p>
