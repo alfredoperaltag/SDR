@@ -1,6 +1,7 @@
 <div class="login-area login-bg">
     <div class="container">
-        <div class="login-box ptb--100">
+        <div class="login-box">
+        <!-- <div class="login-box ptb--100"> -->
             <form method="post" novalidate="">
                 <div class="login-form-head">
                     <div class="logo d-flex justify-content-around my-4">
@@ -27,7 +28,7 @@
                     $login->ctrIngresoUsuario();
                     ?>
                     <div class="submit-btn-area">
-                        <button id="form_submit" type="submit">Iniciar Sesion <i class="fa fa-sign-in fa-lg"></i></button>
+                        <button id="form_submit" type="submit">Iniciar Sesion </button>
                     </div>
                     
                 </div>
