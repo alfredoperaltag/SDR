@@ -24,8 +24,9 @@
                             <th>Nombre</th>
                             <th>No. Control</th>
                             <th>Carrera</th>
-                            <th>Sexo</th>
-                            <th>Telefono</th>
+                            <!-- <th>Sexo</th>
+                            <th>Telefono</th> -->
+                            <th>Asesor Interno</th>
                             <th>Proyecto</th>
                             <th>Tipo</th>
                             <th>Acciones</th>
