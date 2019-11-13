@@ -259,8 +259,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Ln(12);
 
     $pdf->SetFont('Helvetica', '', '8');
-    $text1 = 'Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del <C. ' . mb_strtoupper($nombre) . ',> que presenta su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL",> el día <' . mb_strtoupper($fechaTitulacion) . '> del año en curso, a las <' . $hora . ' hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
-    $text2 = 'Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del <C. ' . mb_strtoupper($nombre) . ',> que presenta su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL",> defendiendo su proyecto (promedio ' . $promedio . '), el día <' . mb_strtoupper($fechaTitulacion) . '> del año en curso, a las <' . $hora . ' hrs.>, en la <SALA DE TITULACIÓN YOHUALCEHUATL.>';
+    $text1 = 'Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del <C. ' . mb_strtoupper($nombre) . ',> que presenta su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL",> el día <' . mb_strtoupper($fechaTitulacion) . '> del año en curso, a las <' . $hora . ' hrs.>, en la <SALA DE TITULACIÓN.>';
+    $text2 = 'Por medio del presente, me permito enviar a usted el <JURADO> que fungirá en el Acto de Titulación, del <C. ' . mb_strtoupper($nombre) . ',> que presenta su protocolo para su <TITULACIÓN INTEGRAL "INFORME TÉCNICO DE RESIDENCIA PROFESIONAL",> defendiendo su proyecto (promedio ' . $promedio . '), el día <' . mb_strtoupper($fechaTitulacion) . '> del año en curso, a las <' . $hora . ' hrs.>, en la <SALA DE TITULACIÓN.>';
     if ($_GET['defiende'] == 'no') {
         $pdf->WriteText(utf8_decode($text1));
         $pdf->Ln(8);
