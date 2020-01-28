@@ -21,7 +21,7 @@ class PDF extends FPDF
         // // $this->Ln(20);
         $this->SetFont('Arial', 'B', '10');
         $this->Image('../img/membrete1.png', 25, 17, 84, 17, 'PNG');
-        $this->Image('../img/membrete2.png', 145, 12, 50, 24, 'PNG');
+        $this->Image('../img/membrete2.png', 146, 14, 51, 24, 'PNG');
         $this->Ln(40);//NOTE no borrar
     }
     public function Footer()
@@ -42,10 +42,11 @@ class PDF extends FPDF
         // $this->Cell(20);
         $this->Cell(0, 4, utf8_decode('www.itiguala.edu.mx'), 0, 0, 'C');
         // $x = $this->GetX();
-        $this->Image('../img/iso14001.jpg', 155 + 12, 253, 17);
+        $this->Image('../img/iso14001.png', 164, 253, 9);
         $x = $this->GetX();
         // $this->Image('../img/iso9001.jpg', $x + 31, 253, 12);
-        $this->Image('../img/norma.jpg', 155 + 31, 253, 15);
+        $this->Image('../img/norma.png', 172, 253, 15);
+        $this->Image('../img/100plastico.png', 183, 253, 12);
     }
     public function WriteText($text)
     {
@@ -99,6 +100,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
     $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
 
+    $leyenda = '"2020, Año de Leona Vicario, Benemérita Madre de la Patria"';
+
     $pdf = new PDF('P', 'mm', 'Letter');
     $pdf->AddPage();
     $h = $pdf->GetPageHeight();
@@ -111,7 +114,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $w = $pdf->GetPageWidth();
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
-    $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(5);
 
     $pdf->SetFont('Helvetica', '', '9');
@@ -240,7 +243,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $w = $pdf->GetPageWidth();
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
-    $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
@@ -366,7 +369,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $w = $pdf->GetPageWidth();
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
-    $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
@@ -493,7 +496,7 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $w = $pdf->GetPageWidth();
     $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
-    $pdf->Cell(0, 4, utf8_decode('"2019, Año del Caudillo del Sur, Emiliano Zapata"'), 0, 1, 'C');
+    $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
