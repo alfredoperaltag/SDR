@@ -68,6 +68,10 @@
                                 <a href="Jerarquia"><i class="fa fa-users fa-2x"
                                         style="color: #845ef7;"></i><span><strong> Jerarquia</strong></span></a>
                             </li>
+                            <!-- <li>
+                                <a href="Jerarquia"><i class="fa fa-users fa-2x"
+                                        style="color: #845ef7;"></i><span><strong> Aulas</strong></span></a>
+                            </li> -->
                             <?php
                                 $cargarConfig = ControladorConfig::ctrCargarConfig("configPreRegistro");
 
