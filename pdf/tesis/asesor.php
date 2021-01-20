@@ -14,7 +14,6 @@ class PDF extends FPDF
     {
         $this->SetFont('Arial', 'B', '10');
         $this->Image('../img/cabecera.png', 23, 14, 180, 34, 'PNG');
-        // $this->Image('../img/pie.png', 145, 12, 50, 24, 'PNG');
         $this->Ln(40);//NOTE no borrar
     }
     public function Footer()
