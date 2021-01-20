@@ -93,8 +93,7 @@ class ControladorResidentes
                             <td>' . $value["nombre"] . '</td>
                             <td>' . $value["noControl"] . '</td>
                             <td>' . $value["carrera"] . '</td>
-                            <td>' . $value["sexo"] . '</td>
-                            <td>' . $value["telefono"] . '</td>
+                            <td>' . $value["asesorIn"] . '</td>
                             <td>' . $value["nombreProyecto"] . '</td>
                             <td>' . $value["tipo"] . '</td>
                             <td>
