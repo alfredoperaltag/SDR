@@ -13,25 +13,21 @@ class PDF extends FPDF
     function Header()
     {
         // Logo
-        // $this->Image('../img/membreteDictamen.PNG', 44, 12, 0);
-        // $this->Ln(40);
-        $this->SetFont('Arial', 'B', '10');
-        $this->Image('../img/cabecera.png', 55, 14, 180, 34, 'PNG');
-        $this->Ln(40);//NOTE no borrar
+        $this->Image('../img/membreteDictamen.PNG', 44, 12, 0);
+        $this->Ln(40);
     }
 
     // Pie de página
     function Footer()
     {
-        // $this->SetY(-27);
-        // $this->Image('../img/iti.jpg', 53, 183, 9);
-        // $this->SetFont('Arial', 'B', 7);
-        // $this->SetXY(6, -27);
-        // $this->Cell(0, 0, utf8_decode('Toda copia en PAPEL es "Documento no controlado" a excepción del original'), 0, 0, 'C');
-        // $this->SetFont('Arial', '', 9);
-        // $this->SetXY(188, -24);
-        // $this->Cell(0, 0, utf8_decode('Rev.1'), 0, 0, 'C');
-        $this->Image('../img/pie.png', 55, 180, 174, 34, 'PNG');
+        $this->SetY(-27);
+        $this->Image('../img/iti.jpg', 53, 183, 9);
+        $this->SetFont('Arial', 'B', 7);
+        $this->SetXY(6, -27);
+        $this->Cell(0, 0, utf8_decode('Toda copia en PAPEL es "Documento no controlado" a excepción del original'), 0, 0, 'C');
+        $this->SetFont('Arial', '', 9);
+        $this->SetXY(188, -24);
+        $this->Cell(0, 0, utf8_decode('Rev.1'), 0, 0, 'C');
     }
     var $widths;
     var $aligns;
@@ -231,7 +227,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(0, 0, utf8_decode('En caso que uno o mas Anteproyectos sean rechazados se elaborara otro registro unicamente con los anteproyectos redictaminados'), 0, 0, 'C');
 
     $pdf->SetFont('Arial', '', 10);
-    $pdf->SetXY(44, 160);
+    $pdf->SetXY(44, 171);
     $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($presidente)), 0, 0, 'L');
     $pdf->SetX(30);
     $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($jefe)), 0, 0, 'C');
