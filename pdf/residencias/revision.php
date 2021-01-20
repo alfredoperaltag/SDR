@@ -10,37 +10,13 @@ class PDF extends FPDF
 {
     public function Header()
     {
-        // $this->Image('../img/sepNew_R.png', 20.6, 17.5, 61.5);
-        // $this->Image('../img/TecNacMex.PNG', 130, 21, 66);
-        // $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
         $this->SetFont('Arial', 'B', '10');
-        $this->Image('../img/membrete1.png', 25, 17, 84, 17, 'PNG');
-        $this->Image('../img/membrete2.png', 146, 15, 51, 28, 'PNG');
+        $this->Image('../img/cabecera.png', 23, 14, 180, 34, 'PNG');
         $this->Ln(40);//NOTE no borrar
     }
     public function Footer()
     {
-        $this->SetY(-15);
-        $this->SetFont('Arial', 'I', 8);
-        $x = $this->GetX();
-        $y = $this->GetY();
-        $this->Image('../img/iti.jpg', 24, 256, 14);
-        $this->SetFont('Helvetica', '', '7');
-        $this->SetXY($x - 10, $y - 12);
-        $this->Cell(0, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López  Mateos  Infonavit, C.P. 40030, '), 0, 1, 'C');
-        // $this->Cell(20);
-        $this->Cell(0, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425'), 0, 1, 'C');
-        // $this->Cell(44);
-        $this->Cell(0, 4, utf8_decode('Ext. 225, e-mail: sistemas@itiguala.edu.mx,'), 0, 1, 'C');
-        $this->SetFont('Helvetica', 'B', '7');
-        // $this->Cell(20);
-        $this->Cell(0, 4, utf8_decode('www.itiguala.edu.mx'), 0, 0, 'C');
-        // $x = $this->GetX();
-        $this->Image('../img/iso14001.png', 164, 253, 9);
-        $x = $this->GetX();
-        // $this->Image('../img/iso9001.jpg', $x + 31, 253, 12);
-        $this->Image('../img/norma.png', 172, 253, 15);
-        $this->Image('../img/100plastico.png', 183, 253, 12);
+        $this->Image('../img/pie.png', 23, 238, 174, 34, 'PNG');
     }
     function WriteText($text)
     {
@@ -195,7 +171,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $jefeDepartamento = $respuestajefeDepartamento["nombre"];
     $jefeDepartamentoSexo = $respuestajefeDepartamento["sexo"];
 
-    $leyenda = '"2020, Año de Leona Vicario, Benemérita Madre de la Patria"';
+    // $leyenda = '"2020, Año de Leona Vicario, Benemérita Madre de la Patria"';
 
     $numero1 = $_GET['folio1'];
     $numero2 = $_GET['folio2'];
@@ -205,9 +181,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->AddPage();
     $pdf->SetLeftMargin(24);
     $pdf->SetRightMargin(19);
-    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
+    // $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
     $pdf->SetFont('Helvetica', '', '7.3');
-    $pdf->Cell(0, -3, utf8_decode($leyenda), 0, 1, 'C');
+    // $pdf->Cell(0, -3, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(12);
 
     
@@ -278,7 +254,7 @@ plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.
 
     $pdf->Cell(13);
     $pdf->Cell(0, 0, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted.'), 0, 0, 'J');
-    $pdf->Ln(14.5);
+    $pdf->Ln(12);
 
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 0, 'C');
@@ -306,9 +282,9 @@ plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.
     $pdf->AddPage();
     $pdf->SetLeftMargin(24);
     $pdf->SetRightMargin(19);
-    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
+    // $pdf->Image('../img/fondo_membrete_R.jpg', '0', '46', '215');
     $pdf->SetFont('Helvetica', '', '7.3');
-    $pdf->Cell(0, -3, utf8_decode($leyenda), 0, 1, 'C');
+    // $pdf->Cell(0, -3, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(12);
 
     $pdf->SetFont('Helvetica', '', '8.5');
@@ -378,7 +354,7 @@ plazo, se estará imposibilitado a que se continúe con los trámites sucesivos.
 
     $pdf->Cell(13);
     $pdf->Cell(0, 0, utf8_decode('Con la seguridad de su oportuna entrega, quedo de usted.'), 0, 0, 'J');
-    $pdf->Ln(14.5);
+    $pdf->Ln(12);
 
     $pdf->SetFont('Helvetica', 'B', '9');
     $pdf->Cell(0, 4, utf8_decode('A T E N T A M E N T E'), 0, 0, 'C');
