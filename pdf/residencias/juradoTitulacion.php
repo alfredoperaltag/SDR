@@ -13,40 +13,12 @@ class PDF extends FPDF
     public function Header()
     {
         $this->SetFont('Arial', 'B', '10');
-        // // $this->Image('../img/sep-logo.jpg', 20, 2, 67, 52, 'JPG');
-        // $this->Image('../img/sepNew_R.png', 15, 12, 67, 25, 'PNG');
-        // $this->Image('../img/TecNacMex.PNG', 137, 12, 66, 24, 'PNG');
-        // $this->Cell(0, 46, '', 0, 1, 'C'); //NOTE no borrar
-        // // $this->Cell(80, 25, 'gggggggggggggggg', 1, 1, 'C');
-        // // $this->Ln(20);
-        $this->SetFont('Arial', 'B', '10');
-        $this->Image('../img/membrete1.png', 25, 17, 84, 17, 'PNG');
-        $this->Image('../img/membrete2.png', 146, 14, 51, 24, 'PNG');
+        $this->Image('../img/cabecera.png', 23, 14, 180, 34, 'PNG');
         $this->Ln(40);//NOTE no borrar
     }
     public function Footer()
     {
-        $this->SetY(-15);
-        $this->SetFont('Arial', 'I', 8);
-        $x = $this->GetX();
-        $y = $this->GetY();
-        $this->Image('../img/iti.jpg', 24, 256, 14);
-        $this->SetFont('Helvetica', '', '7');
-        $this->SetXY($x - 10, $y - 12);
-        $this->Cell(0, 4, utf8_decode('Carretera Nacional Iguala-Taxco esquina Periférico Norte, Col. Adolfo López  Mateos  Infonavit, C.P. 40030,'), 0, 1, 'C');
-        // $this->Cell(20);
-        $this->Cell(0, 4, utf8_decode('Iguala de la Independencia, Gro. Tels. (733) 3321425'), 0, 1, 'C');
-        // $this->Cell(44);
-        $this->Cell(0, 4, utf8_decode('Ext. 225, e-mail: sistemas@itiguala.edu.mx,'), 0, 1, 'C');
-        $this->SetFont('Helvetica', 'B', '7');
-        // $this->Cell(20);
-        $this->Cell(0, 4, utf8_decode('www.itiguala.edu.mx'), 0, 0, 'C');
-        // $x = $this->GetX();
-        $this->Image('../img/iso14001.png', 164, 253, 9);
-        $x = $this->GetX();
-        // $this->Image('../img/iso9001.jpg', $x + 31, 253, 12);
-        $this->Image('../img/norma.png', 172, 253, 15);
-        $this->Image('../img/100plastico.png', 183, 253, 12);
+        $this->Image('../img/pie.png', 23, 238, 174, 34, 'PNG');
     }
     public function WriteText($text)
     {
@@ -100,21 +72,21 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $res = ControladorResidentes::ctrMostrarInfoResidentes($item, $valor);
     $res2 = ControladorJerarquia::ctrMostrarDocentesDictamen($tabla, $puesto);
 
-    $leyenda = '"2020, Año de Leona Vicario, Benemérita Madre de la Patria"';
+    // $leyenda = '"2020, Año de Leona Vicario, Benemérita Madre de la Patria"';
 
     $pdf = new PDF('P', 'mm', 'Letter');
     $pdf->AddPage();
     $h = $pdf->GetPageHeight();
     $w = $pdf->GetPageWidth();
-    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    // $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
 
     //OTRO
     // $pdf->AddPage();
     $h = $pdf->GetPageHeight();
     $w = $pdf->GetPageWidth();
-    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    // $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
-    $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
+    // $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(5);
 
     $pdf->SetFont('Helvetica', '', '9');
@@ -241,9 +213,9 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->AddPage();
     $h = $pdf->GetPageHeight();
     $w = $pdf->GetPageWidth();
-    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    // $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
-    $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
+    // $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
@@ -367,9 +339,9 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->AddPage();
     $h = $pdf->GetPageHeight();
     $w = $pdf->GetPageWidth();
-    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    // $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
-    $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
+    // $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
@@ -494,9 +466,9 @@ Mujeres: Vestir de manera formal (traje sastre o de acuerdo al evento).'), 1, 'L
     $pdf->AddPage();
     $h = $pdf->GetPageHeight();
     $w = $pdf->GetPageWidth();
-    $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
+    // $pdf->Image('../img/fondo_membrete_R.jpg', '0', '38', '220', '243', 'JPG');
     $pdf->SetFont('Helvetica', '', '7');
-    $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
+    // $pdf->Cell(0, 4, utf8_decode($leyenda), 0, 1, 'C');
     $pdf->Ln(5);
     $pdf->SetFont('Helvetica', '', '9');
     $pdf->Cell(107);
