@@ -11,20 +11,15 @@ class PDF extends FPDF
     function Header()
     {
         // Logo
-        $this->Image('../img/membreteAsesor.PNG', 21, 12, 0);
-        $this->Ln(40);
+        $this->SetFont('Arial', 'B', '10');
+        $this->Image('../img/cabecera.png', 23, 14, 180, 34, 'PNG');
+        $this->Ln(40);//NOTE no borrar
     }
 
     // Pie de página
     function Footer()
     {
-        $this->Image('../img/iti.jpg', 24, 257.5, 9);
-        $this->SetFont('Arial', 'B', 6.3);
-        $this->SetXY(52, -17);
-        $this->Cell(0, 0, utf8_decode('Toda copia en PAPEL es "Documento no controlado" a excepción del original'), 0, 0, 'L');
-        $this->SetFont('Arial', '', 8);
-        $this->SetXY(176, -13);
-        $this->Cell(0, 0, utf8_decode('Rev. 1'), 0, 0, 'C');
+        $this->Image('../img/pie.png', 23, 238, 174, 34, 'PNG');
     }
     var $widths;
     var $aligns;
@@ -147,6 +142,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->AddPage();
     $pdf->SetFont('Arial', '', 9);
 
+    $pdf->Ln(4);
     $pdf->Cell(0, 0, utf8_decode('Departamento: Sistemas y Computación'), 0, 0, 'R');
     $pdf->Ln(4);
     $pdf->Cell(0, 0, utf8_decode('No. de Oficio: DSC-ITI/' . $numero . '/*' . date("Y") . ''), 0, 0, 'R');
@@ -195,7 +191,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     $pdf->Cell(0, 0, utf8_decode(mb_strtoupper($jefe)), 0, 0, 'C');
     $pdf->Ln(4.2);
     $pdf->Cell(0, 0, utf8_decode('JEFE DEL DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN'), 0, 0, 'C');
-    $pdf->Ln(29);
+    $pdf->Ln(20);
     $pdf->Cell(0, 0, utf8_decode('c.c.p. Coordinación de Carrera'), 0, 0, 'J');
     $pdf->Ln(4);
     $pdf->Cell(0, 0, utf8_decode('c.c.p. Expediente'), 0, 0, 'J');
